@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Legal Classifications Flowchart (Text)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 25px;
+        }
+        .step {
+            margin-left: 20px;
+            padding-left: 15px;
+            border-left: 2px solid #ccc;
+            margin-bottom: 15px;
+        }
+        .category {
+            background-color: #e8f0fe;
+            border: 1px solid #cce0ff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .category strong {
+            color: #2980b9;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+        .indent {
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Islamic Legal Classifications (Ahkam al-Khamsa)</h1>
+
+        <h2>Start</h2>
+        <div class="step">
+            <p><strong>Is the action Commanded by Allah?</strong></p>
+            <div class="step">
+                <p><strong>→ Yes</strong></p>
+                <div class="step indent">
+                    <p><strong>Is it absolutely required?</strong></p>
+                    <div class="step indent">
+                        <p><strong>→ Yes</strong></p>
+                        <div class="category">
+                            <h3><strong>Fard / Wajib</strong> (فرض / واجب) - Obligatory / Compulsory</h3>
+                            <ul>
+                                <li><strong>Meaning:</strong> An action that is absolutely required and commanded by Allah.</li>
+                                <li><strong>Consequence of Doing:</strong> Rewarded.</li>
+                                <li><strong>Consequence of Omitting:</strong> Punishable (sinful).</li>
+                                <li><strong>Examples:</strong> The five daily prayers, fasting in Ramadan, paying Zakat (charity), performing Hajj (pilgrimage) if able.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step indent">
+                        <p><strong>→ No</strong></p>
+                        <div class="category">
+                            <h3><strong>Mustahabb / Mandub / Sunnah</strong> (مستحب / مندوب / سنة) - Recommended / Desirable</h3>
+                            <ul>
+                                <li><strong>Meaning:</strong> An action that is highly encouraged and rewarded if done, but there is no sin if it's omitted. It brings you closer to Allah.</li>
+                                <li><strong>Consequence of Doing:</strong> Rewarded.</li>
+                                <li><strong>Consequence of Omitting:</strong> No sin, but a missed opportunity for reward.</li>
+                                <li><strong>Examples:</strong> Praying Sunnah prayers (voluntary prayers), giving Sadaqa (voluntary charity), visiting the sick, greeting others with Salam.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <p><strong>→ No</strong></p>
+                <div class="step indent">
+                    <p><strong>Is the action Forbidden by Allah?</strong></p>
+                    <div class="step indent">
+                        <p><strong>→ Yes</strong></p>
+                        <div class="category">
+                            <h3><strong>Haram</strong> (حرام) - Forbidden / Unlawful</h3>
+                            <ul>
+                                <li><strong>Meaning:</strong> An action that is strictly prohibited by Allah.</li>
+                                <li><strong>Consequence of Doing:</strong> Punishable (sinful).</li>
+                                <li><strong>Consequence of Omitting:</strong> Rewarded (for abstaining out of obedience).</li>
+                                <li><strong>Examples:</strong> Drinking alcohol, consuming pork, committing adultery, stealing, lying (about religious matters), backbiting, murder.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step indent">
+                        <p><strong>→ No</strong></p>
+                        <div class="step indent">
+                            <p><strong>Is the action Disliked / Disapproved?</strong></p>
+                            <div class="step indent">
+                                <p><strong>→ Yes</strong></p>
+                                <div class="category">
+                                    <h3><strong>Makruh</strong> (مكروه) - Disliked / Disapproved</h3>
+                                    <ul>
+                                        <li><strong>Meaning:</strong> An action that is disliked or disapproved of. It's better to avoid it, but it is not strictly forbidden.</li>
+                                        <li><strong>Consequence of Doing:</strong> Not sinful, but blameworthy; disliked by Allah.</li>
+                                        <li><strong>Consequence of Omitting:</strong> Rewarded (for abstaining out of obedience).</li>
+                                        <li><strong>Types:</strong>
+                                            <ul>
+                                                <li><strong>Makruh Tahrimi</strong> (مكروه تحریمی): Closer to Haram, strongly disliked, sometimes based on speculative evidence of prohibition. Committing it is more blameworthy. (Primarily a Hanafi school classification)</li>
+                                                <li><strong>Makruh Tanzihi</strong> (مكروه تنزیهی): Closer to Mubah, mildly disliked, avoiding it is better but no real blame for doing it. (Common across all schools)</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Examples:</strong> Wasting water during ablution, talking unnecessarily during Adhan, sleeping on one's stomach (often cited as Makruh Tanzihi), men wearing silk or gold (Makruh Tahrimi in Hanafi, Haram in other schools).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="step indent">
+                                <p><strong>→ No</strong></p>
+                                <div class="category">
+                                    <h3><strong>Mubah</strong> (مباح) - Permissible / Neutral</h3>
+                                    <ul>
+                                        <li><strong>Meaning:</strong> An action that is neither commanded nor forbidden. There is no reward for doing it, nor punishment for omitting it. It's simply allowed.</li>
+                                        <li><strong>Consequence of Doing:</strong> No reward.</li>
+                                        <li><strong>Consequence of Omitting:</strong> No sin.</li>
+                                        <li><strong>Examples:</strong> Eating, drinking, sleeping, walking (general everyday activities that have no specific religious command or prohibition attached).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2>End</h2>
+    </div>
+</body>
+</html>
