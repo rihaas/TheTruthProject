@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deen Project - Home</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the prayer table */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0; /* Light text color */
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom right, #1a202c, #2d3748); /* Subtle gradient */
+        }
+
+        .main-content-wrapper {
+            max-width: 1000px; /* Max width for the main content area */
+            width: 100%;
+            background-color: #2d3748; /* Darker background for main content */
+            border-radius: 1rem; /* Rounded corners */
+            padding: 2.5rem; /* More padding */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6); /* Stronger shadow */
+            margin-top: 2rem; /* Space from top */
+            margin-bottom: 2rem; /* Space before footer */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2.25rem;
+            }
+            .subtitle {
+                font-size: 1.125rem;
+            }
+            .section-heading {
+                font-size: 1.75rem;
+            }
+            .feature-card, .blog-post-card { /* Apply feature-card styling to blog cards too */
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            .subtitle {
+                font-size: 1rem;
+            }
+            .section-heading {
+                font-size: 1.5rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Header Section -->
+    <header class="w-full py-6 bg-gray-800 text-center shadow-lg">
+        <div class="container mx-auto px-4 flex flex-col items-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-2">
+                <span class="text-6xl">✨</span> Deen Project
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 font-light subtitle">
+                Your Digital Hub for Islamic Knowledge and Practice
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="main-content-wrapper">
+        <!-- About Section -->
+        <section class="mb-12 w-full">
+            <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-6 section-heading">
+                About Our Project
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto">
+                Welcome to the Deen Project! Our mission is to create accessible and interactive tools
+                that support Muslims in their daily practice and understanding of Islam. We aim to
+                leverage technology to provide beneficial resources for individuals and communities worldwide.
+            </p>
+        </section>
+
+        <!-- Features Section (Placeholder) -->
+        <section class="w-full mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-6 section-heading">
+                Key Features
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+                <!-- Feature Card 1: Prayer Times & Summary -->
+                <div class="bg-gray-700 p-6 rounded-lg shadow-xl feature-card transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                    <h3 class="text-xl font-semibold text-yellow-300 mb-3">
+                        Daily Prayer Summaries
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        Explore detailed information on obligatory and Sunnah Rak'ahs for all daily prayers, including Jumu'ah.
+                    </p>
+                    <a href="prayer_summary_table.html" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out shadow-lg hover:shadow-xl">
+                        View Prayer Guide
+                    </a>
+                </div>
+
+                <!-- Feature Card 2: Placeholder for Future Content -->
+                <div class="bg-gray-700 p-6 rounded-lg shadow-xl feature-card transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                    <h3 class="text-xl font-semibold text-yellow-300 mb-3">
+                        Coming Soon: Quranic Insights
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        A dedicated section for exploring verses from the Holy Quran, with interpretations and lessons.
+                    </p>
+                    <button class="inline-block bg-gray-500 text-gray-300 font-bold py-2 px-6 rounded-full cursor-not-allowed">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Feature Card 3: Placeholder for Future Content -->
+                <div class="bg-gray-700 p-6 rounded-lg shadow-xl feature-card transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                    <h3 class="text-xl font-semibold text-yellow-300 mb-3">
+                        Coming Soon: Hadith Collection
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        An organized collection of Hadith to deepen your understanding of the Prophet's (PBUH) teachings.
+                    </p>
+                    <button class="inline-block bg-gray-500 text-gray-300 font-bold py-2 px-6 rounded-full cursor-not-allowed">
+                        Explore
+                    </button>
+                </div>
+
+                <!-- Feature Card 4: Placeholder for Future Content -->
+                <div class="bg-gray-700 p-6 rounded-lg shadow-xl feature-card transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                    <h3 class="text-xl font-semibold text-yellow-300 mb-3">
+                        Coming Soon: Islamic Calendar
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        Track important Islamic dates and events throughout the year.
+                    </p>
+                    <button class="inline-block bg-gray-500 text-gray-300 font-bold py-2 px-6 rounded-full cursor-not-allowed">
+                        View Calendar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="w-full mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-6 section-heading">
+                Our Blog
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                <!-- Dummy Blog Post 1 -->
+                <div class="bg-gray-700 p-6 rounded-lg shadow-xl blog-post-card transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                    <h3 class="text-xl font-semibold text-yellow-300 mb-3">
+                        The Significance of Daily Dhikr
+                    </h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Discover the spiritual benefits and practical ways to incorporate the remembrance of Allah into your daily routine.
+                    </p>
+                    <a href="blog-post-dhikr.html" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out text-sm shadow-lg hover:shadow-xl">
+                        Read More
+                    </a>
+                </div>
+
+                <!-- Dummy Blog Post 2 -->
+                <div class="bg-gray-700 p-6 rounded-lg shadow-xl blog-post-card transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                    <h3 class="text-xl font-semibold text-yellow-300 mb-3">
+                        Understanding the Pillars of Islam
+                    </h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        A foundational guide to the five pillars that form the basis of a Muslim's faith and practice.
+                    </p>
+                    <a href="blog-post-pillars.html" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out text-sm shadow-lg hover:shadow-xl">
+                        Read More
+                    </a>
+                </div>
+
+                <!-- Dummy Blog Post 3 -->
+                <div class="bg-gray-700 p-6 rounded-lg shadow-xl blog-post-card transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                    <h3 class="text-xl font-semibold text-yellow-300 mb-3">
+                        Tips for a Productive Ramadan
+                    </h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Practical advice to maximize your spiritual gains during the blessed month of Ramadan.
+                    </p>
+                    <a href="blog-post-ramadan-tips.html" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out text-sm shadow-lg hover:shadow-xl">
+                        Read More
+                    </a>
+                </div>
+            </div>
+            <p class="text-md text-gray-400 mt-6">
+                More blog posts coming soon!
+            </p>
+        </section>
+
+        <!-- Call to Action / Contribution -->
+        <section class="w-full">
+            <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-6 section-heading">
+                Contribute to Our Mission
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto mb-6">
+                The Deen Project is open-source and thrives on community contributions. If you're a developer, designer, or Islamic scholar,
+                we welcome your expertise to help us expand and improve our resources.
+            </p>
+            <a href="https://github.com/your-github-username/deen-project" target="_blank" rel="noopener noreferrer"
+               class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                Visit our GitHub Repository
+            </a>
+            <p class="text-sm text-gray-400 mt-4">
+                (Remember to replace "your-github-username/deen-project" with your actual GitHub repository link.)
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="w-full py-8 bg-gray-800 text-center text-gray-400 text-sm">
+        <p>&copy; 2025 Deen Project. All rights reserved.</p>
+        <p class="mt-2">Built with dedication and hope. <span class="text-yellow-400">Islam is peace.</span></p>
+    </footer>
+
+</body>
+</html>
