@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prophet Muhammad (PBUH): Key Events & Inspirations</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the My Deen Project homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+        }
+
+        .main-content-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .main-content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            .event-card {
+                padding: 1rem;
+            }
+            .event-card h3 {
+                font-size: 1.1rem;
+            }
+            .event-card p {
+                font-size: 0.85rem;
+            }
+            details summary {
+                font-size: 0.85rem;
+            }
+            details p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Section headings - consistent with homepage */
+        .section-heading {
+            color: #8D8D8D;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .section-heading span {
+            color: #FACC15;
+        }
+
+        /* Event card styles (similar to Hadith type cards) */
+        .event-card {
+            background-color: #282828; /* Darker card background */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+            border-radius: 0.75rem; /* Consistent border-radius */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+            padding: 1.5rem; /* Consistent padding */
+            text-align: left; /* Align text within cards to left */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .event-card h3 {
+            color: #BB86FC; /* Light purple for card titles */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .event-card p {
+            color: #B0B0B0; /* Softer text color */
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Details/Summary styles for info expansion */
+        details {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            background-color: #3A3A3A; /* Slightly lighter for contrast */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #8be9fd; /* Light blue accent */
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:after {
+            content: '▼';
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        details[open] summary:after {
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #B0B0B0;
+        }
+
+        details .inspiration-text {
+            font-style: italic;
+            border-left: 3px solid #FACC15; /* Golden yellow accent for inspiration */
+            padding-left: 0.75rem;
+            margin-top: 1rem;
+            color: #C0C0C0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content-wrapper">
+        <h1 class="main-heading">
+            Prophet Muhammad (PBUH): <span class="text-yellow-400">Events & Inspirations</span>
+        </h1>
+
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+            The life of Prophet Muhammad (peace be upon him) is a boundless source of wisdom, guidance, and inspiration for all humanity. This page highlights key events and their timeless lessons, making them easily accessible and understandable for a fuller understanding of his blessed life.
+        </p>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Key <span class="text-yellow-400">Events</span> from His Blessed Life
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Event: Birth and Early Life -->
+                <div class="event-card">
+                    <h3>Birth and Early Life</h3>
+                    <p>
+                        Born in Makkah in 570 CE, Prophet Muhammad (PBUH) was an orphan who grew up with immense integrity, earning the title "Al-Amin" (The Trustworthy).
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            He was born into the noble tribe of Quraysh, but lost his father before birth and his mother at a young age. He was raised by his grandfather Abdul Muttalib, and then his uncle Abu Talib. His early life was marked by humility, honesty, and a profound disinterest in the idolatry and societal ills around him.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** His early life teaches us the value of honesty, integrity, perseverance through hardship, and the importance of good character from a young age, even in challenging circumstances.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Event: Marriage to Khadijah (RA) -->
+                <div class="event-card">
+                    <h3>Marriage to Khadijah (RA)</h3>
+                    <p>
+                        At the age of 25, he married Khadijah bint Khuwaylid (RA), a noble and respected businesswoman, who became his steadfast support.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            Khadijah (RA) was much older than him and an established merchant. Their marriage was a testament to his noble character even before prophethood. She was his first and most unwavering supporter throughout the initial, challenging years of his mission.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** This highlights the importance of mutual respect, love, and unwavering support within a marriage, and the strength derived from a righteous partnership in life's challenges.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Event: First Revelation & Call to Prophethood -->
+                <div class="event-card">
+                    <h3>The First Revelation & Call to Prophethood</h3>
+                    <p>
+                        At the age of 40, while meditating in the Cave of Hira, he received the first verses of the Quran through Angel Jibreel (AS), marking the beginning of his prophethood.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            He was accustomed to secluding himself in the Cave of Hira for contemplation. One night, Angel Jibreel (Gabriel) appeared to him and commanded him to "Read!" The Prophet (PBUH) replied that he could not read, and after repeated commands, the verses of Surah Al-Alaq (96:1-5) were revealed. This was a profound and transformative experience, which initially caused him great fear, but Khadijah (RA) immediately comforted and affirmed him.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** This event highlights the importance of contemplation, readiness for a divine call, and the initial awe and responsibility that comes with receiving guidance. It also shows the Prophet's humility and reliance on Allah, and the critical role of supportive relationships.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Event: The Boycott of Banu Hashim -->
+                <div class="event-card">
+                    <h3>The Boycott of Banu Hashim</h3>
+                    <p>
+                        For three years, the Quraysh imposed a severe social and economic boycott on the Prophet's clan, Banu Hashim, forcing them into immense hardship.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            The Makkans wrote a document to sever all ties (marriage, trade) with the Banu Hashim unless they surrendered Prophet Muhammad (PBUH). They were confined to a narrow valley, suffering starvation and extreme deprivation. The boycott eventually ended due to internal divisions among the Quraysh and the steadfastness of the Muslims.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** This period showcases the Prophet's (PBUH) incredible perseverance, resilience, and unwavering faith in Allah's plan despite immense suffering. It also emphasizes the importance of family and tribal solidarity in times of oppression.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Event: Isra and Mi'raj (Night Journey & Ascension) -->
+                <div class="event-card">
+                    <h3>Isra and Mi'raj (Night Journey & Ascension)</h3>
+                    <p>
+                        A miraculous nocturnal journey from Makkah to Jerusalem (Al-Isra), followed by an ascension through the heavens (Al-Mi'raj), where he met previous Prophets and was shown divine signs.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            This incredible journey occurred after a period of great sorrow for the Prophet (PBUH) (Year of Grief). He traveled on Buraq, led prayers with all Prophets in Jerusalem, and then ascended through seven heavens, ultimately reaching a proximity to Allah that no other human has attained. It was during this journey that the five daily prayers were ordained.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** This miracle signifies the immense status of Prophet Muhammad (PBUH) and the centrality of prayer (Salah) in Islam. It reinforces the truth of revelation and Allah's boundless power. It also offers solace during times of distress, reminding us of divine support.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Event: The Hijra (Migration to Medina) - Already there, moved to maintain flow but kept the full text -->
+                <!-- No need to duplicate, it's covered above. -->
+
+                <!-- Event: Battle of Badr -->
+                <div class="event-card">
+                    <h3>The Battle of Badr</h3>
+                    <p>
+                        In 624 CE, a small, ill-equipped Muslim army miraculously defeated a much larger and better-equipped Makkan army, marking a turning point for the nascent Muslim community.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            The battle occurred when the Makkans marched to protect their caravan. Despite being heavily outnumbered (approx. 313 Muslims vs. 1000 Makkans), the Muslims fought with immense faith and discipline. Allah granted them victory, strengthening their morale and demonstrating divine support.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** This event is a powerful lesson in faith, perseverance against overwhelming odds, the importance of unity, and the belief that victory comes from Allah. It shows that numbers don't guarantee success, but sincerity and divine aid do.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Event: Treaty of Hudaybiyyah -->
+                <div class="event-card">
+                    <h3>The Treaty of Hudaybiyyah</h3>
+                    <p>
+                        In 628 CE, the Prophet (PBUH) signed a peace treaty with the Makkans, which initially seemed unfavorable to Muslims but ultimately led to significant long-term gains.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            While on their way to perform Umrah, the Muslims were stopped at Hudaybiyyah. The resulting treaty included clauses that appeared humiliating, such as returning new Muslim converts to Makkah and postponing Umrah for a year. However, this peace allowed Islam to spread rapidly through peaceful Dawah (invitation to Islam) without the constant threat of war.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** This teaches us the strategic value of patience, foresight, and flexibility in diplomacy. It shows that apparent setbacks can lead to greater victories, emphasizing that Allah's plan is always superior.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Event: The Conquest of Makkah -->
+                <div class="event-card">
+                    <h3>The Conquest of Makkah</h3>
+                    <p>
+                        In 630 CE, Prophet Muhammad (PBUH) peacefully entered Makkah with a large army, leading to the city's surrender without bloodshed and the purification of the Kaaba from idols.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            After a treaty violation by the Quraysh, the Prophet (PBUH) marched towards Makkah. He entered the city triumphantly but with utmost humility and forgiveness, declaring general amnesty. This act transformed former enemies into allies and solidified Islam's presence.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** It teaches us about forgiveness, magnanimity in victory, the power of peaceful diplomacy, the importance of justice, and the ultimate triumph of truth through compassion rather than force.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Event: The Farewell Sermon -->
+                <div class="event-card">
+                    <h3>The Farewell Sermon</h3>
+                    <p>
+                        In 632 CE, during his final pilgrimage, Prophet Muhammad (PBUH) delivered a comprehensive sermon, summarizing the core principles of Islam and human rights.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            Delivered on Mount Arafat to a vast gathering of Muslims, this sermon is considered a blueprint for human rights and social justice in Islam. He emphasized equality, warned against usury and bloodshed, and stressed kindness to women and adherence to the Quran and Sunnah.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** The Farewell Sermon is a timeless reminder of human dignity, justice, equality, the sanctity of life and property, and the completeness of the Islamic message. It serves as his final advice to the Ummah.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His Exemplary <span class="text-yellow-400">Character & Qualities</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+                <!-- His Noble Character (Shama'il) - Expanded and more prominent -->
+                <div class="event-card">
+                    <h3>His Noble Character (Shama'il)</h3>
+                    <p>
+                        Beyond specific events, Prophet Muhammad (PBUH) exemplified the highest moral standards, including honesty, kindness, patience, mercy, and justice in every aspect of his life.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            His character was a living embodiment of the Quran. He was known for his humility, never seeking personal gain, forgiving his enemies, and showing immense compassion to all, including children, the elderly, and animals. His entire life was a lesson in how to live righteously.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** His character is the ultimate model for Muslims, teaching us the importance of embodying Islamic values in our daily interactions, fostering love, mercy, and justice in society. It reminds us that Islam is not just rituals, but a way of life.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- His Mercy and Compassion -->
+                <div class="event-card">
+                    <h3>His Mercy & Compassion</h3>
+                    <p>
+                        He was a mercy to all creation, showing profound compassion to Muslims and non-Muslims, children, animals, and even his staunchest enemies.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            He often prayed for his persecutors, visited the sick among non-Muslims, and never retaliated with cruelty even when he had the power to do so. His gentle nature and forgiveness were legendary.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** We learn to be merciful and compassionate in our dealings, to forgive those who wrong us, and to extend kindness to all beings, reflecting Allah's attribute of boundless mercy.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- His Justice and Fairness -->
+                <div class="event-card">
+                    <h3>His Justice & Fairness</h3>
+                    <p>
+                        He established a society founded on justice, ensuring fairness in legal rulings, economic dealings, and interpersonal relations, without discrimination.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            He famously stated that even if his own daughter Fatimah were to steal, he would cut off her hand. He ensured that justice was served to the weak and the strong alike, setting an example for all leaders and judges.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** His life teaches us the paramount importance of upholding justice and fairness in all aspects, personal and societal, and striving for equality and integrity in leadership.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- His Simplicity and Asceticism -->
+                <div class="event-card">
+                    <h3>His Simplicity & Asceticism</h3>
+                    <p>
+                        Despite his immense authority, he lived a life of extreme simplicity, often preferring hunger over satiety and rejecting worldly luxuries.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            His bed was often a mat, and his household sometimes went days without cooked food. He repaired his own shoes and clothes and never accumulated wealth for personal indulgence. His focus was always on the Hereafter.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** This teaches us detachment from worldly desires, contentment with little, and prioritizing spiritual rewards over material possessions, fostering humility and gratitude.
+                        </p>
+                    </details>
+                </div>
+
+                 <!-- His Role as a Teacher and Mentor -->
+                <div class="event-card">
+                    <h3>His Role as a Teacher & Mentor</h3>
+                    <p>
+                        He meticulously taught the Quran, clarified its meanings, and demonstrated its practical application, acting as the perfect educator and role model for his companions.
+                    </p>
+                    <details>
+                        <summary>More Info & Inspiration</summary>
+                        <p>
+                            He taught through example, direct instruction, and by answering questions with wisdom and patience. He nurtured his companions, enabling them to become leaders and scholars who would spread Islam. His emphasis on knowledge was profound.
+                        </p>
+                        <p class="inspiration-text">
+                            **Inspiration:** This highlights the importance of seeking knowledge, teaching with patience and wisdom, and mentoring others. His method emphasizes leading by example and fostering understanding, not just memorization.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
+            The life of Prophet Muhammad (PBUH) is a beacon of light, guiding us towards a life of purpose, peace, and devotion. His every action and word continue to inspire billions across the globe.
+        </p>
+    </div>
+
+</body>
+</html>
