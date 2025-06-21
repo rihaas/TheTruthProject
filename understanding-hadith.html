@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Hadith: Classifications & Hadith Qudsi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the My Deen Project homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+        }
+
+        .main-content-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .main-content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            .hadith-type-card, .narrator-card {
+                padding: 1rem;
+            }
+            .hadith-type-card h3, .narrator-card h3 {
+                font-size: 1.1rem;
+            }
+            .hadith-type-card p, .narrator-card p {
+                font-size: 0.85rem;
+            }
+            details summary {
+                font-size: 0.85rem;
+            }
+            details p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Section headings - consistent with homepage */
+        .section-heading {
+            color: #8D8D8D;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .section-heading span {
+            color: #FACC15;
+        }
+
+        /* Card styles (for both Hadith types and Narrators) */
+        .hadith-type-card, .narrator-card {
+            background-color: #282828; /* Darker card background */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+            border-radius: 0.75rem; /* Consistent border-radius */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+            padding: 1.5rem; /* Consistent padding */
+            text-align: left; /* Align text within cards to left */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hadith-type-card:hover, .narrator-card:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .hadith-type-card h3, .narrator-card h3 {
+            color: #BB86FC; /* Light purple for card titles */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .hadith-type-card p, .narrator-card p {
+            color: #B0B0B0; /* Softer text color */
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Details/Summary styles for info expansion */
+        details {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            background-color: #3A3A3A; /* Slightly lighter for contrast */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #8be9fd; /* Light blue accent */
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:after {
+            content: '▼';
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        details[open] summary:after {
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #B0B0B0;
+        }
+
+        details .example-text {
+            font-style: italic;
+            border-left: 3px solid #FACC15; /* Golden yellow accent for example */
+            padding-left: 0.75rem;
+            margin-top: 1rem;
+            color: #C0C0C0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content-wrapper">
+        <h1 class="main-heading">
+            Understanding <span class="text-yellow-400">Hadith</span>
+        </h1>
+
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+            Hadith are the sayings, actions, or tacit approvals of Prophet Muhammad (peace be upon him). They serve as the second primary source of Islamic law and guidance after the Quran. Understanding their classification is crucial for deriving proper religious rulings and practices.
+        </p>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Types of <span class="text-yellow-400">Hadith</span> (Based on Authenticity)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Sahih Hadith -->
+                <div class="hadith-type-card">
+                    <h3>Sahih (صحيح) - Authentic / Sound</h3>
+                    <p>
+                        A Hadith that meets the highest criteria of authenticity. Its chain of narration is continuous, its narrators are known for their strong memory, trustworthiness, and piety, and it is free from irregularities and defects.
+                    </p>
+                    <details>
+                        <summary>More Info & Example</summary>
+                        <p>
+                            Considered the most reliable category. Scholars like Imam Bukhari and Imam Muslim dedicated their lives to collecting and verifying Sahih Hadith.
+                        </p>
+                        <p class="example-text">
+                            Example: "Actions are but by intentions, and every man shall have but that which he intended." (Bukhari & Muslim)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Hasan Hadith -->
+                <div class="hadith-type-card">
+                    <h3>Hasan (حسن) - Good / Acceptable</h3>
+                    <p>
+                        A Hadith that is generally reliable, but its narrators may have a slightly lesser degree of memory precision compared to Sahih. It still has a continuous chain and is free from irregularities and defects.
+                    </p>
+                    <details>
+                        <summary>More Info & Example</summary>
+                        <p>
+                            It is considered acceptable as evidence in Islamic law, though not as strong as Sahih. Many Fiqh rulings are derived from Hasan Hadith.
+                        </p>
+                        <p class="example-text">
+                            Example: "When you stand for prayer, perform ablution perfectly, then face the Qiblah and say 'Allahu Akbar'..." (Tirmidhi - part of a longer Hadith)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Da'if Hadith -->
+                <div class="hadith-type-card">
+                    <h3>Da'if (ضعيف) - Weak</h3>
+                    <p>
+                        A Hadith that lacks one or more conditions of a Hasan or Sahih Hadith. This could be due to a discontinuity in the chain, a narrator with a poor memory, or other defects.
+                    </p>
+                    <details>
+                        <summary>More Info & Example</summary>
+                        <p>
+                            Generally not used as evidence for legal rulings (Ahkam), but can sometimes be used for virtuous deeds (Fada'il al-A'mal) if it's not severely weak and doesn't contradict established authentic texts.
+                        </p>
+                        <p class="example-text">
+                            Example: (Numerous Hadith exist, but specific examples are avoided as they might be taken out of context; general examples involve weak narrators or broken chains.)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Mawdu' Hadith -->
+                <div class="hadith-type-card">
+                    <h3>Mawdu' (موضوع) - Fabricated / Forged</h3>
+                    <p>
+                        A Hadith that is falsely attributed to the Prophet Muhammad (PBUH) and is not authentic in any way. It is a lie against the Prophet.
+                    </p>
+                    <details>
+                        <summary>More Info & Example</summary>
+                        <p>
+                            It is absolutely forbidden to narrate or spread Mawdu' Hadith knowing they are fabricated, unless it is to expose their fabrication.
+                        </p>
+                        <p class="example-text">
+                            Example: "Love of homeland is part of faith." (While patriotism is commendable, this specific Hadith is classified as fabricated in terms of its chain of narration.)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Special Category: <span class="text-yellow-400">Hadith Qudsi</span>
+            </h2>
+            <div class="hadith-type-card max-w-2xl mx-auto">
+                <h3>Hadith Qudsi (حديث قدسي) - Sacred Hadith</h3>
+                <p>
+                    These are sayings of Allah relayed by Prophet Muhammad (PBUH) but not part of the Quran. The meaning is from Allah, but the wording is from the Prophet (PBUH).
+                </p>
+                <details>
+                    <summary>More Info & Example</summary>
+                    <p>
+                        Hadith Qudsi are distinct from the Quran (which is Allah's exact words and revelation) and from regular Hadith (where both meaning and wording are from the Prophet PBUH). They typically begin with phrases like "Allah says..." or "My servant says..."
+                    </p>
+                    <p class="example-text">
+                        Example: Abu Hurayrah (may Allah be pleased with him) reported that the Prophet (PBUH) said: "Allah the Almighty said: 'I am as My servant thinks I am. I am with him when he remembers Me. If he remembers Me in a gathering, I remember him in a gathering better than it. If he draws near to Me a handspan, I draw near to him a cubit. If he draws near to Me a cubit, I draw near to him an arm’s length. And if he comes to Me walking, I go to him at speed.'" (Bukhari & Muslim)
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Prominent Hadith <span class="text-yellow-400">Narrators & Collections</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+
+                <!-- Imam Bukhari -->
+                <div class="narrator-card">
+                    <h3>Imam Al-Bukhari (الإمام البخاري)</h3>
+                    <p>
+                        One of the most revered Hadith scholars. His collection is considered the most authentic book after the Quran.
+                    </p>
+                    <details>
+                        <summary>More Info & Collection</summary>
+                        <p>
+                            <strong>Full Name:</strong> Muhammad ibn Isma'il al-Bukhari<br>
+                            <strong>Lifespan:</strong> 810–870 CE<br>
+                            <strong>Collection:</strong> Sahih al-Bukhari (صحيح البخاري)<br>
+                            <strong>Significance:</strong> Contains approximately 7,563 Hadith (with repetitions). Renowned for its rigorous authentication criteria.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Imam Muslim -->
+                <div class="narrator-card">
+                    <h3>Imam Muslim (الإمام مسلم)</h3>
+                    <p>
+                        Another highly respected Hadith scholar, whose collection is second only to Sahih al-Bukhari in authenticity.
+                    </p>
+                    <details>
+                        <summary>More Info & Collection</summary>
+                        <p>
+                            <strong>Full Name:</strong> Muslim ibn al-Hajjaj<br>
+                            <strong>Lifespan:</strong> 815–875 CE<br>
+                            <strong>Collection:</strong> Sahih Muslim (صحيح مسلم)<br>
+                            <strong>Significance:</strong> Contains around 7,200 Hadith (with repetitions). Known for its excellent arrangement and detailed chains of narration.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Imam At-Tirmidhi -->
+                <div class="narrator-card">
+                    <h3>Imam At-Tirmidhi (الإمام الترمذي)</h3>
+                    <p>
+                        A distinguished Hadith compiler known for his collection that classifies Hadith by authenticity and includes legal opinions.
+                    </p>
+                    <details>
+                        <summary>More Info & Collection</summary>
+                        <p>
+                            <strong>Full Name:</strong> Muhammad ibn Isa al-Tirmidhi<br>
+                            <strong>Lifespan:</strong> 824–892 CE<br>
+                            <strong>Collection:</strong> Jami' at-Tirmidhi (جامع الترمذي) or Sunan at-Tirmidhi<br>
+                            <strong>Significance:</strong> Part of the "Six Books" (Sihah Sittah). Valuable for its comprehensive legal discussions and classification of Hadith (Sahih, Hasan, Da'if).
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Imam Abu Dawud -->
+                <div class="narrator-card">
+                    <h3>Imam Abu Dawud (الإمام أبو داود)</h3>
+                    <p>
+                        Authored a major Hadith collection focusing primarily on Hadith related to Islamic law (Fiqh).
+                    </p>
+                    <details>
+                        <summary>More Info & Collection</summary>
+                        <p>
+                            <strong>Full Name:</strong> Sulayman ibn Ash'ath al-Azdi al-Sijistani<br>
+                            <strong>Lifespan:</strong> 817–889 CE<br>
+                            <strong>Collection:</strong> Sunan Abi Dawud (سنن أبي داود)<br>
+                            <strong>Significance:</strong> Contains Hadith primarily used for deriving legal rulings, organized by chapters of Fiqh. Part of the "Six Books."
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Imam An-Nasa'i -->
+                <div class="narrator-card">
+                    <h3>Imam An-Nasa'i (الإمام النسائي)</h3>
+                    <p>
+                        Known for his Sunan collection, highly regarded for its rigorous standards and focus on clear chains of narration.
+                    </p>
+                    <details>
+                        <summary>More Info & Collection</summary>
+                        <p>
+                            <strong>Full Name:</strong> Ahmad ibn Shu'ayb al-Nasa'i<br>
+                            <strong>Lifespan:</strong> 829–915 CE<br>
+                            <strong>Collection:</strong> Sunan an-Nasa'i (سنن النسائي)<br>
+                            <strong>Significance:</strong> Part of the "Six Books." It's particularly praised for the quality of its chains of narration and contains a large number of Hadith related to legal matters.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Imam Ibn Majah -->
+                <div class="narrator-card">
+                    <h3>Imam Ibn Majah (الإمام ابن ماجه)</h3>
+                    <p>
+                        His Sunan collection completes the "Six Books" of Hadith, providing a broad range of narrations.
+                    </p>
+                    <details>
+                        <summary>More Info & Collection</summary>
+                        <p>
+                            <strong>Full Name:</strong> Muhammad ibn Yazid ibn Majah al-Rab'i al-Qazwini<br>
+                            <strong>Lifespan:</strong> 844–887 CE<br>
+                            <strong>Collection:</strong> Sunan Ibn Majah (سنن ابن ماجه)<br>
+                            <strong>Significance:</strong> Contains over 4,000 Hadith. While some Hadith in it are considered weaker than those in the other five books, it includes valuable narrations not found elsewhere.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Imam Ahmad ibn Hanbal -->
+                <div class="narrator-card">
+                    <h3>Imam Ahmad ibn Hanbal (الإمام أحمد بن حنبل)</h3>
+                    <p>
+                        A renowned jurist, theologian, and Hadith collector, founder of the Hanbali school of thought.
+                    </p>
+                    <details>
+                        <summary>More Info & Collection</summary>
+                        <p>
+                            <strong>Full Name:</strong> Ahmad ibn Muhammad ibn Hanbal<br>
+                            <strong>Lifespan:</strong> 780–855 CE<br>
+                            <strong>Collection:</strong> Musnad Ahmad ibn Hanbal (مسند أحمد بن حنبل)<br>
+                            <strong>Significance:</strong> One of the largest Hadith collections, containing nearly 30,000 Hadith arranged by the companion who narrated them. It's a foundational text in Hadith literature.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
+            Understanding the different types of Hadith and the scholars who dedicated their lives to preserving them helps Muslims navigate the vast body of prophetic traditions and ensures they adhere to authentic teachings.
+        </p>
+    </div>
+
+</body>
+</html>
