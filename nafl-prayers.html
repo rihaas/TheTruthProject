@@ -51,8 +51,8 @@
                 padding: 1.5rem 1rem;
                 border-radius: 0.75rem;
             }
-            h1 {
-                font-size: 2.5rem;
+            .main-heading {
+                font-size: 2.25rem;
             }
             p {
                 font-size: 0.95rem;
@@ -60,7 +60,7 @@
         }
 
         @media (max-width: 480px) {
-            h1 {
+            .main-heading {
                 font-size: 2rem;
             }
             .table-container-wrapper {
@@ -73,6 +73,19 @@
             table {
                 min-width: 500px; /* Allow horizontal scroll on small phones */
             }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
         }
 
         /* Table specific styles */
@@ -157,15 +170,36 @@
         .text-accent {
             color: #FACC15; /* Golden yellow for main title accent */
         }
+
+        /* Specific styles for the important note */
+        .important-note {
+            background-color: #2D2D2D; /* Slightly lighter background for the note box */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-top: 2.5rem; /* More space above the note */
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .important-note ul {
+            list-style-type: disc;
+            margin-left: 1.5rem; /* Indent list items */
+            padding-left: 0;
+        }
+        .important-note ul li {
+            margin-bottom: 0.4rem;
+            color: #B0B0B0; /* Muted text color for list items */
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 
     <div class="table-container-wrapper">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+        <h1 class="main-heading">
             <span class="text-accent">✨</span> Nafl (Voluntary) Prayers
         </h1>
-        <p class="text-md md:text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
             This table summarizes various optional (Nafl) prayers in Islam, offering immense spiritual rewards
             beyond the obligatory daily prayers. Click "More Info" for details on each.
         </p>
@@ -288,16 +322,21 @@
                 </tbody>
             </table>
         </div>
-        <p class="text-md text-red-400 mt-8 font-semibold">
-            <span class="text-yellow-400">Important Note:</span> Nafl prayers are generally prohibited during specific times:
-            <ul class="list-disc list-inside text-left mx-auto max-w-md mt-2 text-gray-300">
-                <li>From the time of Fajr prayer until sunrise.</li>
-                <li>When the sun is at its zenith (highest point in the sky), just before Dhuhr.</li>
-                <li>From the time of Asr prayer until sunset.</li>
+        <div class="important-note">
+            <p class="text-md font-semibold text-yellow-400">
+                Important Note:
+            </p>
+            <ul class="text-gray-300 mt-2">
+                <li>Nafl prayers are generally prohibited during specific times:</li>
+                <ul class="list-disc list-inside ml-4 mt-1">
+                    <li>From the time of Fajr prayer until sunrise.</li>
+                    <li>When the sun is at its zenith (highest point in the sky), just before Dhuhr.</li>
+                    <li>From the time of Asr prayer until sunset.</li>
+                </ul>
+                <li>However, some Nafl prayers with a specific reason (like Tahiyyat al-Masjid) may be performed during these times.</li>
             </ul>
-            However, some Nafl prayers with a specific reason (like Tahiyyat al-Masjid) may be performed during these times.
-        </p>
-        <p class="text-md text-gray-400 mt-4">
+        </div>
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
             Voluntary prayers are a beautiful way to earn extra rewards and draw closer to Allah. May Allah accept our efforts. Ameen.
         </p>
     </div>
