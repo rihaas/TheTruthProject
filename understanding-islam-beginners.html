@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Islam for Beginners</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the My Deen Project homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+        }
+
+        .main-content-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .main-content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            .info-card {
+                padding: 1rem;
+            }
+            .info-card h3 {
+                font-size: 1.1rem;
+            }
+            .info-card p {
+                font-size: 0.85rem;
+            }
+            details summary {
+                font-size: 0.85rem;
+            }
+            details p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Section headings - consistent with homepage */
+        .section-heading {
+            color: #8D8D8D;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .section-heading span {
+            color: #FACC15;
+        }
+
+        /* Info card styles (similar to event cards) */
+        .info-card {
+            background-color: #282828; /* Darker card background */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+            border-radius: 0.75rem; /* Consistent border-radius */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+            padding: 1.5rem; /* Consistent padding */
+            text-align: left; /* Align text within cards to left */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .info-card h3 {
+            color: #BB86FC; /* Light purple for card titles */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card p {
+            color: #B0B0B0; /* Softer text color */
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Details/Summary styles for info expansion */
+        details {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            background-color: #3A3A3A; /* Slightly lighter for contrast */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #8be9fd; /* Light blue accent */
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:after {
+            content: '▼';
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        details[open] summary:after {
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #B0B0B0;
+        }
+
+        details .key-aspect-text {
+            font-style: italic;
+            border-left: 3px solid #FACC15; /* Golden yellow accent for key aspects */
+            padding-left: 0.75rem;
+            margin-top: 1rem;
+            color: #C0C0C0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content-wrapper">
+        <h1 class="main-heading">
+            Understanding <span class="text-yellow-400">Islam</span> for Beginners
+        </h1>
+
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+            Welcome to the foundational guide on Islam! Islam is a monotheistic religion, and its followers, Muslims, believe in one God, Allah. It is a complete way of life, providing guidance for all aspects of human existence. This page will introduce you to its core beliefs, practices, and values.
+        </p>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                The Six <span class="text-yellow-400">Articles of Faith</span> (Iman)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Belief in Allah (God) -->
+                <div class="info-card">
+                    <h3>1. Belief in Allah (God)</h3>
+                    <p>
+                        The absolute and uncompromising belief in One God (Allah), who is the Creator, Sustainer, and only object of worship.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This is the central tenet of Islam, known as Tawhid (Oneness of God). Allah is unique, has no partners, no children, and is incomparable to anything in creation. He is All-Knowing, All-Powerful, All-Merciful, and All-Just.
+                        </p>
+                        <p class="key-aspect-text">
+                            "Say, 'He is Allah, [who is] One, Allah, the Eternal Refuge. He neither begets nor is born, Nor is there to Him any equivalent.'" (Quran 112:1-4)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Belief in Angels -->
+                <div class="info-card">
+                    <h3>2. Belief in Angels</h3>
+                    <p>
+                        Belief in unseen beings created by Allah from light, who serve Him obediently and carry out His commands.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Angels are pure and sinless beings. Their roles include conveying revelations (like Jibreel/Gabriel), recording deeds, delivering messages, and carrying out various divine tasks.
+                        </p>
+                        <p class="key-aspect-text">
+                            "And to Allah prostrates whoever is in the heavens and whatever is on the earth from [moving] creatures and the angels, and they are not arrogant." (Quran 16:49)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Belief in Holy Books -->
+                <div class="info-card">
+                    <h3>3. Belief in Holy Books</h3>
+                    <p>
+                        Belief that Allah revealed holy books and scriptures to His prophets as guidance for humanity.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Muslims believe in the original revelations given to earlier prophets, such as the Scrolls of Abraham, the Torah (Tawrat) to Moses, the Psalms (Zabur) to David, the Gospel (Injil) to Jesus, and finally the Quran to Prophet Muhammad (PBUH), which is preserved in its original form.
+                        </p>
+                        <p class="key-aspect-text">
+                            "He has sent down upon you, [O Muhammad], the Book in truth, confirming what was before it. And He revealed the Torah and the Gospel." (Quran 3:3)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Belief in Prophets and Messengers -->
+                <div class="info-card">
+                    <h3>4. Belief in Prophets & Messengers</h3>
+                    <p>
+                        Belief that Allah sent numerous prophets and messengers throughout history to guide humanity to the truth.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Prophets are human beings chosen by Allah to convey His message. They include Adam, Nuh (Noah), Ibrahim (Abraham), Musa (Moses), Isa (Jesus), and the final prophet, Muhammad (PBUH). All preached the same fundamental message of worshipping One God.
+                        </p>
+                        <p class="key-aspect-text">
+                            "The Messenger has believed in what was revealed to him from his Lord, and [so have] the believers. All of them have believed in Allah and His angels and His books and His messengers, [saying], 'We make no distinction between any of His messengers.'" (Quran 2:285)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Belief in the Day of Judgment -->
+                <div class="info-card">
+                    <h3>5. Belief in the Day of Judgment</h3>
+                    <p>
+                        Belief in an appointed day when all humanity will be resurrected and judged by Allah for their deeds in this life.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This belief includes the concepts of accountability, Heaven (Jannah) for the righteous, and Hell (Jahannam) for those who disobeyed Allah without repentance. It serves as a motivation for righteous living.
+                        </p>
+                        <p class="key-aspect-text">
+                            "And this worldly life is not but diversion and amusement. But indeed, the home of the Hereafter — that is the [true] life, if only they knew." (Quran 29:64)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Belief in Divine Decree (Qadar) -->
+                <div class="info-card">
+                    <h3>6. Belief in Divine Decree (Qadar)</h3>
+                    <p>
+                        Belief that Allah has knowledge of all things and has decreed all events, but this does not negate human free will and accountability.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Qadar encompasses Allah's knowledge, His writing (in the Preserved Tablet), His will, and His creation of everything. Humans have the choice to act, and for these choices, they are held accountable.
+                        </p>
+                        <p class="key-aspect-text">
+                            "Indeed, all things We created with predestination." (Quran 54:49)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                The Five <span class="text-yellow-400">Pillars of Islam</span> (Ibadah)
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+                These are the fundamental acts of worship that form the framework of Muslim life.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+
+                <!-- Shahada (Declaration of Faith) -->
+                <div class="info-card">
+                    <h3>1. Shahada (الشهادة) - Declaration of Faith</h3>
+                    <p>
+                        The testimony that "There is no god but Allah, and Muhammad is His Messenger."
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This is the most fundamental pillar, declaring monotheism and acceptance of Prophet Muhammad (PBUH) as Allah's final messenger. It's recited to convert to Islam and frequently throughout a Muslim's life.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Salah (Prayer) -->
+                <div class="info-card">
+                    <h3>2. Salah (الصلاة) - Prayer</h3>
+                    <p>
+                        Performing five obligatory prayers daily, facing the Kaaba in Makkah.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Salah is performed at dawn (Fajr), noon (Dhuhr), mid-afternoon (Asr), sunset (Maghrib), and night (Isha). It involves specific physical movements and recitations, connecting the believer directly with Allah.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Zakat (Charity) -->
+                <div class="info-card">
+                    <h3>3. Zakat (الزكاة) - Compulsory Charity</h3>
+                    <p>
+                        An annual obligatory charity paid by eligible Muslims to the poor and needy.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Zakat is a purification of wealth and a means of economic justice. It is typically 2.5% of one's accumulated wealth (gold, silver, cash, trade goods) that has been held for a full lunar year and exceeds a minimum threshold (nisab).
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Sawm (Fasting) -->
+                <div class="info-card">
+                    <h3>4. Sawm (الصوم) - Fasting</h3>
+                    <p>
+                        Abstaining from food, drink, and intimate relations from dawn until sunset during the month of Ramadan.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Fasting is not just about physical abstinence; it's a spiritual discipline aimed at increasing piety, self-control, empathy for the less fortunate, and devotion to Allah.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Hajj (Pilgrimage) -->
+                <div class="info-card">
+                    <h3>5. Hajj (الحج) - Pilgrimage</h3>
+                    <p>
+                        The pilgrimage to the Kaaba in Makkah, obligatory once in a lifetime for every Muslim who is physically and financially able.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Hajj is performed during the Islamic month of Dhul-Hijjah. It is a profound spiritual journey that symbolizes unity, equality, and devotion, bringing Muslims from all walks of life together.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Key Islamic <span class="text-yellow-400">Concepts & Values</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+                <!-- Ihsan (Excellence) -->
+                <div class="info-card">
+                    <h3>Ihsan (الإحسان) - Excellence</h3>
+                    <p>
+                        Worshipping Allah as if you see Him, and if you cannot see Him, then knowing that He sees you. It also refers to doing good in all actions.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Ihsan is about perfecting one's worship and good deeds. It extends to all interactions: with Allah, with fellow humans, and with the environment, striving for beauty and virtue in everything.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Taqwa (God-Consciousness) -->
+                <div class="info-card">
+                    <h3>Taqwa (التقوى) - God-Consciousness</h3>
+                    <p>
+                        A state of awareness of Allah in all aspects of life, leading to avoiding evil and striving for righteousness.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Taqwa is often translated as "piety" or "fear of God," but it is more accurately described as a deep reverence and consciousness of Allah's presence, leading one to act in ways pleasing to Him and avoid what displeases Him.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Ummah (Global Community) -->
+                <div class="info-card">
+                    <h3>Ummah (الأمة) - Global Muslim Community</h3>
+                    <p>
+                        The worldwide community of Muslims, transcending geographical, ethnic, and national boundaries.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Islam fosters a strong sense of brotherhood and sisterhood among Muslims. The concept of Ummah emphasizes unity, mutual support, and collective responsibility for justice and well-being.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Peace & Justice -->
+                <div class="info-card">
+                    <h3>Peace & Justice</h3>
+                    <p>
+                        Islam is derived from the root word "Salam" (peace). Justice is a paramount value, central to all teachings.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            The Quran and Sunnah repeatedly emphasize peace, reconciliation, and the establishment of justice. Muslims are enjoined to stand firmly for justice, even against themselves or their loved ones.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
+            This is a foundational introduction to Islam. For a deeper understanding, continued study of the Quran and the Sunnah of Prophet Muhammad (PBUH) is encouraged. May Allah guide us all.
+        </p>
+    </div>
+
+</body>
+</html>
