@@ -3,70 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prophets in the Quran and their Lineage Flowchart</title>
+    <title>Prophets in the Quran and their Lineage</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
     <style>
+        /* Base styles consistent with the My Deen Project homepage */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
-            /* Removed flex properties to ensure natural scrolling */
-            min-height: 100vh; /* Ensure body takes at least full viewport height */
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            padding: 0; /* Full control with main-content-wrapper padding */
+            margin: 0;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+            min-height: 100vh;
             padding-top: 8rem; /* Padding for sticky nav */
-            padding-bottom: 2rem; /* Ensure space at bottom */
         }
+
+        /* Main content wrapper - consistent with other pages */
+        .main-content-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 3.5rem 3rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin: 3rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Header styling - consistent with homepage */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem; /* Default size for main title */
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Section headings - consistent with homepage */
+        .section-heading {
+            color: #8D8D8D;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .section-heading span {
+            color: #FACC15;
+        }
+
+        /* Refined button styles - consistent with homepage */
+        .interactive-button {
+            background-image: linear-gradient(to right, #4F46E5, #6366F1); /* Subtle blue gradient */
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); /* Shadow matching gradient color */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth cubic-bezier transition */
+            border-radius: 0.6rem;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            color: #FFFFFF;
+            display: inline-flex; /* For icon alignment */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .interactive-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.6);
+            background-image: linear-gradient(to right, #6366F1, #4F46E5);
+        }
+
+        /* Specific styles for the expand/collapse buttons */
+        .control-button {
+            @apply px-6 py-3 rounded-lg shadow-md transition-colors duration-300 font-semibold;
+        }
+        #expandAllBtn {
+            @apply bg-indigo-600 text-white hover:bg-indigo-700;
+        }
+        #collapseAllBtn {
+            @apply bg-gray-700 text-gray-300 hover:bg-gray-600;
+        }
+
         /* Custom scroll-to-top button styling */
         #scrollToTopBtn {
-            display: none; /* Hidden by default */
-            position: fixed; /* Fixed position */
-            bottom: 20px; /* Place at the bottom */
-            right: 20px; /* Place at the right */
-            z-index: 99; /* Ensure it's above other content */
-            background-color: #4f46e5; /* Indigo */
-            color: white; /* White text */
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            background-color: #4f46e5;
+            color: white;
             padding: 1rem;
-            border-radius: 9999px; /* Fully rounded */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            cursor: pointer; /* Pointer on hover */
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         #scrollToTopBtn:hover {
-            background-color: #4338ca; /* Darker indigo on hover */
-            transform: translateY(-2px); /* Slight lift effect */
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        /* Sticky Navigation / Table of Contents styling */
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+            background-color: #1A1A1A; /* Dark header background */
+            background-image: linear-gradient(to bottom, #1A1A1A, #282828); /* Subtle gradient */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            padding: 1.5rem 0; /* Adjust padding */
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+        }
+        .sticky-nav a {
+            color: #8be9fd; /* Light blue accent for nav links */
+            font-weight: 500;
+            transition: color 0.2s ease, transform 0.2s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+        .sticky-nav a:hover {
+            color: #FACC15; /* Golden yellow on hover */
+            background-color: rgba(255, 255, 255, 0.08); /* Subtle hover background */
+            transform: translateY(-1px);
         }
 
         /* Flowchart specific styles */
         .lineage-node {
             position: relative;
-            padding: 1.5rem; /* Increased padding for better spacing */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
-            margin-bottom: 2.5rem; /* Increased margin for better separation */
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0; /* border-gray-200 */
+            padding: 2rem; /* Increased padding */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Deeper shadow */
+            margin-bottom: 3.5rem; /* Increased margin for better separation */
+            background-color: #282828; /* Dark card background */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+            text-align: left; /* Align text within nodes to left */
         }
 
         .lineage-node:not(:last-child)::after {
             content: '';
             position: absolute;
-            bottom: -2.5rem; /* Half the margin-bottom */
+            bottom: -3.5rem; /* Half the margin-bottom */
             left: 50%;
             transform: translateX(-50%);
             width: 2px;
-            height: 2.5rem; /* To connect to the next node's top */
-            background-color: #9ca3af; /* gray-400 */
+            height: 3.5rem;
+            background-color: #9CA3AF; /* gray-400 */
+        }
+
+        .lineage-node h3 {
+            font-size: 1.8rem; /* Larger prophet name */
+            font-weight: 700;
+            color: #BB86FC; /* Light purple for prophet names */
+            margin-bottom: 0.75rem;
+        }
+
+        .lineage-node p {
+            color: #B0B0B0; /* Softer text color */
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        .lineage-node p.italic {
+            font-style: italic;
+            color: #A0A0A0; /* Even softer for italic text */
+            font-size: 0.9rem;
+            margin-bottom: 1rem; /* Space before lineage container */
         }
 
         .lineage-container {
             position: relative;
             padding-left: 2rem; /* Space for vertical lines */
+            border-left: 2px solid rgba(255, 255, 255, 0.1); /* Subtle vertical line for container */
         }
 
         .lineage-item {
             position: relative;
-            margin-bottom: 0.75rem; /* Increased margin */
+            margin-bottom: 1rem; /* Increased margin */
             padding-left: 2rem; /* Increased padding */
         }
 
@@ -74,20 +206,20 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 1rem; /* Adjust to vertically center with text */
+            top: 0.8rem; /* Adjust to vertically center with text */
             width: 2rem; /* Increased width */
             height: 2px;
-            background-color: #9ca3af; /* gray-400 */
+            background-color: #8be9fd; /* Accent color for horizontal line */
         }
 
         .lineage-item::after {
             content: '';
             position: absolute;
             left: 1.9rem; /* Aligns with the horizontal line's end */
-            top: 1rem; /* Aligns with the horizontal line's end */
+            top: 0.8rem; /* Aligns with the horizontal line's end */
             width: 2px;
-            height: calc(100% - 1rem); /* Extend downwards */
-            background-color: #9ca3af; /* gray-400 */
+            height: calc(100% + 1rem); /* Extend downwards to connect */
+            background-color: #9CA3AF; /* gray-400 for vertical line */
         }
 
         .lineage-item:last-child::after {
@@ -100,13 +232,17 @@
             display: inline-flex;
             align-items: center;
             gap: 0.25rem;
-            font-weight: 600; /* semibold */
-            color: #4f46e5; /* indigo-600 */
+            font-weight: 600;
+            color: #8be9fd; /* Light blue accent for toggle text */
             transition: color 0.2s ease;
+            background: none; /* Remove default button background */
+            border: none; /* Remove default button border */
+            padding: 0; /* Remove default button padding */
+            font-size: 1rem;
         }
 
         .toggle-button:hover {
-            color: #4338ca; /* Darker indigo on hover */
+            color: #FACC15; /* Golden yellow on hover */
         }
 
         .toggle-button svg {
@@ -114,147 +250,156 @@
         }
 
         .toggle-button.collapsed svg {
-            transform: rotate(-90deg);
+            transform: rotate(-90deg); /* Arrow points down when collapsed */
         }
 
         .lineage-details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-in-out; /* Smoother transition */
+            transition: max-height 0.5s ease-in-out;
+            padding-top: 0; /* Start with no padding top */
         }
 
         .lineage-details.expanded {
-            max-height: 3000px; /* Increased arbitrary large value for expansion */
+            max-height: 3000px; /* Arbitrary large value for expansion */
+            padding-top: 0.5rem; /* Add padding top when expanded */
+        }
+
+        .lineage-details p {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #B0B0B0;
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-900 text-white">
     <!-- Sticky Navigation / Table of Contents -->
-    <nav class="sticky top-0 z-50 w-full bg-white bg-opacity-95 shadow-md py-4 rounded-b-xl">
+    <nav class="sticky-nav">
         <div class="max-w-4xl mx-auto px-4 flex flex-wrap justify-center gap-4 text-center">
-            <a href="#intro" class="text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-300 rounded-md px-3 py-1">Introduction</a>
-            <a href="#lineage-tree" class="text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-300 rounded-md px-3 py-1">Lineage Tree</a>
+            <a href="#intro" class="hover:underline">Introduction</a>
+            <a href="#lineage-tree" class="hover:underline">Lineage Tree</a>
         </div>
     </nav>
 
-    <div class="max-w-4xl w-full mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 mt-8 mb-8">
+    <div class="main-content-wrapper">
         <!-- Header Section -->
         <header id="intro" class="text-center mb-10">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
-                Prophets in the Quran and their Lineage
+            <h1 class="main-heading">
+                Prophets in the Quran and their <span>Lineage</span>
             </h1>
-            <p class="text-lg sm:text-xl text-gray-600">
+            <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto opacity-90">
                 An interactive flowchart illustrating the genealogical connections of revered Prophets mentioned in the Holy Quran,
                 along with brief mentions of significant Quranic stories.
             </p>
         </header>
 
         <!-- Main Content Area - Lineage Flowchart -->
-        <main id="lineage-tree" class="space-y-6">
-            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 text-center">Prophetic Lineage Flowchart</h2>
+        <main id="lineage-tree" class="space-y-10 w-full">
+            <h2 class="section-heading">Prophetic <span class="text-yellow-400">Lineage</span> Flowchart</h2>
 
             <!-- Control Buttons -->
             <div class="flex justify-center gap-4 mb-8">
-                <button id="expandAllBtn" class="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition-colors duration-300 font-semibold">
+                <button id="expandAllBtn" class="interactive-button control-button">
                     Expand All
                 </button>
-                <button id="collapseAllBtn" class="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg shadow-md hover:bg-gray-300 transition-colors duration-300 font-semibold">
+                <button id="collapseAllBtn" class="interactive-button control-button !bg-gray-700 !text-gray-300 hover:!bg-gray-600">
                     Collapse All
                 </button>
             </div>
 
             <!-- Prophet Adam (AS) -->
-            <div class="lineage-node bg-blue-50 border-blue-200">
-                <h3 class="text-2xl font-bold text-blue-800 mb-2">Adam (AS) - آدم</h3>
-                <p class="text-gray-700 mb-3">
+            <div class="lineage-node">
+                <h3 class="text-blue-400">Adam (AS) - آدم</h3>
+                <p>
                     The first human and prophet, directly created by Allah from clay.
                 </p>
-                <p class="text-sm italic text-gray-600 mb-3">
+                <p class="italic">
                     <strong>Quranic Story:</strong> His creation, prostration of angels, dwelling in Paradise, eating from the forbidden tree, seeking forgiveness, and being sent to Earth (Surah Al-Baqarah 2:30-39).
                 </p>
                 <div class="lineage-container mt-4">
                     <div class="lineage-item">
-                        <span class="toggle-button" onclick="toggleDetails(this)">
+                        <button class="toggle-button" onclick="toggleDetails(this)">
                             Shith (Seth)
-                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </span>
+                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
                         <div class="lineage-details">
-                            <p class="text-gray-700 text-sm mt-1">
+                            <p>
                                 Son of Adam (AS). Continued the message of monotheism.
                             </p>
                             <div class="lineage-container mt-2">
                                 <div class="lineage-item">
-                                    <span class="toggle-button" onclick="toggleDetails(this)">
+                                    <button class="toggle-button" onclick="toggleDetails(this)">
                                         Idris (AS) - أخنخ (Enoch)
-                                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                    </span>
+                                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    </button>
                                     <div class="lineage-details">
-                                        <p class="text-gray-700 text-sm mt-1">
+                                        <p>
                                             Descendant of Shith. Known for his wisdom and being elevated to a high station.
                                         </p>
-                                        <p class="text-sm italic text-gray-600 mt-1">
+                                        <p class="italic">
                                             <strong>Quranic Story:</strong> Mentioned as truthful and a prophet, elevated to a high position (Surah Maryam 19:56-57).
                                         </p>
                                         <div class="lineage-container mt-2">
                                             <div class="lineage-item">
-                                                <span class="toggle-button" onclick="toggleDetails(this)">
+                                                <button class="toggle-button" onclick="toggleDetails(this)">
                                                     Nuh (AS) - نوح (Noah)
-                                                    <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                </span>
+                                                    <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                </button>
                                                 <div class="lineage-details">
-                                                    <p class="text-gray-700 text-sm mt-1">
+                                                    <p>
                                                         Nuh ibn Lamik ibn Muttashalakh ibn Akhnukh (Idris).
                                                     </p>
-                                                    <p class="text-sm italic text-gray-600 mt-1">
+                                                    <p class="italic">
                                                         <strong>Quranic Story:</strong> Preached monotheism for centuries, built the Ark, the Great Flood (Surah Nuh, Surah Hud 11:25-49).
                                                     </p>
                                                     <div class="lineage-container mt-2">
                                                         <div class="lineage-item">
-                                                            <span class="toggle-button" onclick="toggleDetails(this)">
+                                                            <button class="toggle-button" onclick="toggleDetails(this)">
                                                                 Sam
-                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                            </span>
+                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                            </button>
                                                             <div class="lineage-details">
-                                                                <p class="text-gray-700 text-sm mt-1">
+                                                                <p>
                                                                     Son of Nuh (AS). From his lineage came several prophets.
                                                                 </p>
                                                                 <div class="lineage-container mt-2">
                                                                     <div class="lineage-item">
-                                                                        <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                        <button class="toggle-button" onclick="toggleDetails(this)">
                                                                             Ibrahim (AS) - إبراهيم (Abraham)
-                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                        </span>
+                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                        </button>
                                                                         <div class="lineage-details">
-                                                                            <p class="text-gray-700 text-sm mt-1">
+                                                                            <p>
                                                                                 Ibrahim ibn Tarah ibn Nahur ... ibn Sam ibn Nuh (AS).
                                                                             </p>
-                                                                            <p class="text-sm italic text-gray-600 mt-1">
+                                                                            <p class="italic">
                                                                                 <strong>Quranic Story:</strong> His struggle against idol worship, dream of sacrificing Isma'il, building the Kaaba (Surah Al-Anbiya 21:51-73, Surah As-Saffat 37:99-113).
                                                                             </p>
                                                                             <div class="lineage-container mt-2">
                                                                                 <div class="lineage-item">
-                                                                                    <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                    <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                         Isma'il (AS) - إسماعيل (Ishmael)
-                                                                                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                    </span>
+                                                                                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                    </button>
                                                                                     <div class="lineage-details">
-                                                                                        <p class="text-gray-700 text-sm mt-1">
+                                                                                        <p>
                                                                                             Son of Ibrahim (AS). Ancestor of Prophet Muhammad (SAW).
                                                                                         </p>
-                                                                                        <p class="text-sm italic text-gray-600 mt-1">
+                                                                                        <p class="italic">
                                                                                             <strong>Quranic Story:</strong> Assisted Ibrahim in building the Kaaba, nearly sacrificed (Surah Al-Baqarah 2:127, Surah As-Saffat 37:102).
                                                                                         </p>
                                                                                         <div class="lineage-container mt-2">
                                                                                             <div class="lineage-item">
-                                                                                                <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                     Muhammad (SAW) - محمد
-                                                                                                    <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                </span>
+                                                                                                    <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                </button>
                                                                                                 <div class="lineage-details">
-                                                                                                    <p class="text-gray-700 text-sm mt-1">
+                                                                                                    <p>
                                                                                                         Muhammad ibn Abdullah ... ibn Adnan (descendant of Isma'il AS).
                                                                                                     </p>
-                                                                                                    <p class="text-sm italic text-gray-600 mt-1">
+                                                                                                    <p class="italic">
                                                                                                         <strong>Quranic Story:</strong> Revelation of the Quran, Hijra, battles of Badr and Uhud, conquest of Makkah, establishing Islam (Numerous Surahs, e.g., Surah Al-Fath 48, Surah Al-Ahzab 33).
                                                                                                     </p>
                                                                                                 </div>
@@ -263,79 +408,82 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="lineage-item">
-                                                                                    <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                    <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                         Ishaq (AS) - إسحاق (Isaac)
-                                                                                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                    </span>
+                                                                                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                    </button>
                                                                                     <div class="lineage-details">
-                                                                                        <p class="text-gray-700 text-sm mt-1">
+                                                                                        <p>
                                                                                             Son of Ibrahim (AS). Ancestor of many Israelite prophets.
                                                                                         </p>
-                                                                                        <p class="text-sm italic text-gray-600 mt-1">
+                                                                                        <p class="italic">
                                                                                             <strong>Quranic Story:</strong> His birth was a glad tiding to Ibrahim and Sarah in their old age (Surah Hud 11:71).
                                                                                         </p>
                                                                                         <div class="lineage-container mt-2">
                                                                                             <div class="lineage-item">
-                                                                                                <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                     Ya'qub (AS) - يعقوب (Jacob/Israel)
-                                                                                                    <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                </span>
+                                                                                                    <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                </button>
                                                                                                 <div class="lineage-details">
-                                                                                                    <p class="text-gray-700 text-sm mt-1">
+                                                                                                    <p>
                                                                                                         Son of Ishaq (AS). Also known as Israel, father of the 12 tribes.
                                                                                                     </p>
-                                                                                                    <p class="text-sm italic text-gray-600 mt-1">
+                                                                                                    <p class="italic">
                                                                                                         <strong>Quranic Story:</strong> His covenant with Allah, his sons, and his vision for his progeny (Surah Al-Baqarah 2:132-133, Surah Yusuf 12).
                                                                                                     </p>
                                                                                                     <div class="lineage-container mt-2">
                                                                                                         <div class="lineage-item">
-                                                                                                            <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                            <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                                 Yusuf (AS) - يوسف (Joseph)
-                                                                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                            </span>
+                                                                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                            </button>
                                                                                                             <div class="lineage-details">
-                                                                                                                <p class="text-gray-700 text-sm mt-1">
+                                                                                                                <p>
                                                                                                                     Son of Ya'qub (AS).
                                                                                                                 </p>
-                                                                                                                <p class="text-sm italic text-gray-600 mt-1">
+                                                                                                                <p class="italic">
                                                                                                                     <strong>Quranic Story:</strong> The entire Surah Yusuf details his life, from the well to his rise in Egypt (Surah Yusuf 12).
                                                                                                                 </p>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                         <div class="lineage-item">
-                                                                                                            <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                            <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                                 Lawi (Levi)
-                                                                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                            </span>
+                                                                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                            </button>
                                                                                                             <div class="lineage-details">
-                                                                                                                <p class="text-gray-700 text-sm mt-1">
+                                                                                                                <p>
                                                                                                                     Son of Ya'qub (AS). From his lineage came Musa (AS).
+                                                                                                                </p>
+                                                                                                                <p class="italic">
+                                                                                                                    <strong>Quranic Story:</strong> (Mentioned generally as one of the tribes of Israel).
                                                                                                                 </p>
                                                                                                                 <div class="lineage-container mt-2">
                                                                                                                     <div class="lineage-item">
-                                                                                                                        <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                                        <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                                             Musa (AS) - موسى (Moses)
-                                                                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                                        </span>
+                                                                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                                        </button>
                                                                                                                         <div class="lineage-details">
-                                                                                                                            <p class="text-gray-700 text-sm mt-1">
+                                                                                                                            <p>
                                                                                                                                 Musa ibn Imran ibn Qahath ibn Lawi ibn Ya'qub (AS).
                                                                                                                             </p>
-                                                                                                                            <p class="text-sm italic text-gray-600 mt-1">
+                                                                                                                            <p class="italic">
                                                                                                                                 <strong>Quranic Story:</strong> His birth, growing up in Pharaoh's palace, parting the Red Sea, receiving the Torah (Surah Taha 20, Surah Al-Qasas 28).
                                                                                                                             </p>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                     <div class="lineage-item">
-                                                                                                                        <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                                        <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                                             Harun (AS) - هارون (Aaron)
-                                                                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                                        </span>
+                                                                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                                        </button>
                                                                                                                         <div class="lineage-details">
-                                                                                                                            <p class="text-gray-700 text-sm mt-1">
+                                                                                                                            <p>
                                                                                                                                 Brother of Musa (AS), also a prophet.
                                                                                                                             </p>
-                                                                                                                            <p class="text-sm italic text-gray-600 mt-1">
+                                                                                                                            <p class="italic">
                                                                                                                                 <strong>Quranic Story:</strong> Assisted Musa in his mission to Pharaoh, his eloquence (Surah Taha 20:29-36).
                                                                                                                             </p>
                                                                                                                         </div>
@@ -344,28 +492,28 @@
                                                                                                             </div>
                                                                                                         </div>
                                                                                                         <div class="lineage-item">
-                                                                                                            <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                            <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                                 Dawud (AS) - داود (David)
-                                                                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                            </span>
+                                                                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                            </button>
                                                                                                             <div class="lineage-details">
-                                                                                                                <p class="text-gray-700 text-sm mt-1">
+                                                                                                                <p>
                                                                                                                     Descendant of Ya'qub (AS). A prophet-king.
                                                                                                                 </p>
-                                                                                                                <p class="text-sm italic text-gray-600 mt-1">
+                                                                                                                <p class="italic">
                                                                                                                     <strong>Quranic Story:</strong> Defeated Goliath, was given the Zabur (Psalms), wise judgment, softened iron (Surah Al-Baqarah 2:251, Surah Saba 34:10-11).
                                                                                                                 </p>
                                                                                                                 <div class="lineage-container mt-2">
                                                                                                                     <div class="lineage-item">
-                                                                                                                        <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                                        <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                                             Sulaiman (AS) - سليمان (Solomon)
-                                                                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                                        </span>
+                                                                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                                        </button>
                                                                                                                         <div class="lineage-details">
-                                                                                                                            <p class="text-gray-700 text-sm mt-1">
+                                                                                                                            <p>
                                                                                                                                 Son of Dawud (AS). A prophet-king with immense power.
                                                                                                                             </p>
-                                                                                                                            <p class="text-sm italic text-gray-600 mt-1">
+                                                                                                                            <p class="italic">
                                                                                                                                 <strong>Quranic Story:</strong> Controlled jinn, animals, and wind; visited Queen of Sheba (Surah An-Naml 27, Surah Saba 34:12-14).
                                                                                                                             </p>
                                                                                                                         </div>
@@ -374,28 +522,28 @@
                                                                                                             </div>
                                                                                                         </div>
                                                                                                         <div class="lineage-item">
-                                                                                                            <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                            <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                                 Zakariyya (AS) - زكريا (Zechariah)
-                                                                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                            </span>
+                                                                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                            </button>
                                                                                                             <div class="lineage-details">
-                                                                                                                <p class="text-gray-700 text-sm mt-1">
+                                                                                                                <p>
                                                                                                                     Descendant of Dawud (AS). Guardian of Maryam.
                                                                                                                 </p>
-                                                                                                                <p class="text-sm italic text-gray-600 mt-1">
+                                                                                                                <p class="italic">
                                                                                                                     <strong>Quranic Story:</strong> Prayed for a child in old age, received Yahya (John) as a sign (Surah Ali 'Imran 3:37-41, Surah Maryam 19:2-15).
                                                                                                                 </p>
                                                                                                                 <div class="lineage-container mt-2">
                                                                                                                     <div class="lineage-item">
-                                                                                                                        <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                                        <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                                             Yahya (AS) - يحيى (John the Baptist)
-                                                                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                                        </span>
+                                                                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                                        </button>
                                                                                                                         <div class="lineage-details">
-                                                                                                                            <p class="text-gray-700 text-sm mt-1">
+                                                                                                                            <p>
                                                                                                                                 Son of Zakariyya (AS). Preceded Isa (AS).
                                                                                                                             </p>
-                                                                                                                            <p class="text-sm italic text-gray-600 mt-1">
+                                                                                                                            <p class="italic">
                                                                                                                                 <strong>Quranic Story:</strong> His birth was a miracle, described as noble, chaste, and a prophet (Surah Ali 'Imran 3:39, Surah Maryam 19:7-15).
                                                                                                                             </p>
                                                                                                                         </div>
@@ -404,28 +552,28 @@
                                                                                                             </div>
                                                                                                         </div>
                                                                                                         <div class="lineage-item">
-                                                                                                            <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                            <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                                 Maryam (Mary)
-                                                                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                            </span>
+                                                                                                                <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                            </button>
                                                                                                             <div class="lineage-details">
-                                                                                                                <p class="text-gray-700 text-sm mt-1">
+                                                                                                                <p>
                                                                                                                     From the lineage of Dawud (AS). Mother of Isa (AS).
                                                                                                                 </p>
-                                                                                                                <p class="text-sm italic text-gray-600 mt-1">
+                                                                                                                <p class="italic">
                                                                                                                     <strong>Quranic Story:</strong> Her miraculous conception of Isa, her piety and devotion, the annunciation (Surah Maryam 19, Surah Ali 'Imran 3:42-47).
                                                                                                                 </p>
                                                                                                                 <div class="lineage-container mt-2">
                                                                                                                     <div class="lineage-item">
-                                                                                                                        <span class="toggle-button" onclick="toggleDetails(this)">
+                                                                                                                        <button class="toggle-button" onclick="toggleDetails(this)">
                                                                                                                             Isa (AS) - عيسى (Jesus)
-                                                                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                                                                                                        </span>
+                                                                                                                            <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 collapsed" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                                                                                                        </button>
                                                                                                                         <div class="lineage-details">
-                                                                                                                            <p class="text-gray-700 text-sm mt-1">
+                                                                                                                            <p>
                                                                                                                                 Son of Maryam. No human father.
                                                                                                                             </p>
-                                                                                                                            <p class="text-sm italic text-gray-600 mt-1">
+                                                                                                                            <p class="italic">
                                                                                                                                 <strong>Quranic Story:</strong> Miraculous birth, speaking from the cradle, performing miracles by Allah's will, not crucified, raised to heavens (Surah Ali 'Imran 3:45-55, Surah An-Nisa 4:157-158).
                                                                                                                             </p>
                                                                                                                         </div>
@@ -443,11 +591,122 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                             `                               </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </button>
+                        <div class="lineage-details">
+                            <!-- Descendants of Prophet Nuh's other sons (Ham and Yafith) and their respective prophets are typically not detailed in this specific lineage, focusing on the main prophetic line. -->
+                            <p class="text-gray-700 text-sm mt-1">
+                                (Other sons of Nuh (AS) like Ham and Yafith had descendants, but the primary prophetic lineage continues through Sam.)
+                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- Prophets from other lineages (e.g., Hud, Salih, Lut, Shu'aib) can be added as separate main nodes if desired -->
+            <!-- Prophet Hud (AS) -->
+            <div class="lineage-node">
+                <h3 class="text-green-400">Hud (AS) - هود</h3>
+                <p>
+                    A prophet sent to the people of 'Ad, in Al-Ahqaf.
+                </p>
+                <p class="italic">
+                    <strong>Quranic Story:</strong> Called his people to worship Allah, warned them against idolatry, but they denied him and were destroyed by a violent wind (Surah Hud 11:50-60, Surah Al-A'raf 7:65-72).
+                </p>
+            </div>
+
+            <!-- Prophet Salih (AS) -->
+            <div class="lineage-node">
+                <h3 class="text-red-400">Salih (AS) - صالح</h3>
+                <p>
+                    A prophet sent to the people of Thamud in Al-Hijr.
+                </p>
+                <p class="italic">
+                    <strong>Quranic Story:</strong> Challenged by his people to produce a miracle (the she-camel), which they then slaughtered, leading to their destruction by an earthquake (Surah Hud 11:61-68, Surah Al-A'raf 7:73-79).
+                </p>
+            </div>
+
+            <!-- Prophet Lut (AS) -->
+            <div class="lineage-node">
+                <h3 class="text-purple-400">Lut (AS) - لوط (Lot)</h3>
+                <p>
+                    Prophet sent to the people of Sodom and Gomorrah. Nephew of Ibrahim (AS).
+                </p>
+                <p class="italic">
+                    <strong>Quranic Story:</strong> Warned his people against homosexuality, but they persisted, leading to their destruction by stones of baked clay (Surah Hud 11:77-83, Surah Al-A'raf 7:80-84).
+                </p>
+            </div>
+
+            <!-- Prophet Shu'aib (AS) -->
+            <div class="lineage-node">
+                <h3 class="text-teal-400">Shu'aib (AS) - شعيب</h3>
+                <p>
+                    A prophet sent to the people of Madyan and al-Aykah (the Dwellers of the Wood).
+                </p>
+                <p class="italic">
+                    <strong>Quranic Story:</strong> Called his people to honesty in trade, and to worship Allah, but they rejected him and were destroyed by an earthquake/shadowy cloud (Surah Hud 11:84-95, Surah Ash-Shu'ara 26:176-191).
+                </p>
+            </div>
+
+            <!-- Prophet Ayyub (AS) -->
+            <div class="lineage-node">
+                <h3 class="text-orange-400">Ayyub (AS) - أيوب (Job)</h3>
+                <p>
+                    A patient and righteous prophet, known for his steadfastness through immense trials.
+                </p>
+                <p class="italic">
+                    <strong>Quranic Story:</strong> His severe illness and loss, his unwavering patience, and Allah's restoration of his health and wealth (Surah Al-Anbiya 21:83-84, Surah Sad 38:41-44).
+                </p>
+            </div>
+
+            <!-- Prophet Dhul-Kifl (AS) -->
+            <div class="lineage-node">
+                <h3 class="text-pink-400">Dhul-Kifl (AS) - ذو الكفل (Ezekiel or Isaiah)</h3>
+                <p>
+                    A righteous prophet, known for his steadfastness and patience. His identity is debated by scholars.
+                </p>
+                <p class="italic">
+                    <strong>Quranic Story:</strong> Mentioned as among the patient and righteous, and elevated to Allah's mercy (Surah Al-Anbiya 21:85-86, Surah Sad 38:48).
+                </p>
+            </div>
+
+            <!-- Prophet Yunus (AS) -->
+            <div class="lineage-node">
+                <h3 class="text-cyan-400">Yunus (AS) - يونس (Jonah)</h3>
+                <p>
+                    A prophet sent to the people of Nineveh.
+                </p>
+                <p class="italic">
+                    <strong>Quranic Story:</strong> Left his people in anger, swallowed by a whale, repented, and was returned to his people who then believed (Surah Yunus 10:98, Surah As-Saffat 37:139-148, Surah Al-Anbiya 21:87-88).
+                </p>
+            </div>
+            <!-- Prophet Ilyas (AS) -->
+            <div class="lineage-node">
+                <h3 class="text-lime-400">Ilyas (AS) - إلياس (Elijah)</h3>
+                <p>
+                    A prophet sent to the people of Baalbek.
+                </p>
+                <p class="italic">
+                    <strong>Quranic Story:</strong> Called his people to abandon idol worship (Baal) and worship Allah alone. His people denied him, except for a few (Surah As-Saffat 37:123-132, Surah Al-An'am 6:85).
+                </p>
+            </div>
+
+            <!-- Prophet Al-Yasa' (AS) -->
+            <div class="lineage-node">
+                <h3 class="text-fuchsia-400">Al-Yasa' (AS) - اليسع (Elisha)</h3>
+                <p>
+                    A prophet from the Children of Israel, successor to Ilyas (AS).
+                </p>
+                <p class="italic">
+                    <strong>Quranic Story:</strong> Mentioned among the chosen and righteous (Surah Sad 38:48, Surah Al-An'am 6:86).
+                </p>
             </div>
         </main>
 
@@ -457,10 +716,12 @@
         </button>
 
         <!-- Footer Section -->
-        <footer class="text-center mt-12 text-gray-500 text-sm">
+        <footer class="text-center mt-12 text-gray-500 text-sm w-full">
             <p>
                 This information is based on Islamic tradition and Quranic narrations. (AS) stands for 'Alayhis Salam' (Peace be upon him), and (SAW) stands for 'Sallallahu alayhi wa sallam' (May Allah's peace and blessings be upon him).
             </p>
+            <p>&copy; 2025 My Deen Project. All rights reserved.</p>
+            <p class="mt-2 opacity-80">Built with dedication. <span class="text-yellow-400">Islam is peace.</span></p>
         </footer>
     </div>
 
@@ -471,7 +732,7 @@
         // When the user scrolls down 20px from the top of the document, show the button
         window.onscroll = function() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                scrollToTopBtn.style.display = "block";
+                scrollToTopBtn.style.display = "flex"; // Use flex to center icon
             } else {
                 scrollToTopBtn.style.display = "none";
             }
@@ -491,7 +752,7 @@
             const svg = button.querySelector('svg'); // Get the SVG icon
 
             details.classList.toggle('expanded');
-            button.classList.toggle('collapsed');
+            button.classList.toggle('collapsed'); // Toggle collapsed class on the button itself
 
             // Rotate the arrow icon based on expanded/collapsed state
             if (details.classList.contains('expanded')) {
