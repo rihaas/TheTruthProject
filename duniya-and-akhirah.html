@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dunya & Akhirah: This Worldly Life and The Hereafter</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the My Deen Project homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+        }
+
+        .main-content-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .main-content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            .info-card {
+                padding: 1rem;
+            }
+            .info-card h3 {
+                font-size: 1.1rem;
+            }
+            .info-card p {
+                font-size: 0.85rem;
+            }
+            details summary {
+                font-size: 0.85rem;
+            }
+            details p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Section headings - consistent with homepage */
+        .section-heading {
+            color: #8D8D8D;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .section-heading span {
+            color: #FACC15;
+        }
+
+        /* Info card styles (similar to previous cards) */
+        .info-card {
+            background-color: #282828; /* Darker card background */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+            border-radius: 0.75rem; /* Consistent border-radius */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+            padding: 1.5rem; /* Consistent padding */
+            text-align: left; /* Align text within cards to left */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .info-card h3 {
+            color: #BB86FC; /* Light purple for card titles */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card p {
+            color: #B0B0B0; /* Softer text color */
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Details/Summary styles for info expansion */
+        details {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            background-color: #3A3A3A; /* Slightly lighter for contrast */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #8be9fd; /* Light blue accent */
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:after {
+            content: '▼';
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        details[open] summary:after {
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #B0B0B0;
+        }
+
+        details .key-concept-text {
+            font-style: italic;
+            border-left: 3px solid #FACC15; /* Golden yellow accent for key concepts */
+            padding-left: 0.75rem;
+            margin-top: 1rem;
+            color: #C0C0C0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content-wrapper">
+        <h1 class="main-heading">
+            Dunya & Akhirah: <span class="text-yellow-400">This World & The Hereafter</span>
+        </h1>
+
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+            In Islam, life is understood in two interconnected phases: Dunya (الدنيا), the current worldly life, and Akhirah (الآخرة), the eternal life of the Hereafter. A fundamental aspect of Islamic belief is to live in this world with consciousness of the next.
+        </p>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Understanding <span class="text-yellow-400">Dunya</span> (This Worldly Life)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Dunya: Its Nature -->
+                <div class="info-card">
+                    <h3>Its Nature: Temporary & Test</h3>
+                    <p>
+                        Dunya is a transient and temporary abode, a fleeting moment in the grand scheme of existence.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            It is not an end in itself but a means to an end. Life in Dunya is essentially a test from Allah, where humans are given free will to choose between good and evil. Every action, intention, and thought is recorded.
+                        </p>
+                        <p class="key-concept-text">
+                            "And this worldly life is not but diversion and amusement. But indeed, the home of the Hereafter — that is the [true] life, if only they knew." (Quran 29:64)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Dunya: Its Purpose -->
+                <div class="info-card">
+                    <h3>Its Purpose: Worship & Preparation</h3>
+                    <p>
+                        The primary purpose of life in Dunya is the worship of Allah and preparation for the eternal life of Akhirah.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This worship is comprehensive, encompassing not just rituals but all aspects of life – how one interacts with others, earns a living, acquires knowledge, and manages their affairs, all done with a consciousness of Allah.
+                        </p>
+                        <p class="key-concept-text">
+                            "And I did not create the jinn and mankind except to worship Me." (Quran 51:56)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Dunya: Its Trials & Blessings -->
+                <div class="info-card">
+                    <h3>Its Trials & Blessings</h3>
+                    <p>
+                        Dunya is filled with both challenges (trials) and bounties (blessings), both of which serve as tests.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Trials (poverty, illness, loss) test patience and reliance on Allah. Blessings (wealth, health, family) test gratitude and how one uses these gifts in obedience to Allah. Both require a believer to maintain a balanced perspective.
+                        </p>
+                        <p class="key-concept-text">
+                            "And We will surely test you with something of fear and hunger and a loss of wealth and lives and fruits, but give good tidings to the patient." (Quran 2:155)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Understanding <span class="text-yellow-400">Akhirah</span> (The Hereafter)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Akhirah: Its Nature -->
+                <div class="info-card">
+                    <h3>Its Nature: Eternal & Just</h3>
+                    <p>
+                        Akhirah is the eternal, everlasting life after death, where true and ultimate justice will be served.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            It begins with death, followed by the Barzakh (interim period in the grave), the Day of Judgment (Qiyamah), and finally, the eternal abodes of Heaven (Jannah) or Hell (Jahannam).
+                        </p>
+                        <p class="key-concept-text">
+                            "And the Day the Hour is established the criminals will swear that they had remained but an hour. Thus were they deluded." (Quran 30:55)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Akhirah: Accountability & Reward -->
+                <div class="info-card">
+                    <h3>Accountability & Reward/Punishment</h3>
+                    <p>
+                        Every soul will be held accountable for its deeds in Dunya, receiving recompense in Akhirah.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Good deeds will be rewarded manifold, while evil deeds will be justly punished, unless Allah forgives. This belief motivates believers to strive for good and avoid evil, knowing that true justice awaits.
+                        </p>
+                        <p class="key-concept-text">
+                            "So whoever does an atom's weight of good will see it, And whoever does an atom's weight of evil will see it." (Quran 99:7-8)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Akhirah: Jannah & Jahannam -->
+                <div class="info-card">
+                    <h3>Jannah (Heaven) & Jahannam (Hell)</h3>
+                    <p>
+                        The ultimate destinations in the Hereafter, based on one's faith and deeds.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Jannah is described as a place of eternal bliss, unimaginable beauty, and peace, where believers will enjoy Allah's pleasure. Jahannam is a place of severe punishment for those who denied Allah and persisted in wrongdoing.
+                        </p>
+                        <p class="key-concept-text">
+                            "Indeed, the righteous will be among gardens and springs." (Quran 15:45) <br>
+                            "Indeed, Hell has been an observance." (Quran 78:21)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Balancing <span class="text-yellow-400">Dunya & Akhirah</span>
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+                Islam teaches a balanced approach, neither abandoning the world entirely nor becoming overly engrossed in it.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Balance: Work & Worship -->
+                <div class="info-card">
+                    <h3>Work for Both Worlds</h3>
+                    <p>
+                        Strive in Dunya for lawful sustenance and to benefit society, while ensuring this effort is aligned with preparing for Akhirah.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            A Muslim works diligently, earns honestly, takes care of their family, and contributes to the community, all while remembering their ultimate purpose and accountability to Allah. Worldly actions can become acts of worship with the right intention.
+                        </p>
+                        <p class="key-concept-text">
+                            "But seek, through that which Allah has given you, the home of the Hereafter; and [yet], do not forget your share of the world." (Quran 28:77)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Balance: Detachment vs. Abandonment -->
+                <div class="info-card">
+                    <h3>Detachment, Not Abandonment</h3>
+                    <p>
+                        Be in the world, but not of the world. Do not let worldly desires consume your ultimate goal.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This means using the blessings of Dunya in moderation, avoiding excessive attachment to material possessions, and remembering that they are temporary. The Prophet (PBUH) taught that the world is like a bridge to the Hereafter.
+                        </p>
+                        <p class="key-concept-text">
+                            The Prophet (PBUH) said, "Be in this world as if you are a stranger or a traveler." (Bukhari)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
+            Understanding Dunya and Akhirah provides clarity, purpose, and balance to a Muslim's life, guiding them towards success in both this world and the next.
+        </p>
+    </div>
+
+</body>
+</html>
