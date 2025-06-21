@@ -3,73 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islamic Legal Classifications Flowchart (Text)</title>
+    <title>Islamic Legal Classifications</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Base styles consistent with the My Deen Project homepage */
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
         }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
+
+        .table-container-wrapper { /* Reused class name for main content wrapper consistency */
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             text-align: center;
-            margin-bottom: 30px;
         }
-        h2 {
-            color: #34495e;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-top: 25px;
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .table-container-wrapper {
+                padding: 2rem 1.5rem;
+            }
         }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .table-container-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            .sub-heading {
+                 font-size: 1.5rem;
+            }
+            p, ul li {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 1.75rem;
+            }
+            .sub-heading {
+                font-size: 1.25rem;
+            }
+            .table-container-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            .step-text {
+                font-size: 0.9rem;
+            }
+            .category h3 {
+                font-size: 1.1rem;
+            }
+            .category ul li {
+                font-size: 0.8rem;
+            }
+            .category strong {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Sub-headings for Start/End */
+        .sub-heading {
+            color: #B0B0B0; /* Muted text color */
+            font-size: 2rem;
+            font-weight: 600;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            width: 100%;
+        }
+
+        /* Flowchart step styling */
         .step {
             margin-left: 20px;
             padding-left: 15px;
-            border-left: 2px solid #ccc;
-            margin-bottom: 15px;
+            border-left: 2px solid rgba(255, 255, 255, 0.15); /* Subtle border matching theme */
+            margin-bottom: 1.5rem; /* Increased spacing between steps */
+            text-align: left; /* Align text within steps to left */
         }
+
+        .step-text {
+            font-weight: 500;
+            color: #E0E0E0; /* Light text for questions */
+            margin-bottom: 0.75rem; /* Space below question */
+            font-size: 1.05rem; /* Slightly larger for clarity */
+        }
+
+        .step-arrow {
+            color: #8be9fd; /* Light blue accent for arrows */
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        /* Category boxes for classifications */
         .category {
-            background-color: #e8f0fe;
-            border: 1px solid #cce0ff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-top: 10px;
+            background-color: #282828; /* Darker background for categories */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.5rem; /* Increased padding */
+            border-radius: 0.75rem; /* Consistent border radius */
+            margin-top: 1.25rem; /* Space between question and category */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Softer shadow */
         }
-        .category strong {
-            color: #2980b9;
+
+        .category h3 {
+            color: #BB86FC; /* Light purple for category titles */
+            font-size: 1.3rem; /* Larger font for category titles */
+            font-weight: 600;
+            margin-bottom: 1rem; /* Space below category title */
         }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
+
+        .category h3 strong {
+            font-weight: 700;
+            color: #FACC15; /* Golden yellow for Arabic terms in heading */
+        }
+
+        .category ul {
+            list-style-type: none; /* Remove default bullet */
+            margin-left: 0;
             padding-left: 0;
+            text-align: left;
         }
+
+        .category ul li {
+            position: relative; /* For custom bullet point */
+            padding-left: 1.5rem; /* Space for custom bullet */
+            margin-bottom: 0.5rem; /* Space between list items */
+            color: #B0B0B0; /* Softer text color */
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .category ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        .category ul li::before {
+            content: '•'; /* Custom bullet point */
+            color: #8be9fd; /* Accent color for bullet */
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .category strong {
+            color: #E0E0E0; /* Light gray for emphasized text */
+            font-weight: 600;
+        }
+
         .indent {
-            margin-left: 40px;
+            margin-left: 20px; /* Standard indent for flow */
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Islamic Legal Classifications (Ahkam al-Khamsa)</h1>
+<body class="bg-gray-900 text-white">
+    <div class="table-container-wrapper">
+        <h1 class="main-heading">
+            Islamic Legal <span class="text-yellow-400">Classifications</span> (Ahkam al-Khamsa)
+        </h1>
 
-        <h2>Start</h2>
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+            Islamic jurisprudence classifies human actions into five main categories, known as Ahkam al-Khamsa (The Five Rulings). This flowchart helps understand these classifications and their implications.
+        </p>
+
+        <h2 class="sub-heading">Start</h2>
         <div class="step">
-            <p><strong>Is the action Commanded by Allah?</strong></p>
+            <p class="step-text"><strong>Is the action Commanded by Allah?</strong></p>
             <div class="step">
-                <p><strong>→ Yes</strong></p>
+                <p class="step-text"><span class="step-arrow">→</span> Yes</p>
                 <div class="step indent">
-                    <p><strong>Is it absolutely required?</strong></p>
+                    <p class="step-text"><strong>Is it absolutely required?</strong></p>
                     <div class="step indent">
-                        <p><strong>→ Yes</strong></p>
+                        <p class="step-text"><span class="step-arrow">→</span> Yes</p>
                         <div class="category">
                             <h3><strong>Fard / Wajib</strong> (فرض / واجب) - Obligatory / Compulsory</h3>
                             <ul>
@@ -81,7 +224,7 @@
                         </div>
                     </div>
                     <div class="step indent">
-                        <p><strong>→ No</strong></p>
+                        <p class="step-text"><span class="step-arrow">→</span> No</p>
                         <div class="category">
                             <h3><strong>Mustahabb / Mandub / Sunnah</strong> (مستحب / مندوب / سنة) - Recommended / Desirable</h3>
                             <ul>
@@ -95,11 +238,11 @@
                 </div>
             </div>
             <div class="step">
-                <p><strong>→ No</strong></p>
+                <p class="step-text"><span class="step-arrow">→</span> No</p>
                 <div class="step indent">
-                    <p><strong>Is the action Forbidden by Allah?</strong></p>
+                    <p class="step-text"><strong>Is the action Forbidden by Allah?</strong></p>
                     <div class="step indent">
-                        <p><strong>→ Yes</strong></p>
+                        <p class="step-text"><span class="step-arrow">→</span> Yes</p>
                         <div class="category">
                             <h3><strong>Haram</strong> (حرام) - Forbidden / Unlawful</h3>
                             <ul>
@@ -111,11 +254,11 @@
                         </div>
                     </div>
                     <div class="step indent">
-                        <p><strong>→ No</strong></p>
+                        <p class="step-text"><span class="step-arrow">→</span> No</p>
                         <div class="step indent">
-                            <p><strong>Is the action Disliked / Disapproved?</strong></p>
+                            <p class="step-text"><strong>Is the action Disliked / Disapproved?</strong></p>
                             <div class="step indent">
-                                <p><strong>→ Yes</strong></p>
+                                <p class="step-text"><span class="step-arrow">→</span> Yes</p>
                                 <div class="category">
                                     <h3><strong>Makruh</strong> (مكروه) - Disliked / Disapproved</h3>
                                     <ul>
@@ -133,7 +276,7 @@
                                 </div>
                             </div>
                             <div class="step indent">
-                                <p><strong>→ No</strong></p>
+                                <p class="step-text"><span class="step-arrow">→</span> No</p>
                                 <div class="category">
                                     <h3><strong>Mubah</strong> (مباح) - Permissible / Neutral</h3>
                                     <ul>
@@ -149,7 +292,7 @@
                 </div>
             </div>
         </div>
-        <h2>End</h2>
+        <h2 class="sub-heading">End</h2>
     </div>
 </body>
 </html>
