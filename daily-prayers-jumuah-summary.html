@@ -6,12 +6,13 @@
     <title>Daily Prayers & Jumu'ah Summary</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Base styles consistent with the My Deen Project homepage */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a202c; /* Dark background */
-            color: #e2e8f0; /* Light text color */
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
             display: flex;
             flex-direction: column; /* Stack elements vertically */
             justify-content: flex-start;
@@ -19,54 +20,91 @@
             min-height: 100vh;
             padding: 2rem;
             box-sizing: border-box;
-            background-image: linear-gradient(to bottom right, #1a202c, #2d3748); /* Subtle gradient */
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
         }
 
-        .container {
-            max-width: 1000px; /* Max width for content */
+        .table-container-wrapper {
+            max-width: 1000px; /* Wider content area for a more spacious feel */
             width: 100%;
-            background-color: #2d3748; /* Darker background for main content area */
-            border-radius: 1rem; /* More rounded corners for the container */
-            padding: 2rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow */
-            margin-bottom: 2rem; /* Space before next elements */
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem; /* Increased padding for more whitespace */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7); /* Deeper, softer shadow */
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border for definition */
+            text-align: center;
         }
 
-        .table-container {
-            max-width: 100%;
-            overflow-x: auto; /* Allows horizontal scrolling on small screens */
-            width: 100%; /* Ensure container takes full width */
-            border-radius: 0.75rem; /* Rounded corners for the table wrapper */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Softer shadow for table */
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .table-container-wrapper {
+                padding: 2rem 1.5rem;
+            }
         }
 
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .table-container-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            h1 {
+                font-size: 2.5rem; /* Adjust heading size */
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .table-container-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            th, td {
+                font-size: 0.75rem; /* Smaller text for very small screens */
+                padding: 0.75rem 0.5rem;
+            }
+            table {
+                min-width: 500px; /* Allow horizontal scroll on small phones */
+            }
+        }
+
+        /* Table specific styles */
         table {
             width: 100%;
-            border-collapse: separate; /* Required for rounded corners on table */
+            border-collapse: separate;
             border-spacing: 0;
-            background-color: #2d3748; /* Darker background for table */
-            border-radius: 0.75rem; /* Rounded corners for the table */
-            overflow: hidden; /* Ensures rounded corners clip content */
-            min-width: 768px; /* Minimum width to prevent excessive squishing, adjusted slightly */
+            background-color: #282828; /* Darker table background */
+            border-radius: 0.75rem;
+            overflow: hidden;
+            min-width: 768px; /* Ensure table doesn't get too squished */
+            margin-top: 2rem;
         }
 
         th, td {
-            padding: 1.25rem 1.5rem; /* Increased padding */
+            padding: 1rem 1.25rem;
             text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Slightly stronger border */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #E0E0E0;
         }
 
         th {
-            background-color: #4a5568; /* Slightly lighter header background */
+            background-color: #333333; /* Header background */
             font-weight: 600;
-            color: #cbd5e0; /* Lighter header text color */
             text-transform: uppercase;
-            font-size: 0.9rem; /* Slightly larger font size for headers */
+            font-size: 0.85rem;
             letter-spacing: 0.05em;
+            color: #B0B0B0; /* Muted header text */
         }
 
         tbody tr:last-child td {
-            border-bottom: none; /* No border for the last row */
+            border-bottom: none;
         }
 
         .check-icon {
@@ -88,8 +126,8 @@
 
         .tooltip {
             visibility: hidden;
-            background-color: #1a202c;
-            color: #fff;
+            background-color: #282828; /* Dark background for tooltip */
+            color: #E0E0E0;
             text-align: center;
             border-radius: 0.5rem;
             padding: 0.75rem 1rem;
@@ -103,6 +141,7 @@
             white-space: nowrap;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             font-size: 0.875rem;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
         }
 
         .tooltip::after {
@@ -113,7 +152,7 @@
             margin-left: -5px;
             border-width: 5px;
             border-style: solid;
-            border-color: #1a202c transparent transparent transparent;
+            border-color: #282828 transparent transparent transparent; /* Arrow pointing down */
         }
 
         .tooltip-container:hover .tooltip {
@@ -121,106 +160,83 @@
             opacity: 1;
         }
 
-        /* Details/Summary styles for prayer info */
+        /* Details/Summary styles for "More Info" */
         details {
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 0.5rem;
             padding: 0.75rem 1rem;
             margin-top: 0.5rem;
-            background-color: #3b4557; /* Slightly lighter than table for contrast */
+            background-color: #3A3A3A; /* Slightly lighter for contrast */
             transition: all 0.3s ease-in-out;
             cursor: pointer;
+            text-align: left; /* Align text within details to left */
         }
 
         summary {
             font-weight: 600;
             cursor: pointer;
-            outline: none; /* Remove outline on focus */
+            outline: none;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            color: #90cdf4; /* Light blue for "More Info" */
+            color: #8be9fd; /* Light blue accent */
             list-style: none; /* Remove default marker */
+            font-size: 0.9rem;
         }
 
         summary::-webkit-details-marker {
-            display: none; /* Hide default marker for webkit browsers */
+            display: none;
         }
 
         summary:after {
-            content: '▼'; /* Custom arrow icon */
-            font-size: 0.8rem;
+            content: '▼';
+            font-size: 0.7rem;
             margin-left: 0.5rem;
             transition: transform 0.3s ease-in-out;
         }
 
         details[open] summary:after {
-            transform: rotate(180deg); /* Rotate arrow when open */
+            transform: rotate(180deg);
         }
 
         details p {
             margin-top: 0.75rem;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             line-height: 1.5;
-            color: #cbd5e0;
+            color: #B0B0B0;
         }
 
-        /* Adjustments for smaller screens */
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-            .container {
-                padding: 1rem;
-                margin-bottom: 1rem;
-            }
-            th, td {
-                padding: 0.75rem 1rem;
-                font-size: 0.85rem;
-            }
-            table {
-                min-width: 600px; /* Adjust min-width for better fit on tablets/smaller laptops */
-            }
-            details {
-                padding: 0.5rem 0.75rem;
-            }
-            details p {
-                font-size: 0.9rem;
-            }
-            h1 {
-                font-size: 2.25rem;
-            }
+        /* Accent colors */
+        .text-accent {
+            color: #FACC15; /* Golden yellow for main title accent */
         }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.75rem;
-            }
-            th, td {
-                padding: 0.6rem 0.8rem;
-                font-size: 0.75rem;
-            }
-            table {
-                min-width: 400px; /* Allow even smaller width for very small mobiles, with scroll */
-            }
-            .check-icon, .cross-icon {
-                font-size: 1.1rem;
-            }
+        /* Main heading style */
+        .main-heading {
+            color: #E0E0E0; /* Consistent text color */
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white flex flex-col items-center p-8">
+<body class="bg-gray-900 text-white">
 
-    <div class="container">
-        <h1 class="text-3xl md:text-4xl font-bold mb-6 text-center flex items-center justify-center gap-3">
-            <span class="text-yellow-400 text-5xl">🕌</span> Daily Prayers + Jumu'ah Summary
+    <div class="table-container-wrapper">
+        <h1 class="main-heading">
+            <span class="text-yellow-400">🕌</span> Daily Prayers + Jumu'ah Summary
         </h1>
 
-        <p class="text-lg text-center mb-8 text-gray-300 leading-relaxed">
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
             This table provides a concise summary of the obligatory (Fard) and recommended (Sunnah) Rak'ahs for each of the five daily prayers, along with the special Jumu'ah (Friday) prayer. Hover over Arabic terms for quick explanations, and click "More Info" to expand detailed descriptions for each prayer.
         </p>
 
-        <div class="table-container">
+        <div class="overflow-x-auto rounded-lg shadow-xl">
             <table>
                 <thead>
                     <tr>
@@ -403,7 +419,7 @@
             </table>
         </div>
 
-        <p class="text-md text-center mt-8 text-gray-400">
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
             May this guide help you in understanding and performing your daily prayers with sincerity and devotion.
         </p>
     </div>
