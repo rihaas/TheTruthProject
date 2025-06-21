@@ -30,7 +30,7 @@
             width: 100%;
             background-color: #1E1E1E; /* Slightly lighter than body for depth */
             border-radius: 1rem;
-            padding: 3.5rem 3rem; /* Increased padding for more whitespace */
+            padding: 4rem 3rem; /* Increased vertical padding for more whitespace */
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7); /* Deeper, softer shadow */
             margin: 3rem auto;
             display: flex;
@@ -55,8 +55,6 @@
             }
             .main-content-wrapper {
                 padding: 2rem 1.5rem;
-                margin-top: 1.5rem;
-                margin-bottom: 1.5rem;
                 border-radius: 0.75rem;
             }
             h1 {
@@ -101,6 +99,9 @@
             font-weight: 600;
             letter-spacing: 0.025em;
             color: #FFFFFF;
+            display: flex; /* Ensure button content (text/icon) is centered */
+            justify-content: center;
+            align-items: center;
         }
 
         .interactive-button:hover {
@@ -202,7 +203,9 @@
         /* New styles for the top navigation button and dropdown */
         .nav-dropdown-container {
             position: relative;
-            display: inline-block;
+            display: flex; /* Use flex for centering the button */
+            justify-content: center; /* Center the button horizontally */
+            width: 100%; /* Take full width to center its content */
             margin-top: 1rem; /* Space below title/subtitle */
             z-index: 20; /* Ensure it's above other content */
         }
@@ -211,17 +214,18 @@
             display: none;
             position: absolute;
             background-color: #282828; /* Dark background for dropdown */
-            min-width: 200px;
+            min-width: 250px; /* Increased min-width for content */
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8);
             border-radius: 0.5rem;
             padding: 0.5rem 0;
             z-index: 1;
+            /* Centering dropdown content relative to the button */
             left: 50%;
-            transform: translateX(-50%);
-            top: 100%; /* Position below the button */
+            /* Added translateY for smooth "dance" effect */
+            transform: translateX(-50%) translateY(10px); /* Start slightly below and centered */
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+            transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out; /* Add transform to transition */
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -230,7 +234,7 @@
             padding: 0.75rem 1.25rem;
             text-decoration: none;
             display: block;
-            text-align: left;
+            text-align: left; /* Align text to the left within dropdown items */
             transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
             font-size: 0.95rem;
             white-space: nowrap; /* Prevent wrapping */
@@ -245,6 +249,7 @@
             display: block;
             opacity: 1;
             visibility: visible;
+            transform: translateX(-50%) translateY(0); /* Move to final centered position */
         }
 
         /* Animation for header elements */
@@ -281,17 +286,17 @@
 
             <!-- New Navigation Button with Dropdown -->
             <div class="nav-dropdown-container">
-                <button class="interactive-button py-3 px-8 text-lg flex items-center justify-center gap-2">
+                <button class="interactive-button py-3 px-8 text-lg gap-2">
                     Explore <i class="fas fa-chevron-down text-sm ml-2"></i>
                 </button>
                 <div class="nav-dropdown-content">
-                    <a href="daily-prayers-jumuah-summary.html">Daily Prayers & Jumu'ah Summary</a>
-                    <a href="islamic-legal-classifications.html">Islamic Legal Classifications</a>
-                    <a href="prophets-quran-lineage.html">Prophets in the Quran & Lineage</a>
-                    <a href="nafl-prayers.html">Nafl (Voluntary) Prayers</a>
+                    <a href="Daily%20Prayers%20%26%20Jumu%27ah%20Summary%20Table.html">Daily Prayers & Jumu'ah Summary</a>
+                    <a href="Islamic%20Legal%20Classifications.html">Islamic Legal Classifications</a>
+                    <a href="Prophets%20in%20the%20Quran%20and%20their%20Lineage.html">Prophets in the Quran & Lineage</a>
+                    <a href="nafl-prayers-table.html">Nafl (Voluntary) Prayers</a>
                     <a href="understanding-hadith.html">Understanding Hadith: Classifications & Hadith Qudsi</a>
                     <a href="prophet-muhammed-sa.html">Prophet Muhammad (PBUH): Key Events & Inspirations</a>
-                    <!-- Add more links here as your project grows -->
+                    <a href="understanding-islam-for-beginners.html">Understanding Islam for Beginners</a>
                 </div>
             </div>
         </div>
@@ -322,7 +327,7 @@
                     <p class="mb-4">
                         Explore the foundational categories and principles that govern Islamic jurisprudence and daily life.
                     </p>
-                    <a href="islamic-legal-classifications.html" class="inline-block interactive-button">
+                    <a href="Islamic%20Legal%20Classifications.html" class="inline-block interactive-button">
                         Read More
                     </a>
                 </div>
@@ -335,7 +340,7 @@
                     <p class="mb-4">
                         A detailed look at the esteemed Prophets mentioned in the Holy Quran, tracing their stories and genealogical connections.
                     </p>
-                    <a href="prophets-quran-lineage.html" class="inline-block interactive-button">
+                    <a href="Prophets%20in%20the%20Quran%20and%20their%20Lineage.html" class="inline-block interactive-button">
                         Read More
                     </a>
                 </div>
@@ -348,7 +353,7 @@
                     <p class="mb-4">
                         A comprehensive guide to the obligatory and Sunnah Rak'ahs for all daily prayers, including the special Jumu'ah prayer.
                     </p>
-                    <a href="daily-prayers-jumuah-summary.html" class="inline-block interactive-button">
+                    <a href="Daily%20Prayers%20%26%20Jumu%27ah%20Summary%20Table.html" class="inline-block interactive-button">
                         Read More
                     </a>
                 </div>
@@ -361,10 +366,44 @@
                     <p class="mb-4">
                         Discover the various optional prayers that bring immense spiritual rewards and closeness to Allah.
                     </p>
-                    <a href="nafl-prayers.html" class="inline-block interactive-button">
+                    <a href="nafl-prayers-table.html" class="inline-block interactive-button">
                         Read More
                     </a>
                 </div>
+
+                <!-- New Blog Post Card: Understanding Hadith -->
+                <div class="blog-post-card">
+                    <h3>Understanding Hadith</h3>
+                    <p>
+                        Delve into the classifications of Hadith, including Sahih, Hasan, Da'if, and the unique Hadith Qudsi, with examples.
+                    </p>
+                    <a href="understanding-hadith.html" class="inline-block interactive-button">
+                        Read More
+                    </a>
+                </div>
+
+                <!-- New Blog Post Card: Prophet Muhammad (PBUH) Events -->
+                <div class="blog-post-card">
+                    <h3>Prophet Muhammad (PBUH): Events & Inspirations</h3>
+                    <p>
+                        Explore key events from the blessed life of Prophet Muhammad (PBUH) and draw timeless lessons and inspirations.
+                    </p>
+                    <a href="prophet-muhammed-sa.html" class="inline-block interactive-button">
+                        Read More
+                    </a>
+                </div>
+
+                 <!-- New Blog Post Card: Understanding Islam for Beginners -->
+                <div class="blog-post-card">
+                    <h3>Understanding Islam for Beginners</h3>
+                    <p>
+                        A foundational guide to the core beliefs, practices, and values of Islam, designed for easy understanding.
+                    </p>
+                    <a href="understanding-islam-for-beginners.html" class="inline-block interactive-button">
+                        Read More
+                    </a>
+                </div>
+
             </div>
             <p class="text-lg text-gray-400 mt-8 opacity-80">
                 Dive deeper into Islamic knowledge with more valuable insights and articles coming soon!
