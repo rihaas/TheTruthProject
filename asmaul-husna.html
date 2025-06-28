@@ -34,6 +34,7 @@
             margin-bottom: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.08);
             text-align: center;
+            position: relative; /* Needed for absolute positioning of back button */
         }
 
         .arabic-text {
@@ -199,11 +200,97 @@
                 width: 1.25rem;
                 height: 1.25rem;
             }
+            .back-to-home-btn { /* Adjust size for small screens */
+                top: 0.75rem;
+                left: 0.75rem;
+                padding: 0.5rem;
+            }
+            .back-to-home-btn .icon-wrapper {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        /* New styles for the Square Back button with hover text */
+        .back-to-home-btn {
+            position: absolute;
+            top: 1.5rem; /* Position from top of .main-content-wrapper */
+            left: 2rem; /* Position from left of .main-content-wrapper */
+            background-image: linear-gradient(to right, #34D399, #10B981); /* Green/teal gradient */
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4); /* Shadow matching green */
+            border-radius: 0.6rem;
+            cursor: pointer;
+            overflow: hidden; /* Hide overflowing text initially */
+            display: flex;
+            align-items: center;
+            width: 3rem; /* Square width for icon only */
+            height: 3rem; /* Square height for icon only */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-decoration: none; /* Remove underline from link */
+            color: #FFFFFF;
+            justify-content: center; /* Center icon initially */
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+
+        .back-to-home-btn .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1; /* Ensure icon is above text initially */
+        }
+
+        .back-to-home-btn .text-label {
+            position: absolute;
+            left: 0; /* Position off-screen to the left */
+            padding-left: 3rem; /* Start text after icon's initial width */
+            padding-right: 1rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-100%); /* Start off-screen to the left */
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            pointer-events: none; /* Do not block clicks on hover */
+            height: 100%; /* Match button height */
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(to right, #34D399, #10B981); /* Match button background */
+            border-radius: 0.6rem;
+        }
+
+        .back-to-home-btn:hover {
+            width: 12rem; /* Expand width on hover to reveal text */
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6);
+            background-image: linear-gradient(to right, #10B981, #34D399); /* Reverse gradient on hover */
+            transform: translateY(-2px); /* Subtle lift */
+        }
+
+        .back-to-home-btn:hover .icon-wrapper {
+            transform: translateX(calc(12rem - 3rem - 0.5rem)); /* Move icon to the right (total_width - icon_width - padding/gap) */
+        }
+
+        .back-to-home-btn:hover .text-label {
+            opacity: 1;
+            transform: translateX(0); /* Slide text into view */
+            pointer-events: auto; /* Enable pointer events when visible */
         }
     </style>
 </head>
 <body class="px-4 sm:px-6 lg:px-8">
     <div class="main-content-wrapper">
+        <!-- Back Button -->
+       <a href="index.html" class="back-to-home-btn" aria-label="Back to Home">
+            <span class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+            </span>
+            <span class="text-label">Back to Home</span>
+        </a>
+
         <!-- Header Section -->
         <header class="text-center mb-10">
             <h1 class="main-heading">
@@ -1105,7 +1192,7 @@
 
             <!-- Name 60: Al-Mu'id -->
             <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">60.</p>
+                <p class="text-sm font-semibold text-gray-500 text-left">60.
                 <h3 class="arabic-text">ٱلْمُعِيد</h3>
                 <p class="english-name">Al-Mu'id</p>
                 <p class="meaning-text">
@@ -1520,222 +1607,4 @@
                     <p>
                         He is perfectly just in all His dealings, actions, and judgments, establishing balance and equity in the universe.
                     </p>
-                </div>
-            </div>
-
-            <!-- Name 88: Al-Jami' -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">88.</p>
-                <h3 class="arabic-text">ٱلْجَامِع</h3>
-                <p class="english-name">Al-Jami'</p>
-                <p class="meaning-text">
-                    **The Gatherer / The Collector**. The Gatherer, who gathers all creation on the Day of Judgment.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He gathers all human beings for accountability on the Day of Judgment, and He gathers disparate things together according to His will.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Name 89: Al-Ghani -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">89.</p>
-                <h3 class="arabic-text">ٱلْغَنِيّ</h3>
-                <p class="english-name">Al-Ghani</p>
-                <p class="meaning-text">
-                    **The Self-Sufficient / The Rich**. The Independent, who is free of all needs and possess all wealth.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He requires nothing from His creation, while all creation is utterly dependent on Him. His richness is absolute and boundless.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Name 90: Al-Mughni -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">90.</p>
-                <h3 class="arabic-text">ٱلْمُغْنِي</h3>
-                <p class="english-name">Al-Mughni</p>
-                <p class="meaning-text">
-                    **The Enricher / The Sufficer**. The Enricher, who grants sufficiency and richness to whom He wills.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He provides wealth and contentment, making His servants independent of others, solely by His grace and wisdom.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Name 91: Al-Mani' -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">91.</p>
-                <h3 class="arabic-text">ٱلْمَانِع</h3>
-                <p class="english-name">Al-Mani'</p>
-                <p class="meaning-text">
-                    **The Preventer / The Withholder**. The Withholder, who prevents or withholds what He wills.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He prevents harm, protects His creation, and withholds blessings from whom He wills, all according to His divine wisdom and justice.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Name 92: Ad-Darr -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">92.</p>
-                <h3 class="arabic-text">ٱلضَّارّ</h3>
-                <p class="english-name">Ad-Darr</p>
-                <p class="meaning-text">
-                    **The Distressor / The Harmer**. The Afflictor, who sends affliction to whom He wills.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He can cause distress or harm, but this is always with wisdom and justice, often as a test, purification, or punishment, and never out of malevolence.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Name 93: An-Nafi' -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">93.</p>
-                <h3 class="arabic-text">ٱلنَّافِع</h3>
-                <p class="english-name">An-Nafi'</p>
-                <p class="meaning-text">
-                    **The Bestower of Benefits / The Propitious**. The Benefactor, who grants benefits to whom He wills.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He is the source of all benefit and good. He brings advantages and prosperity to His creation, solely by His will and grace.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Name 94: An-Nur -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">94.</p>
-                <h3 class="arabic-text">ٱلنُّور</h3>
-                <p class="english-name">An-Nur</p>
-                <p class="meaning-text">
-                    **The Light**. The Light, who illuminates the heavens and the earth.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He is the source of all light, both physical and spiritual. He guides the hearts of believers and clarifies the path of truth.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Name 95: Al-Hadi -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">95.</p>
-                <h3 class="arabic-text">ٱلْهَادِي</h3>
-                <p class="english-name">Al-Hadi</p>
-                <p class="meaning-text">
-                    **The Guide**. The Guide, who guides His creation to the truth.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He guides humanity to the straight path through His revelations, prophets, and innate guidance. He leads hearts to faith and righteousness.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Name 96: Al-Badi' -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">96.</p>
-                <h3 class="arabic-text">ٱلْبَدِيع</h3>
-                <p class="english-name">Al-Badi'</p>
-                <p class="meaning-text">
-                    **The Incomparable / The Originator**. The Originator, who creates in a wonderful and unparalleled way.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He creates unique and marvelous things without any precedent or example. His creativity is unparalleled and His creations are awe-inspiring.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Name 97: Al-Baqi -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">97.</p>
-                <h3 class="arabic-text">ٱلْبَاقِي</h3>
-                <p class="english-name">Al-Baqi</p>
-                <p class="meaning-text">
-                    **The Ever-Enduring / The Everlasting**. The Enduring, who remains forever and does not perish.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He is eternal and everlasting, while all else is transient. His existence has no end, and He is the ultimate reality.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Name 98: Al-Warith -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">98.</p>
-                <h3 class="arabic-text">ٱلْوَارِث</h3>
-                <p class="english-name">Al-Warith</p>
-                <p class="meaning-text">
-                    **The Inheritor of All**. The Inheritor, who remains after all creation perishes.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He is the ultimate owner of everything. When all creation ceases to exist, He alone remains as the Inheritor of all things.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Name 99: Ar-Rashid -->
-            <div class="name-card">
-                <p class="text-sm font-semibold text-gray-500 text-left">99.</p>
-                <h3 class="arabic-text">ٱلرَّشِيد</h3>
-                <p class="english-name">Ar-Rashid</p>
-                <p class="meaning-text">
-                    **The Guide to the Right Path / The Righteous Teacher**. The Guide, who guides to righteousness and truth.
-                </p>
-                <div class="detailed-meaning">
-                    <p>
-                        He guides His creation with His perfect wisdom and truth, leading them towards what is right and beneficial. He is the ultimate teacher of righteousness.
-                    </p>
-                </div>
-            </div>
-        </main>
-
-        <!-- Scroll to Top Button -->
-        <button id="scrollToTopBtn" aria-label="Scroll to top">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
-        </button>
-
-        <!-- Footer Section -->
-        <footer class="text-center mt-12 text-gray-500 text-sm w-full">
-            <p>
-                This page compiles information on the 99 Names of Allah (Asmaul Husna) based on Islamic traditions.
-            </p>
-        </footer>
-    </div>
-
-    <script>
-        // Get the button
-        let scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                scrollToTopBtn.style.display = "flex"; // Use flex to center icon
-            } else {
-                scrollToTopBtn.style.display = "none";
-            }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        scrollToTopBtn.addEventListener('click', function() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        });
-    </script>
-</body>
-</html>
+                </    
