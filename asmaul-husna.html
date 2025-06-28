@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asmaul Husna - The 99 Names of Allah</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter & Amiri -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the My Deen Project homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+        }
+
+        .main-content-wrapper { /* Renamed from .container for consistency with other pages */
+            max-width: 1100px; /* Adjusted max-width for consistency */
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif; /* A font suitable for Arabic script */
+            direction: rtl; /* Right-to-left for Arabic */
+            font-weight: 700; /* Bold Arabic text */
+            color: #FACC15; /* Golden yellow for Arabic names */
+            font-size: 2.25rem; /* Larger Arabic text */
+            line-height: 1.2;
+        }
+
+        /* Card styling for interactive hover effects */
+        .name-card {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer default shadow */
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border for dark theme */
+            background-color: #282828; /* Dark card background */
+            padding: 1.5rem; /* Consistent padding */
+            text-align: left; /* Align text within cards */
+            display: flex; /* Use flexbox for internal layout */
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 180px; /* Ensure consistent card height */
+        }
+
+        .name-card:hover {
+            transform: translateY(-5px); /* Lift */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+            background-color: #2D2D2D; /* Slightly lighter on hover */
+        }
+
+        .name-card h3 {
+            color: #FACC15; /* Golden yellow for Arabic name */
+            font-size: 2.25rem; /* Larger font size for Arabic */
+            margin-bottom: 0.5rem;
+        }
+        .name-card .english-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #BB86FC; /* Light purple for English names */
+            margin-bottom: 0.75rem;
+        }
+        .name-card .meaning-text {
+            color: #B0B0B0; /* Softer text color for meaning */
+            font-size: 0.9rem;
+            line-height: 1.5;
+            flex-grow: 1; /* Allows text to fill space */
+        }
+
+        /* Custom scroll-to-top button styling (consistent with homepage) */
+        #scrollToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Place at the bottom */
+            right: 20px; /* Place at the right */
+            z-index: 99; /* Ensure it's above other content */
+            background-image: linear-gradient(to right, #4F46E5, #6366F1); /* Consistent button gradient */
+            color: white; /* White text */
+            padding: 1rem;
+            border-radius: 9999px; /* Fully rounded */
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); /* Consistent button shadow */
+            cursor: pointer; /* Pointer on hover */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth transition */
+            display: flex; /* Use flex to center icon */
+            align-items: center;
+            justify-content: center;
+        }
+        #scrollToTopBtn:hover {
+            transform: translateY(-2px); /* Subtle lift effect */
+            background-image: linear-gradient(to right, #6366F1, #4F46E5); /* Reverse gradient on hover */
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.6); /* Enhanced shadow on hover */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .main-content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem 1rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            .name-card {
+                padding: 1rem;
+                min-height: unset; /* Allow height to adjust on smaller screens */
+            }
+            .name-card .arabic-text {
+                font-size: 2rem;
+            }
+            .name-card .english-name {
+                font-size: 1.1rem;
+            }
+            .name-card .meaning-text {
+                font-size: 0.85rem;
+            }
+            main.grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* More responsive columns */
+            }
+        }
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 1.75rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            main.grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Even smaller for very small screens */
+            }
+            .name-card .arabic-text {
+                font-size: 1.8rem;
+            }
+            .name-card .english-name {
+                font-size: 1rem;
+            }
+            .name-card .meaning-text {
+                font-size: 0.75rem;
+            }
+            #scrollToTopBtn {
+                padding: 0.75rem;
+                bottom: 15px;
+                right: 15px;
+            }
+            #scrollToTopBtn svg {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body class="px-4 sm:px-6 lg:px-8">
+    <div class="main-content-wrapper">
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="main-heading">
+                Asmaul Husna - The 99 Beautiful <span class="text-yellow-400">Names of Allah</span>
+            </h1>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed opacity-90">
+                "And to Allah belong the best names, so invoke Him by them." (Quran 7:180)
+                <br>
+                Explore the divine attributes and characteristics of Allah (SWT) through His 99 Beautiful Names, each representing a unique aspect of His perfection and power.
+            </p>
+        </header>
+
+        <!-- Main Content Area - Names Grid -->
+        <main class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            <!-- Name 1: Allah -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">1.</p>
+                <h3 class="arabic-text">ٱللَّه</h3>
+                <p class="english-name">Allah</p>
+                <p class="meaning-text">
+                    **The God**. This is the proper and most comprehensive name for the Creator, encompassing all divine attributes. It signifies the one and only God, unique in His essence, attributes, and actions, to whom all worship is due.
+                </p>
+            </div>
+
+            <!-- Name 2: Ar-Rahman -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">2.</p>
+                <h3 class="arabic-text">ٱلرَّحْمَـٰن</h3>
+                <p class="english-name">Ar-Rahman</p>
+                <p class="meaning-text">
+                    **The Most Merciful / The Beneficent**. This name signifies Allah's expansive and universal mercy that extends to all of His creation, including both believers and disbelievers, in this worldly life. It is an attribute of His very essence.
+                </p>
+            </div>
+
+            <!-- Name 3: Ar-Rahim -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">3.</p>
+                <h3 class="arabic-text">ٱلرَّحِيم</h3>
+                <p class="english-name">Ar-Rahim</p>
+                <p class="meaning-text">
+                    **The Especially Merciful / The Compassionate**. This name denotes Allah's specific and enduring mercy reserved for the believers, particularly in the Hereafter. It highlights the bountiful rewards and forgiveness granted to those who truly submit to Him.
+                </p>
+            </div>
+
+            <!-- Name 4: Al-Malik -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">4.</p>
+                <h3 class="arabic-text">ٱلْمَلِك</h3>
+                <p class="english-name">Al-Malik</p>
+                <p class="meaning-text">
+                    **The Absolute Sovereign / The King**. Allah is the sole and ultimate King, possessing all dominion and authority over everything in existence. He manages all affairs without needing assistance, and His command is absolute.
+                </p>
+            </div>
+
+            <!-- Name 5: Al-Quddus -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">5.</p>
+                <h3 class="arabic-text">ٱلْقُدُّوس</h3>
+                <p class="english-name">Al-Quddus</p>
+                <p class="meaning-text">
+                    **The Most Holy / The Pure One**. This name emphasizes Allah's absolute purity, perfection, and transcendence from all imperfections, faults, and human flaws. He is far removed from any deficiency.
+                </p>
+            </div>
+
+            <!-- Name 6: As-Salam -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">6.</p>
+                <h3 class="arabic-text">ٱلسَّلَام</h3>
+                <p class="english-name">As-Salam</p>
+                <p class="meaning-text">
+                    **The Giver of Peace / The Source of Peace**. Allah is the embodiment of peace and the ultimate source of all peace and security in the universe. He grants safety and well-being to His creation.
+                </p>
+            </div>
+
+            <!-- Name 7: Al-Mu'min -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">7.</p>
+                <h3 class="arabic-text">ٱلْمُؤْمِن</h3>
+                <p class="english-name">Al-Mu'min</p>
+                <p class="meaning-text">
+                    **The Giver of Faith / The Granter of Security**. Allah is the one who grants faith and security to His servants. He affirms the truth of His words and promises, ensuring certainty and trust.
+                </p>
+            </div>
+
+            <!-- Name 8: Al-Muhaymin -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">8.</p>
+                <h3 class="arabic-text">ٱلْمُهَيْمِن</h3>
+                <p class="english-name">Al-Muhaymin</p>
+                <p class="meaning-text">
+                    **The Overseer / The Protector / The Dominant One**. Allah is the ultimate Guardian and Overseer of all creation. He watches over everything, preserving and maintaining it, and His control is absolute.
+                </p>
+            </div>
+
+            <!-- Name 9: Al-Aziz -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">9.</p>
+                <h3 class="arabic-text">ٱلْعَزِيز</h3>
+                <p class="english-name">Al-Aziz</p>
+                <p class="meaning-text">
+                    **The All-Mighty / The Irresistible**. Allah possesses absolute power and strength, being victorious over everything. Nothing can overcome Him, and His will is always executed.
+                </p>
+            </div>
+
+            <!-- Name 10: Al-Jabbar -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">10.</p>
+                <h3 class="arabic-text">ٱلْجَبَّار</h3>
+                <p class="english-name">Al-Jabbar</p>
+                <p class="meaning-text">
+                    **The Compeller / The Restorer / The Repairer**. Allah is the One who compels all to His will and is able to mend and restore anything that is broken. He has the power to enforce His decrees.
+                </p>
+            </div>
+
+            <!-- Name 11: Al-Mutakabbir -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">11.</p>
+                <h3 class="arabic-text">ٱلْمُتَكَبِّر</h3>
+                <p class="english-name">Al-Mutakabbir</p>
+                <p class="meaning-text">
+                    **The Supreme / The Majestic / The Possessor of All Greatness**. This name asserts Allah's absolute greatness and superiority over all creation. He is exalted above all things and possesses ultimate pride and grandeur.
+                </p>
+            </div>
+
+            <!-- Name 12: Al-Khaliq -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">12.</p>
+                <h3 class="arabic-text">ٱلْخَالِق</h3>
+                <p class="english-name">Al-Khaliq</p>
+                <p class="meaning-text">
+                    **The Creator / The Maker**. Allah is the one who creates everything from nothing, bringing things into existence according to His plan and design. He is the originator of all existence.
+                </p>
+            </div>
+
+            <!-- Name 13: Al-Bari' -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">13.</p>
+                <h3 class="arabic-text">ٱلْبَارِئ</h3>
+                <p class="english-name">Al-Bari'</p>
+                <p class="meaning-text">
+                    **The Evolver / The Maker / The Fashioner**. Allah is the one who fashions and creates distinct beings from pre-existing matter, giving them specific forms and functions in perfection.
+                </p>
+            </div>
+
+            <!-- Name 14: Al-Musawwir -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">14.</p>
+                <h3 class="arabic-text">ٱلْمُصَوِّر</h3>
+                <p class="english-name">Al-Musawwir</p>
+                <p class="meaning-text">
+                    **The Fashioner of Forms / The Designer**. Allah is the ultimate artist and designer, who gives the most beautiful and distinct forms, colors, and shapes to His creation with precision and beauty.
+                </p>
+            </div>
+
+            <!-- Name 15: Al-Ghaffar -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">15.</p>
+                <h3 class="arabic-text">ٱلْغَفَّار</h3>
+                <p class="english-name">Al-Ghaffar</p>
+                <p class="meaning-text">
+                    **The All-Forgiving / The Forgiver**. Allah is the one who repeatedly and abundantly forgives sins and faults, even major ones, for those who sincerely repent. He covers and conceals His servants' sins.
+                </p>
+            </div>
+
+            <!-- Name 16: Al-Qahhar -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">16.</p>
+                <h3 class="arabic-text">ٱلْقَهَّار</h3>
+                <p class="english-name">Al-Qahhar</p>
+                <p class="meaning-text">
+                    **The All-Subduer / The Irresistible**. Allah is the ultimately Dominant One, whose power and might subdue everything. All creation is under His command, and none can resist His will.
+                </p>
+            </div>
+
+            <!-- Name 17: Al-Wahhab -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">17.</p>
+                <h3 class="arabic-text">ٱلْوَهَّاب</h3>
+                <p class="english-name">Al-Wahhab</p>
+                <p class="meaning-text">
+                    **The All-Bountiful / The Bestower**. Allah is the Giver of Gifts, who grants favors and blessings freely, without expecting anything in return. His generosity is limitless and unconditional.
+                </p>
+            </div>
+
+            <!-- Name 18: Ar-Razzaq -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">18.</p>
+                <h3 class="arabic-text">ٱلرَّزَّاق</h3>
+                <p class="english-name">Ar-Razzaq</p>
+                <p class="meaning-text">
+                    **The All-Provider / The Sustainer**. Allah is the ultimate Sustainer, who provides all forms of sustenance and livelihood to His creation, whether physical, spiritual, or emotional.
+                </p>
+            </div>
+
+            <!-- Name 19: Al-Fattah -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">19.</p>
+                <h3 class="arabic-text">ٱلْفَتَّاح</h3>
+                <p class="english-name">Al-Fattah</p>
+                <p class="meaning-text">
+                    **The Opener / The Judge**. Allah is the Opener of all things, who opens the ways to success, victory, and knowledge. He also justly judges between His servants.
+                </p>
+            </div>
+
+            <!-- Name 20: Al-Alim -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">20.</p>
+                <h3 class="arabic-text">ٱلْعَلِيم</h3>
+                <p class="english-name">Al-Alim</p>
+                <p class="meaning-text">
+                    **The All-Knowing / The Omniscient**. Allah's knowledge encompasses everything: the seen and unseen, the past, present, and future, the apparent and hidden. Nothing is beyond His perfect knowledge.
+                </p>
+            </div>
+
+            <!-- Name 21: Al-Qabid -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">21.</p>
+                <h3 class="arabic-text">ٱلْقَابِض</h3>
+                <p class="english-name">Al-Qabid</p>
+                <p class="meaning-text">
+                    **The Restrainer / The Withholder**. Allah is the one who withholds and restricts sustenance, blessings, and lives by His perfect wisdom. This manifests in periods of difficulty or scarcity.
+                </p>
+            </div>
+
+            <!-- Name 22: Al-Basit -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">22.</p>
+                <h3 class="arabic-text">ٱلْبَاسِط</h3>
+                <p class="english-name">Al-Basit</p>
+                <p class="meaning-text">
+                    **The Extender / The Giver of Abundance**. Allah is the one who expands and extends sustenance and blessings, bringing ease and prosperity. This is often mentioned in conjunction with Al-Qabid, showing His balanced control.
+                </p>
+            </div>
+
+            <!-- Name 23: Al-Khafid -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">23.</p>
+                <h3 class="arabic-text">ٱلْخَافِض</h3>
+                <p class="english-name">Al-Khafid</p>
+                <p class="meaning-text">
+                    **The Abaser / The Humbler**. Allah is the One who lowers and abases the proud, the arrogant, and those who rebel against Him. He can humble anyone He wills.
+                </p>
+            </div>
+
+            <!-- Name 24: Ar-Rafi' -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">24.</p>
+                <h3 class="arabic-text">ٱلرَّافِع</h3>
+                <p class="english-name">Ar-Rafi'</p>
+                <p class="meaning-text">
+                    **The Exalter / The Uplifter**. Allah is the One who raises the ranks of believers, exalts nations, and elevates anything He wills. He can uplift those who are humble and righteous.
+                </p>
+            </div>
+
+            <!-- Name 25: Al-Mu'izz -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">25.</p>
+                <h3 class="arabic-text">ٱلْمُعِزّ</h3>
+                <p class="english-name">Al-Mu'izz</p>
+                <p class="meaning-text">
+                    **The Giver of Honor / The Honorer**. Allah is the one who grants honor, dignity, and power to whom He wills. True honor comes only from Him and is bestowed upon those He chooses.
+                </p>
+            </div>
+
+            <!-- Name 26: Al-Muzill -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">26.</p>
+                <h3 class="arabic-text">ٱلْمُذِلّ</h3>
+                <p class="english-name">Al-Muzill</p>
+                <p class="meaning-text">
+                    **The Giver of Dishonor / The Humiliator**. Allah is the One who brings low and humiliates whom He wills. This is often a consequence for those who are arrogant or oppressive.
+                </p>
+            </div>
+
+            <!-- Name 27: As-Sami' -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">27.</p>
+                <h3 class="arabic-text">ٱلسَّمِيع</h3>
+                <p class="english-name">As-Sami'</p>
+                <p class="meaning-text">
+                    **The All-Hearing / The Hearer**. Allah hears every sound, whether loud or silent, apparent or hidden. His hearing encompasses all things, from the rustling of a leaf to the deepest whispers of the heart.
+                </p>
+            </div>
+
+            <!-- Name 28: Al-Basir -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">28.</p>
+                <h3 class="arabic-text">ٱلْبَصِير</h3>
+                <p class="english-name">Al-Basir</p>
+                <p class="meaning-text">
+                    **The All-Seeing / The Seer**. Allah sees all things, visible and invisible, minute or vast. Nothing is hidden from His sight, and He perceives the innermost thoughts and intentions.
+                </p>
+            </div>
+
+            <!-- Name 29: Al-Hakam -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">29.</p>
+                <h3 class="arabic-text">ٱلْحَكَم</h3>
+                <p class="english-name">Al-Hakam</p>
+                <p class="meaning-text">
+                    **The Judge / The Arbitrator**. Allah is the ultimate Judge who decides justly between His creation. His judgments are always fair and righteous, and He is the ultimate authority in all disputes.
+                </p>
+            </div>
+
+            <!-- Name 30: Al-Adl -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">30.</p>
+                <h3 class="arabic-text">ٱلْعَدْل</h3>
+                <p class="english-name">Al-Adl</p>
+                <p class="meaning-text">
+                    **The Most Just / The Equitable**. Allah is perfectly just and equitable in all His actions and decrees. He does not oppress anyone, and His justice is absolute and without any bias.
+                </p>
+            </div>
+
+            <!-- Name 31: Al-Latif -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">31.</p>
+                <h3 class="arabic-text">ٱلْلَّطِيف</h3>
+                <p class="english-name">Al-Latif</p>
+                <p class="meaning-text">
+                    **The Subtle One / The Most Kind / The Gentle**. Allah is exceedingly subtle, gentle, and kind. He knows the most intricate and hidden things, and His kindness reaches His servants in gentle and imperceptible ways.
+                </p>
+            </div>
+
+            <!-- Name 32: Al-Khabir -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">32.</p>
+                <h3 class="arabic-text">ٱلْخَبِير</h3>
+                <p class="english-name">Al-Khabir</p>
+                <p class="meaning-text">
+                    **The All-Aware / The Acquainted**. Allah is fully aware of everything, including the inner dimensions, hidden intentions, and every detail of His creation. Nothing can escape His comprehensive awareness.
+                </p>
+            </div>
+
+            <!-- Name 33: Al-Halim -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">33.</p>
+                <h3 class="arabic-text">ٱلْحَلِيم</h3>
+                <p class="english-name">Al-Halim</p>
+                <p class="meaning-text">
+                    **The Forbearing / The Most Clement**. Allah is incredibly forbearing and patient. He delays punishment for sins, allowing time for repentance and does not hasten His wrath, despite His immense power.
+                </p>
+            </div>
+
+            <!-- Name 34: Al-Azim -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">34.</p>
+                <h3 class="arabic-text">ٱلْعَظِيم</h3>
+                <p class="english-name">Al-Azim</p>
+                <p class="meaning-text">
+                    **The Magnificent / The Great One**. Allah is the Most Grand and Glorious, whose greatness is beyond human comprehension. His attributes, power, and glory are immense and majestic.
+                </p>
+            </div>
+
+            <!-- Name 35: Al-Ghafur -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">35.</p>
+                <h3 class="arabic-text">ٱلْغَفُور</h3>
+                <p class="english-name">Al-Ghafur</p>
+                <p class="meaning-text">
+                    **The All-Forgiving / The Exceedingly Forgiving**. This name emphasizes Allah's abundant and continuous forgiveness. He is the one who forgives sins repeatedly and covers up the faults of His servants.
+                </p>
+            </div>
+
+            <!-- Name 36: Ash-Shakur -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">36.</p>
+                <h3 class="arabic-text">ٱلشَّكُور</h3>
+                <p class="english-name">Ash-Shakur</p>
+                <p class="meaning-text">
+                    **The Most Appreciative / The Acknowledging of Thanks**. Allah is the one who appreciates and generously rewards even the smallest good deeds and sincere acts of worship. He multiplies rewards for His servants' efforts.
+                </p>
+            </div>
+
+            <!-- Name 37: Al-Ali -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">37.</p>
+                <h3 class="arabic-text">ٱلْعَلِىّ</h3>
+                <p class="english-name">Al-Ali</p>
+                <p class="meaning-text">
+                    **The Most High / The Most Exalted**. Allah is supremely high and exalted above all creation in His essence, attributes, and power. Nothing is above Him, and He is beyond all human comprehension.
+                </p>
+            </div>
+
+            <!-- Name 38: Al-Kabir -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">38.</p>
+                <h3 class="arabic-text">ٱلْكَبِير</h3>
+                <p class="english-name">Al-Kabir</p>
+                <p class="meaning-text">
+                    **The Most Great / The Grand**. This name signifies Allah's absolute greatness and vastness. He is supreme in His attributes and unique in His power, making Him the greatest of all.
+                </p>
+            </div>
+
+            <!-- Name 39: Al-Hafiz -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">39.</p>
+                <h3 class="arabic-text">ٱلْحَفِيظ</h3>
+                <p class="english-name">Al-Hafiz</p>
+                <p class="meaning-text">
+                    **The Preserver / The Protector**. Allah is the ultimate Guardian and Preserver who protects and maintains all things, from the vast universe to the smallest atom. He safeguards creation from harm.
+                </p>
+            </div>
+
+            <!-- Name 40: Al-Muqit -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">40.</p>
+                <h3 class="arabic-text">ٱلْمُقِيت</h3>
+                <p class="english-name">Al-Muqit</p>
+                <p class="meaning-text">
+                    **The Provider / The Maintainer / The Sustainer**. Allah is the one who sustains all creation, providing nourishment and power to all beings according to their needs. He has full control over sustenance.
+                </p>
+            </div>
+
+            <!-- Name 41: Al-Hasib -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">41.</p>
+                <h3 class="arabic-text">ٱلْحَسِيب</h3>
+                <p class="english-name">Al-Hasib</p>
+                <p class="meaning-text">
+                    **The Accounter / The Reckoner / The Sufficient One**. Allah is the one who takes account of all deeds and provides sufficiency for His servants. He is sufficient for all needs and will hold everyone accountable.
+                </p>
+            </div>
+
+            <!-- Name 42: Al-Jalil -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">42.</p>
+                <h3 class="arabic-text">ٱلْجَلِيل</h3>
+                <p class="english-name">Al-Jalil</p>
+                <p class="meaning-text">
+                    **The Majestic / The Sublime**. Allah is the embodiment of greatness, majesty, and glory. His attributes are magnificent, and He is revered and exalted above all.
+                </p>
+            </div>
+
+            <!-- Name 43: Al-Karim -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">43.</p>
+                <h3 class="arabic-text">ٱلْكَرِيم</h3>
+                <p class="english-name">Al-Karim</p>
+                <p class="meaning-text">
+                    **The Most Generous / The Bountiful / The Noble**. Allah is supremely generous, providing His blessings abundantly and unconditionally. He is noble, honorable, and forgives readily.
+                </p>
+            </div>
+
+            <!-- Name 44: Ar-Raqib -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">44.</p>
+                <h3 class="arabic-text">ٱلرَّقِيب</h3>
+                <p class="english-name">Ar-Raqib</p>
+                <p class="meaning-text">
+                    **The Ever-Watchful / The Watcher**. Allah constantly watches over all His creation. Nothing escapes His notice, and He is fully aware of every action, thought, and condition of His servants.
+                </p>
+            </div>
+
+            <!-- Name 45: Al-Mujib -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">45.</p>
+                <h3 class="arabic-text">ٱلْمُجِيب</h3>
+                <p class="english-name">Al-Mujib</p>
+                <p class="meaning-text">
+                    **The Responder to Prayer / The Answerer**. Allah is the one who responds to the prayers and supplications of those who call upon Him. He answers according to His infinite wisdom and knowledge.
+                </p>
+            </div>
+
+            <!-- Name 46: Al-Wasi' -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">46.</p>
+                <h3 class="arabic-text">ٱلْوَاسِع</h3>
+                <p class="english-name">Al-Wasi'</p>
+                <p class="meaning-text">
+                    **The All-Encompassing / The Boundless**. Allah's knowledge, mercy, power, and bounty are vast and limitless. His embrace extends to all things, and His blessings are without bounds.
+                </p>
+            </div>
+
+            <!-- Name 47: Al-Hakim -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">47.</p>
+                <h3 class="arabic-text">ٱلْحَكِيم</h3>
+                <p class="english-name">Al-Hakim</p>
+                <p class="meaning-text">
+                    **The All-Wise / The Wise**. Allah is perfect in His wisdom, knowledge, and judgment. Every action and decree from Him is based on ultimate wisdom and serves a divine purpose.
+                </p>
+            </div>
+
+            <!-- Name 48: Al-Wadud -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">48.</p>
+                <h3 class="arabic-text">ٱلْوَدُود</h3>
+                <p class="english-name">Al-Wadud</p>
+                <p class="meaning-text">
+                    **The Most Loving / The Loving One**. Allah is the source of all love and shows immense love and affection towards His righteous servants. He loves those who do good and are repentant.
+                </p>
+            </div>
+
+            <!-- Name 49: Al-Majid -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">49.</p>
+                <h3 class="arabic-text">ٱلْمَجِيد</h3>
+                <p class="english-name">Al-Majid</p>
+                <p class="meaning-text">
+                    **The Most Glorious / The Illustrious**. Allah is the Glorious, whose glory is immense, magnificent, and whose qualities are noble. His majesty is profound and awe-inspiring.
+                </p>
+            </div>
+
+            <!-- Name 50: Al-Ba'ith -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">50.</p>
+                <h3 class="arabic-text">ٱلْبَاعِث</h3>
+                <p class="english-name">Al-Ba'ith</p>
+                <p class="meaning-text">
+                    **The Resurrector / The Awakener**. Allah is the one who sends forth His messengers and resurrects the dead from their graves for accountability on the Day of Judgment, signifying His absolute power over life and death.
+                </p>
+            </div>
+
+            <!-- Name 51: Ash-Shahid -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">51.</p>
+                <h3 class="arabic-text">ٱلشَّهِيد</h3>
+                <p class="english-name">Ash-Shahid</p>
+                <p class="meaning-text">
+                    **The All-Witnessing**. The Witness, who is present and witnesses all things.
+                </p>
+            </div>
+
+            <!-- Name 52: Al-Haqq -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">52.</p>
+                <h3 class="arabic-text">ٱلْحَقّ</h3>
+                <p class="english-name">Al-Haqq</p>
+                <p class="meaning-text">
+                    **The Absolute Truth**. The Truth, the Real, whose existence is undeniable.
+                </p>
+            </div>
+
+            <!-- Name 53: Al-Wakil -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">53.</p>
+                <h3 class="arabic-text">ٱلْوَكِيل</h3>
+                <p class="english-name">Al-Wakil</p>
+                <p class="meaning-text">
+                    **The Disposer of Affairs / The Trustee**. The Guardian, on whom one can rely, who manages all affairs.
+                </p>
+            </div>
+
+            <!-- Name 54: Al-Qawi -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">54.</p>
+                <h3 class="arabic-text">ٱلْقَوِىّ</h3>
+                <p class="english-name">Al-Qawi</p>
+                <p class="meaning-text">
+                    **The All-Strong**. The Powerful, whose strength is infinite.
+                </p>
+            </div>
+
+            <!-- Name 55: Al-Matin -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">55.</p>
+                <h3 class="arabic-text">ٱلْمَتِين</h3>
+                <p class="english-name">Al-Matin</p>
+                <p class="meaning-text">
+                    **The Firm / The Steadfast**. The Invincible, whose power is absolute and firm.
+                </p>
+            </div>
+
+            <!-- Name 56: Al-Wali -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">56.</p>
+                <h3 class="arabic-text">ٱلْوَلِىّ</h3>
+                <p class="english-name">Al-Wali</p>
+                <p class="meaning-text">
+                    **The Protecting Friend / The Patron**. The Supporter, the Protector, who is the closest ally to the believers.
+                </p>
+            </div>
+
+            <!-- Name 57: Al-Hamid -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">57.</p>
+                <h3 class="arabic-text">ٱلْحَمِيد</h3>
+                <p class="english-name">Al-Hamid</p>
+                <p class="meaning-text">
+                    **The All-Praiseworthy**. The Praised, the Laudable, who is worthy of all praise.
+                </p>
+            </div>
+
+            <!-- Name 58: Al-Muhsi -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">58.</p>
+                <h3 class="arabic-text">ٱلْمُحْصِى</h3>
+                <p class="english-name">Al-Muhsi</p>
+                <p class="meaning-text">
+                    **The Accounter / The Reckoner**. The Enumerator, who comprehends and counts all things.
+                </p>
+            </div>
+
+            <!-- Name 59: Al-Mubdi' -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">59.</p>
+                <h3 class="arabic-text">ٱلْمُبْدِئ</h3>
+                <p class="english-name">Al-Mubdi'</p>
+                <p class="meaning-text">
+                    **The Originator / The Producer**. The Initiator, who originates all creation.
+                </p>
+            </div>
+
+            <!-- Name 60: Al-Mu'id -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">60.</p>
+                <h3 class="arabic-text">ٱلْمُعِيد</h3>
+                <p class="english-name">Al-Mu'id</p>
+                <p class="meaning-text">
+                    **The Restorer / The Reproducer**. The Reproducer, who brings creation back after death.
+                </p>
+            </div>
+
+            <!-- Name 61: Al-Muhyi -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">61.</p>
+                <h3 class="arabic-text">ٱلْمُحْيِى</h3>
+                <p class="english-name">Al-Muhyi</p>
+                <p class="meaning-text">
+                    **The Giver of Life**. The Bestower of Life, who gives life to all things.
+                </p>
+            </div>
+
+            <!-- Name 62: Al-Mumit -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">62.</p>
+                <h3 class="arabic-text">ٱلْمُمِيت</h3>
+                <p class="english-name">Al-Mumit</p>
+                <p class="meaning-text">
+                    **The Taker of Life / The Destroyer**. The Bringer of Death, who brings death to all living things.
+                </p>
+            </div>
+
+            <!-- Name 63: Al-Hayy -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">63.</p>
+                <h3 class="arabic-text">ٱلْحَىّ</h3>
+                <p class="english-name">Al-Hayy</p>
+                <p class="meaning-text">
+                    **The Ever-Living**. The Living, who is eternal and never dies.
+                </p>
+            </div>
+
+            <!-- Name 64: Al-Qayyum -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">64.</p>
+                <h3 class="arabic-text">ٱلْقَيُّوم</h3>
+                <p class="english-name">Al-Qayyum</p>
+                <p class="meaning-text">
+                    **The Self-Subsisting / The Maintainer of All**. The Sustainer of all existence, who upholds all things.
+                </p>
+            </div>
+
+            <!-- Name 65: Al-Wajid -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">65.</p>
+                <h3 class="arabic-text">ٱلْوَاجِد</h3>
+                <p class="english-name">Al-Wajid</p>
+                <p class="meaning-text">
+                    **The Perceiver / The Finder**. The All-Perceiving, who finds and achieves all He wills.
+                </p>
+            </div>
+
+            <!-- Name 66: Al-Majid -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">66.</p>
+                <h3 class="arabic-text">ٱلْمَاجِد</h3>
+                <p class="english-name">Al-Majid</p>
+                <p class="meaning-text">
+                    **The Illustrious / The Noble**. The Glorious, who is exalted in honor and abundant in goodness.
+                </p>
+            </div>
+
+            <!-- Name 67: Al-Wahid -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">67.</p>
+                <h3 class="arabic-text">ٱلْوَاحِد</h3>
+                <p class="english-name">Al-Wahid</p>
+                <p class="meaning-text">
+                    **The Unique / The One**. The One, the Indivisible, who has no partners or equals.
+                </p>
+            </div>
+
+            <!-- Name 68: Al-Ahad -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">68.</p>
+                <h3 class="arabic-text">ٱلْأَحَد</h3>
+                <p class="english-name">Al-Ahad</p>
+                <p class="meaning-text">
+                    **The Only One / The One and Only**. The Unique, the Absolute One, distinct from all creation.
+                </p>
+            </div>
+
+            <!-- Name 69: As-Samad -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">69.</p>
+                <h3 class="arabic-text">ٱلصَّمَد</h3>
+                <p class="english-name">As-Samad</p>
+                <p class="meaning-text">
+                    **The Eternal / The Independent**. The Self-Sufficient Master, upon whom all depend, but He depends on none.
+                </p>
+            </div>
+
+            <!-- Name 70: Al-Qadir -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">70.</p>
+                <h3 class="arabic-text">ٱلْقَادِر</h3>
+                <p class="english-name">Al-Qadir</p>
+                <p class="meaning-text">
+                    **The All-Powerful / The Able**. The Capable, who has the power to do all things.
+                </p>
+            </div>
+
+            <!-- Name 71: Al-Muqtadir -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">71.</p>
+                <h3 class="arabic-text">ٱلْمُقْتَدِر</h3>
+                <p class="english-name">Al-Muqtadir</p>
+                <p class="meaning-text">
+                    **The All-Determining / The Irresistible Power**. The Omnipotent, who has supreme power and capability.
+                </p>
+            </div>
+
+            <!-- Name 72: Al-Muqaddim -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">72.</p>
+                <h3 class="arabic-text">ٱلْمُقَدِّم</h3>
+                <p class="english-name">Al-Muqaddim</p>
+                <p class="meaning-text">
+                    **The Expediter / The Advancer**. The Foremost, who puts things in their proper order, advancing what He wills.
+                </p>
+            </div>
+
+            <!-- Name 73: Al-Mu'akhkhir -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">73.</p>
+                <h3 class="arabic-text">ٱلْمُؤَخِّر</h3>
+                <p class="english-name">Al-Mu'akhkhir</p>
+                <p class="meaning-text">
+                    **The Delayer / The Postponer**. The Postponer, who delays what He wills.
+                </p>
+            </div>
+
+            <!-- Name 74: Al-Awwal -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">74.</p>
+                <h3 class="arabic-text">ٱلْأَوَّل</h3>
+                <p class="english-name">Al-Awwal</p>
+                <p class="meaning-text">
+                    **The First**. The First, who has no beginning.
+                </p>
+            </div>
+
+            <!-- Name 75: Al-Akhir -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">75.</p>
+                <h3 class="arabic-text">ٱلْآخِر</h3>
+                <p class="english-name">Al-Akhir</p>
+                <p class="meaning-text">
+                    **The Last**. The Last, who has no end.
+                </p>
+            </div>
+
+            <!-- Name 76: Az-Zahir -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">76.</p>
+                <h3 class="arabic-text">ٱلظَّاهِر</h3>
+                <p class="english-name">Az-Zahir</p>
+                <p class="meaning-text">
+                    **The Manifest / The Evident**. The Outward, whose existence is clear and evident.
+                </p>
+            </div>
+
+            <!-- Name 77: Al-Batin -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">77.</p>
+                <h3 class="arabic-text">ٱلْبَاطِن</h3>
+                <p class="english-name">Al-Batin</p>
+                <p class="meaning-text">
+                    **The Hidden / The Inner**. The Inward, who is hidden from creation's sight.
+                </p>
+            </div>
+
+            <!-- Name 78: Al-Wali -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">78.</p>
+                <h3 class="arabic-text">ٱلْوَالِي</h3>
+                <p class="english-name">Al-Wali</p>
+                <p class="meaning-text">
+                    **The Governor / The Ruler**. The Sovereign, who administers and governs all creation.
+                </p>
+            </div>
+
+            <!-- Name 79: Al-Muta'ali -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">79.</p>
+                <h3 class="arabic-text">ٱلْمُتَعَالِي</h3>
+                <p class="english-name">Al-Muta'ali</p>
+                <p class="meaning-text">
+                    **The Most Exalted / The Supreme**. The Most High, who is above all human attributes.
+                </p>
+            </div>
+
+            <!-- Name 80: Al-Barr -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">80.</p>
+                <h3 class="arabic-text">ٱلْبَرّ</h3>
+                <p class="english-name">Al-Barr</p>
+                <p class="meaning-text">
+                    **The Source of All Goodness / The Righteous**. The Benefactor, the Good, who is the source of all righteousness and goodness.
+                </p>
+            </div>
+
+            <!-- Name 81: At-Tawwab -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">81.</p>
+                <h3 class="arabic-text">ٱلتَّوَّاب</h3>
+                <p class="english-name">At-Tawwab</p>
+                <p class="meaning-text">
+                    **The Acceptor of Repentance**. The Relenting, who accepts repentance and pardons sins.
+                </p>
+            </div>
+
+            <!-- Name 82: Al-Muntaqim -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">82.</p>
+                <h3 class="arabic-text">ٱلْمُنْتَقِم</h3>
+                <p class="english-name">Al-Muntaqim</p>
+                <p class="meaning-text">
+                    **The Avenger**. The Avenger, who punishes wrongdoers.
+                </p>
+            </div>
+
+            <!-- Name 83: Al-Afu -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">83.</p>
+                <h3 class="arabic-text">ٱلْعَفُوّ</h3>
+                <p class="english-name">Al-Afu</p>
+                <p class="meaning-text">
+                    **The Pardoner / The Eraser of Sins**. The Forgiver, who wipes out sins and grants pardon.
+                </p>
+            </div>
+
+            <!-- Name 84: Ar-Ra'uf -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">84.</p>
+                <h3 class="arabic-text">ٱلرَّءُوف</h3>
+                <p class="english-name">Ar-Ra'uf</p>
+                <p class="meaning-text">
+                    **The Most Kind / The Compassionate**. The Compassionate, who is full of tenderness and mercy.
+                </p>
+            </div>
+
+            <!-- Name 85: Malik-ul-Mulk -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">85.</p>
+                <h3 class="arabic-text">مَالِكُ ٱلْمُلْك</h3>
+                <p class="english-name">Malik-ul-Mulk</p>
+                <p class="meaning-text">
+                    **The Master of All Sovereignty / King of all Kingdoms**. The Owner of Absolute Sovereignty, who has ultimate dominion over all.
+                </p>
+            </div>
+
+            <!-- Name 86: Dhul-Jalali Wal-Ikram -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">86.</p>
+                <h3 class="arabic-text">ذُو ٱلْجَلَالِ وَٱلْإِكْرَام</h3>
+                <p class="english-name">Dhul-Jalali Wal-Ikram</p>
+                <p class="meaning-text">
+                    **The Possessor of Majesty and Honor**. The Lord of Majesty and Bounty, who is majestic and honorable.
+                </p>
+            </div>
+
+            <!-- Name 87: Al-Muqsit -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">87.</p>
+                <h3 class="arabic-text">ٱلْمُقْسِط</h3>
+                <p class="english-name">Al-Muqsit</p>
+                <p class="meaning-text">
+                    **The Just / The Equitable**. The Equitable, who administers justice with fairness.
+                </p>
+            </div>
+
+            <!-- Name 88: Al-Jami' -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">88.</p>
+                <h3 class="arabic-text">ٱلْجَامِع</h3>
+                <p class="english-name">Al-Jami'</p>
+                <p class="meaning-text">
+                    **The Gatherer / The Collector**. The Gatherer, who gathers all creation on the Day of Judgment.
+                </p>
+            </div>
+
+            <!-- Name 89: Al-Ghani -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">89.</p>
+                <h3 class="arabic-text">ٱلْغَنِيّ</h3>
+                <p class="english-name">Al-Ghani</p>
+                <p class="meaning-text">
+                    **The Self-Sufficient / The Rich**. The Independent, who is free of all needs and possess all wealth.
+                </p>
+            </div>
+
+            <!-- Name 90: Al-Mughni -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">90.</p>
+                <h3 class="arabic-text">ٱلْمُغْنِي</h3>
+                <p class="english-name">Al-Mughni</p>
+                <p class="meaning-text">
+                    **The Enricher / The Sufficer**. The Enricher, who grants sufficiency and richness to whom He wills.
+                </p>
+            </div>
+
+            <!-- Name 91: Al-Mani' -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">91.</p>
+                <h3 class="arabic-text">ٱلْمَانِع</h3>
+                <p class="english-name">Al-Mani'</p>
+                <p class="meaning-text">
+                    **The Preventer / The Withholder**. The Withholder, who prevents or withholds what He wills.
+                </p>
+            </div>
+
+            <!-- Name 92: Ad-Darr -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">92.</p>
+                <h3 class="arabic-text">ٱلضَّارّ</h3>
+                <p class="english-name">Ad-Darr</p>
+                <p class="meaning-text">
+                    **The Distressor / The Harmer**. The Afflictor, who sends affliction to whom He wills.
+                </p>
+            </div>
+
+            <!-- Name 93: An-Nafi' -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">93.</p>
+                <h3 class="arabic-text">ٱلنَّافِع</h3>
+                <p class="english-name">An-Nafi'</p>
+                <p class="meaning-text">
+                    **The Bestower of Benefits / The Propitious**. The Benefactor, who grants benefits to whom He wills.
+                </p>
+            </div>
+
+            <!-- Name 94: An-Nur -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">94.</p>
+                <h3 class="arabic-text">ٱلنُّور</h3>
+                <p class="english-name">An-Nur</p>
+                <p class="meaning-text">
+                    **The Light**. The Light, who illuminates the heavens and the earth.
+                </p>
+            </div>
+
+            <!-- Name 95: Al-Hadi -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">95.</p>
+                <h3 class="arabic-text">ٱلْهَادِي</h3>
+                <p class="english-name">Al-Hadi</p>
+                <p class="meaning-text">
+                    **The Guide**. The Guide, who guides His creation to the truth.
+                </p>
+            </div>
+
+            <!-- Name 96: Al-Badi' -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">96.</p>
+                <h3 class="arabic-text">ٱلْبَدِيع</h3>
+                <p class="english-name">Al-Badi'</p>
+                <p class="meaning-text">
+                    **The Incomparable / The Originator**. The Originator, who creates in a wonderful and unparalleled way.
+                </p>
+            </div>
+
+            <!-- Name 97: Al-Baqi -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">97.</p>
+                <h3 class="arabic-text">ٱلْبَاقِي</h3>
+                <p class="english-name">Al-Baqi</p>
+                <p class="meaning-text">
+                    **The Ever-Enduring / The Everlasting**. The Enduring, who remains forever and does not perish.
+                </p>
+            </div>
+
+            <!-- Name 98: Al-Warith -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">98.</p>
+                <h3 class="arabic-text">ٱلْوَارِث</h3>
+                <p class="english-name">Al-Warith</p>
+                <p class="meaning-text">
+                    **The Inheritor of All**. The Inheritor, who remains after all creation perishes.
+                </p>
+            </div>
+
+            <!-- Name 99: Ar-Rashid -->
+            <div class="name-card">
+                <p class="text-sm font-semibold text-gray-500 text-left">99.</p>
+                <h3 class="arabic-text">ٱلرَّشِيد</h3>
+                <p class="english-name">Ar-Rashid</p>
+                <p class="meaning-text">
+                    **The Guide to the Right Path / The Righteous Teacher**. The Guide, who guides to righteousness and truth.
+                </p>
+            </div>
+        </main>
+
+        <!-- Scroll to Top Button -->
+        <button id="scrollToTopBtn" aria-label="Scroll to top">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+        </button>
+
+        <!-- Footer Section -->
+        <footer class="text-center mt-12 text-gray-500 text-sm w-full">
+            <p>
+                This page compiles information on the 99 Names of Allah (Asmaul Husna) based on Islamic traditions.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Get the button
+        let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "flex"; // Use flex to center icon
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+</html>
