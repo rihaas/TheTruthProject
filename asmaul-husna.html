@@ -50,22 +50,25 @@
             transition: all 0.3s ease-in-out;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer default shadow */
             position: relative;
-            overflow: hidden;
+            overflow: hidden; /* Important to hide overflow before expansion */
             border-radius: 0.75rem;
             border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border for dark theme */
             background-color: #282828; /* Dark card background */
             padding: 1.5rem; /* Consistent padding */
             text-align: left; /* Align text within cards */
-            display: flex; /* Use flexbox for internal layout */
+            display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            min-height: 180px; /* Ensure consistent card height */
+            justify-content: flex-start; /* Align content to top */
+            min-height: 180px; /* Ensure consistent initial card height */
+            cursor: default; /* Indicate it's interactive, but not a click */
         }
 
         .name-card:hover {
             transform: translateY(-5px); /* Lift */
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
             background-color: #2D2D2D; /* Slightly lighter on hover */
+            /* Allow card to expand height on hover */
+            min-height: auto;
         }
 
         .name-card h3 {
@@ -84,6 +87,31 @@
             font-size: 0.9rem;
             line-height: 1.5;
             flex-grow: 1; /* Allows text to fill space */
+            margin-bottom: 0.5rem; /* Adjusted for hover content */
+        }
+
+        /* Styles for the detailed meaning on hover */
+        .detailed-meaning {
+            max-height: 0; /* Initially hidden */
+            opacity: 0; /* Initially transparent */
+            visibility: hidden; /* Initially not visible to screen readers/mouse */
+            overflow: hidden; /* Hide overflow content */
+            transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            padding-top: 0; /* Start with no padding */
+            border-top: 1px solid transparent; /* Placeholder for smooth transition */
+            margin-top: 0;
+            color: #C0C0C0; /* Slightly lighter for detailed text */
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .name-card:hover .detailed-meaning {
+            max-height: 500px; /* Arbitrary large value to allow full expansion */
+            opacity: 1;
+            visibility: visible;
+            padding-top: 1rem; /* Add padding when expanded */
+            margin-top: 0.5rem; /* Space from main meaning */
+            border-top: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border on expansion */
         }
 
         /* Custom scroll-to-top button styling (consistent with homepage) */
@@ -196,8 +224,13 @@
                 <h3 class="arabic-text">ٱللَّه</h3>
                 <p class="english-name">Allah</p>
                 <p class="meaning-text">
-                    **The God**. This is the proper and most comprehensive name for the Creator, encompassing all divine attributes. It signifies the one and only God, unique in His essence, attributes, and actions, to whom all worship is due.
+                    **The God**. This is the proper and most comprehensive name for the Creator, encompassing all divine attributes.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        It signifies the one and only God, unique in His essence, attributes, and actions, to whom all worship is due. This is the greatest of all names, to which all other names of Allah ultimately refer.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 2: Ar-Rahman -->
@@ -206,8 +239,13 @@
                 <h3 class="arabic-text">ٱلرَّحْمَـٰن</h3>
                 <p class="english-name">Ar-Rahman</p>
                 <p class="meaning-text">
-                    **The Most Merciful / The Beneficent**. This name signifies Allah's expansive and universal mercy that extends to all of His creation, including both believers and disbelievers, in this worldly life. It is an attribute of His very essence.
+                    **The Most Merciful / The Beneficent**. Allah's expansive and universal mercy that extends to all of His creation.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        This mercy encompasses both believers and disbelievers in this worldly life, providing sustenance, health, and all necessities. It is an attribute of His very essence, boundless and all-encompassing.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 3: Ar-Rahim -->
@@ -216,8 +254,13 @@
                 <h3 class="arabic-text">ٱلرَّحِيم</h3>
                 <p class="english-name">Ar-Rahim</p>
                 <p class="meaning-text">
-                    **The Especially Merciful / The Compassionate**. This name denotes Allah's specific and enduring mercy reserved for the believers, particularly in the Hereafter. It highlights the bountiful rewards and forgiveness granted to those who truly submit to Him.
+                    **The Especially Merciful / The Compassionate**. Denotes Allah's specific and enduring mercy reserved for the believers.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        This mercy is manifested particularly in the Hereafter, highlighting the bountiful rewards, forgiveness, and eternal blessings granted to those who truly submit to Him and strive to live righteously.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 4: Al-Malik -->
@@ -226,8 +269,13 @@
                 <h3 class="arabic-text">ٱلْمَلِك</h3>
                 <p class="english-name">Al-Malik</p>
                 <p class="meaning-text">
-                    **The Absolute Sovereign / The King**. Allah is the sole and ultimate King, possessing all dominion and authority over everything in existence. He manages all affairs without needing assistance, and His command is absolute.
+                    **The Absolute Sovereign / The King**. Allah is the sole and ultimate King, possessing all dominion and authority over everything in existence.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He manages all affairs without needing assistance, and His command is absolute and undisputed. He is the true Owner and Ruler of the heavens and the earth.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 5: Al-Quddus -->
@@ -236,8 +284,13 @@
                 <h3 class="arabic-text">ٱلْقُدُّوس</h3>
                 <p class="english-name">Al-Quddus</p>
                 <p class="meaning-text">
-                    **The Most Holy / The Pure One**. This name emphasizes Allah's absolute purity, perfection, and transcendence from all imperfections, faults, and human flaws. He is far removed from any deficiency.
+                    **The Most Holy / The Pure One**. Emphasizes Allah's absolute purity, perfection, and transcendence from all imperfections.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is far removed from any deficiency, error, or human flaw. His holiness is absolute, and He is beyond any form of limitation or comparison.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 6: As-Salam -->
@@ -246,8 +299,13 @@
                 <h3 class="arabic-text">ٱلسَّلَام</h3>
                 <p class="english-name">As-Salam</p>
                 <p class="meaning-text">
-                    **The Giver of Peace / The Source of Peace**. Allah is the embodiment of peace and the ultimate source of all peace and security in the universe. He grants safety and well-being to His creation.
+                    **The Giver of Peace / The Source of Peace**. Allah is the embodiment of peace and the ultimate source of all peace and security in the universe.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He grants safety and well-being to His creation, protecting them from harm. He is also the One from whom all peace originates and to whom all peace returns.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 7: Al-Mu'min -->
@@ -256,8 +314,13 @@
                 <h3 class="arabic-text">ٱلْمُؤْمِن</h3>
                 <p class="english-name">Al-Mu'min</p>
                 <p class="meaning-text">
-                    **The Giver of Faith / The Granter of Security**. Allah is the one who grants faith and security to His servants. He affirms the truth of His words and promises, ensuring certainty and trust.
+                    **The Giver of Faith / The Granter of Security**. Allah is the one who grants faith and security to His servants.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He affirms the truth of His words and promises, ensuring certainty and trust. He protects and assures His believers, making them feel secure in His plan and promise.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 8: Al-Muhaymin -->
@@ -266,8 +329,13 @@
                 <h3 class="arabic-text">ٱلْمُهَيْمِن</h3>
                 <p class="english-name">Al-Muhaymin</p>
                 <p class="meaning-text">
-                    **The Overseer / The Protector / The Dominant One**. Allah is the ultimate Guardian and Overseer of all creation. He watches over everything, preserving and maintaining it, and His control is absolute.
+                    **The Overseer / The Protector / The Dominant One**. Allah is the ultimate Guardian and Overseer of all creation.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He watches over everything, preserving and maintaining it, and His control is absolute and comprehensive. Nothing escapes His vigilance or care.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 9: Al-Aziz -->
@@ -276,8 +344,13 @@
                 <h3 class="arabic-text">ٱلْعَزِيز</h3>
                 <p class="english-name">Al-Aziz</p>
                 <p class="meaning-text">
-                    **The All-Mighty / The Irresistible**. Allah possesses absolute power and strength, being victorious over everything. Nothing can overcome Him, and His will is always executed.
+                    **The All-Mighty / The Irresistible**. Allah possesses absolute power and strength, being victorious over everything.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        Nothing can overcome Him, and His will is always executed. He is the one who cannot be overcome or subdued, possessing unmatched might and honor.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 10: Al-Jabbar -->
@@ -286,8 +359,13 @@
                 <h3 class="arabic-text">ٱلْجَبَّار</h3>
                 <p class="english-name">Al-Jabbar</p>
                 <p class="meaning-text">
-                    **The Compeller / The Restorer / The Repairer**. Allah is the One who compels all to His will and is able to mend and restore anything that is broken. He has the power to enforce His decrees.
+                    **The Compeller / The Restorer / The Repairer**. Allah is the One who compels all to His will and is able to mend and restore anything that is broken.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He has the power to enforce His decrees and can restore well-being to those who are suffering. He can also compel the rebellious to His obedience.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 11: Al-Mutakabbir -->
@@ -296,8 +374,13 @@
                 <h3 class="arabic-text">ٱلْمُتَكَبِّر</h3>
                 <p class="english-name">Al-Mutakabbir</p>
                 <p class="meaning-text">
-                    **The Supreme / The Majestic / The Possessor of All Greatness**. This name asserts Allah's absolute greatness and superiority over all creation. He is exalted above all things and possesses ultimate pride and grandeur.
+                    **The Supreme / The Majestic / The Possessor of All Greatness**. Asserts Allah's absolute greatness and superiority over all creation.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is exalted above all things and possesses ultimate pride and grandeur, being far beyond any human conception of greatness. This greatness is inherent to His being.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 12: Al-Khaliq -->
@@ -306,8 +389,13 @@
                 <h3 class="arabic-text">ٱلْخَالِق</h3>
                 <p class="english-name">Al-Khaliq</p>
                 <p class="meaning-text">
-                    **The Creator / The Maker**. Allah is the one who creates everything from nothing, bringing things into existence according to His plan and design. He is the originator of all existence.
+                    **The Creator / The Maker**. Allah is the one who creates everything from nothing, bringing things into existence according to His plan and design.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is the originator of all existence, from the largest galaxies to the smallest particles, all fashioned by His will and perfect knowledge.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 13: Al-Bari' -->
@@ -318,6 +406,11 @@
                 <p class="meaning-text">
                     **The Evolver / The Maker / The Fashioner**. Allah is the one who fashions and creates distinct beings from pre-existing matter, giving them specific forms and functions in perfection.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He brings things into being, differentiating one from another, displaying His unique power in shaping and bringing forth creation into existence.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 14: Al-Musawwir -->
@@ -326,8 +419,13 @@
                 <h3 class="arabic-text">ٱلْمُصَوِّر</h3>
                 <p class="english-name">Al-Musawwir</p>
                 <p class="meaning-text">
-                    **The Fashioner of Forms / The Designer**. Allah is the ultimate artist and designer, who gives the most beautiful and distinct forms, colors, and shapes to His creation with precision and beauty.
+                    **The Fashioner of Forms / The Designer**. Allah is the ultimate artist and designer, who gives the most beautiful and distinct forms, colors, and shapes to His creation.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He meticulously designs and creates every form with precision and beauty, perfecting the appearance and attributes of all beings.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 15: Al-Ghaffar -->
@@ -336,8 +434,13 @@
                 <h3 class="arabic-text">ٱلْغَفَّار</h3>
                 <p class="english-name">Al-Ghaffar</p>
                 <p class="meaning-text">
-                    **The All-Forgiving / The Forgiver**. Allah is the one who repeatedly and abundantly forgives sins and faults, even major ones, for those who sincerely repent. He covers and conceals His servants' sins.
+                    **The All-Forgiving / The Forgiver**. Allah is the one who repeatedly and abundantly forgives sins and faults, even major ones, for those who sincerely repent.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He covers and conceals His servants' sins, protecting them from exposure and the resultant disgrace, time and time again, as long as sincere repentance is offered.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 16: Al-Qahhar -->
@@ -346,8 +449,13 @@
                 <h3 class="arabic-text">ٱلْقَهَّار</h3>
                 <p class="english-name">Al-Qahhar</p>
                 <p class="meaning-text">
-                    **The All-Subduer / The Irresistible**. Allah is the ultimately Dominant One, whose power and might subdue everything. All creation is under His command, and none can resist His will.
+                    **The All-Subduer / The Irresistible**. Allah is the ultimately Dominant One, whose power and might subdue everything.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        All creation is under His command, and none can resist His will or escape His grasp. He is the one who holds complete and irresistible sway over all.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 17: Al-Wahhab -->
@@ -356,8 +464,13 @@
                 <h3 class="arabic-text">ٱلْوَهَّاب</h3>
                 <p class="english-name">Al-Wahhab</p>
                 <p class="meaning-text">
-                    **The All-Bountiful / The Bestower**. Allah is the Giver of Gifts, who grants favors and blessings freely, without expecting anything in return. His generosity is limitless and unconditional.
+                    **The All-Bountiful / The Bestower**. Allah is the Giver of Gifts, who grants favors and blessings freely, without expecting anything in return.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His generosity is limitless and unconditional, bestowing all types of provisions, from life itself to guidance and countless other blessings upon His creation.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 18: Ar-Razzaq -->
@@ -366,8 +479,13 @@
                 <h3 class="arabic-text">ٱلرَّزَّاق</h3>
                 <p class="english-name">Ar-Razzaq</p>
                 <p class="meaning-text">
-                    **The All-Provider / The Sustainer**. Allah is the ultimate Sustainer, who provides all forms of sustenance and livelihood to His creation, whether physical, spiritual, or emotional.
+                    **The All-Provider / The Sustainer**. Allah is the ultimate Sustainer, who provides all forms of sustenance and livelihood to His creation.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        This includes not only physical provisions like food and water but also spiritual and emotional nourishment. He is the sole source of all provisions.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 19: Al-Fattah -->
@@ -376,8 +494,13 @@
                 <h3 class="arabic-text">ٱلْفَتَّاح</h3>
                 <p class="english-name">Al-Fattah</p>
                 <p class="meaning-text">
-                    **The Opener / The Judge**. Allah is the Opener of all things, who opens the ways to success, victory, and knowledge. He also justly judges between His servants.
+                    **The Opener / The Judge**. Allah is the Opener of all things, who opens the ways to success, victory, and knowledge.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He also justly judges between His servants. He opens doors of mercy, provision, and understanding, and clarifies matters with His perfect judgment.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 20: Al-Alim -->
@@ -386,8 +509,13 @@
                 <h3 class="arabic-text">ٱلْعَلِيم</h3>
                 <p class="english-name">Al-Alim</p>
                 <p class="meaning-text">
-                    **The All-Knowing / The Omniscient**. Allah's knowledge encompasses everything: the seen and unseen, the past, present, and future, the apparent and hidden. Nothing is beyond His perfect knowledge.
+                    **The All-Knowing / The Omniscient**. Allah's knowledge encompasses everything: the seen and unseen, the past, present, and future, the apparent and hidden.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        Nothing is beyond His perfect knowledge, whether it's a thought in the heart, a drop in the ocean, or a star in the galaxy. His knowledge is absolute and eternal.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 21: Al-Qabid -->
@@ -396,8 +524,13 @@
                 <h3 class="arabic-text">ٱلْقَابِض</h3>
                 <p class="english-name">Al-Qabid</p>
                 <p class="meaning-text">
-                    **The Restrainer / The Withholder**. Allah is the one who withholds and restricts sustenance, blessings, and lives by His perfect wisdom. This manifests in periods of difficulty or scarcity.
+                    **The Restrainer / The Withholder**. Allah is the one who withholds and restricts sustenance, blessings, and lives by His perfect wisdom.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        This manifests in periods of difficulty or scarcity. This name is often mentioned in conjunction with Al-Basit, showing His balanced control over expansion and restriction.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 22: Al-Basit -->
@@ -406,8 +539,13 @@
                 <h3 class="arabic-text">ٱلْبَاسِط</h3>
                 <p class="english-name">Al-Basit</p>
                 <p class="meaning-text">
-                    **The Extender / The Giver of Abundance**. Allah is the one who expands and extends sustenance and blessings, bringing ease and prosperity. This is often mentioned in conjunction with Al-Qabid, showing His balanced control.
+                    **The Extender / The Giver of Abundance**. Allah is the one who expands and extends sustenance and blessings, bringing ease and prosperity.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        This is often mentioned in conjunction with Al-Qabid, showing His balanced control over expansion and restriction, always with perfect wisdom and justice.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 23: Al-Khafid -->
@@ -416,8 +554,13 @@
                 <h3 class="arabic-text">ٱلْخَافِض</h3>
                 <p class="english-name">Al-Khafid</p>
                 <p class="meaning-text">
-                    **The Abaser / The Humbler**. Allah is the One who lowers and abases the proud, the arrogant, and those who rebel against Him. He can humble anyone He wills.
+                    **The Abaser / The Humbler**. Allah is the One who lowers and abases the proud, the arrogant, and those who rebel against Him.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He can humble anyone He wills, and this is a manifestation of His absolute authority and power over all of creation.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 24: Ar-Rafi' -->
@@ -426,8 +569,13 @@
                 <h3 class="arabic-text">ٱلرَّافِع</h3>
                 <p class="english-name">Ar-Rafi'</p>
                 <p class="meaning-text">
-                    **The Exalter / The Uplifter**. Allah is the One who raises the ranks of believers, exalts nations, and elevates anything He wills. He can uplift those who are humble and righteous.
+                    **The Exalter / The Uplifter**. Allah is the One who raises the ranks of believers, exalts nations, and elevates anything He wills.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He can uplift those who are humble and righteous, granting them status and dignity in this world and the Hereafter, purely by His will and wisdom.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 25: Al-Mu'izz -->
@@ -436,8 +584,13 @@
                 <h3 class="arabic-text">ٱلْمُعِزّ</h3>
                 <p class="english-name">Al-Mu'izz</p>
                 <p class="meaning-text">
-                    **The Giver of Honor / The Honorer**. Allah is the one who grants honor, dignity, and power to whom He wills. True honor comes only from Him and is bestowed upon those He chooses.
+                    **The Giver of Honor / The Honorer**. Allah is the one who grants honor, dignity, and power to whom He wills.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        True honor comes only from Him and is bestowed upon those He chooses, often through obedience to Him and righteous conduct.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 26: Al-Muzill -->
@@ -446,8 +599,13 @@
                 <h3 class="arabic-text">ٱلْمُذِلّ</h3>
                 <p class="english-name">Al-Muzill</p>
                 <p class="meaning-text">
-                    **The Giver of Dishonor / The Humiliator**. Allah is the One who brings low and humiliates whom He wills. This is often a consequence for those who are arrogant or oppressive.
+                    **The Giver of Dishonor / The Humiliator**. Allah is the One who brings low and humiliates whom He wills.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        This is often a consequence for those who are arrogant, oppressive, or rebel against His commands. It demonstrates His absolute power to humble anyone.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 27: As-Sami' -->
@@ -456,8 +614,13 @@
                 <h3 class="arabic-text">ٱلسَّمِيع</h3>
                 <p class="english-name">As-Sami'</p>
                 <p class="meaning-text">
-                    **The All-Hearing / The Hearer**. Allah hears every sound, whether loud or silent, apparent or hidden. His hearing encompasses all things, from the rustling of a leaf to the deepest whispers of the heart.
+                    **The All-Hearing / The Hearer**. Allah hears every sound, whether loud or silent, apparent or hidden.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His hearing encompasses all things, from the rustling of a leaf to the deepest whispers of the heart, making nothing hidden from Him.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 28: Al-Basir -->
@@ -466,8 +629,13 @@
                 <h3 class="arabic-text">ٱلْبَصِير</h3>
                 <p class="english-name">Al-Basir</p>
                 <p class="meaning-text">
-                    **The All-Seeing / The Seer**. Allah sees all things, visible and invisible, minute or vast. Nothing is hidden from His sight, and He perceives the innermost thoughts and intentions.
+                    **The All-Seeing / The Seer**. Allah sees all things, visible and invisible, minute or vast.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        Nothing is hidden from His sight, and He perceives the innermost thoughts and intentions. His vision is absolute and transcends all limitations.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 29: Al-Hakam -->
@@ -476,8 +644,13 @@
                 <h3 class="arabic-text">ٱلْحَكَم</h3>
                 <p class="english-name">Al-Hakam</p>
                 <p class="meaning-text">
-                    **The Judge / The Arbitrator**. Allah is the ultimate Judge who decides justly between His creation. His judgments are always fair and righteous, and He is the ultimate authority in all disputes.
+                    **The Judge / The Arbitrator**. Allah is the ultimate Judge who decides justly between His creation.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His judgments are always fair and righteous, and He is the ultimate authority in all disputes, rendering verdicts with perfect wisdom and knowledge.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 30: Al-Adl -->
@@ -486,8 +659,13 @@
                 <h3 class="arabic-text">ٱلْعَدْل</h3>
                 <p class="english-name">Al-Adl</p>
                 <p class="meaning-text">
-                    **The Most Just / The Equitable**. Allah is perfectly just and equitable in all His actions and decrees. He does not oppress anyone, and His justice is absolute and without any bias.
+                    **The Most Just / The Equitable**. Allah is perfectly just and equitable in all His actions and decrees.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He does not oppress anyone, and His justice is absolute and without any bias, ensuring fairness in all His dealings with creation.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 31: Al-Latif -->
@@ -496,8 +674,13 @@
                 <h3 class="arabic-text">ٱلْلَّطِيف</h3>
                 <p class="english-name">Al-Latif</p>
                 <p class="meaning-text">
-                    **The Subtle One / The Most Kind / The Gentle**. Allah is exceedingly subtle, gentle, and kind. He knows the most intricate and hidden things, and His kindness reaches His servants in gentle and imperceptible ways.
+                    **The Subtle One / The Most Kind / The Gentle**. Allah is exceedingly subtle, gentle, and kind.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He knows the most intricate and hidden things, and His kindness reaches His servants in gentle and imperceptible ways, providing for their needs subtly.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 32: Al-Khabir -->
@@ -506,8 +689,13 @@
                 <h3 class="arabic-text">ٱلْخَبِير</h3>
                 <p class="english-name">Al-Khabir</p>
                 <p class="meaning-text">
-                    **The All-Aware / The Acquainted**. Allah is fully aware of everything, including the inner dimensions, hidden intentions, and every detail of His creation. Nothing can escape His comprehensive awareness.
+                    **The All-Aware / The Acquainted**. Allah is fully aware of everything, including the inner dimensions, hidden intentions, and every detail of His creation.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        Nothing can escape His comprehensive awareness, as He is acquainted with the innermost secrets and deepest realities of all things.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 33: Al-Halim -->
@@ -516,8 +704,13 @@
                 <h3 class="arabic-text">ٱلْحَلِيم</h3>
                 <p class="english-name">Al-Halim</p>
                 <p class="meaning-text">
-                    **The Forbearing / The Most Clement**. Allah is incredibly forbearing and patient. He delays punishment for sins, allowing time for repentance and does not hasten His wrath, despite His immense power.
+                    **The Forbearing / The Most Clement**. Allah is incredibly forbearing and patient.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He delays punishment for sins, allowing time for repentance, and does not hasten His wrath, despite His immense power and authority.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 34: Al-Azim -->
@@ -526,8 +719,13 @@
                 <h3 class="arabic-text">ٱلْعَظِيم</h3>
                 <p class="english-name">Al-Azim</p>
                 <p class="meaning-text">
-                    **The Magnificent / The Great One**. Allah is the Most Grand and Glorious, whose greatness is beyond human comprehension. His attributes, power, and glory are immense and majestic.
+                    **The Magnificent / The Great One**. Allah is the Most Grand and Glorious, whose greatness is beyond human comprehension.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His attributes, power, and glory are immense and majestic, encompassing all creation and transcending all limitations.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 35: Al-Ghafur -->
@@ -536,8 +734,13 @@
                 <h3 class="arabic-text">ٱلْغَفُور</h3>
                 <p class="english-name">Al-Ghafur</p>
                 <p class="meaning-text">
-                    **The All-Forgiving / The Exceedingly Forgiving**. This name emphasizes Allah's abundant and continuous forgiveness. He is the one who forgives sins repeatedly and covers up the faults of His servants.
+                    **The All-Forgiving / The Exceedingly Forgiving**. This name emphasizes Allah's abundant and continuous forgiveness.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is the one who forgives sins repeatedly and covers up the faults of His servants, extending His mercy to those who sincerely seek His pardon.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 36: Ash-Shakur -->
@@ -546,8 +749,13 @@
                 <h3 class="arabic-text">ٱلشَّكُور</h3>
                 <p class="english-name">Ash-Shakur</p>
                 <p class="meaning-text">
-                    **The Most Appreciative / The Acknowledging of Thanks**. Allah is the one who appreciates and generously rewards even the smallest good deeds and sincere acts of worship. He multiplies rewards for His servants' efforts.
+                    **The Most Appreciative / The Acknowledging of Thanks**. Allah is the one who appreciates and generously rewards even the smallest good deeds and sincere acts of worship.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He multiplies rewards for His servants' efforts, showing immense gratitude for their obedience and devotion, even though He is self-sufficient.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 37: Al-Ali -->
@@ -556,8 +764,13 @@
                 <h3 class="arabic-text">ٱلْعَلِىّ</h3>
                 <p class="english-name">Al-Ali</p>
                 <p class="meaning-text">
-                    **The Most High / The Most Exalted**. Allah is supremely high and exalted above all creation in His essence, attributes, and power. Nothing is above Him, and He is beyond all human comprehension.
+                    **The Most High / The Most Exalted**. Allah is supremely high and exalted above all creation in His essence, attributes, and power.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        Nothing is above Him, and He is beyond all human comprehension and perception of elevation, truly being the Most Exalted.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 38: Al-Kabir -->
@@ -566,8 +779,13 @@
                 <h3 class="arabic-text">ٱلْكَبِير</h3>
                 <p class="english-name">Al-Kabir</p>
                 <p class="meaning-text">
-                    **The Most Great / The Grand**. This name signifies Allah's absolute greatness and vastness. He is supreme in His attributes and unique in His power, making Him the greatest of all.
+                    **The Most Great / The Grand**. This name signifies Allah's absolute greatness and vastness.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is supreme in His attributes and unique in His power, making Him the greatest of all. His greatness is incomprehensible to human minds.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 39: Al-Hafiz -->
@@ -576,8 +794,13 @@
                 <h3 class="arabic-text">ٱلْحَفِيظ</h3>
                 <p class="english-name">Al-Hafiz</p>
                 <p class="meaning-text">
-                    **The Preserver / The Protector**. Allah is the ultimate Guardian and Preserver who protects and maintains all things, from the vast universe to the smallest atom. He safeguards creation from harm.
+                    **The Preserver / The Protector**. Allah is the ultimate Guardian and Preserver who protects and maintains all things.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        From the vast universe to the smallest atom, He safeguards creation from harm, corruption, and loss. His preservation is perfect and all-encompassing.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 40: Al-Muqit -->
@@ -586,8 +809,13 @@
                 <h3 class="arabic-text">ٱلْمُقِيت</h3>
                 <p class="english-name">Al-Muqit</p>
                 <p class="meaning-text">
-                    **The Provider / The Maintainer / The Sustainer**. Allah is the one who sustains all creation, providing nourishment and power to all beings according to their needs. He has full control over sustenance.
+                    **The Provider / The Maintainer / The Sustainer**. Allah is the one who sustains all creation, providing nourishment and power to all beings according to their needs.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He has full control over sustenance, and provides for all His creatures, ensuring their well-being and growth in every aspect.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 41: Al-Hasib -->
@@ -596,8 +824,13 @@
                 <h3 class="arabic-text">ٱلْحَسِيب</h3>
                 <p class="english-name">Al-Hasib</p>
                 <p class="meaning-text">
-                    **The Accounter / The Reckoner / The Sufficient One**. Allah is the one who takes account of all deeds and provides sufficiency for His servants. He is sufficient for all needs and will hold everyone accountable.
+                    **The Accounter / The Reckoner / The Sufficient One**. Allah is the one who takes account of all deeds and provides sufficiency for His servants.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is sufficient for all needs and will hold everyone accountable for their actions on the Day of Judgment, with perfect precision and justice.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 42: Al-Jalil -->
@@ -606,8 +839,13 @@
                 <h3 class="arabic-text">ٱلْجَلِيل</h3>
                 <p class="english-name">Al-Jalil</p>
                 <p class="meaning-text">
-                    **The Majestic / The Sublime**. Allah is the embodiment of greatness, majesty, and glory. His attributes are magnificent, and He is revered and exalted above all.
+                    **The Majestic / The Sublime**. Allah is the embodiment of greatness, majesty, and glory.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His attributes are magnificent, and He is revered and exalted above all, inspiring awe and profound respect in His creation.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 43: Al-Karim -->
@@ -616,8 +854,13 @@
                 <h3 class="arabic-text">ٱلْكَرِيم</h3>
                 <p class="english-name">Al-Karim</p>
                 <p class="meaning-text">
-                    **The Most Generous / The Bountiful / The Noble**. Allah is supremely generous, providing His blessings abundantly and unconditionally. He is noble, honorable, and forgives readily.
+                    **The Most Generous / The Bountiful / The Noble**. Allah is supremely generous, providing His blessings abundantly and unconditionally.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is noble, honorable, and forgives readily, bestowing His favors even upon those who disobey Him. His generosity is infinite.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 44: Ar-Raqib -->
@@ -626,8 +869,13 @@
                 <h3 class="arabic-text">ٱلرَّقِيب</h3>
                 <p class="english-name">Ar-Raqib</p>
                 <p class="meaning-text">
-                    **The Ever-Watchful / The Watcher**. Allah constantly watches over all His creation. Nothing escapes His notice, and He is fully aware of every action, thought, and condition of His servants.
+                    **The Ever-Watchful / The Watcher**. Allah constantly watches over all His creation.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        Nothing escapes His notice, and He is fully aware of every action, thought, and condition of His servants. His watchfulness ensures justice and order.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 45: Al-Mujib -->
@@ -636,8 +884,13 @@
                 <h3 class="arabic-text">ٱلْمُجِيب</h3>
                 <p class="english-name">Al-Mujib</p>
                 <p class="meaning-text">
-                    **The Responder to Prayer / The Answerer**. Allah is the one who responds to the prayers and supplications of those who call upon Him. He answers according to His infinite wisdom and knowledge.
+                    **The Responder to Prayer / The Answerer**. Allah is the one who responds to the prayers and supplications of those who call upon Him.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He answers according to His infinite wisdom and knowledge, either by granting the request, averting a harm, or saving it for the Hereafter.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 46: Al-Wasi' -->
@@ -646,8 +899,13 @@
                 <h3 class="arabic-text">ٱلْوَاسِع</h3>
                 <p class="english-name">Al-Wasi'</p>
                 <p class="meaning-text">
-                    **The All-Encompassing / The Boundless**. Allah's knowledge, mercy, power, and bounty are vast and limitless. His embrace extends to all things, and His blessings are without bounds.
+                    **The All-Encompassing / The Boundless**. Allah's knowledge, mercy, power, and bounty are vast and limitless.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His embrace extends to all things, and His blessings are without bounds, covering every aspect of existence.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 47: Al-Hakim -->
@@ -656,8 +914,13 @@
                 <h3 class="arabic-text">ٱلْحَكِيم</h3>
                 <p class="english-name">Al-Hakim</p>
                 <p class="meaning-text">
-                    **The All-Wise / The Wise**. Allah is perfect in His wisdom, knowledge, and judgment. Every action and decree from Him is based on ultimate wisdom and serves a divine purpose.
+                    **The All-Wise / The Wise**. Allah is perfect in His wisdom, knowledge, and judgment.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        Every action and decree from Him is based on ultimate wisdom and serves a divine purpose, even if humans cannot comprehend it.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 48: Al-Wadud -->
@@ -666,8 +929,13 @@
                 <h3 class="arabic-text">ٱلْوَدُود</h3>
                 <p class="english-name">Al-Wadud</p>
                 <p class="meaning-text">
-                    **The Most Loving / The Loving One**. Allah is the source of all love and shows immense love and affection towards His righteous servants. He loves those who do good and are repentant.
+                    **The Most Loving / The Loving One**. Allah is the source of all love and shows immense love and affection towards His righteous servants.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He loves those who do good and are repentant, and His love is manifested in His abundant blessings and guidance.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 49: Al-Majid -->
@@ -676,8 +944,13 @@
                 <h3 class="arabic-text">ٱلْمَجِيد</h3>
                 <p class="english-name">Al-Majid</p>
                 <p class="meaning-text">
-                    **The Most Glorious / The Illustrious**. Allah is the Glorious, whose glory is immense, magnificent, and whose qualities are noble. His majesty is profound and awe-inspiring.
+                    **The Most Glorious / The Illustrious**. Allah is the Glorious, whose glory is immense, magnificent, and whose qualities are noble.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His majesty is profound and awe-inspiring, and He is revered for His perfect and abundant attributes.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 50: Al-Ba'ith -->
@@ -686,8 +959,13 @@
                 <h3 class="arabic-text">ٱلْبَاعِث</h3>
                 <p class="english-name">Al-Ba'ith</p>
                 <p class="meaning-text">
-                    **The Resurrector / The Awakener**. Allah is the one who sends forth His messengers and resurrects the dead from their graves for accountability on the Day of Judgment, signifying His absolute power over life and death.
+                    **The Resurrector / The Awakener**. Allah is the one who sends forth His messengers and resurrects the dead from their graves for accountability on the Day of Judgment.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        This signifies His absolute power over life and death, and His justice in bringing all souls back for recompense.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 51: Ash-Shahid -->
@@ -698,6 +976,11 @@
                 <p class="meaning-text">
                     **The All-Witnessing**. The Witness, who is present and witnesses all things.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is the ultimate witness to all events, intentions, and actions across all times and places. His witness is perfect and comprehensive.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 52: Al-Haqq -->
@@ -708,6 +991,11 @@
                 <p class="meaning-text">
                     **The Absolute Truth**. The Truth, the Real, whose existence is undeniable.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is the ultimate Reality, and all truth originates from Him. He establishes justice and brings forth the truth in all matters.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 53: Al-Wakil -->
@@ -718,6 +1006,11 @@
                 <p class="meaning-text">
                     **The Disposer of Affairs / The Trustee**. The Guardian, on whom one can rely, who manages all affairs.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        Believers trust in Him to manage their affairs, knowing that He is the best Disposer, capable of overseeing and arranging all matters perfectly.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 54: Al-Qawi -->
@@ -728,6 +1021,11 @@
                 <p class="meaning-text">
                     **The All-Strong**. The Powerful, whose strength is infinite.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His strength is absolute and unparalleled; nothing can weaken Him or stand against His might. He is the source of all power.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 55: Al-Matin -->
@@ -738,6 +1036,11 @@
                 <p class="meaning-text">
                     **The Firm / The Steadfast**. The Invincible, whose power is absolute and firm.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is steadfast and unwavering in His power and determination. His decrees are firm, and His strength is unyielding.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 56: Al-Wali -->
@@ -748,6 +1051,11 @@
                 <p class="meaning-text">
                     **The Protecting Friend / The Patron**. The Supporter, the Protector, who is the closest ally to the believers.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is the guardian and helper of those who submit to Him, taking care of their affairs and guiding them to success.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 57: Al-Hamid -->
@@ -758,6 +1066,11 @@
                 <p class="meaning-text">
                     **The All-Praiseworthy**. The Praised, the Laudable, who is worthy of all praise.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is inherently praiseworthy due to His perfect attributes and countless blessings. All creation praises Him, whether consciously or unconsciously.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 58: Al-Muhsi -->
@@ -768,6 +1081,11 @@
                 <p class="meaning-text">
                     **The Accounter / The Reckoner**. The Enumerator, who comprehends and counts all things.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His knowledge is so vast that He keeps account of everything, from the number of raindrops to the thoughts in every heart. Nothing escapes His record.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 59: Al-Mubdi' -->
@@ -778,6 +1096,11 @@
                 <p class="meaning-text">
                     **The Originator / The Producer**. The Initiator, who originates all creation.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is the one who began all things, bringing them into existence from non-existence, without any prior example or blueprint.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 60: Al-Mu'id -->
@@ -788,6 +1111,11 @@
                 <p class="meaning-text">
                     **The Restorer / The Reproducer**. The Reproducer, who brings creation back after death.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        Just as He originated creation, He has the power to bring it back to life after death, for accountability on the Day of Judgment.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 61: Al-Muhyi -->
@@ -798,6 +1126,11 @@
                 <p class="meaning-text">
                     **The Giver of Life**. The Bestower of Life, who gives life to all things.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He gives life to the dead, brings life to barren lands with rain, and grants spiritual life to hearts through guidance.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 62: Al-Mumit -->
@@ -808,6 +1141,11 @@
                 <p class="meaning-text">
                     **The Taker of Life / The Destroyer**. The Bringer of Death, who brings death to all living things.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is the only one who has the power to cause death, as decreed by His divine will and wisdom.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 63: Al-Hayy -->
@@ -818,6 +1156,11 @@
                 <p class="meaning-text">
                     **The Ever-Living**. The Living, who is eternal and never dies.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is the source of all life, and His existence is everlasting, without beginning or end. He is perfect in all His attributes of life.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 64: Al-Qayyum -->
@@ -828,6 +1171,11 @@
                 <p class="meaning-text">
                     **The Self-Subsisting / The Maintainer of All**. The Sustainer of all existence, who upholds all things.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is independent and self-sufficient, and all creation depends on Him for their existence and sustenance. He maintains the order of the heavens and the earth.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 65: Al-Wajid -->
@@ -838,6 +1186,11 @@
                 <p class="meaning-text">
                     **The Perceiver / The Finder**. The All-Perceiving, who finds and achieves all He wills.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        Nothing is lost to Him, and nothing escapes His knowledge. He finds all that He seeks, and fulfills all His promises.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 66: Al-Majid -->
@@ -848,6 +1201,11 @@
                 <p class="meaning-text">
                     **The Illustrious / The Noble**. The Glorious, who is exalted in honor and abundant in goodness.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        This name signifies His abundant nobility, honor, and generous giving. He is glorious in His essence and actions.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 67: Al-Wahid -->
@@ -858,6 +1216,11 @@
                 <p class="meaning-text">
                     **The Unique / The One**. The One, the Indivisible, who has no partners or equals.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is absolutely one in His essence, attributes, and actions, without any share or partnership in His Divinity.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 68: Al-Ahad -->
@@ -868,6 +1231,11 @@
                 <p class="meaning-text">
                     **The Only One / The One and Only**. The Unique, the Absolute One, distinct from all creation.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        This name emphasizes His absolute uniqueness and indivisibility, even more intensely than Al-Wahid. He is the One, the Absolute, the Incomparable.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 69: As-Samad -->
@@ -878,6 +1246,11 @@
                 <p class="meaning-text">
                     **The Eternal / The Independent**. The Self-Sufficient Master, upon whom all depend, but He depends on none.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        All creation turns to Him for their needs, while He is free of all needs. He is the ultimate resort for all beings.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 70: Al-Qadir -->
@@ -888,6 +1261,11 @@
                 <p class="meaning-text">
                     **The All-Powerful / The Able**. The Capable, who has the power to do all things.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His power is absolute and limitless, capable of bringing anything into existence or ceasing its existence instantly.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 71: Al-Muqtadir -->
@@ -898,6 +1276,11 @@
                 <p class="meaning-text">
                     **The All-Determining / The Irresistible Power**. The Omnipotent, who has supreme power and capability.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        This name emphasizes a higher degree of power and authority than Al-Qadir, denoting His perfect and overwhelming ability to determine all outcomes.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 72: Al-Muqaddim -->
@@ -908,6 +1291,11 @@
                 <p class="meaning-text">
                     **The Expediter / The Advancer**. The Foremost, who puts things in their proper order, advancing what He wills.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He advances whom He wills and makes things happen quickly when He wills, indicating His control over time and precedence.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 73: Al-Mu'akhkhir -->
@@ -918,6 +1306,11 @@
                 <p class="meaning-text">
                     **The Delayer / The Postponer**. The Postponer, who delays what He wills.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He delays whom He wills and postpones events according to His divine wisdom, demonstrating His absolute control over time and consequences.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 74: Al-Awwal -->
@@ -928,6 +1321,11 @@
                 <p class="meaning-text">
                     **The First**. The First, who has no beginning.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He existed before all creation, without any prior existence. He is the ultimate Originator of everything.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 75: Al-Akhir -->
@@ -938,6 +1336,11 @@
                 <p class="meaning-text">
                     **The Last**. The Last, who has no end.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He will remain after all creation perishes. His existence is eternal, without any termination.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 76: Az-Zahir -->
@@ -948,6 +1351,11 @@
                 <p class="meaning-text">
                     **The Manifest / The Evident**. The Outward, whose existence is clear and evident.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His existence and power are manifest through His creation, clearly visible to those who reflect and contemplate.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 77: Al-Batin -->
@@ -958,6 +1366,11 @@
                 <p class="meaning-text">
                     **The Hidden / The Inner**. The Inward, who is hidden from creation's sight.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is unseen and beyond human perception, encompassing all inner and hidden realities. He is closer to us than our jugular vein.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 78: Al-Wali -->
@@ -968,6 +1381,11 @@
                 <p class="meaning-text">
                     **The Governor / The Ruler**. The Sovereign, who administers and governs all creation.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He exercises full authority and management over all affairs of the universe, ensuring order and execution of His divine plan.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 79: Al-Muta'ali -->
@@ -978,6 +1396,11 @@
                 <p class="meaning-text">
                     **The Most Exalted / The Supreme**. The Most High, who is above all human attributes.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is supremely exalted and elevated above all His creation. No one can equal His highness, majesty, or power.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 80: Al-Barr -->
@@ -988,6 +1411,11 @@
                 <p class="meaning-text">
                     **The Source of All Goodness / The Righteous**. The Benefactor, the Good, who is the source of all righteousness and goodness.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is exceedingly kind and generous to His creation, and all good originates from Him. He accepts the good deeds of His servants.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 81: At-Tawwab -->
@@ -998,6 +1426,11 @@
                 <p class="meaning-text">
                     **The Acceptor of Repentance**. The Relenting, who accepts repentance and pardons sins.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He repeatedly turns to His servants with mercy, making it easy for them to repent and accepting their sincere turning back to Him.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 82: Al-Muntaqim -->
@@ -1008,6 +1441,11 @@
                 <p class="meaning-text">
                     **The Avenger**. The Avenger, who punishes wrongdoers.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He exacts retribution from those who persistently rebel against Him and oppress others. His vengeance is just and always proportionate.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 83: Al-Afu -->
@@ -1018,6 +1456,11 @@
                 <p class="meaning-text">
                     **The Pardoner / The Eraser of Sins**. The Forgiver, who wipes out sins and grants pardon.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He completely erases sins as if they never happened, especially for those who sincerely repent. His pardon is immense.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 84: Ar-Ra'uf -->
@@ -1028,6 +1471,11 @@
                 <p class="meaning-text">
                     **The Most Kind / The Compassionate**. The Compassionate, who is full of tenderness and mercy.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        His tenderness and kindness are profound, manifesting in His gentle treatment of His servants, His patience with them, and His immense blessings.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 85: Malik-ul-Mulk -->
@@ -1038,6 +1486,11 @@
                 <p class="meaning-text">
                     **The Master of All Sovereignty / King of all Kingdoms**. The Owner of Absolute Sovereignty, who has ultimate dominion over all.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        All power, authority, and control belong to Him alone. He gives sovereignty to whom He wills and takes it away from whom He wills.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 86: Dhul-Jalali Wal-Ikram -->
@@ -1048,6 +1501,11 @@
                 <p class="meaning-text">
                     **The Possessor of Majesty and Honor**. The Lord of Majesty and Bounty, who is majestic and honorable.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He possesses both ultimate majesty and ultimate generosity. He is worthy of being glorified and honored, and He bestows honor upon His creation.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 87: Al-Muqsit -->
@@ -1058,6 +1516,11 @@
                 <p class="meaning-text">
                     **The Just / The Equitable**. The Equitable, who administers justice with fairness.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is perfectly just in all His dealings, actions, and judgments, establishing balance and equity in the universe.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 88: Al-Jami' -->
@@ -1068,6 +1531,11 @@
                 <p class="meaning-text">
                     **The Gatherer / The Collector**. The Gatherer, who gathers all creation on the Day of Judgment.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He gathers all human beings for accountability on the Day of Judgment, and He gathers disparate things together according to His will.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 89: Al-Ghani -->
@@ -1078,6 +1546,11 @@
                 <p class="meaning-text">
                     **The Self-Sufficient / The Rich**. The Independent, who is free of all needs and possess all wealth.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He requires nothing from His creation, while all creation is utterly dependent on Him. His richness is absolute and boundless.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 90: Al-Mughni -->
@@ -1088,6 +1561,11 @@
                 <p class="meaning-text">
                     **The Enricher / The Sufficer**. The Enricher, who grants sufficiency and richness to whom He wills.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He provides wealth and contentment, making His servants independent of others, solely by His grace and wisdom.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 91: Al-Mani' -->
@@ -1098,6 +1576,11 @@
                 <p class="meaning-text">
                     **The Preventer / The Withholder**. The Withholder, who prevents or withholds what He wills.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He prevents harm, protects His creation, and withholds blessings from whom He wills, all according to His divine wisdom and justice.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 92: Ad-Darr -->
@@ -1108,6 +1591,11 @@
                 <p class="meaning-text">
                     **The Distressor / The Harmer**. The Afflictor, who sends affliction to whom He wills.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He can cause distress or harm, but this is always with wisdom and justice, often as a test, purification, or punishment, and never out of malevolence.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 93: An-Nafi' -->
@@ -1118,6 +1606,11 @@
                 <p class="meaning-text">
                     **The Bestower of Benefits / The Propitious**. The Benefactor, who grants benefits to whom He wills.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is the source of all benefit and good. He brings advantages and prosperity to His creation, solely by His will and grace.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 94: An-Nur -->
@@ -1128,6 +1621,11 @@
                 <p class="meaning-text">
                     **The Light**. The Light, who illuminates the heavens and the earth.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is the source of all light, both physical and spiritual. He guides the hearts of believers and clarifies the path of truth.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 95: Al-Hadi -->
@@ -1138,6 +1636,11 @@
                 <p class="meaning-text">
                     **The Guide**. The Guide, who guides His creation to the truth.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He guides humanity to the straight path through His revelations, prophets, and innate guidance. He leads hearts to faith and righteousness.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 96: Al-Badi' -->
@@ -1148,6 +1651,11 @@
                 <p class="meaning-text">
                     **The Incomparable / The Originator**. The Originator, who creates in a wonderful and unparalleled way.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He creates unique and marvelous things without any precedent or example. His creativity is unparalleled and His creations are awe-inspiring.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 97: Al-Baqi -->
@@ -1158,6 +1666,11 @@
                 <p class="meaning-text">
                     **The Ever-Enduring / The Everlasting**. The Enduring, who remains forever and does not perish.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is eternal and everlasting, while all else is transient. His existence has no end, and He is the ultimate reality.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 98: Al-Warith -->
@@ -1168,6 +1681,11 @@
                 <p class="meaning-text">
                     **The Inheritor of All**. The Inheritor, who remains after all creation perishes.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He is the ultimate owner of everything. When all creation ceases to exist, He alone remains as the Inheritor of all things.
+                    </p>
+                </div>
             </div>
 
             <!-- Name 99: Ar-Rashid -->
@@ -1178,6 +1696,11 @@
                 <p class="meaning-text">
                     **The Guide to the Right Path / The Righteous Teacher**. The Guide, who guides to righteousness and truth.
                 </p>
+                <div class="detailed-meaning">
+                    <p>
+                        He guides His creation with His perfect wisdom and truth, leading them towards what is right and beneficial. He is the ultimate teacher of righteousness.
+                    </p>
+                </div>
             </div>
         </main>
 
