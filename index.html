@@ -334,35 +334,35 @@
         footer .text-yellow-400 {
             color: var(--accent-yellow);
         }
-
+        
         /* Navigation button and dropdown styles */
         .nav-dropdown-container {
             position: relative;
             display: flex;
             justify-content: center;
             width: 100%;
-            margin-top: 1.5rem; /* More space below title/subtitle */
-            z-index: 20; /* Container z-index */
+            margin-top: 1.5rem;
+            z-index: 9999; /* Ensures container is on top */
         }
-
+        
         .nav-dropdown-content {
             position: absolute;
-            top: 100%; /* Correct: place just below the button */
+            top: 100%; /* Position below the button */
+            left: 50%;
+            transform: translateX(-50%) translateY(0); /* Remove vertical offset */
             background-color: var(--bg-dropdown);
             min-width: 280px;
             box-shadow: 0px 8px 16px 0px var(--shadow-dropdown);
             border-radius: 0.5rem;
             padding: 0.5rem 0;
-            z-index: 1001;
-            left: 50%;
-            transform: translateX(-50%) translateY(0); /* Remove extra downward shift */
+            z-index: 99999; /* Ensure dropdown is on top of all elements */
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
             transition: var(--transition-dropdown);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
         .nav-dropdown-content a {
             color: var(--text-light);
             padding: 0.75rem 1.25rem;
@@ -373,19 +373,20 @@
             font-size: 0.95rem;
             white-space: nowrap;
         }
-
+        
         .nav-dropdown-content a:hover {
             background-color: #3A3A3A;
             color: var(--accent-blue-hover);
         }
-
+        
         /* When container is hovered, show the dropdown */
         .nav-dropdown-container:hover .nav-dropdown-content {
             opacity: 1;
             visibility: visible;
-            transform: translateX(-50%) translateY(0); /* Move to final centered position */
-            pointer-events: auto; /* Allow interaction when visible */
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
         }
+
 
         /* Animation for header elements */
         .animate-fade-in {
