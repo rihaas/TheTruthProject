@@ -348,7 +348,7 @@
         
         .nav-dropdown-content {
             position: absolute;
-            bottom: 100%; /* Position above the button */
+            top: 100%; /* Position below the button */
             background-color: var(--bg-dropdown);
             min-width: 280px;
             box-shadow: 0px 8px 16px 0px var(--shadow-dropdown);
@@ -356,7 +356,7 @@
             padding: 0.5rem 0;
             z-index: 99999; /* Ensure dropdown is on top of all elements */
             left: 50%;
-            transform: translateX(-50%) translateY(-10px); /* Start slightly above and centered */
+            transform: translateX(-50%) translateY(10px); /* Start slightly below and centered */
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
@@ -369,7 +369,7 @@
             padding: 0.75rem 1.25rem;
             text-decoration: none;
             display: block;
-            text-align: left;
+            text-align: center; /* Changed to center for all content */
             transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
             font-size: 0.95rem;
             white-space: nowrap;
