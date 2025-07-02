@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prophet Isa (Jesus Christ) in the Quran</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the My Deen Project homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+        }
+
+        .main-content-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            position: relative; /* Needed for absolute positioning of back button */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .main-content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            .info-card {
+                padding: 1rem;
+            }
+            .info-card h3 {
+                font-size: 1.1rem;
+            }
+            .info-card p {
+                font-size: 0.85rem;
+            }
+            details summary {
+                font-size: 0.85rem;
+            }
+            details p {
+                font-size: 0.8rem;
+            }
+            .back-to-home-btn { /* Adjust size for small screens */
+                top: 0.75rem;
+                left: 0.75rem;
+                padding: 0.5rem;
+            }
+            .back-to-home-btn .icon-wrapper {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Section headings - consistent with homepage */
+        .section-heading {
+            color: #8D8D8D;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .section-heading span {
+            color: #FACC15;
+        }
+
+        /* Info card styles (consistent with other pages) */
+        .info-card {
+            background-color: #282828; /* Darker card background */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+            border-radius: 0.75rem; /* Consistent border-radius */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+            padding: 1.5rem; /* Consistent padding */
+            text-align: left; /* Align text within cards to left */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .info-card h3 {
+            color: #BB86FC; /* Light purple for card titles */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card p {
+            color: #B0B0B0; /* Softer text color */
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Details/Summary styles for info expansion */
+        details {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            background-color: #3A3A3A; /* Slightly lighter for contrast */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #8be9fd; /* Light blue accent */
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:after {
+            content: '▼';
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        details[open] summary:after {
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #B0B0B0;
+        }
+
+        details .quran-reference {
+            font-style: italic;
+            border-left: 3px solid #FACC15; /* Golden yellow accent for Quranic references */
+            padding-left: 0.75rem;
+            margin-top: 1rem;
+            color: #C0C0C0;
+        }
+
+        /* Back button styling (consistent with Asmaul Husna page) */
+        .back-to-home-btn {
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            border-radius: 0.6rem;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            width: 3rem; /* Square width for icon only */
+            height: 3rem; /* Square height for icon only */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-decoration: none;
+            color: #FFFFFF;
+            justify-content: center;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+
+        .back-to-home-btn .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-to-home-btn .text-label {
+            position: absolute;
+            left: 0;
+            padding-left: 3rem;
+            padding-right: 1rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            pointer-events: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            border-radius: 0.6rem;
+        }
+
+        .back-to-home-btn:hover {
+            width: 12rem; /* Expand width on hover to reveal text */
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6);
+            background-image: linear-gradient(to right, #10B981, #34D399); /* Reverse gradient on hover */
+            transform: translateY(-2px); /* Subtle lift */
+        }
+
+        .back-to-home-btn:hover .icon-wrapper {
+            transform: translateX(calc(12rem - 3rem - 0.5rem)); /* Move icon to the right (total_width - icon_width - padding/gap) */
+        }
+
+        .back-to-home-btn:hover .text-label {
+            opacity: 1;
+            transform: translateX(0); /* Slide text into view */
+            pointer-events: auto;
+        }
+
+        /* Styles for the new LLM interaction section */
+        .llm-section {
+            background-color: #282828;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: left;
+        }
+
+        .llm-section textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background-color: #1A1A1A;
+            color: #E0E0E0;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .llm-section textarea:focus {
+            border-color: #8be9fd; /* Accent color on focus */
+        }
+
+        .llm-section button {
+            background-image: linear-gradient(to right, #4F46E5, #6366F1);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 0.6rem;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            color: #FFFFFF;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .llm-section button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.6);
+            background-image: linear-gradient(to right, #6366F1, #4F46E5);
+        }
+
+        .llm-section .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #FACC15; /* Yellow spinner */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin-top: 1rem;
+            display: none; /* Hidden by default */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .llm-section .response-area {
+            background-color: #1A1A1A;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            min-height: 50px;
+            color: #E0E0E0;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content-wrapper">
+        <!-- Back Button -->
+        <a href="index.html" class="back-to-home-btn" aria-label="Back to Home">
+            <span class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+            </span>
+            <span class="text-label">Back to Home</span>
+        </a>
+
+        <h1 class="main-heading">
+            Prophet Isa (Jesus Christ) in the <span class="text-yellow-400">Quran</span>
+        </h1>
+
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+            Prophet Isa (Jesus), peace be upon him, holds a highly esteemed position in Islam. He is considered one of the five greatest messengers (Ulul Azm) and is mentioned in the Quran more times than Prophet Muhammad (PBUH). Muslims believe in him as a mighty prophet of Allah, born miraculously, who performed many miracles by Allah's permission.
+        </p>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His Miraculous <span class="text-yellow-400">Birth</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Birth of Isa (AS) -->
+                <div class="info-card">
+                    <h3>Birth Without a Father</h3>
+                    <p>
+                        The Quran affirms that Isa (AS) was born miraculously from his virgin mother, Maryam (Mary), without a father.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Allah sent Angel Jibreel (Gabriel) to Maryam, who was a pious and chaste woman. Jibreel informed her she would bear a son, and despite her astonishment, she conceived by Allah's command, as a sign for humanity.
+                        </p>
+                        <p class="quran-reference">
+                            "Indeed, the example of Jesus to Allah is like that of Adam. He created Him from dust; then He said to him, 'Be,' and he was." (Quran 3:59)
+                            <br>
+                            "She said, 'My Lord, how can I have a child when no man has touched me?' [The angel] said, 'Thus [it will be]; Allah creates what He wills. When He decrees a matter, He only says to it, 'Be,' and it is.'" (Quran 3:47)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Speaking in the Cradle -->
+                <div class="info-card">
+                    <h3>Speaking in the Cradle</h3>
+                    <p>
+                        A profound miracle occurred when Isa (AS) spoke as an infant in the cradle to defend his mother's honor.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            When Maryam brought her newborn son to her people, they accused her. Isa (AS) miraculously spoke, proclaiming his prophethood and commanding them to worship Allah. This silenced their accusations and served as a clear sign.
+                        </p>
+                        <p class="quran-reference">
+                            "He said, 'Indeed, I am the servant of Allah. He has given me the Scripture and made me a prophet.'" (Quran 19:30)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His <span class="text-yellow-400">Prophethood & Message</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Prophet and Messenger -->
+                <div class="info-card">
+                    <h3>Prophet and Messenger of Allah</h3>
+                    <p>
+                        Muslims believe Isa (AS) was a mighty prophet and messenger sent by Allah to the Children of Israel.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            His mission was to affirm the previous revelations (Torah), preach monotheism (Tawhid), and call his people back to the worship of the One God. He was given the Injil (Gospel) as a holy book.
+                        </p>
+                        <p class="quran-reference">
+                            "And [mention] when Jesus, the son of Mary, said, 'O Children of Israel, indeed I am the messenger of Allah to you confirming what came before me of the Torah and bringing good tidings of a messenger to come after me, whose name is Ahmad.'" (Quran 61:6)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Not Divine, Not Son of God -->
+                <div class="info-card">
+                    <h3>Not Divine, Not Son of God</h3>
+                    <p>
+                        Islam firmly rejects the divinity of Isa (AS) or the concept of him being the literal son of God.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            He is revered as a human prophet, like all other prophets. Attributing divinity to him or making him a partner with Allah is considered Shirk (polytheism), the greatest sin in Islam. His miraculous birth is seen as a sign of Allah's power, not a sign of divinity.
+                        </p>
+                        <p class="quran-reference">
+                            "O People of the Scripture, do not commit excess in your religion or say about Allah except the truth. Indeed, the Messiah, Jesus, the son of Mary, was only a messenger of Allah and His word which He directed to Mary and a soul [created at a command] from Him." (Quran 4:171)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His <span class="text-yellow-400">Miracles</span> (By Allah's Permission)
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+                Prophet Isa (AS) performed numerous awe-inspiring miracles, all by the direct permission and power of Allah.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Healing the Sick & Raising the Dead -->
+                <div class="info-card">
+                    <h3>Healing & Raising the Dead</h3>
+                    <p>
+                        He healed the blind and lepers, and even brought the dead back to life, all by Allah's command.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            These miracles were clear signs of his prophethood to his people. They were not his own power, but manifestations of Allah's omnipotence through him.
+                        </p>
+                        <p class="quran-reference">
+                            "...and I heal the blind [from birth] and the leper, and I bring the dead to life by permission of Allah." (Quran 3:49)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Creating Birds from Clay -->
+                <div class="info-card">
+                    <h3>Creating Birds from Clay</h3>
+                    <p>
+                        He would fashion the figure of a bird from clay and breathe into it, and it would become a living bird by Allah's permission.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This miracle further emphasized the divine power backing his message, showing Allah's ability to create life from inanimate objects.
+                        </p>
+                        <p class="quran-reference">
+                            "And [I come to you] as a messenger to the Children of Israel with a sign: 'That I design for you from clay [that which is] like the form of a bird, then I breathe into it, and it becomes a bird by permission of Allah.'" (Quran 3:49)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Table Spread with Food -->
+                <div class="info-card">
+                    <h3>Table Spread with Food</h3>
+                    <p>
+                        At the request of his disciples, Allah sent down a table spread with food from the heavens.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This event is detailed in Surah Al-Ma'idah (The Table Spread). It was a direct response to the disciples' request for a sign, further solidifying their faith.
+                        </p>
+                        <p class="quran-reference">
+                            "[And remember] when the disciples said, 'O Jesus, Son of Mary, can your Lord send down to us a table spread with food from the heaven?' He said, 'Fear Allah, if you should be believers.'" (Quran 5:112)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Crucifixion & <span class="text-yellow-400">Ascension</span> (Islamic View)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- No Crucifixion -->
+                <div class="info-card">
+                    <h3>He Was Not Crucified</h3>
+                    <p>
+                        The Quran explicitly states that Isa (AS) was neither killed nor crucified, but rather it was made to appear so to the people.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Muslims believe that someone else was made to resemble Isa (AS) and was crucified in his place, while Allah raised Isa (AS) to Himself. This is a core difference from the Christian belief.
+                        </p>
+                        <p class="quran-reference">
+                            "And [for] their saying, 'Indeed, we have killed the Messiah, Jesus, the son of Mary, the messenger of Allah.' And they did not kill him, nor did they crucify him; but [another] was made to resemble him to them." (Quran 4:157)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- His Ascension -->
+                <div class="info-card">
+                    <h3>His Ascension to Heaven</h3>
+                    <p>
+                        Allah raised Isa (AS) bodily to Himself in heaven. He is alive and will return before the Day of Judgment.
+                    </p>
+                    <details>
+                        <summary>More Info</p>
+                        <p>
+                            This ascension signifies his special status and Allah's protection. He was not killed but taken up by Allah, and his return is a major sign of the Last Hour.
+                        </p>
+                        <p class="quran-reference">
+                            "But Allah raised him to Himself. And ever is Allah Exalted in Might and Wise." (Quran 4:158)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His <span class="text-yellow-400">Return</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Return Before Day of Judgment -->
+                <div class="info-card">
+                    <h3>Return Before the Day of Judgment</h3>
+                    <p>
+                        Islamic tradition holds that Isa (AS) will return to Earth before the Day of Judgment.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            His return is a major sign of the Last Hour. He will descend near a white minaret in Damascus, break the cross, kill the swine, abolish the Jizya (tax on non-Muslims), and establish justice, ruling according to Islamic law. He will also confront and defeat the Dajjal (Anti-Christ).
+                        </p>
+                        <p class="quran-reference">
+                            "And indeed, he will be a sign for the Hour, so do not be in doubt of it." (Quran 43:61)
+                            <br>
+                            (Numerous authentic Hadith also detail his return.)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Death After Return -->
+                <div class="info-card">
+                    <h3>His Death After Return</h3>
+                    <p>
+                        After his return and fulfilling his mission, Isa (AS) will eventually die a natural death on Earth.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            He will be buried alongside Prophet Muhammad (PBUH) in Medina. This confirms that he is a mortal human prophet, not divine, and that every soul shall taste death.
+                        </p>
+                        <p class="quran-reference">
+                            "And there is none from the People of the Scripture but that he will surely believe in him before his death. And on the Day of Resurrection he will be against them as a witness." (Quran 4:159)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
+            The Quranic narrative of Prophet Isa (AS) offers profound insights into his unique status as a prophet and a sign of Allah's immense power and wisdom.
+        </p>
+    </div>
+
+</body>
+</html>
