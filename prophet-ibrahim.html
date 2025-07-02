@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prophet Ibrahim (Abraham) in the Quran</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the My Deen Project homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+        }
+
+        .main-content-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            position: relative; /* Needed for absolute positioning of back button */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .main-content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            .info-card {
+                padding: 1rem;
+            }
+            .info-card h3 {
+                font-size: 1.1rem;
+            }
+            .info-card p {
+                font-size: 0.85rem;
+            }
+            details summary {
+                font-size: 0.85rem;
+            }
+            details p {
+                font-size: 0.8rem;
+            }
+            .back-to-home-btn { /* Adjust size for small screens */
+                top: 0.75rem;
+                left: 0.75rem;
+                padding: 0.5rem;
+            }
+            .back-to-home-btn .icon-wrapper {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Section headings - consistent with homepage */
+        .section-heading {
+            color: #8D8D8D;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .section-heading span {
+            color: #FACC15;
+        }
+
+        /* Info card styles (consistent with other pages) */
+        .info-card {
+            background-color: #282828; /* Darker card background */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+            border-radius: 0.75rem; /* Consistent border-radius */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+            padding: 1.5rem; /* Consistent padding */
+            text-align: left; /* Align text within cards to left */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .info-card h3 {
+            color: #BB86FC; /* Light purple for card titles */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card p {
+            color: #B0B0B0; /* Softer text color */
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Details/Summary styles for info expansion */
+        details {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            background-color: #3A3A3A; /* Slightly lighter for contrast */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #8be9fd; /* Light blue accent */
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:after {
+            content: '▼';
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        details[open] summary:after {
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #B0B0B0;
+        }
+
+        details .quran-reference {
+            font-style: italic;
+            border-left: 3px solid #FACC15; /* Golden yellow accent for Quranic references */
+            padding-left: 0.75rem;
+            margin-top: 1rem;
+            color: #C0C0C0;
+        }
+
+        /* Back button styling (consistent with Asmaul Husna page) */
+        .back-to-home-btn {
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            border-radius: 0.6rem;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            width: 3rem; /* Square width for icon only */
+            height: 3rem; /* Square height for icon only */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-decoration: none;
+            color: #FFFFFF;
+            justify-content: center;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+
+        .back-to-home-btn .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-to-home-btn .text-label {
+            position: absolute;
+            left: 0;
+            padding-left: 3rem;
+            padding-right: 1rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            pointer-events: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            border-radius: 0.6rem;
+        }
+
+        .back-to-home-btn:hover {
+            width: 12rem; /* Expand width on hover to reveal text */
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6);
+            background-image: linear-gradient(to right, #10B981, #34D399); /* Reverse gradient on hover */
+            transform: translateY(-2px); /* Subtle lift */
+        }
+
+        .back-to-home-btn:hover .icon-wrapper {
+            transform: translateX(calc(12rem - 3rem - 0.5rem)); /* Move icon to the right (total_width - icon_width - padding/gap) */
+        }
+
+        .back-to-home-btn:hover .text-label {
+            opacity: 1;
+            transform: translateX(0); /* Slide text into view */
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content-wrapper">
+        <!-- Back Button -->
+        <a href="index.html" class="back-to-home-btn" aria-label="Back to Home">
+            <span class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+            </span>
+            <span class="text-label">Back to Home</span>
+        </a>
+
+        <h1 class="main-heading">
+            Prophet Ibrahim (Abraham) in the <span class="text-yellow-400">Quran</span>
+        </h1>
+
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+            Prophet Ibrahim (Abraham), peace be upon him, is one of the most pivotal figures in Islam, revered as "Khalilullah" (the Friend of Allah) and the father of prophets. His life is a profound narrative of unwavering faith, immense sacrifice, and steadfast devotion to Allah.
+        </p>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His Early Life & <span class="text-yellow-400">Struggle Against Idolatry</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Early Life & Monotheism -->
+                <div class="info-card">
+                    <h3>Search for Truth</h3>
+                    <p>
+                        Born in Ur of the Chaldees, Prophet Ibrahim (AS) questioned the idol worship of his people and sought the One True God.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Even as a youth, he observed the stars, moon, and sun, concluding that they could not be gods because they set. This intellectual journey led him to affirm the existence of the One Creator.
+                        </p>
+                        <p class="quran-reference">
+                            "And thus did We show Abraham the realm of the heavens and the earth that he would be among the certain in faith." (Quran 6:75)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Confronting His People & Father -->
+                <div class="info-card">
+                    <h3>Confronting Idolatry</h3>
+                    <p>
+                        He openly challenged his people and even his own father, Azar, regarding their worship of idols.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Ibrahim (AS) used logical arguments to denounce their false gods. When they refused to listen, he famously broke their idols, leaving the largest one intact to prove his point.
+                        </p>
+                        <p class="quran-reference">
+                            "Indeed, there has been for you a good example in Abraham and those with him, when they said to their people, 'Indeed, we are disassociated from you and from whatever you worship other than Allah. We have denied you, and there has appeared between us and you animosity and hatred forever until you believe in Allah alone.'" (Quran 60:4)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- The Fire -->
+                <div class="info-card">
+                    <h3>Thrown into the Fire</h3>
+                    <p>
+                        As punishment for destroying the idols, his people threw him into a blazing fire, but Allah saved him miraculously.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This was a great trial of his faith. Allah commanded the fire to be "coolness and safety" for Ibrahim (AS), demonstrating His absolute power and protection over His chosen servants.
+                        </p>
+                        <p class="quran-reference">
+                            "They said, 'Burn him and support your gods, if you are to act.' We said, 'O fire, be coolness and safety upon Abraham!'" (Quran 21:68-69)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His <span class="text-yellow-400">Migration & Family</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- The Hijra (Migration) -->
+                <div class="info-card">
+                    <h3>The Migration (Hijra)</h3>
+                    <p>
+                        After facing rejection, Ibrahim (AS) migrated from his homeland, seeking a place where he could worship Allah freely.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            He migrated with his wife Sarah and nephew Lut (Lot) to the blessed land of Sham (Syria/Palestine), demonstrating his willingness to leave everything for the sake of Allah.
+                        </p>
+                        <p class="quran-reference">
+                            "And We delivered him and Lot to the land which We had blessed for the worlds." (Quran 21:71)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Birth of Isma'il & Ishaq -->
+                <div class="info-card">
+                    <h3>Sons: Isma'il & Ishaq</h3>
+                    <p>
+                        Despite old age, Allah blessed Ibrahim (AS) with two sons, Isma'il (Ishmael) and Ishaq (Isaac), who both became prophets.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Isma'il was born to Hajar, and Ishaq to Sarah, both as miracles from Allah. From their lineages came many prophets, including Muhammad (PBUH) from Isma'il's line and Musa (Moses) and Isa (Jesus) from Ishaq's line.
+                        </p>
+                        <p class="quran-reference">
+                            "And We gave him Isaac and Jacob, and placed in his offspring prophethood and scripture." (Quran 29:27)
+                            <br>
+                            "And We gave him good tidings of Isaac, a prophet from among the righteous." (Quran 37:112)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                The Ultimate <span class="text-yellow-400">Sacrifice & Trial</span>
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+                One of the greatest tests of Ibrahim's (AS) faith was the command to sacrifice his beloved son, Isma'il.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- The Dream to Sacrifice -->
+                <div class="info-card">
+                    <h3>The Dream to Sacrifice Isma'il</h3>
+                    <p>
+                        Ibrahim (AS) received a divine command in a dream to sacrifice his firstborn son, Isma'il.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Both father and son submitted willingly to Allah's command, demonstrating unparalleled obedience and trust in divine wisdom. This act of submission is commemorated annually by Muslims during Eid al-Adha.
+                        </p>
+                        <p class="quran-reference">
+                            "And when he reached with him [the age of] exertion, he said, 'O my son, indeed I have seen in a dream that I [must] sacrifice you; so see what you think.' He said, 'O my father, do as you are commanded. You will find me, if Allah wills, of the steadfast.'" (Quran 37:102)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Allah's Intervention -->
+                <div class="info-card">
+                    <h3>Allah's Intervention & Ransom</h3>
+                    <p>
+                        Just as Ibrahim (AS) was about to carry out the command, Allah intervened and replaced Isma'il with a great sacrifice (a ram).
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This showed that the test was not about actually shedding blood, but about the sincerity of their submission. It was a demonstration of complete devotion and trust in Allah's wisdom.
+                        </p>
+                        <p class="quran-reference">
+                            "And We ransomed him with a great sacrifice." (Quran 37:107)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Rebuilding the <span class="text-yellow-400">Kaaba</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Building the Kaaba -->
+                <div class="info-card">
+                    <h3>Building the Sacred House</h3>
+                    <p>
+                        Ibrahim (AS) and his son Isma'il (AS) rebuilt the Kaaba in Makkah, the first house of worship on Earth.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This sacred structure became the Qibla (direction of prayer) for Muslims worldwide and the central point for Hajj (pilgrimage). They prayed for its acceptance and for a messenger to be raised from their progeny.
+                        </p>
+                        <p class="quran-reference">
+                            "And [mention] when Abraham was raising the foundations of the House and [with him] Ishmael, [saying], 'Our Lord, accept from us. Indeed, You are the All-Hearing, the All-Knowing.'" (Quran 2:127)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Call to Hajj -->
+                <div class="info-card">
+                    <h3>The Call to Hajj</h3>
+                    <p>
+                        After building the Kaaba, Allah commanded Ibrahim (AS) to proclaim the pilgrimage (Hajj) to all mankind.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This call continues to resonate, drawing millions of Muslims annually to Makkah to perform the rituals established by Prophet Ibrahim (AS).
+                        </p>
+                        <p class="quran-reference">
+                            "And proclaim to the people the Hajj; they will come to you on foot and on every lean camel; they will come from every distant pass." (Quran 22:27)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His <span class="text-yellow-400">Status in Islam</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Khalilullah (Friend of Allah) -->
+                <div class="info-card">
+                    <h3>Khalilullah (Friend of Allah)</h3>
+                    <p>
+                        Ibrahim (AS) is uniquely honored as "Khalilullah," the intimate friend of Allah, due to his profound devotion and submission.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This title signifies the highest degree of love and closeness to Allah, earned through his unwavering faith and willingness to sacrifice everything for Him.
+                        </p>
+                        <p class="quran-reference">
+                            "And who is better in religion than one who submits his face to Allah while being a doer of good and follows the religion of Abraham, inclining toward truth? And Allah took Abraham as an intimate friend." (Quran 4:125)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Father of Prophets -->
+                <div class="info-card">
+                    <h3>Father of Prophets</h3>
+                    <p>
+                        He is recognized as the patriarch of monotheism, from whose lineage came countless prophets, including Musa, Isa, and Muhammad (peace be upon them all).
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Both the Israelite prophets (through Ishaq) and the Arab prophets (through Isma'il, culminating in Prophet Muhammad) trace their lineage back to Ibrahim (AS), making him a central figure for billions worldwide.
+                        </p>
+                        <p class="quran-reference">
+                            "Indeed, We have sent down to you a Book in truth, as We sent it down to Noah and the prophets after him. And We sent down to Abraham, Ishmael, Isaac, Jacob, and the Tribes, and Jesus, Job, Jonah, Aaron, and Solomon, and to David We gave the book [of Psalms]." (Quran 4:163)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
+            The life of Prophet Ibrahim (AS) is a timeless testament to pure monotheism, unwavering faith, and complete submission to the will of Allah, serving as an eternal example for all believers.
+        </p>
+    </div>
+
+</body>
+</html>
