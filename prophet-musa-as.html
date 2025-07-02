@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prophet Musa (Moses) in the Quran</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the My Deen Project homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+        }
+
+        .main-content-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            position: relative; /* Needed for absolute positioning of back button */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .main-content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            .info-card {
+                padding: 1rem;
+            }
+            .info-card h3 {
+                font-size: 1.1rem;
+            }
+            .info-card p {
+                font-size: 0.85rem;
+            }
+            details summary {
+                font-size: 0.85rem;
+            }
+            details p {
+                font-size: 0.8rem;
+            }
+            .back-to-home-btn { /* Adjust size for small screens */
+                top: 0.75rem;
+                left: 0.75rem;
+                padding: 0.5rem;
+            }
+            .back-to-home-btn .icon-wrapper {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Section headings - consistent with homepage */
+        .section-heading {
+            color: #8D8D8D;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .section-heading span {
+            color: #FACC15;
+        }
+
+        /* Info card styles (consistent with other pages) */
+        .info-card {
+            background-color: #282828; /* Darker card background */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+            border-radius: 0.75rem; /* Consistent border-radius */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+            padding: 1.5rem; /* Consistent padding */
+            text-align: left; /* Align text within cards to left */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .info-card h3 {
+            color: #BB86FC; /* Light purple for card titles */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card p {
+            color: #B0B0B0; /* Softer text color */
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Details/Summary styles for info expansion */
+        details {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            background-color: #3A3A3A; /* Slightly lighter for contrast */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #8be9fd; /* Light blue accent */
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:after {
+            content: '▼';
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        details[open] summary:after {
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #B0B0B0;
+        }
+
+        details .quran-reference {
+            font-style: italic;
+            border-left: 3px solid #FACC15; /* Golden yellow accent for Quranic references */
+            padding-left: 0.75rem;
+            margin-top: 1rem;
+            color: #C0C0C0;
+        }
+
+        /* Back button styling (consistent with Asmaul Husna page) */
+        .back-to-home-btn {
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            border-radius: 0.6rem;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            width: 3rem; /* Square width for icon only */
+            height: 3rem; /* Square height for icon only */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-decoration: none;
+            color: #FFFFFF;
+            justify-content: center;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+
+        .back-to-home-btn .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-to-home-btn .text-label {
+            position: absolute;
+            left: 0;
+            padding-left: 3rem;
+            padding-right: 1rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            pointer-events: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            border-radius: 0.6rem;
+        }
+
+        .back-to-home-btn:hover {
+            width: 12rem; /* Expand width on hover to reveal text */
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6);
+            background-image: linear-gradient(to right, #10B981, #34D399); /* Reverse gradient on hover */
+            transform: translateY(-2px); /* Subtle lift */
+        }
+
+        .back-to-home-btn:hover .icon-wrapper {
+            transform: translateX(calc(12rem - 3rem - 0.5rem)); /* Move icon to the right (total_width - icon_width - padding/gap) */
+        }
+
+        .back-to-home-btn:hover .text-label {
+            opacity: 1;
+            transform: translateX(0); /* Slide text into view */
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content-wrapper">
+        <!-- Back Button -->
+        <a href="index.html" class="back-to-home-btn" aria-label="Back to Home">
+            <span class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+            </span>
+            <span class="text-label">Back to Home</span>
+        </a>
+
+        <h1 class="main-heading">
+            Prophet Musa (Moses) in the <span class="text-yellow-400">Quran</span>
+        </h1>
+
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+            Prophet Musa (Moses), peace be upon him, is one of the most frequently mentioned and significant prophets in the Holy Quran. His story is rich with lessons on faith, perseverance, leadership, and divine intervention, detailing his confrontation with Pharaoh and the liberation of the Children of Israel.
+        </p>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His <span class="text-yellow-400">Birth & Early Life</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Miraculous Preservation -->
+                <div class="info-card">
+                    <h3>Miraculous Preservation</h3>
+                    <p>
+                        Born during a time when Pharaoh was killing male Israelite infants, Musa (AS) was miraculously preserved by Allah's command.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            His mother, inspired by Allah, placed him in a basket and cast him into the Nile River. He was then found by Pharaoh's wife, Asiya, and raised in Pharaoh's own palace.
+                        </p>
+                        <p class="quran-reference">
+                            "And We inspired to the mother of Moses, 'Suckle him; but when you fear for him, cast him into the river and do not fear and do not grieve. Indeed, We will return him to you and will make him one of the messengers.'" (Quran 28:7)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Growing Up in Pharaoh's Palace -->
+                <div class="info-card">
+                    <h3>Raised in Pharaoh's Palace</h3>
+                    <p>
+                        Musa (AS) grew up in the very household of his oppressor, Pharaoh, unaware of his true lineage.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This was part of Allah's divine plan, preparing him for his future mission. He witnessed the arrogance and tyranny of Pharaoh firsthand, which would later be instrumental in his call to prophethood.
+                        </p>
+                        <p class="quran-reference">
+                            "And Pharaoh's wife said, 'A comfort of the eye for me and for you. Do not kill him; perhaps he may benefit us, or we may adopt him as a son.' And they perceived not." (Quran 28:9)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                The <span class="text-yellow-400">Call to Prophethood</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- The Burning Bush -->
+                <div class="info-card">
+                    <h3>The Burning Bush & First Revelation</h3>
+                    <p>
+                        While traveling with his family, Musa (AS) saw a fire on Mount Tur (Sinai) and approached it, where he received his first divine revelation.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Allah spoke to him directly, commanding him to remove his sandals and informing him of his prophethood. He was given the mission to go to Pharaoh and invite him to worship Allah alone.
+                        </p>
+                        <p class="quran-reference">
+                            "Indeed, I am Allah. There is no deity except Me, so worship Me and establish prayer for My remembrance." (Quran 20:14)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Miracles of the Staff and Hand -->
+                <div class="info-card">
+                    <h3>Miracles of the Staff & Luminous Hand</h3>
+                    <p>
+                        Allah granted Musa (AS) two primary miracles: his staff transforming into a serpent and his hand emitting a bright light.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            These miracles were given as signs to confront Pharaoh and his magicians. The staff would swallow the magicians' illusions, and the luminous hand would appear without blemish, proving divine power.
+                        </p>
+                        <p class="quran-reference">
+                            "And what is that in your right hand, O Moses?' He said, 'It is my staff; I lean upon it, and I strike [leaves] with it for my sheep, and in it are [other] uses for me.' [Allah] said, 'Throw it down, O Moses.' So he threw it down, and thereupon it was a snake, moving rapidly. [Allah] said, 'Seize it and fear not; We will return it to its former state. And put your hand within your side; it will come out white without disease - [another] sign.'" (Quran 20:17-22)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Confrontation with <span class="text-yellow-400">Pharaoh & The Exodus</span>
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+                Prophet Musa (AS), accompanied by his brother Prophet Harun (Aaron), faced Pharaoh, calling him to monotheism and demanding the release of the Children of Israel.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Confronting Pharaoh -->
+                <div class="info-card">
+                    <h3>The Call to Pharaoh</h3>
+                    <p>
+                        Musa (AS) and Harun (AS) bravely confronted Pharaoh, who claimed divinity, inviting him to worship the One True God.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Pharaoh rejected their message and arrogantly oppressed the Children of Israel. Allah then sent various plagues upon Pharaoh's people as signs, including floods, locusts, lice, frogs, and blood.
+                        </p>
+                        <p class="quran-reference">
+                            "Go to Pharaoh. Indeed, he has transgressed. And speak to him with gentle speech that perhaps he may be reminded or fear." (Quran 20:43-44)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Parting of the Sea -->
+                <div class="info-card">
+                    <h3>Parting of the Sea</h3>
+                    <p>
+                        When Pharaoh pursued the Children of Israel after their exodus, Allah commanded Musa (AS) to strike the sea with his staff, miraculously parting it.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            The sea parted, creating dry paths for the Children of Israel to cross. As Pharaoh and his army followed, the waters closed upon them, drowning Pharaoh and his hosts. This was a monumental salvation for the Israelites and a lesson for Pharaoh's tyranny.
+                        </p>
+                        <p class="quran-reference">
+                            "Then We inspired to Moses, 'Strike with your staff the sea,' and it parted, and each portion was like a great towering mountain. And We advanced thereto the pursuers. And We saved Moses and those with him, all together. Then We drowned the others." (Quran 26:63-66)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Receiving the <span class="text-yellow-400">Torah & Trials</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Receiving the Torah -->
+                <div class="info-card">
+                    <h3>Receiving the Torah</h3>
+                    <p>
+                        After the Exodus, Musa (AS) ascended Mount Tur (Sinai) where Allah revealed the Torah (Tawrat) to him.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            The Torah contained laws and guidance for the Children of Israel. Musa (AS) spent 40 days on the mountain, during which his people committed a grave sin.
+                        </p>
+                        <p class="quran-reference">
+                            "And We wrote for him on the tablets [something] of all things - instruction and explanation for all things." (Quran 7:145)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- The Golden Calf -->
+                <div class="info-card">
+                    <h3>The Golden Calf</h3>
+                    <p>
+                        While Musa (AS) was on Mount Tur, his people, misled by Samiri, worshipped a golden calf.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Upon his return, Musa (AS) was enraged by their idolatry. This incident highlights the challenges of guiding a rebellious people and the importance of steadfastness in monotheism.
+                        </p>
+                        <p class="quran-reference">
+                            "And the people of Moses took from after him, from their ornaments, a calf as a body which lowed. Did they not see that it did not speak to them or guide them to a way? They took it [for worship], and they were wrongdoers." (Quran 7:148)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His <span class="text-yellow-400">Significance in Islam</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Ulul Azm (Resolute Prophets) -->
+                <div class="info-card">
+                    <h3>One of the Ulul Azm</h3>
+                    <p>
+                        Prophet Musa (AS) is one of the five "Ulul Azm" (Prophets of Strong Will/Resolve), signifying his immense patience and perseverance.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            The Ulul Azm are the greatest of the messengers, facing extraordinary challenges in conveying Allah's message. They include Nuh, Ibrahim, Musa, Isa, and Muhammad (peace be upon them all).
+                        </p>
+                        <p class="quran-reference">
+                            "So be patient, [O Muhammad], as were those of determination among the messengers..." (Quran 46:35)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Most Mentioned Prophet -->
+                <div class="info-card">
+                    <h3>Most Mentioned in Quran</h3>
+                    <p>
+                        Prophet Musa (AS) is mentioned more times in the Quran than any other prophet, highlighting the importance of his story.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            His narrative serves as a recurring theme, offering lessons for believers across generations on faith, resilience against tyranny, and the consequences of disobedience.
+                        </p>
+                        <p class="quran-reference">
+                            (Numerous chapters, e.g., Surah Al-Qasas, Surah Taha, Surah Al-Baqarah, extensively narrate his story.)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
+            The life of Prophet Musa (AS) is a profound source of guidance, illustrating the power of faith, the struggle against oppression, and Allah's unwavering support for His righteous servants.
+        </p>
+    </div>
+
+</body>
+</html>
