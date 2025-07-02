@@ -347,19 +347,19 @@
 
         .nav-dropdown-content {
             position: absolute;
-            top: 100%; /* Position below the button */
+            top: 100%; /* Correct: place just below the button */
             background-color: var(--bg-dropdown);
-            min-width: 280px; /* Increased min-width for content */
+            min-width: 280px;
             box-shadow: 0px 8px 16px 0px var(--shadow-dropdown);
             border-radius: 0.5rem;
             padding: 0.5rem 0;
-            z-index: 999; /* Increased z-index to ensure it's on top of other content */
+            z-index: 1001;
             left: 50%;
-            transform: translateX(-50%) translateY(10px); /* Start slightly below and centered */
+            transform: translateX(-50%) translateY(0); /* Remove extra downward shift */
             opacity: 0;
             visibility: hidden;
-            pointer-events: none; /* Prevent interaction when hidden */
-            transition: var(--transition-dropdown); /* Apply transition to opacity, visibility, and transform */
+            pointer-events: none;
+            transition: var(--transition-dropdown);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
