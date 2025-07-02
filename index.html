@@ -266,7 +266,8 @@
             box-shadow: 0 5px 15px var(--shadow-header);
             padding: 1.5rem 0;
             position: relative; /* Needed for pseudo-elements */
-            overflow: hidden; /* Hide overflow from gradient animation */
+            overflow: visible; /* Changed from hidden to visible */
+            z-index: 9999; /* Increased z-index to ensure it's on top of everything */
         }
 
         /* Subtle moving gradient background for header */
@@ -281,7 +282,7 @@
             background-size: 200% 200%;
             animation: headerGradientMove 15s ease-in-out infinite alternate;
             opacity: 0.1;
-            z-index: 0;
+            z-index: 0; /* Keep background behind content */
         }
 
         @keyframes headerGradientMove {
@@ -347,15 +348,15 @@
         
         .nav-dropdown-content {
             position: absolute;
-            top: 100%; /* Position below the button */
-            left: 50%;
-            transform: translateX(-50%) translateY(0); /* Remove vertical offset */
+            bottom: 100%; /* Position above the button */
             background-color: var(--bg-dropdown);
             min-width: 280px;
             box-shadow: 0px 8px 16px 0px var(--shadow-dropdown);
             border-radius: 0.5rem;
             padding: 0.5rem 0;
             z-index: 99999; /* Ensure dropdown is on top of all elements */
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px); /* Start slightly above and centered */
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
@@ -383,7 +384,7 @@
         .nav-dropdown-container:hover .nav-dropdown-content {
             opacity: 1;
             visibility: visible;
-            transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0); /* Moves into final position */
             pointer-events: auto;
         }
 
