@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prophet Dawud (David) in the Quran</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the My Deen Project homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+        }
+
+        .main-content-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            position: relative; /* Needed for absolute positioning of back button */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .main-content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            .info-card {
+                padding: 1rem;
+            }
+            .info-card h3 {
+                font-size: 1.1rem;
+            }
+            .info-card p {
+                font-size: 0.85rem;
+            }
+            details summary {
+                font-size: 0.85rem;
+            }
+            details p {
+                font-size: 0.8rem;
+            }
+            .back-to-home-btn { /* Adjust size for small screens */
+                top: 0.75rem;
+                left: 0.75rem;
+                padding: 0.5rem;
+            }
+            .back-to-home-btn .icon-wrapper {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Section headings - consistent with homepage */
+        .section-heading {
+            color: #8D8D8D;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .section-heading span {
+            color: #FACC15;
+        }
+
+        /* Info card styles (consistent with other pages) */
+        .info-card {
+            background-color: #282828; /* Darker card background */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+            border-radius: 0.75rem; /* Consistent border-radius */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+            padding: 1.5rem; /* Consistent padding */
+            text-align: left; /* Align text within cards to left */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .info-card h3 {
+            color: #BB86FC; /* Light purple for card titles */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card p {
+            color: #B0B0B0; /* Softer text color */
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Details/Summary styles for info expansion */
+        details {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            background-color: #3A3A3A; /* Slightly lighter for contrast */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #8be9fd; /* Light blue accent */
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:after {
+            content: '▼';
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        details[open] summary:after {
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #B0B0B0;
+        }
+
+        details .quran-reference {
+            font-style: italic;
+            border-left: 3px solid #FACC15; /* Golden yellow accent for Quranic references */
+            padding-left: 0.75rem;
+            margin-top: 1rem;
+            color: #C0C0C0;
+        }
+
+        /* Back button styling (consistent with Asmaul Husna page) */
+        .back-to-home-btn {
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            border-radius: 0.6rem;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            width: 3rem; /* Square width for icon only */
+            height: 3rem; /* Square height for icon only */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-decoration: none;
+            color: #FFFFFF;
+            justify-content: center;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+
+        .back-to-home-btn .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-to-home-btn .text-label {
+            position: absolute;
+            left: 0;
+            padding-left: 3rem;
+            padding-right: 1rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            pointer-events: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            border-radius: 0.6rem;
+        }
+
+        .back-to-home-btn:hover {
+            width: 12rem; /* Expand width on hover to reveal text */
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6);
+            background-image: linear-gradient(to right, #10B981, #34D399); /* Reverse gradient on hover */
+            transform: translateY(-2px); /* Subtle lift */
+        }
+
+        .back-to-home-btn:hover .icon-wrapper {
+            transform: translateX(calc(12rem - 3rem - 0.5rem)); /* Move icon to the right (total_width - icon_width - padding/gap) */
+        }
+
+        .back-to-home-btn:hover .text-label {
+            opacity: 1;
+            transform: translateX(0); /* Slide text into view */
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content-wrapper">
+        <!-- Back Button -->
+        <a href="index.html" class="back-to-home-btn" aria-label="Back to Home">
+            <span class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+            </span>
+            <span class="text-label">Back to Home</span>
+        </a>
+
+        <h1 class="main-heading">
+            Prophet Dawud (David) in the <span class="text-yellow-400">Quran</span>
+        </h1>
+
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+            Prophet Dawud (David), peace be upon him, is a revered figure in Islam, known for his wisdom, justice, and strength. He was a prophet and a king, blessed with unique abilities and a melodious voice. His story is a testament to Allah's power and the rewards of faith.
+        </p>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His Early Life & <span class="text-yellow-400">Victory Over Goliath</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Early Life & Joining the Army -->
+                <div class="info-card">
+                    <h3>A Young, Humble Warrior</h3>
+                    <p>
+                        Dawud (AS) was a young, humble shepherd who joined the army of Prophet Talut (Saul) against the tyrannical Goliath (Jalut).
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            At a time when the Children of Israel were oppressed by Goliath and his army, Dawud (AS), despite his youth and lack of military experience, possessed immense faith and courage.
+                        </p>
+                        <p class="quran-reference">
+                            "And when they went forth to [face] Goliath and his soldiers, they said, 'Our Lord, pour upon us patience and plant firmly our feet and give us victory over the disbelieving people.'" (Quran 2:250)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Defeating Goliath -->
+                <div class="info-card">
+                    <h3>The Defeat of Goliath</h3>
+                    <p>
+                        With Allah's help, Dawud (AS) miraculously defeated the mighty Goliath, using only a sling and stones.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            While the armies hesitated, Dawud (AS) stepped forward, trusting completely in Allah. He struck Goliath with a stone from his sling, bringing down the giant and turning the tide of the battle. This victory brought him great fame and respect among his people.
+                        </p>
+                        <p class="quran-reference">
+                            "So they defeated them by permission of Allah, and David killed Goliath; and Allah gave him the kingship and wisdom and taught him from that which He willed." (Quran 2:251)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His <span class="text-yellow-400">Prophethood & Kingship</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Prophet and King -->
+                <div class="info-card">
+                    <h3>Blessed with Prophethood & Kingship</h3>
+                    <p>
+                        Allah bestowed upon Dawud (AS) both the gift of prophethood and the authority of kingship.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This dual role made him a unique figure among the Children of Israel, allowing him to guide his people spiritually and govern them justly. His reign was marked by peace and prosperity.
+                        </p>
+                        <p class="quran-reference">
+                            "And We strengthened his kingdom and gave him wisdom and decisive speech." (Quran 38:20)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- The Book of Zabur -->
+                <div class="info-card">
+                    <h3>The Revelation of Zabur (Psalms)</h3>
+                    <p>
+                        Allah revealed to Dawud (AS) the holy book known as Zabur (Psalms).
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            The Zabur contained wisdom, admonitions, and praises of Allah. It is distinct from the Torah, which was revealed to Musa (AS). Dawud (AS) was known for his beautiful recitation of the Zabur, which would make mountains and birds join him in glorifying Allah.
+                        </p>
+                        <p class="quran-reference">
+                            "And your Lord is most knowing of whoever is in the heavens and the earth. And We have preferred some of the prophets over others, and to David We gave the book [of Psalms]." (Quran 17:55)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His <span class="text-yellow-400">Miracles & Divine Gifts</span>
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+                Allah granted Prophet Dawud (AS) several unique miracles and divine favors.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Softening of Iron -->
+                <div class="info-card">
+                    <h3>Softening of Iron</h3>
+                    <p>
+                        One of his miracles was the ability to soften iron in his hands, allowing him to fashion armor without fire.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This divine gift enabled him to produce coats of mail (armor) that were both strong and flexible, providing superior protection in battle. This was a great blessing for his people.
+                        </p>
+                        <p class="quran-reference">
+                            "And We made the iron soft for him, [commanding him], 'Make coats of mail and calculate [precisely] the links, and work righteousness. Indeed, I am Seeing of what you do.'" (Quran 34:10-11)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Subjugation of Birds and Mountains -->
+                <div class="info-card">
+                    <h3>Birds & Mountains Glorifying Allah</h3>
+                    <p>
+                        Mountains and birds would join him in glorifying Allah (Tasbih) whenever he recited the Zabur.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This was a testament to his beautiful voice and profound devotion. It shows Allah's power to make even inanimate objects and animals respond to His praise.
+                        </p>
+                        <p class="quran-reference">
+                            "Indeed, We subjected the mountains [to praise] with him, glorifying [Allah] in the evening and the sunrise. And the birds gathered, all with him reverting [to Allah]." (Quran 38:18-19)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                His <span class="text-yellow-400">Wisdom & Justice</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Wisdom in Judgment -->
+                <div class="info-card">
+                    <h3>Wisdom in Judgment</h3>
+                    <p>
+                        Allah granted Dawud (AS) immense wisdom and the ability to make decisive and just judgments.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            The Quran narrates an instance where he and his son Sulaiman (Solomon) were presented with a dispute regarding sheep. While Dawud (AS) initially gave one ruling, Sulaiman (AS) proposed an even wiser solution, which Dawud (AS) acknowledged. This shows his humility and pursuit of perfect justice.
+                        </p>
+                        <p class="quran-reference">
+                            "And David and Solomon, when they gave judgment concerning the field when the sheep of a people grazed therein by night; and We were witnesses to their judgment. And We gave understanding of the case to Solomon. And to each of them We gave judgment and knowledge." (Quran 21:78-79)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Justice in Rulings -->
+                <div class="info-card">
+                    <h3>Upholding Justice</h3>
+                    <p>
+                        As a prophet-king, Dawud (AS) was commanded to rule with justice and uphold the truth.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            His reign was a model of righteous governance, where he ensured fairness among his people and enforced Allah's laws. He was a just ruler who feared Allah.
+                        </p>
+                        <p class="quran-reference">
+                            "O David, indeed We have made you a successor upon the earth; so judge between the people with truth and do not follow [personal] inclination, as it will lead you astray from the way of Allah." (Quran 38:26)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
+            The story of Prophet Dawud (AS) in the Quran is a rich source of lessons on faith, courage, justice, and the blessings that Allah bestows upon His obedient servants.
+        </p>
+    </div>
+
+</body>
+</html>
