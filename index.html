@@ -5,39 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Deen Project - Home</title>
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Inter Font -->
+    <!-- Inter Font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome 6 CDN (Updated for latest icons and performance) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon (Replace with your actual favicon path) -->
+    <link rel="icon" type="image/png" href="https://placehold.co/32x32/FACC15/121212?text=DP" />
 
     <style>
+        /* CSS Variables for easier theme management and consistency */
+        :root {
+            /* Backgrounds */
+            --bg-body: #121212; /* Very dark background */
+            --bg-body-gradient-end: #1C1C1C; /* Subtle gradient end */
+            --bg-main-content: #1E1E1E; /* Slightly lighter for main container */
+            --bg-header-footer: #1A1A1A; /* Even darker for header/footer */
+            --bg-card: #282828; /* Darker card background */
+            --bg-card-hover: #2D2D2D; /* Slightly lighter on card hover */
+            --bg-dropdown: #282828; /* Dropdown background */
+
+            /* Text Colors */
+            --text-light: #E0E0E0; /* Light gray for main text */
+            --text-muted: #B0B0B0; /* Softer text color */
+            --text-footer: #707070; /* Muted footer text */
+            --text-heading-muted: #8D8D8D; /* Muted heading color */
+            --text-white: #FFFFFF; /* Pure white */
+
+            /* Accent Colors */
+            --accent-yellow: #FACC15; /* Golden yellow for main accents */
+            --accent-purple: #BB86FC; /* Light purple for card titles */
+            --accent-blue-hover: #8be9fd; /* Light blue for dropdown hover */
+
+            /* Button Gradients */
+            --btn-gradient-start: #4F46E5; /* Indigo */
+            --btn-gradient-end: #6366F1; /* Violet */
+
+            /* Button Disabled State */
+            --btn-disabled-bg: #4B5563; /* Grayed out for disabled */
+            --btn-disabled-text: #9CA3AF; /* Muted text for disabled */
+
+            /* Borders & Shadows */
+            --border-subtle: rgba(255, 255, 255, 0.08); /* Subtle border for main content */
+            --border-very-subtle: rgba(255, 255, 255, 0.05); /* Very subtle border for cards/footer */
+            --shadow-deep: rgba(0, 0, 0, 0.7); /* Deeper main shadow */
+            --shadow-button: rgba(79, 70, 229, 0.4); /* Button shadow matching gradient */
+            --shadow-button-hover: rgba(79, 70, 229, 0.6); /* Enhanced button shadow on hover */
+            --shadow-card-initial: rgba(0, 0, 0, 0.3); /* Softer initial card shadow */
+            --shadow-card-hover: rgba(0, 0, 0, 0.5); /* Deeper card shadow on hover */
+            --shadow-header: rgba(0, 0, 0, 0.5); /* Header shadow */
+            --shadow-dropdown: rgba(0,0,0,0.8); /* Dropdown shadow */
+            --shadow-heading-text: rgba(0,0,0,0.3); /* Text shadow for headings */
+
+            /* Transitions */
+            --transition-ease-out: 0.3s ease-out;
+            --transition-cubic-bezier: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition-card: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            --transition-dropdown: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out;
+        }
+
         /* Base styles for a clean, minimal, and modern dark theme */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #121212; /* Very dark background */
-            color: #E0E0E0; /* Light gray text for contrast */
+            background-color: var(--bg-body);
+            color: var(--text-light);
             margin: 0;
             padding: 0;
-            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+            /* Subtle top-to-bottom gradient for background */
+            background-image: linear-gradient(to bottom, var(--bg-body), var(--bg-body-gradient-end));
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            display: flex;
+            flex-direction: column;
         }
 
+        /* Main content wrapper styling */
         .main-content-wrapper {
             max-width: 1100px; /* Wider content area for a more spacious feel */
             width: 100%;
-            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            background-color: var(--bg-main-content); /* Slightly lighter than body for depth */
             border-radius: 1rem;
             padding: 4rem 3rem; /* Increased vertical padding for more whitespace */
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7); /* Deeper, softer shadow */
+            box-shadow: 0 15px 30px var(--shadow-deep); /* Deeper, softer shadow */
             margin: 3rem auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border for definition */
+            border: 1px solid var(--border-subtle); /* Subtle border for definition */
+            flex-grow: 1; /* Allows main content to grow and push footer down */
         }
 
         /* Responsive adjustments for smaller screens */
@@ -89,85 +148,159 @@
             }
         }
 
-        /* Refined button styles */
+        /* Refined button styles for a premium look */
         .interactive-button {
-            background-image: linear-gradient(to right, #4F46E5, #6366F1); /* Subtle blue gradient */
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); /* Shadow matching gradient color */
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth cubic-bezier transition */
-            border-radius: 0.6rem; /* Slightly more rounded */
-            padding: 0.75rem 2rem; /* Adjusted padding */
+            background-image: linear-gradient(to right, var(--btn-gradient-start), var(--btn-gradient-end));
+            box-shadow: 0 4px 12px var(--shadow-button);
+            transition: var(--transition-cubic-bezier);
+            border-radius: 0.6rem;
+            padding: 0.75rem 2rem;
             font-weight: 600;
             letter-spacing: 0.025em;
-            color: #FFFFFF;
-            display: flex; /* Ensure button content (text/icon) is centered */
+            color: var(--text-white);
+            display: flex;
             justify-content: center;
             align-items: center;
+            text-decoration: none; /* Ensure links styled as buttons don't have underlines */
+            cursor: pointer; /* Indicate interactivity */
+            border: none; /* Remove default button border */
+            outline: none; /* Remove default outline */
         }
 
         .interactive-button:hover {
-            transform: translateY(-2px); /* Subtle lift */
-            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.6); /* Enhanced shadow on hover */
-            background-image: linear-gradient(to right, #6366F1, #4F46E5); /* Reverse gradient on hover */
+            transform: translateY(-3px); /* More noticeable lift */
+            box-shadow: 0 10px 25px var(--shadow-button-hover); /* Enhanced shadow on hover */
+            background-image: linear-gradient(to right, var(--btn-gradient-end), var(--btn-gradient-start)); /* Reverse gradient on hover */
+        }
+
+        /* Focus state for accessibility */
+        .interactive-button:focus-visible {
+            outline: 2px solid var(--accent-yellow); /* Yellow outline for focus */
+            outline-offset: 2px;
         }
 
         /* Disabled button style */
         .interactive-button.disabled {
             background-image: none;
-            background-color: #4B5563; /* Grayed out for disabled */
-            color: #9CA3AF;
+            background-color: var(--btn-disabled-bg);
+            color: var(--btn-disabled-text);
             cursor: not-allowed;
             box-shadow: none;
             transform: none;
+            pointer-events: none; /* Prevent click events */
         }
 
-        /* Specific hover down effect for blog cards */
+        /* Blog post card styling */
         .blog-post-card {
-            background-color: #282828; /* Darker card background */
-            border: 1px solid rgba(255, 255, 255, 0.05); /* Very subtle border */
-            border-radius: 0.75rem; /* Consistent border-radius */
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-very-subtle);
+            border-radius: 0.75rem;
+            transition: var(--transition-card);
             transform: translateY(0);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer initial shadow */
-            padding: 1.5rem; /* Consistent padding */
+            box-shadow: 0 4px 10px var(--shadow-card-initial);
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Pushes button to bottom */
+            justify-content: space-between;
         }
 
         .blog-post-card:hover {
             transform: translateY(4px); /* Move down slightly more subtly */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Deeper shadow on hover */
-            background-color: #2D2D2D; /* Slightly lighter on hover */
+            box-shadow: 0 10px 25px var(--shadow-card-hover);
+            background-color: var(--bg-card-hover);
         }
 
         .blog-post-card h3 {
-            color: #BB86FC; /* Light purple for card titles */
+            color: var(--accent-purple);
             font-weight: 600;
             font-size: 1.2rem;
             margin-bottom: 0.75rem;
         }
 
         .blog-post-card p {
-            color: #B0B0B0; /* Softer text color */
+            color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.5;
-            flex-grow: 1; /* Allows text to take up available space */
-            margin-bottom: 1.25rem; /* Space before button */
+            flex-grow: 1;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Feature card styling (similar to blog cards but with different hover) */
+        .feature-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-very-subtle);
+            border-radius: 0.75rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            transform: translateY(0);
+            box-shadow: 0 4px 10px var(--shadow-card-initial);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.02); /* Slightly scale up on hover */
+            box-shadow: 0 8px 20px var(--shadow-card-hover);
+            background-color: var(--bg-card-hover);
+        }
+
+        .feature-card h3 {
+            color: var(--accent-yellow); /* Yellow for feature card titles */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            margin-bottom: 1.25rem;
         }
 
         /* Header styling enhancements */
         header {
-            background-color: #1A1A1A; /* Even darker header */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            padding: 1.5rem 0; /* Adjust header padding */
+            background-color: var(--bg-header-footer);
+            box-shadow: 0 5px 15px var(--shadow-header);
+            padding: 1.5rem 0;
+            position: relative; /* Needed for pseudo-elements */
+            overflow: hidden; /* Hide overflow from gradient animation */
         }
+
+        /* Subtle moving gradient background for header */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.05) 100%);
+            background-size: 200% 200%;
+            animation: headerGradientMove 15s ease-in-out infinite alternate;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        @keyframes headerGradientMove {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        header .container {
+            position: relative; /* Ensure content is above pseudo-element */
+            z-index: 1;
+        }
+
         header h1 {
-            color: #FACC15; /* Golden yellow */
-            font-size: 3.5rem; /* Slightly larger title */
+            color: var(--accent-yellow);
+            font-size: 3.5rem;
             letter-spacing: 0.05em;
         }
         header .subtitle {
-            color: #B0B0B0;
+            color: var(--text-muted);
             font-size: 1.3rem;
             font-weight: 300;
             margin-top: 0.5rem;
@@ -176,80 +309,82 @@
 
         /* Section headings */
         .section-heading {
-            color: #8D8D8D; /* Muted heading color */
+            color: var(--text-heading-muted);
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 2.5rem; /* More space below headings */
+            margin-bottom: 2.5rem;
             letter-spacing: -0.02em;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 4px var(--shadow-heading-text);
         }
 
         .section-heading span {
-            color: #FACC15; /* Highlight accent */
+            color: var(--accent-yellow); /* Highlight accent */
         }
 
         /* Footer styling */
         footer {
-            background-color: #1A1A1A;
-            color: #707070; /* Muted footer text */
+            background-color: var(--bg-header-footer);
+            color: var(--text-footer);
             font-size: 0.85rem;
             padding: 2rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05); /* Subtle top border */
+            border-top: 1px solid var(--border-very-subtle);
+            text-align: center;
+            margin-top: auto; /* Push footer to the bottom */
         }
         footer .text-yellow-400 {
-            color: #FACC15;
+            color: var(--accent-yellow);
         }
 
-        /* New styles for the top navigation button and dropdown */
+        /* Navigation button and dropdown styles */
         .nav-dropdown-container {
             position: relative;
-            display: flex; /* Use flex for centering the button */
-            justify-content: center; /* Center the button horizontally */
-            width: 100%; /* Take full width to center its content */
-            margin-top: 1rem; /* Space below title/subtitle */
-            z-index: 20; /* Ensure it's above other content */
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 1.5rem; /* More space below title/subtitle */
+            z-index: 20; /* Container z-index */
         }
 
         .nav-dropdown-content {
-            display: none;
             position: absolute;
-            background-color: #282828; /* Dark background for dropdown */
-            min-width: 250px; /* Increased min-width for content */
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8);
+            top: 100%; /* Position below the button */
+            background-color: var(--bg-dropdown);
+            min-width: 280px; /* Increased min-width for content */
+            box-shadow: 0px 8px 16px 0px var(--shadow-dropdown);
             border-radius: 0.5rem;
             padding: 0.5rem 0;
-            z-index: 1;
-            /* Centering dropdown content relative to the button */
+            z-index: 999; /* Increased z-index to ensure it's on top of other content */
             left: 50%;
-            /* Added translateY for smooth "dance" effect */
             transform: translateX(-50%) translateY(10px); /* Start slightly below and centered */
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out; /* Add transform to transition */
+            pointer-events: none; /* Prevent interaction when hidden */
+            transition: var(--transition-dropdown); /* Apply transition to opacity, visibility, and transform */
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-dropdown-content a {
-            color: #E0E0E0;
+            color: var(--text-light);
             padding: 0.75rem 1.25rem;
             text-decoration: none;
             display: block;
-            text-align: left; /* Align text to the left within dropdown items */
+            text-align: left;
             transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
             font-size: 0.95rem;
-            white-space: nowrap; /* Prevent wrapping */
+            white-space: nowrap;
         }
 
         .nav-dropdown-content a:hover {
-            background-color: #3A3A3A; /* Hover background for dropdown items */
-            color: #8be9fd; /* Light blue accent on hover */
+            background-color: #3A3A3A;
+            color: var(--accent-blue-hover);
         }
 
+        /* When container is hovered, show the dropdown */
         .nav-dropdown-container:hover .nav-dropdown-content {
-            display: block;
             opacity: 1;
             visibility: visible;
             transform: translateX(-50%) translateY(0); /* Move to final centered position */
+            pointer-events: auto; /* Allow interaction when visible */
         }
 
         /* Animation for header elements */
@@ -270,26 +405,59 @@
                 transform: translateY(0);
             }
         }
+
+        /* Back to top button styles */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--accent-yellow);
+            color: var(--bg-body);
+            padding: 1rem 1.2rem;
+            border-radius: 50%; /* Make it perfectly round */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            display: none; /* Hidden by default, controlled by JS */
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            z-index: 1000; /* Ensure it's on top */
+            border: none; /* Remove button border */
+            outline: none; /* Remove button outline */
+        }
+
+        #back-to-top:hover {
+            transform: translateY(-5px) scale(1.05); /* Lift and slightly enlarge on hover */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        #back-to-top:focus-visible {
+            outline: 2px solid var(--text-white); /* White outline on focus */
+            outline-offset: 2px;
+        }
+
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 
     <!-- Header Section -->
     <header class="w-full py-10 text-center shadow-lg">
-  <div class="container mx-auto px-4 flex flex-col items-center justify-center text-center">
-    <h1 class="text-5xl md:text-6xl font-extrabold text-yellow-400 mb-2 animate-fade-in">
-      <i class="fas fa-mosque text-6xl"></i> My Deen Project
-    </h1>
-    <p class="text-xl md:text-2xl text-gray-300 font-light subtitle header-subtitle-fade-in">
-      Your Digital Hub for Islamic Knowledge and Practice
-    </p>
+        <div class="container mx-auto px-4 flex flex-col items-center justify-center text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-yellow-400 mb-2 animate-fade-in">
+                <i class="fas fa-mosque text-6xl"></i> My Deen Project
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 font-light subtitle header-subtitle-fade-in">
+                Your Digital Hub for Islamic Knowledge and Practice
+            </p>
 
-            <!-- New Navigation Button with Dropdown -->
+            <!-- Navigation Button with Dropdown -->
             <div class="nav-dropdown-container">
                 <button class="interactive-button py-3 px-8 text-lg gap-2">
                     Explore <i class="fas fa-chevron-down text-sm ml-2"></i>
                 </button>
                 <div class="nav-dropdown-content">
+                    <!-- Corrected href paths for consistency and .html extension -->
                     <a href="understanding-islam-beginners.html">Understanding Islam for Beginners</a>
                     <a href="asmaul-husna.html">Asmaul Husna - The 99 Names of Allah</a>
                     <a href="prophet-muhammed-sa.html">Prophet Muhammad (PBUH): Key Events & Inspirations</a>
@@ -297,10 +465,9 @@
                     <a href="duniya-and-akhirah.html">Dunya & Akhirah: This Worldly Life and The Hereafter</a>
                     <a href="islamic-legal-classifications.html">Islamic Legal Classifications</a>
                     <a href="prophets-quran-lineage.html">Prophets in the Quran & Lineage</a>
-                    <a href="prophet-isa">Prophet Isa AS (Jesus Christ) in the Quran</a>
+                    <a href="prophet-isa.html">Prophet Isa AS (Jesus Christ) in the Quran</a>
                     <a href="nafl-prayers.html">Nafl (Voluntary) Prayers</a>
                     <a href="understanding-hadith.html">Understanding Hadith: Classifications & Hadith Qudsi</a>
-                    
                 </div>
             </div>
         </div>
@@ -319,7 +486,7 @@
             </p>
         </section>
 
-        <!-- Blog Section (Moved to the top and enhanced) -->
+        <!-- Blog Section -->
         <section class="w-full mb-20 animate-fade-in">
             <h2 class="section-heading">Our Latest <span>Blog</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
@@ -331,7 +498,7 @@
                     <p class="mb-4">
                         Explore the foundational categories and principles that govern Islamic jurisprudence and daily life.
                     </p>
-                    <a href="Islamic%20Legal%20Classifications.html" class="inline-block interactive-button">
+                    <a href="islamic-legal-classifications.html" class="inline-block interactive-button">
                         Read More
                     </a>
                 </div>
@@ -344,12 +511,12 @@
                     <p class="mb-4">
                         A detailed look at the esteemed Prophets mentioned in the Holy Quran, tracing their stories and genealogical connections.
                     </p>
-                    <a href="Prophets%20in%20the%20Quran%20and%20their%20Lineage.html" class="inline-block interactive-button">
+                    <a href="prophets-quran-lineage.html" class="inline-block interactive-button">
                         Read More
                     </a>
                 </div>
 
-                <!-- Blog Post 3: Daily Prayers & Jumu'ah Summary Table -->
+                <!-- Blog Post 3: Daily Prayer Summaries -->
                 <div class="blog-post-card">
                     <h3 class="mb-3">
                         Daily Prayer Summaries
@@ -357,12 +524,12 @@
                     <p class="mb-4">
                         A comprehensive guide to the obligatory and Sunnah Rak'ahs for all daily prayers, including the special Jumu'ah prayer.
                     </p>
-                    <a href="Daily%20Prayers%20%26%20Jumu%27ah%20Summary%20Table.html" class="inline-block interactive-button">
+                    <a href="daily-prayers-jumuah-summary.html" class="inline-block interactive-button">
                         Read More
                     </a>
                 </div>
 
-                <!-- New Blog Post Card: Nafl (Voluntary) Prayers -->
+                <!-- Blog Post Card: Nafl (Voluntary) Prayers -->
                 <div class="blog-post-card">
                     <h3 class="mb-3">
                         Nafl (Voluntary) Prayers
@@ -370,12 +537,12 @@
                     <p class="mb-4">
                         Discover the various optional prayers that bring immense spiritual rewards and closeness to Allah.
                     </p>
-                    <a href="nafl-prayers-table.html" class="inline-block interactive-button">
+                    <a href="nafl-prayers.html" class="inline-block interactive-button">
                         Read More
                     </a>
                 </div>
 
-                <!-- New Blog Post Card: Understanding Hadith -->
+                <!-- Blog Post Card: Understanding Hadith -->
                 <div class="blog-post-card">
                     <h3>Understanding Hadith</h3>
                     <p>
@@ -386,7 +553,7 @@
                     </a>
                 </div>
 
-                <!-- New Blog Post Card: Prophet Muhammad (PBUH) Events -->
+                <!-- Blog Post Card: Prophet Muhammad (PBUH) Events -->
                 <div class="blog-post-card">
                     <h3>Prophet Muhammad (PBUH): Events & Inspirations</h3>
                     <p>
@@ -397,13 +564,13 @@
                     </a>
                 </div>
 
-                 <!-- New Blog Post Card: Understanding Islam for Beginners -->
+                <!-- Blog Post Card: Understanding Islam for Beginners -->
                 <div class="blog-post-card">
                     <h3>Understanding Islam for Beginners</h3>
                     <p>
                         A foundational guide to the core beliefs, practices, and values of Islam, designed for easy understanding.
                     </p>
-                    <a href="understanding-islam-for-beginners.html" class="inline-block interactive-button">
+                    <a href="understanding-islam-beginners.html" class="inline-block interactive-button">
                         Read More
                     </a>
                 </div>
@@ -415,14 +582,14 @@
         </section>
 
 
-        <!-- Features Section (Now below Blog) -->
+        <!-- Features Section -->
         <section class="w-full mb-20 animate-fade-in">
             <h2 class="section-heading">
                 Key <span>Features</span>
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
                 <!-- Feature Card 1: Placeholder for Future Content -->
-                <div class="feature-card bg-gray-700 p-6 rounded-lg shadow-xl transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                <div class="feature-card">
                     <h3 class="text-xl font-semibold text-yellow-300 mb-3">
                         Coming Soon: Quranic Insights
                     </h3>
@@ -435,7 +602,7 @@
                 </div>
 
                 <!-- Feature Card 2: Placeholder for Future Content -->
-                <div class="feature-card bg-gray-700 p-6 rounded-lg shadow-xl transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                <div class="feature-card">
                     <h3 class="text-xl font-semibold text-yellow-300 mb-3">
                         Coming Soon: Hadith Collection
                     </h3>
@@ -448,7 +615,7 @@
                 </div>
 
                 <!-- Feature Card 3: Placeholder for Future Content -->
-                <div class="feature-card bg-gray-700 p-6 rounded-lg shadow-xl transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                <div class="feature-card">
                     <h3 class="text-xl font-semibold text-yellow-300 mb-3">
                         Coming Soon: Islamic Calendar
                     </h3>
@@ -461,7 +628,7 @@
                 </div>
 
                 <!-- Feature Card 4: Placeholder -->
-                <div class="feature-card bg-gray-700 p-6 rounded-lg shadow-xl transform transition duration-300 hover:scale-105 hover:bg-gray-600">
+                <div class="feature-card">
                     <h3 class="text-xl font-semibold text-yellow-300 mb-3">
                         More Resources
                     </h3>
@@ -487,20 +654,74 @@
                 continually improve our resources. Join us in building something meaningful!
             </p>
             <a href="https://github.com/your-github-username/mydeen" target="_blank" rel="noopener noreferrer"
-               class="inline-block interactive-button py-3 px-8 text-lg transform hover:-translate-y-1">
+               class="inline-block interactive-button py-3 px-8 text-lg">
                 Visit our GitHub Repository
             </a>
-            <p class="text-sm text-gray-400 mt-6 opacity-70">
-                (Remember to replace "your-github-username/mydeen" with your actual GitHub repository link.)
-            </p>
+            <!-- Developer Note: Remember to replace "your-github-username/mydeen" with your actual GitHub repository link. -->
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="w-full py-8 bg-gray-800 text-center text-gray-400 text-sm">
-        <p>&copy; 2025 My Deen Project. All rights reserved.</p>
+        <p>&copy; <span id="current-year"></span> My Deen Project. All rights reserved.</p>
         <p class="mt-2 opacity-80">Built with dedication. <span class="text-yellow-400">Islam is peace.</span></p>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // JavaScript for dynamic footer year, smooth scrolling, and back-to-top button
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in the footer
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Back to Top button logic
+            const backToTopButton = document.getElementById('back-to-top');
+
+            // Show/hide the button based on scroll position
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { // Show button after scrolling 300px
+                    backToTopButton.style.display = 'flex'; // Use flex to center icon
+                    backToTopButton.style.opacity = '1';
+                    backToTopButton.style.transform = 'translateY(0)';
+                } else {
+                    backToTopButton.style.opacity = '0';
+                    backToTopButton.style.transform = 'translateY(20px)'; // Animate out
+                    // Hide after transition to prevent it from taking up space
+                    setTimeout(() => {
+                        if (window.scrollY <= 300) {
+                            backToTopButton.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            });
+
+            // Scroll to top when the button is clicked
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
