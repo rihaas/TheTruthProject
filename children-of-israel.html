@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children of Israel (Bani Israel) in the Quran</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the My Deen Project homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+        }
+
+        .main-content-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            position: relative; /* Needed for absolute positioning of back button */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .main-content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            .info-card {
+                padding: 1rem;
+            }
+            .info-card h3 {
+                font-size: 1.1rem;
+            }
+            .info-card p {
+                font-size: 0.85rem;
+            }
+            details summary {
+                font-size: 0.85rem;
+            }
+            details p {
+                font-size: 0.8rem;
+            }
+            .back-to-home-btn { /* Adjust size for small screens */
+                top: 0.75rem;
+                left: 0.75rem;
+                padding: 0.5rem;
+            }
+            .back-to-home-btn .icon-wrapper {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Section headings - consistent with homepage */
+        .section-heading {
+            color: #8D8D8D;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .section-heading span {
+            color: #FACC15;
+        }
+
+        /* Info card styles (consistent with other pages) */
+        .info-card {
+            background-color: #282828; /* Darker card background */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+            border-radius: 0.75rem; /* Consistent border-radius */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+            padding: 1.5rem; /* Consistent padding */
+            text-align: left; /* Align text within cards to left */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .info-card h3 {
+            color: #BB86FC; /* Light purple for card titles */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card p {
+            color: #B0B0B0; /* Softer text color */
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Details/Summary styles for info expansion */
+        details {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            background-color: #3A3A3A; /* Slightly lighter for contrast */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #8be9fd; /* Light blue accent */
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:after {
+            content: '▼';
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        details[open] summary:after {
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #B0B0B0;
+        }
+
+        details .quran-reference {
+            font-style: italic;
+            border-left: 3px solid #FACC15; /* Golden yellow accent for Quranic references */
+            padding-left: 0.75rem;
+            margin-top: 1rem;
+            color: #C0C0C0;
+        }
+
+        /* Back button styling (consistent with Asmaul Husna page) */
+        .back-to-home-btn {
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            border-radius: 0.6rem;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            width: 3rem; /* Square width for icon only */
+            height: 3rem; /* Square height for icon only */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-decoration: none;
+            color: #FFFFFF;
+            justify-content: center;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+
+        .back-to-home-btn .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-to-home-btn .text-label {
+            position: absolute;
+            left: 0;
+            padding-left: 3rem;
+            padding-right: 1rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            pointer-events: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            border-radius: 0.6rem;
+        }
+
+        .back-to-home-btn:hover {
+            width: 12rem; /* Expand width on hover to reveal text */
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6);
+            background-image: linear-gradient(to right, #10B981, #34D399); /* Reverse gradient on hover */
+            transform: translateY(-2px); /* Subtle lift */
+        }
+
+        .back-to-home-btn:hover .icon-wrapper {
+            transform: translateX(calc(12rem - 3rem - 0.5rem)); /* Move icon to the right (total_width - icon_width - padding/gap) */
+        }
+
+        .back-to-home-btn:hover .text-label {
+            opacity: 1;
+            transform: translateX(0); /* Slide text into view */
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content-wrapper">
+        <!-- Back Button -->
+        <a href="index.html" class="back-to-home-btn" aria-label="Back to Home">
+            <span class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+            </span>
+            <span class="text-label">Back to Home</span>
+        </a>
+
+        <h1 class="main-heading">
+            The Children of Israel (Bani Israel) in the <span class="text-yellow-400">Quran</span>
+        </h1>
+
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+            The Quran frequently narrates the history of the Children of Israel (Bani Israel), a people chosen by Allah to receive numerous blessings and divine guidance. Their story is a profound source of lessons for all humanity, highlighting themes of faith, obedience, disobedience, divine mercy, and justice.
+        </p>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Their <span class="text-yellow-400">Blessed Status & Covenant</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Chosen People -->
+                <div class="info-card">
+                    <h3>Chosen by Allah</h3>
+                    <p>
+                        Allah chose the Children of Israel above the nations of their time, bestowing upon them many favors.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            They were favored with prophethood, scriptures (Torah, Psalms, Gospel), and were liberated from the oppression of Pharaoh. This status came with great responsibility to uphold Allah's covenant.
+                        </p>
+                        <p class="quran-reference">
+                            "O Children of Israel, remember My favor which I have bestowed upon you and that I preferred you over the worlds." (Quran 2:47)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- The Covenant -->
+                <div class="info-card">
+                    <h3>The Covenant with Allah</h3>
+                    <p>
+                        Allah made a solemn covenant with them to worship Him alone, establish prayer, give charity, and believe in His messengers.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This covenant was reinforced through Prophet Musa (AS) and the revelation of the Torah. It was a promise of blessings and continued guidance if they remained obedient.
+                        </p>
+                        <p class="quran-reference">
+                            "And [recall] when We took the covenant from the Children of Israel, [enjoining upon them], 'Do not worship except Allah; and to parents, good treatment; and to relatives, orphans, and the needy. And speak to people good words and establish prayer and give zakah.' Then you turned away, except a few of you, and you were refusing." (Quran 2:83)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Their <span class="text-yellow-400">Disobedience & Rebelliousness</span>
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+                Despite Allah's immense favors, the Quran frequently highlights the Children of Israel's repeated acts of disobedience, breaking their covenant.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Breaking the Covenant -->
+                <div class="info-card">
+                    <h3>Repeated Breaking of Covenant</h3>
+                    <p>
+                        They frequently broke their solemn promises to Allah, turning away from His commands.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This included rejecting prophets, altering scriptures, and prioritizing worldly desires over divine guidance. Their history is marked by a pattern of rebellion after receiving clear signs.
+                        </p>
+                        <p class="quran-reference">
+                            "But because of their breaking their covenant, We cursed them and made their hearts hard. They distort words from their [proper] usages and have forgotten a portion of that by which they were reminded." (Quran 5:13)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Worship of Golden Calf -->
+                <div class="info-card">
+                    <h3>Worship of the Golden Calf</h3>
+                    <p>
+                        Soon after being liberated from Pharaoh, they worshipped a golden calf while Prophet Musa (AS) was on Mount Sinai.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This act of idolatry was a severe transgression, demonstrating their impatience and lack of true understanding of monotheism, despite witnessing Allah's miracles.
+                        </p>
+                        <p class="quran-reference">
+                            "And [recall] when We took your covenant and raised over you the Mount, [saying], 'Take what We have given you with determination and listen.' They said, 'We hear and disobey.' And they were made to drink [the love of] the calf into their hearts because of their disbelief." (Quran 2:93)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Demanding to See Allah -->
+                <div class="info-card">
+                    <h3>Demanding to See Allah</h3>
+                    <p>
+                        They made an audacious demand to Prophet Musa (AS) to see Allah directly.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            As a consequence of this arrogance, they were struck by a thunderbolt. Allah then revived them, showing His immense mercy despite their transgressions.
+                        </p>
+                        <p class="quran-reference">
+                            "And [recall] when you said, 'O Moses, we will not believe you until we see Allah outrightly'; so the thunderbolt seized you while you were looking on." (Quran 2:55)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Refusal to Enter the Holy Land -->
+                <div class="info-card">
+                    <h3>Refusal to Enter the Holy Land</h3>
+                    <p>
+                        They refused to enter the Holy Land (Palestine) when commanded by Allah, fearing its inhabitants.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This act of cowardice and disobedience led to their wandering in the desert for forty years, a divine punishment for their rebellion.
+                        </p>
+                        <p class="quran-reference">
+                            "[Moses] said, 'My Lord, indeed I do not possess except myself and my brother, so part us from the defiantly disobedient people.' [Allah] said, 'Then indeed, it is forbidden to them for forty years [in which] they will wander through the land. So do not grieve over the defiantly disobedient people.'" (Quran 5:25-26)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Killing Prophets -->
+                <div class="info-card">
+                    <h3>Killing Prophets</h3>
+                    <p>
+                        The Quran condemns them for killing many of the prophets sent to them without a just cause.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This was one of their gravest sins, demonstrating their extreme rejection of divine guidance and their arrogance towards Allah's messengers.
+                        </p>
+                        <p class="quran-reference">
+                            "Indeed, those who disbelieve in the verses of Allah and kill the prophets without right and kill those who enjoin justice from among the people - give them tidings of a painful punishment." (Quran 3:21)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Distorting Scriptures -->
+                <div class="info-card">
+                    <h3>Distorting Scriptures</h3>
+                    <p>
+                        They distorted and altered the divine revelations (Torah and Injil) that were sent to them.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This involved changing words, concealing truths, and interpreting verses to suit their desires, leading to corruption of the divine message.
+                        </p>
+                        <p class="quran-reference">
+                            "So woe to those who write the Scripture with their own hands, then say, 'This is from Allah,' in order to exchange it for a small price. Woe to them for what their hands have written and woe to them for what they earn." (Quran 2:79)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Prophets Sent to <span class="text-yellow-400">Guide Them</span>
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+                Despite their transgressions, Allah continuously sent prophets and messengers to the Children of Israel to remind them of their covenant and guide them back to the straight path.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Prophet Musa (Moses) -->
+                <div class="info-card">
+                    <h3>Prophet Musa (Moses)</h3>
+                    <p>
+                        The greatest prophet sent to them, who liberated them from Pharaoh and received the Torah.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            His story is extensively narrated in the Quran, detailing his miracles, leadership, and the immense trials he faced with his people.
+                        </p>
+                        <p class="quran-reference">
+                            "And We certainly gave Moses the Scripture and followed up after him with messengers. And We gave Jesus, the son of Mary, clear proofs and supported him with the Pure Spirit." (Quran 2:87)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Prophet Dawud (David) -->
+                <div class="info-card">
+                    <h3>Prophet Dawud (David)</h3>
+                    <p>
+                        A prophet and king, who defeated Goliath and was given the Zabur (Psalms).
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            He ruled with justice and was known for his melodious voice, with which he would glorify Allah, and mountains and birds would join him.
+                        </p>
+                        <p class="quran-reference">
+                            "And David killed Goliath, and Allah gave him the kingship and wisdom and taught him from that which He willed." (Quran 2:251)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Prophet Sulaiman (Solomon) -->
+                <div class="info-card">
+                    <h3>Prophet Sulaiman (Solomon)</h3>
+                    <p>
+                        Son of Dawud (AS), a prophet and king blessed with immense power, including control over jinn and animals.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            His wisdom and vast kingdom are highlighted in the Quran, including his interactions with the Queen of Sheba and the building of the Temple.
+                        </p>
+                        <p class="quran-reference">
+                            "And to David We gave Solomon. An excellent servant, indeed he was one repeatedly turning to Allah." (Quran 38:30)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Prophet Isa (Jesus) -->
+                <div class="info-card">
+                    <h3>Prophet Isa (Jesus)</h3>
+                    <p>
+                        The last great prophet sent to the Children of Israel, born miraculously and performing many miracles.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            He affirmed the Torah and brought the Injil (Gospel). His mission was to guide the Children of Israel back to the pure worship of Allah.
+                        </p>
+                        <p class="quran-reference">
+                            "And [mention] when Jesus, the son of Mary, said, 'O Children of Israel, indeed I am the messenger of Allah to you confirming what came before me of the Torah and bringing good tidings of a messenger to come after me, whose name is Ahmad.'" (Quran 61:6)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Other Prophets -->
+                <div class="info-card">
+                    <h3>Many Other Prophets</h3>
+                    <p>
+                        Numerous other prophets, including Zakariyya (Zechariah), Yahya (John), Ilyas (Elijah), and Al-Yasa' (Elisha), were sent to guide them.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Their stories, though sometimes brief, emphasize Allah's continuous guidance and the consistent message of monotheism delivered through various messengers.
+                        </p>
+                        <p class="quran-reference">
+                            "And We gave to him Isaac and Jacob, and each of them We guided. And Noah, We guided before; and from his descendants David and Solomon and Job and Joseph and Moses and Aaron. Thus do We reward the doers of good. And Zechariah and John and Jesus and Elias - and all were of the righteous. And Ishmael and Elisha and Jonah and Lot - and all We preferred over the worlds." (Quran 6:84-86)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Lessons for <span class="text-yellow-400">All Humanity</span>
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+                The Quran narrates the story of the Children of Israel not to condemn them, but as a universal lesson for all believers across time.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Importance of Obedience -->
+                <div class="info-card">
+                    <h3>Importance of Obedience</h3>
+                    <p>
+                        The story highlights that blessings are contingent upon obedience to Allah's commands and upholding His covenant.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Disobedience leads to divine consequences, regardless of one's lineage or past favors. It's a reminder that faith is proven by actions.
+                        </p>
+                        <p class="quran-reference">
+                            "Indeed, Allah has purchased from the believers their lives and their properties in exchange for that they will have Paradise. They fight in the cause of Allah, so they kill and are killed. [It is] a true promise [binding] upon Him in the Torah and the Gospel and the Quran. And who is truer to his covenant than Allah? So rejoice in your transaction which you have contracted. And it is that which is the great attainment." (Quran 9:111)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Dangers of Arrogance & Disunity -->
+                <div class="info-card">
+                    <h3>Dangers of Arrogance & Disunity</h3>
+                    <p>
+                        Their story warns against arrogance, sectarianism, and disunity, which weaken a community.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Their internal disputes and pride led to their downfall and loss of divine favor. It's a lesson for the Muslim Ummah (global community) to remain united and humble.
+                        </p>
+                        <p class="quran-reference">
+                            "And hold firmly to the rope of Allah all together and do not become divided." (Quran 3:103)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Value of Repentance -->
+                <div class="info-card">
+                    <h3>Value of Repentance</h3>
+                    <p>
+                        Despite their repeated errors, Allah's mercy was always open to them through sincere repentance.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This emphasizes that the door of repentance is always open for anyone, regardless of past sins, as long as they sincerely turn back to Allah.
+                        </p>
+                        <p class="quran-reference">
+                            "Indeed, Allah loves those who are constantly repentant and loves those who purify themselves." (Quran 2:222)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Trust in Allah's Plan -->
+                <div class="info-card">
+                    <h3>Trust in Allah's Plan</h3>
+                    <p>
+                        Their journey highlights the importance of trusting in Allah's wisdom and plan, even when trials are severe.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Allah's promises are true, and His help comes to those who persevere with patience and reliance on Him.
+                        </p>
+                        <p class="quran-reference">
+                            "And rely upon Allah; and sufficient is Allah as Disposer of affairs." (Quran 33:3)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
+            The Quranic narrative of the Children of Israel serves as a profound historical and spiritual guide, offering timeless lessons for all who seek guidance from Allah.
+        </p>
+    </div>
+
+</body>
+</html>
