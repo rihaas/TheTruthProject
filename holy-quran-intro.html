@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to the Quran for Beginners</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles consistent with the My Deen Project homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; /* Very dark background */
+            color: #E0E0E0; /* Light gray text for contrast */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
+        }
+
+        .main-content-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #1E1E1E; /* Slightly lighter than body for depth */
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            position: relative; /* Needed for absolute positioning of back button */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1024px) {
+            .main-content-wrapper {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .main-content-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 0.75rem;
+            }
+            .main-heading {
+                font-size: 2.25rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            .main-content-wrapper {
+                padding: 1rem 0.75rem;
+            }
+            .info-card {
+                padding: 1rem;
+            }
+            .info-card h3 {
+                font-size: 1.1rem;
+            }
+            .info-card p {
+                font-size: 0.85rem;
+            }
+            details summary {
+                font-size: 0.85rem;
+            }
+            details p {
+                font-size: 0.8rem;
+            }
+            .back-to-home-btn { /* Adjust size for small screens */
+                top: 0.75rem;
+                left: 0.75rem;
+                padding: 0.5rem;
+            }
+            .back-to-home-btn .icon-wrapper {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+
+        /* Main heading style (consistent with homepage) */
+        .main-heading {
+            color: #E0E0E0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-heading span {
+            color: #FACC15; /* Golden yellow accent */
+        }
+
+        /* Section headings - consistent with homepage */
+        .section-heading {
+            color: #8D8D8D;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .section-heading span {
+            color: #FACC15;
+        }
+
+        /* Info card styles (consistent with other pages) */
+        .info-card {
+            background-color: #282828; /* Darker card background */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+            border-radius: 0.75rem; /* Consistent border-radius */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Softer shadow */
+            padding: 1.5rem; /* Consistent padding */
+            text-align: left; /* Align text within cards to left */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .info-card h3 {
+            color: #BB86FC; /* Light purple for card titles */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card p {
+            color: #B0B0B0; /* Softer text color */
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Details/Summary styles for info expansion */
+        details {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            background-color: #3A3A3A; /* Slightly lighter for contrast */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #8be9fd; /* Light blue accent */
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:after {
+            content: '▼';
+            font-size: 0.7rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        details[open] summary:after {
+            transform: rotate(180deg);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #B0B0B0;
+        }
+
+        details .quran-reference {
+            font-style: italic;
+            border-left: 3px solid #FACC15; /* Golden yellow accent for Quranic references */
+            padding-left: 0.75rem;
+            margin-top: 1rem;
+            color: #C0C0C0;
+        }
+
+        /* Back button styling (consistent with Asmaul Husna page) */
+        .back-to-home-btn {
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            border-radius: 0.6rem;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            width: 3rem; /* Square width for icon only */
+            height: 3rem; /* Square height for icon only */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-decoration: none;
+            color: #FFFFFF;
+            justify-content: center;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+
+        .back-to-home-btn .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-to-home-btn .text-label {
+            position: absolute;
+            left: 0;
+            padding-left: 3rem;
+            padding-right: 1rem;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            pointer-events: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(to right, #34D399, #10B981);
+            border-radius: 0.6rem;
+        }
+
+        .back-to-home-btn:hover {
+            width: 12rem; /* Expand width on hover to reveal text */
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6);
+            background-image: linear-gradient(to right, #10B981, #34D399); /* Reverse gradient on hover */
+            transform: translateY(-2px); /* Subtle lift */
+        }
+
+        .back-to-home-btn:hover .icon-wrapper {
+            transform: translateX(calc(12rem - 3rem - 0.5rem)); /* Move icon to the right (total_width - icon_width - padding/gap) */
+        }
+
+        .back-to-home-btn:hover .text-label {
+            opacity: 1;
+            transform: translateX(0); /* Slide text into view */
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content-wrapper">
+        <!-- Back Button -->
+        <a href="index.html" class="back-to-home-btn" aria-label="Back to Home">
+            <span class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+            </span>
+            <span class="text-label">Back to Home</span>
+        </a>
+
+        <h1 class="main-heading">
+            Introduction to the <span class="text-yellow-400">Quran</span> for Beginners
+        </h1>
+
+        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+            The Quran (القرآن) is the central religious text of Islam, believed by Muslims to be a revelation from Allah (God). It is considered the literal word of God, revealed to Prophet Muhammad (peace be upon him) over a period of approximately 23 years. For beginners, understanding the Quran is a journey of spiritual discovery.
+        </p>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                What is the <span class="text-yellow-400">Quran?</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Divine Revelation -->
+                <div class="info-card">
+                    <h3>Divine Revelation</h3>
+                    <p>
+                        The Quran is the uncreated, literal Word of Allah, revealed to Prophet Muhammad (PBUH) through the Angel Jibreel (Gabriel).
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Muslims believe it is the final and complete revelation from God to humanity, confirming and superseding previous scriptures like the Torah and Gospel. It is unique in its preservation, remaining unchanged since its revelation.
+                        </p>
+                        <p class="quran-reference">
+                            "And indeed, it is the revelation of the Lord of the worlds. The Trustworthy Spirit has brought it down. Upon your heart, [O Muhammad] - that you may be of the warners." (Quran 26:192-194)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Guidance for Humanity -->
+                <div class="info-card">
+                    <h3>Guidance for Humanity</h3>
+                    <p>
+                        Its primary purpose is to serve as a comprehensive guide for all aspects of human life, leading to success in this world and the Hereafter.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            The Quran provides moral, ethical, legal, and spiritual guidance. It contains stories of past prophets and nations, laws, admonitions, glad tidings, and warnings, all designed to illuminate the path to Allah.
+                        </p>
+                        <p class="quran-reference">
+                            "Indeed, this Quran guides to that which is most suitable and gives good tidings to the believers who do righteous deeds that they will have a great reward." (Quran 17:9)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Preservation -->
+                <div class="info-card">
+                    <h3>Preservation & Authenticity</h3>
+                    <p>
+                        The Quran has been meticulously preserved, both orally (through memorization) and in written form, since its revelation.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Millions of Muslims worldwide memorize the entire Quran. Its text has remained unchanged, word for word, for over 1400 years, fulfilling Allah's promise to protect it.
+                        </p>
+                        <p class="quran-reference">
+                            "Indeed, We have sent down the Message, and indeed, We will be its guardian." (Quran 15:9)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Structure of the <span class="text-yellow-400">Quran</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Surahs (Chapters) -->
+                <div class="info-card">
+                    <h3>Surahs (Chapters)</h3>
+                    <p>
+                        The Quran is divided into 114 chapters, known as Surahs, varying in length.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            Each Surah has a unique name, often related to a key theme or a significant word mentioned within it. They are not arranged chronologically by revelation but by divine instruction.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Ayats (Verses) -->
+                <div class="info-card">
+                    <h3>Ayat (Verses)</h3>
+                    <p>
+                        Each Surah is composed of individual verses, called Ayat (plural of Ayah), meaning "signs" or "miracles."
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            There are over 6,000 Ayat in the Quran. Each Ayah is a distinct statement or phrase, conveying a divine message or instruction.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Juz/Para (Parts) -->
+                <div class="info-card">
+                    <h3>Juz / Para (Parts)</h3>
+                    <p>
+                        For ease of recitation and memorization, the Quran is informally divided into 30 equal parts, called Juz (Arabic) or Para (Persian/Urdu).
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            This division allows for the completion of the entire Quran recitation in 30 days, especially during the month of Ramadan.
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Makki vs. Madani Surahs -->
+                <div class="info-card">
+                    <h3>Makki vs. Madani Surahs</h3>
+                    <p>
+                        Surahs are classified based on whether they were revealed before (Makki) or after (Madani) the Prophet's migration to Medina.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            **Makki Surahs:** Revealed in Makkah (before Hijra). Tend to focus on monotheism (Tawhid), the Oneness of Allah, the Hereafter, stories of past prophets, and moral virtues. They are generally shorter.
+                            <br><br>
+                            **Madani Surahs:** Revealed in Medina (after Hijra). Tend to focus on Islamic law (Sharia), social legislation, community building, and rules of engagement. They are generally longer.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full mb-16">
+            <h2 class="section-heading">
+                Important <span class="text-yellow-400">Surahs for Beginners</span>
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+                While every part of the Quran is sacred, some Surahs are particularly beneficial for beginners due to their foundational messages, brevity, or common recitation.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+
+                <!-- Al-Fatiha -->
+                <div class="info-card">
+                    <h3>Surah Al-Fatiha (The Opening)</h3>
+                    <p>
+                        The first chapter of the Quran, recited in every unit (Rak'ah) of prayer. It is the "Mother of the Book."
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            It contains the essence of the Quran: praise of Allah, seeking His guidance, and a plea to be guided to the straight path, the path of those upon whom Allah has bestowed favor.
+                        </p>
+                        <p class="quran-reference">
+                            "All praise is due to Allah, Lord of the worlds - The Entirely Merciful, the Especially Merciful, Sovereign of the Day of Recompense. It is You we worship and You we ask for help. Guide us to the straight path - The path of those upon whom You have bestowed favor, not of those who have evoked [Your] wrath or of those who are astray." (Quran 1:1-7)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Ayat al-Kursi -->
+                <div class="info-card">
+                    <h3>Ayat al-Kursi (Verse of the Throne)</h3>
+                    <p>
+                        A powerful verse from Surah Al-Baqarah (2:255), known for its profound meaning and protective qualities.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            It describes Allah's absolute power, knowledge, and dominion over the entire universe. Reciting it is highly recommended for protection and blessings.
+                        </p>
+                        <p class="quran-reference">
+                            "Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is there that can intercede with Him except by His permission? He knows what is [presently] before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi (Throne) extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great." (Quran 2:255)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Al-Ikhlas -->
+                <div class="info-card">
+                    <h3>Surah Al-Ikhlas (The Sincerity)</h3>
+                    <p>
+                        A short but profound Surah (Chapter 112) that succinctly defines the Oneness of Allah (Tawhid).
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            It declares Allah's absolute uniqueness, that He is self-sufficient, has no offspring, and has no equivalent. Reciting it is considered equivalent to one-third of the Quran in reward.
+                        </p>
+                        <p class="quran-reference">
+                            "Say, 'He is Allah, [who is] One, Allah, the Eternal Refuge. He neither begets nor is born, Nor is there to Him any equivalent.'" (Quran 112:1-4)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Al-Falaq & An-Nas -->
+                <div class="info-card">
+                    <h3>Surah Al-Falaq (The Daybreak) & An-Nas (Mankind)</h3>
+                    <p>
+                        The last two chapters of the Quran (113 and 114), often recited together for protection.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            **Al-Falaq:** Seeks refuge in Allah from all evils of creation, including darkness, envy, and magic.
+                            <br><br>
+                            **An-Nas:** Seeks refuge in Allah from the evil whispers of Satan (Shaytan) that afflict the hearts of humans.
+                            <br><br>
+                            Reciting these two Surahs is highly recommended for seeking protection from various harms.
+                        </p>
+                        <p class="quran-reference">
+                            **Al-Falaq:** "Say, 'I seek refuge in the Lord of Daybreak from the evil of what He has created; And from the evil of darkness when it settles; And from the evil of the blowers in knots; And from the evil of an envier when he envies.'" (Quran 113:1-5)
+                            <br><br>
+                            **An-Nas:** "Say, 'I seek refuge in the Lord of mankind, The Sovereign of mankind, The God of mankind, From the evil of the retreating whisperer - Who whispers into the breasts of mankind - From among the jinn and mankind.'" (Quran 114:1-6)
+                        </p>
+                    </details>
+                </div>
+
+                <!-- Surah Al-Baqarah (General) -->
+                <div class="info-card">
+                    <h3>Surah Al-Baqarah (The Cow)</h3>
+                    <p>
+                        The longest chapter of the Quran (Chapter 2), containing extensive guidance on various aspects of life.
+                    </p>
+                    <details>
+                        <summary>More Info</summary>
+                        <p>
+                            It covers laws, stories of prophets (especially Musa AS), lessons from the Children of Israel, and guidance on faith, rituals, and social dealings. Reciting it regularly is said to bring blessings and ward off evil.
+                        </p>
+                        <p class="quran-reference">
+                            (Too long to quote fully, but its themes are vast and foundational.)
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <p class="text-lg text-gray-400 mt-8 opacity-90">
+            This is just a starting point for your journey with the Quran. Consistent reading, understanding, and reflection will open up its endless wisdom.
+        </p>
+    </div>
+
+</body>
+</html>
