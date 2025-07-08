@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>War and Peacekeeping in Islam - My Deen Project</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter & Amiri for Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://placehold.co/32x32/FACC15/121212?text=DP" />
+
+    <style>
+        /* Base styles consistent with the My Deen Project */
+        :root {
+            --bg-body: #121212;
+            --bg-header-footer: #1A1A1A;
+            --bg-main-content: #1E1E1E;
+            --bg-card: #282828;
+            --text-light: #E0E0E0;
+            --text-muted: #B0B0B0;
+            --accent-yellow: #FACC15;
+            --accent-purple: #BB86FC;
+            --accent-green: #6EE7B7; /* For Peace */
+            --accent-red: #F87171;   /* For War */
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-light);
+            background-image: linear-gradient(to bottom, var(--bg-body), #1C1C1C);
+            min-height: 100vh;
+        }
+
+        .main-content-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            background-color: var(--bg-main-content);
+            border-radius: 1rem;
+            padding: 3.5rem 3rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin: 3rem auto;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .section-heading span {
+            color: var(--accent-yellow);
+        }
+        
+        .topic-card {
+            background-color: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 5px solid;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .topic-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .topic-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .topic-card p, .topic-card ul {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .topic-card ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        .topic-card li {
+            margin-bottom: 0.75rem;
+        }
+        .quote {
+            font-family: 'Amiri', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+            background-color: rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .quote::before {
+            content: '\f10d';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1.5rem;
+            opacity: 0.2;
+        }
+        .quote-ref {
+            display: block;
+            text-align: right;
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            color: var(--text-light);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--bg-card);
+            color: var(--text-light);
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 1px solid var(--border-subtle);
+        }
+        .back-button:hover {
+            background-color: var(--accent-yellow);
+            color: var(--bg-body);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <header class="py-8 px-4 md:px-8">
+        <div class="container mx-auto">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper">
+        <!-- Header Section -->
+        <header class="text-center mb-16">
+            <h1 class="section-heading">
+                War and Peacekeeping in <span>Islam</span>
+            </h1>
+            <p class="text-lg text-gray-300 leading-relaxed max-w-4xl mx-auto opacity-90">
+                A detailed overview from the Quran and the teachings of Prophet Muhammad (PBUH) on the principles governing conflict, justice, and the ultimate goal of peace.
+            </p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Introduction -->
+            <div class="topic-card" style="border-color: var(--accent-yellow);">
+                <h3><i class="fas fa-balance-scale text-yellow-400"></i>A Balanced Perspective</h3>
+                <p>Islam, a religion whose name is etymologically linked to "peace" (salam), provides a comprehensive legal and ethical framework for issues of war and peace. The primary sources, the Quran and the Hadith (sayings and actions of Prophet Muhammad), establish that peace is the norm and war is the exception, permitted only under strict conditions and governed by a profound moral code.</p>
+            </div>
+
+            <!-- The Call to Peace -->
+            <div class="topic-card" style="border-color: var(--accent-green);">
+                <h3 style="color: var(--accent-green);"><i class="fas fa-dove"></i>The Quranic Emphasis on Peace</h3>
+                <p>The Quran repeatedly calls believers towards peace, reconciliation, and forgiveness. It is presented as the ultimate objective and the desired state of society.</p>
+                <ul>
+                    <li><strong>Inclination to Peace:</strong> If an enemy inclines towards peace, Muslims are commanded to do the same and to place their trust in Allah.
+                        <div class="quote">
+                            "And if they incline to peace, then incline to it [also] and rely upon Allah. Indeed, it is He who is the Hearing, the Knowing."
+                            <span class="quote-ref">Quran, Surah Al-Anfal (8:61)</span>
+                        </div>
+                    </li>
+                    <li><strong>Forbearance and Forgiveness:</strong> The Quran praises those who restrain their anger and forgive others, considering it a quality of the righteous (Muttaqun).
+                        <div class="quote">
+                            "Who spend [in the cause of Allah] during ease and hardship and who restrain anger and who pardon the people - and Allah loves the doers of good."
+                            <span class="quote-ref">Quran, Surah Ali 'Imran (3:134)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Concept of Just War (Jihad) -->
+            <div class="topic-card" style="border-color: var(--accent-red);">
+                <h3 style="color: var(--accent-red);"><i class="fas fa-shield-halved"></i>The Concept of Just War (Jihad)</h3>
+                <p>The term "Jihad" is often misunderstood. While its greater meaning refers to the internal struggle for self-improvement, its lesser meaning can include armed struggle. However, this is not a call for indiscriminate violence. The Quran establishes clear and stringent conditions under which fighting is permissible.</p>
+                <ul>
+                    <li><strong>Permission to Fight:</strong> The first verses permitting combat were revealed only after years of severe persecution, torture, and expulsion faced by the early Muslims in Mecca. The permission was granted for defensive purposes.
+                        <div class="quote">
+                            "Permission [to fight] has been given to those who are being fought, because they were wronged. And indeed, Allah is competent to give them victory."
+                            <span class="quote-ref">Quran, Surah Al-Hajj (22:39)</span>
+                        </div>
+                    </li>
+                    <li><strong>Strict Prohibitions:</strong> Islamic law strictly forbids aggression. Fighting is only permitted against combatants. Harming non-combatants—including women, children, the elderly, monks, and priests—is explicitly forbidden.
+                         <div class="quote">
+                            "Fight in the way of Allah those who fight you but do not transgress. Indeed. Allah does not like transgressors."
+                            <span class="quote-ref">Quran, Surah Al-Baqarah (2:190)</span>
+                        </div>
+                    </li>
+                    <li><strong>Protection of Religious Freedom:</strong> One of the core justifications for defensive war is to protect the freedom of worship for all faiths, not just Islam.
+                        <div class="quote">
+                           "[They are] those who have been evicted from their homes without right—only because they say, 'Our Lord is Allah.' And were it not that Allah checks the people, some by means of others, there would have been demolished monasteries, churches, synagogues, and mosques in which the name of Allah is much mentioned."
+                           <span class="quote-ref">Quran, Surah Al-Hajj (22:40)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- The Prophet's Example -->
+            <div class="topic-card" style="border-color: var(--accent-purple);">
+                <h3 style="color: var(--accent-purple);"><i class="fas fa-book-open"></i>The Prophet's Example (Sunnah)</h3>
+                <p>The life of Prophet Muhammad (PBUH) provides the ultimate practical example of these Quranic principles.</p>
+                <ul>
+                    <li><strong>The Treaty of Hudaybiyyah:</strong> In a moment of strength, the Prophet (PBUH) agreed to a peace treaty with the Meccans that contained terms seemingly disadvantageous to the Muslims. He chose long-term peace and diplomacy over immediate conflict, a decision the Quran later called a "clear victory" (Surah Al-Fath 48:1).</li>
+                    <li><strong>Rules of Engagement:</strong> Before any military expedition, the Prophet (PBUH) would command his soldiers:
+                        <div class="quote">
+                            "Do not kill a woman or a child, or an old, infirm person. Do not cut down a fruit-bearing tree. Do not destroy an inhabited place."
+                            <span class="quote-ref">Hadith, Muwatta Imam Malik</span>
+                        </div>
+                    </li>
+                     <li><strong>Conquest of Mecca:</strong> When the Prophet (PBUH) returned to Mecca victoriously after years of persecution, he declared a general amnesty. He forgave his most bitter enemies, including those who had tortured and killed his family and companions, establishing a profound example of mercy and peacekeeping in a moment of absolute power.</li>
+                </ul>
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="text-center mt-12 text-gray-500 text-sm w-full pt-8 border-t border-gray-700">
+            <p>(PBUH) stands for 'Peace Be Upon Him'.</p>
+            <p>&copy; <span id="current-year"></span> My Deen Project. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Intersection Observer for fade-in animation
+            const cards = document.querySelectorAll('.topic-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
