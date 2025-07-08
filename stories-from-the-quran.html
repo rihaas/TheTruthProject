@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories from the Quran - My Deen Project</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter & Amiri for Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://placehold.co/32x32/FACC15/121212?text=DP" />
+
+    <style>
+        /* Base styles consistent with the My Deen Project */
+        :root {
+            --bg-body: #121212;
+            --bg-header-footer: #1A1A1A;
+            --bg-main-content: #1E1E1E;
+            --bg-card: #282828;
+            --text-light: #E0E0E0;
+            --text-muted: #B0B0B0;
+            --accent-yellow: #FACC15;
+            --accent-purple: #BB86FC;
+            --accent-blue: #8be9fd;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-light);
+            background-image: linear-gradient(to bottom, var(--bg-body), #1C1C1C);
+            min-height: 100vh;
+        }
+
+        .main-content-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            background-color: var(--bg-main-content);
+            border-radius: 1rem;
+            padding: 3.5rem 3rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin: 3rem auto;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .section-heading span {
+            color: var(--accent-yellow);
+        }
+        
+        .story-card {
+            background-color: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 5px solid;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .story-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .story-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .story-card p, .story-card ul {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .story-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+        .story-card li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .story-card li::before {
+            content: '\f005'; /* Font Awesome star icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--accent-yellow);
+        }
+        .quote {
+            font-family: 'Amiri', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+            background-color: rgba(0,0,0,0.2);
+            position: relative;
+            text-align: center;
+        }
+        .quote::before {
+            content: '\f10d';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1.5rem;
+            opacity: 0.2;
+        }
+        .quote-ref {
+            display: block;
+            text-align: right;
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            color: var(--text-light);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--bg-card);
+            color: var(--text-light);
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 1px solid var(--border-subtle);
+        }
+        .back-button:hover {
+            background-color: var(--accent-yellow);
+            color: var(--bg-body);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <header class="py-8 px-4 md:px-8">
+        <div class="container mx-auto">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper">
+        <!-- Header Section -->
+        <header class="text-center mb-16">
+            <h1 class="section-heading">
+                Stories from the <span>Quran</span>
+            </h1>
+            <p class="text-lg text-gray-300 leading-relaxed max-w-4xl mx-auto opacity-90">
+                The Quran is not just a book of laws; it is a source of timeless wisdom conveyed through powerful narratives. These stories serve as guidance, inspiration, and a warning for all of humanity.
+            </p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Story 1: The People of the Cave -->
+            <div class="story-card" style="border-color: var(--accent-purple);">
+                <h3 style="color: var(--accent-purple);"><i class="fas fa-bed"></i>The People of the Cave (Ashab al-Kahf)</h3>
+                <p>This story, from Surah Al-Kahf, tells of a group of pious youths who fled their city to escape the persecution of a tyrannical king who commanded them to worship idols. They took refuge in a cave, where Allah caused them to sleep for 309 years. When they awoke, their currency was outdated, and their story became a sign for the people of the new generation, affirming the truth of the resurrection.</p>
+                <div class="quote">
+                    "And [mention] when you have withdrawn from them and that which they worship other than Allah, take refuge in the cave; your Lord will spread out for you of His mercy and will prepare for you from your affair facility."
+                    <span class="quote-ref">Quran, Surah Al-Kahf (18:16)</span>
+                </div>
+                <h4 class="text-xl font-semibold text-white mt-6 mb-2">Key Lessons:</h4>
+                <ul>
+                    <li>The importance of holding firm to one's faith, even in the face of extreme persecution.</li>
+                    <li>Allah's power to protect those who sincerely turn to Him.</li>
+                    <li>The story serves as a powerful proof and reminder of the Day of Resurrection.</li>
+                    <li>The danger of arguing about matters of the unseen without knowledge.</li>
+                </ul>
+            </div>
+
+            <!-- Story 2: Dhul-Qarnayn -->
+            <div class="story-card" style="border-color: var(--accent-yellow);">
+                <h3 style="color: var(--accent-yellow);"><i class="fas fa-crown"></i>The Story of Dhul-Qarnayn</h3>
+                <p>Also in Surah Al-Kahf, Dhul-Qarnayn was a righteous and powerful ruler who traveled to the far reaches of the earth. He established justice, helped the oppressed, and, most famously, built a great barrier of iron and copper to protect a vulnerable people from the destructive tribes of Gog and Magog (Ya'juj and Ma'juj).</p>
+                <div class="quote">
+                    "He said, 'This is a mercy from my Lord; but when the promise of my Lord comes, He will make it level, and ever is the promise of my Lord true.'"
+                    <span class="quote-ref">Quran, Surah Al-Kahf (18:98)</span>
+                </div>
+                 <h4 class="text-xl font-semibold text-white mt-6 mb-2">Key Lessons:</h4>
+                <ul>
+                    <li>The responsibility that comes with power: to establish justice and protect the weak.</li>
+                    <li>The importance of using God-given knowledge and resources for the benefit of humanity.</li>
+                    <li>Ultimate power belongs to Allah alone; even the mightiest structures will perish by His command.</li>
+                    <li>The story confirms the future emergence of Gog and Magog as a sign of the Last Day.</li>
+                </ul>
+            </div>
+
+            <!-- Story 3: The Wisdom of Luqman -->
+            <div class="story-card" style="border-color: var(--accent-blue);">
+                <h3 style="color: var(--accent-blue);"><i class="fas fa-book-reader"></i>The Wisdom of Luqman</h3>
+                <p>Surah Luqman is named after a wise man, Luqman the Sage, who was not a prophet but was granted immense wisdom by Allah. The chapter highlights the timeless advice he gave to his son, which serves as a universal guide for all parents and children.</p>
+                <div class="quote">
+                    "And We had certainly given Luqman wisdom [and said], 'Be grateful to Allah.' And whoever is grateful is grateful for [the benefit of] himself. And whoever denies [His favor] - then indeed, Allah is Free of need and Praiseworthy."
+                    <span class="quote-ref">Quran, Surah Luqman (31:12)</span>
+                </div>
+                 <h4 class="text-xl font-semibold text-white mt-6 mb-2">Key Lessons from his Advice:</h4>
+                <ul>
+                    <li>The most important foundation is to avoid Shirk (associating partners with Allah).</li>
+                    <li>The duty to be grateful and kind to one's parents.</li>
+                    <li>Awareness that Allah is aware of every deed, no matter how small.</li>
+                    <li>The importance of establishing prayer, enjoining good, and forbidding evil.</li>
+                    <li>The virtue of patience in the face of hardship.</li>
+                    <li>The prohibition of arrogance and the command to be humble and moderate in one's walk and speech.</li>
+                </ul>
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="text-center mt-12 text-gray-500 text-sm w-full pt-8 border-t border-gray-700">
+            <p>&copy; <span id="current-year"></span> My Deen Project. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Intersection Observer for fade-in animation
+            const cards = document.querySelectorAll('.story-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
