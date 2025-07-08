@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Concept of Tawhid - My Deen Project</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter & Amiri for Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://placehold.co/32x32/FACC15/121212?text=DP" />
+
+    <style>
+        /* Base styles consistent with the My Deen Project */
+        :root {
+            --bg-body: #121212;
+            --bg-header-footer: #1A1A1A;
+            --bg-main-content: #1E1E1E;
+            --bg-card: #282828;
+            --text-light: #E0E0E0;
+            --text-muted: #B0B0B0;
+            --accent-yellow: #FACC15;
+            --accent-purple: #BB86FC;
+            --accent-blue: #8be9fd;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-light);
+            background-image: linear-gradient(to bottom, var(--bg-body), #1C1C1C);
+            min-height: 100vh;
+        }
+
+        .main-content-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            background-color: var(--bg-main-content);
+            border-radius: 1rem;
+            padding: 3.5rem 3rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            margin: 3rem auto;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .section-heading span {
+            color: var(--accent-yellow);
+        }
+        
+        .topic-card {
+            background-color: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 5px solid;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .topic-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .topic-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .topic-card p, .topic-card ul {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .topic-card ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        .topic-card li {
+            margin-bottom: 0.75rem;
+        }
+        .quote {
+            font-family: 'Amiri', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+            background-color: rgba(0,0,0,0.2);
+            position: relative;
+            text-align: center;
+        }
+        .quote::before {
+            content: '\f10d';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1.5rem;
+            opacity: 0.2;
+        }
+        .quote-ref {
+            display: block;
+            text-align: right;
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            color: var(--text-light);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--bg-card);
+            color: var(--text-light);
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 1px solid var(--border-subtle);
+        }
+        .back-button:hover {
+            background-color: var(--accent-yellow);
+            color: var(--bg-body);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <header class="py-8 px-4 md:px-8">
+        <div class="container mx-auto">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper">
+        <!-- Header Section -->
+        <header class="text-center mb-16">
+            <h1 class="section-heading">
+                The Concept of <span>Tawhid</span>
+            </h1>
+            <p class="text-lg text-gray-300 leading-relaxed max-w-4xl mx-auto opacity-90">
+                A deep dive into the most fundamental principle of Islam: the absolute oneness of God. Understanding Tawhid is the key to understanding the entire faith.
+            </p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- What is Tawhid? -->
+            <div class="topic-card" style="border-color: var(--accent-yellow);">
+                <h3><i class="fas fa-key text-yellow-400"></i>What is Tawhid?</h3>
+                <p><strong>Tawhid</strong> (تَوْحِيد) is an Arabic word that linguistically means "unification" or "making something one." Theologically, it is the central and defining concept of Islam, affirming the absolute oneness, uniqueness, and indivisibility of God (Allah). It is the bedrock upon which all other Islamic beliefs and practices are built. The most concise and powerful declaration of Tawhid is found in Surah Al-Ikhlas.</p>
+                <div class="quote">
+                    "Say, 'He is Allah, the One and Only; Allah, the Eternal, Absolute; He begets not, nor is He begotten; And there is none like unto Him.'"
+                    <span class="quote-ref">Quran, Surah Al-Ikhlas (112:1-4)</span>
+                </div>
+            </div>
+
+            <!-- The Three Categories of Tawhid -->
+            <div class="topic-card" style="border-color: var(--accent-purple);">
+                <h3 style="color: var(--accent-purple);"><i class="fas fa-sitemap"></i>The Three Categories of Tawhid</h3>
+                <p>To facilitate a deeper understanding, Islamic scholars have traditionally categorized Tawhid into three distinct but inseparable parts. A person's faith in Tawhid is incomplete if any of these categories are negated.</p>
+                <ul>
+                    <li>
+                        <strong>1. Tawhid al-Rububiyyah (Oneness of Lordship):</strong>
+                        <p class="mt-2">This is the belief that Allah alone is the sole Creator, Sustainer, and Commander of the universe. It is the acknowledgment that He is the one who gives life and death, brings benefit and harm, and controls all affairs of creation without any partners. Even the polytheists of Mecca acknowledged this aspect of Tawhid.</p>
+                        <div class="quote">
+                           "Indeed, your Lord is Allah, who created the heavens and earth in six days and then established Himself above the Throne. He covers the night with the day, [another] pursuing it rapidly; and [created] the sun, the moon, and the stars, subjected by His command. Unquestionably, His is the creation and the command; blessed is Allah, Lord of the worlds."
+                           <span class="quote-ref">Quran, Surah Al-A'raf (7:54)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>2. Tawhid al-Uluhiyyah (Oneness of Worship):</strong>
+                        <p class="mt-2">This is the core message of all Prophets. It means directing all forms of worship, both inward and outward, to Allah alone. This includes prayer (salah), supplication (du'a), hope, fear, love, reliance, and sacrifice. It is the practical application of Tawhid and the primary reason for the distinction between a believer and a non-believer.</p>
+                         <div class="quote">
+                            "It is You we worship and You we ask for help."
+                            <span class="quote-ref">Quran, Surah Al-Fatiha (1:5)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>3. Tawhid al-Asma wa al-Sifat (Oneness of Names and Attributes):</strong>
+                        <p class="mt-2">This is the belief in the unique Names and Attributes of Allah as He has described Himself in the Quran or as described by His Prophet (PBUH), without distorting their meanings, denying them, or comparing them to the attributes of His creation. We affirm what He has affirmed for Himself, such as being All-Hearing (As-Sami') and All-Seeing (Al-Basir), without questioning "how" or likening them to human senses.</p>
+                        <div class="quote">
+                           "There is nothing like unto Him, and He is the Hearing, the Seeing."
+                           <span class="quote-ref">Quran, Surah Ash-Shura (42:11)</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Implications of Tawhid -->
+            <div class="topic-card" style="border-color: var(--accent-blue);">
+                <h3 style="color: var(--accent-blue);"><i class="fas fa-lightbulb"></i>The Implications of Tawhid on Life</h3>
+                <p>Belief in the Oneness of God is not merely an abstract theological concept; it has profound effects on a Muslim's worldview, character, and daily life.</p>
+                <ul>
+                    <li><strong>Spiritual Liberation:</strong> Tawhid frees the human mind from superstition, the worship of false gods, and servitude to creation. One is no longer a slave to wealth, status, or worldly desires.</li>
+                    <li><strong>Direct Relationship with God:</strong> It establishes a direct and personal connection with the Creator, without the need for any intermediaries.</li>
+                    <li><strong>Humility and Purpose:</strong> Acknowledging Allah as the sole Creator and Sustainer instills a sense of humility and gives a clear purpose to life: to worship and obey Him.</li>
+                    <li><strong>Inner Peace and Trust (Tawakkul):</strong> True belief in Tawhid leads to complete trust in Allah's plan, bringing tranquility to the heart even during times of hardship.</li>
+                </ul>
+            </div>
+            
+             <!-- Shirk: The Opposite of Tawhid -->
+            <div class="topic-card" style="border-color: #F87171;">
+                <h3 style="color: #F87171;"><i class="fas fa-exclamation-triangle"></i>Shirk: The Antithesis of Tawhid</h3>
+                <p>The opposite of Tawhid is <strong>Shirk</strong>, which means associating partners with Allah. It is considered the greatest sin in Islam because it violates the most fundamental right of God: to be worshipped alone. Shirk can be blatant, such as worshipping idols, or subtle, such as performing acts of worship to gain praise from others (Riya').</p>
+                 <div class="quote">
+                    "Indeed, Allah does not forgive association with Him, but He forgives what is less than that for whom He wills. And he who associates others with Allah has certainly fabricated a tremendous sin."
+                    <span class="quote-ref">Quran, Surah An-Nisa (4:48)</span>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="text-center mt-12 text-gray-500 text-sm w-full pt-8 border-t border-gray-700">
+            <p>(PBUH) stands for 'Peace Be Upon Him'.</p>
+            <p>&copy; <span id="current-year"></span> My Deen Project. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Intersection Observer for fade-in animation
+            const cards = document.querySelectorAll('.topic-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
