@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surah Al-Fatiha - My Deen Project</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inter Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://placehold.co/32x32/FACC15/121212?text=DP" />
+
+    <style>
+        /* Reusing the same theme variables for consistency */
+        :root {
+            --bg-body: #121212;
+            --bg-body-gradient-end: #1C1C1C;
+            --bg-main-content: #1E1E1E;
+            --bg-header-footer: #1A1A1A;
+            --bg-card: #282828;
+            --bg-card-hover: #2D2D2D;
+            --text-light: #E0E0E0;
+            --text-muted: #B0B0B0;
+            --text-footer: #707070;
+            --text-heading-muted: #8D8D8D;
+            --text-white: #FFFFFF;
+            --accent-yellow: #FACC15;
+            --accent-purple: #BB86FC;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-very-subtle: rgba(255, 255, 255, 0.05);
+            --shadow-deep: rgba(0, 0, 0, 0.7);
+            --shadow-card-initial: rgba(0, 0, 0, 0.3);
+            --shadow-card-hover: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-light);
+            background-image: linear-gradient(to bottom, var(--bg-body), var(--bg-body-gradient-end));
+        }
+        
+        /* Arabic font style */
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            line-height: 2;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            text-align: right;
+        }
+
+        /* Verse Card Styling */
+        .verse-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-very-subtle);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .verse-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .verse-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-card-hover);
+        }
+        
+        .verse-number {
+            background-color: var(--accent-yellow);
+            color: var(--bg-body);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .verse-transliteration {
+            font-style: italic;
+            color: var(--text-muted);
+            margin: 1rem 0;
+        }
+        
+        .verse-translation {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--accent-purple);
+            margin: 1rem 0;
+        }
+        
+        .verse-explanation {
+            color: var(--text-light);
+            line-height: 1.8;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .verse-explanation ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        
+        .verse-explanation li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Back to Home Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--bg-card);
+            color: var(--text-light);
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 1px solid var(--border-subtle);
+        }
+        .back-button:hover {
+            background-color: var(--accent-yellow);
+            color: var(--bg-body);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <!-- Header -->
+    <header class="py-8 px-4 md:px-8">
+        <div class="container mx-auto">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 md:px-8 py-12">
+
+        <!-- Page Title Section -->
+        <section class="text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-bold text-yellow-400" style="font-family: 'Amiri', serif;">سُورَةُ الْفَاتِحَة</h1>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mt-2">Surah Al-Fatiha</h2>
+            <p class="text-xl text-gray-300 mt-4">"The Opening"</p>
+        </section>
+
+        <!-- Introduction -->
+        <section class="verse-card is-visible max-w-4xl mx-auto">
+            <h3 class="text-2xl font-bold text-purple-400 mb-4">The Essence of the Quran</h3>
+            <p class="text-lg text-gray-300 leading-relaxed">
+                Surah Al-Fatiha is the first chapter of the Holy Quran. Its seven verses are a prayer for the guidance, lordship, and mercy of Allah. This Surah holds a special place in Islam and is a compulsory part of a Muslim's daily prayers. It serves as a concise summary of the entire Quranic message.
+            </p>
+        </section>
+        
+        <!-- NEW: Context and Revelation -->
+        <section class="verse-card max-w-4xl mx-auto">
+            <h3 class="text-2xl font-bold text-purple-400 mb-4">Context and Revelation</h3>
+            <div class="text-lg text-gray-300 leading-relaxed">
+                <p class="mb-4"><strong>Classification:</strong> According to the vast majority of scholars, Surah Al-Fatiha is a <strong>Meccan (Makki)</strong> surah. This means it was revealed in Mecca before the Hijra (migration) to Medina.</p>
+                <p class="mb-4"><strong>Occasion of Revelation:</strong> Unlike many other surahs revealed in response to specific events, Al-Fatiha was revealed as a complete and foundational chapter. It was given to the Prophet Muhammad (PBUH) early in his mission to establish the core principles of faith and to serve as the cornerstone of Islamic worship (Salah). It is considered a direct dialogue between the Creator and the servant, teaching us how to praise, acknowledge, and supplicate to Him.</p>
+            </div>
+        </section>
+        
+        <!-- NEW: Names of the Surah -->
+        <section class="verse-card max-w-4xl mx-auto">
+            <h3 class="text-2xl font-bold text-purple-400 mb-4">The Many Names of Al-Fatiha</h3>
+            <div class="verse-explanation text-lg">
+                The importance of this Surah is highlighted by the many names given to it, each describing a unique aspect of its greatness:
+                <ul>
+                    <li><strong>Umm Al-Kitab (The Mother of the Book):</strong> Because it contains the essence of the entire Quran's message.</li>
+                    <li><strong>As-Salah (The Prayer):</strong> As no prayer is complete without its recitation.</li>
+                    <li><strong>Ash-Shifa (The Cure):</strong> It is considered a source of spiritual and physical healing.</li>
+                    <li><strong>As-Sab' al-Mathani (The Seven Oft-Repeated Verses):</strong> Because its seven verses are repeated in every unit of prayer.</li>
+                    <li><strong>Al-Hamd (The Praise):</strong> As it begins with the ultimate praise of Allah.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Verse 1 -->
+        <article class="verse-card max-w-4xl mx-auto">
+            <div class="verse-number">1</div>
+            <p class="arabic-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+            <p class="verse-transliteration">Bismillaahir Rahmaanir Raheem</p>
+            <p class="verse-translation">In the name of Allah, the Entirely Merciful, the Especially Merciful.</p>
+            <div class="verse-explanation">
+                <h4 class="text-xl font-semibold text-white mb-2">Explanation:</h4>
+                <p>This verse, known as the Basmala, marks the beginning. It is a declaration that we start every action in the name of Allah, seeking His blessings and help. It reminds us of two of Allah's most significant attributes: Ar-Rahman (Mercy that encompasses all creation) and Ar-Rahim (Mercy that is specific to the believers).</p>
+            </div>
+        </article>
+
+        <!-- Verse 2 -->
+        <article class="verse-card max-w-4xl mx-auto">
+            <div class="verse-number">2</div>
+            <p class="arabic-text">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</p>
+            <p class="verse-transliteration">Alhamdu lillaahi Rabbil 'aalameen</p>
+            <p class="verse-translation">All praise is due to Allah, Lord of the worlds.</p>
+            <div class="verse-explanation">
+                <h4 class="text-xl font-semibold text-white mb-2">Explanation:</h4>
+                <p>This is a statement of profound gratitude and praise. "Al-Hamd" signifies the most sincere and comprehensive praise for all the perfect attributes and blessings of Allah. By declaring Him "Rabbil 'alamin" (Lord of all worlds), we acknowledge His absolute sovereignty, authority, and sustenance over everything that exists—mankind, jinn, angels, and all of creation.</p>
+            </div>
+        </article>
+
+        <!-- Verse 3 -->
+        <article class="verse-card max-w-4xl mx-auto">
+            <div class="verse-number">3</div>
+            <p class="arabic-text">الرَّحْمَٰنِ الرَّحِيمِ</p>
+            <p class="verse-transliteration">Ar-Rahmaanir-Raheem</p>
+            <p class="verse-translation">The Entirely Merciful, the Especially Merciful.</p>
+            <div class="verse-explanation">
+                <h4 class="text-xl font-semibold text-white mb-2">Explanation:</h4>
+                <p>The repetition of these names from the Basmala emphasizes the boundless and all-encompassing nature of Allah's mercy. It reassures the believer that the Lord they are praising is not a distant, unapproachable tyrant, but a God whose fundamental nature is mercy. This fosters both love and hope in the heart of the worshipper.</p>
+            </div>
+        </article>
+
+        <!-- Verse 4 -->
+        <article class="verse-card max-w-4xl mx-auto">
+            <div class="verse-number">4</div>
+            <p class="arabic-text">مَالِكِ يَوْمِ الدِّينِ</p>
+            <p class="verse-transliteration">Maaliki Yawmid-Deen</p>
+            <p class="verse-translation">Master of the Day of Judgment.</p>
+            <div class="verse-explanation">
+                <h4 class="text-xl font-semibold text-white mb-2">Explanation:</h4>
+                <p>After establishing His mercy, this verse reminds us of His justice. Allah is the sole Owner and Judge on the Day of Recompense, when all deeds will be accounted for. This awareness instills a sense of accountability and encourages righteousness, balancing the hope derived from His mercy with a healthy fear of His justice.</p>
+            </div>
+        </article>
+        
+        <!-- Verse 5 -->
+        <article class="verse-card max-w-4xl mx-auto">
+            <div class="verse-number">5</div>
+            <p class="arabic-text">إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ</p>
+            <p class="verse-transliteration">Iyyaaka na'budu wa lyyaaka nasta'een</p>
+            <p class="verse-translation">It is You we worship and You we ask for help.</p>
+            <div class="verse-explanation">
+                <h4 class="text-xl font-semibold text-white mb-2">Explanation:</h4>
+                <p>This verse is the heart of the Surah and a central pillar of the Islamic faith. It is a direct address to Allah, a declaration of pure monotheism. We affirm that our worship—our prayers, our devotion, our entire lives—is for Him alone. We also affirm that we seek help and support from no one but Him, acknowledging our complete dependence on His power and grace.</p>
+            </div>
+        </article>
+
+        <!-- Verse 6 -->
+        <article class="verse-card max-w-4xl mx-auto">
+            <div class="verse-number">6</div>
+            <p class="arabic-text">اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ</p>
+            <p class="verse-transliteration">Ihdinas-Siraatal-Mustaqeem</p>
+            <p class="verse-translation">Guide us to the straight path.</p>
+            <div class="verse-explanation">
+                <h4 class="text-xl font-semibold text-white mb-2">Explanation:</h4>
+                <p>Having acknowledged Allah's greatness and our devotion to Him, we now make the most important request: guidance. "As-Sirat al-Mustaqim" is the clear, direct, and correct path that leads to Allah's pleasure and salvation. It is the path of truth, knowledge, and righteous action, as defined by the Quran and the teachings of the Prophet Muhammad (PBUH).</p>
+            </div>
+        </article>
+
+        <!-- Verse 7 -->
+        <article class="verse-card max-w-4xl mx-auto">
+            <div class="verse-number">7</div>
+            <p class="arabic-text">صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ</p>
+            <p class="verse-transliteration">Siraatal-lazeena an'amta 'alaihim ghayril-maghdoobi 'alaihim wa lad-daalleen</p>
+            <p class="verse-translation">The path of those upon whom You have bestowed favor, not of those who have earned Your anger or of those who are astray.</p>
+            <div class="verse-explanation">
+                <h4 class="text-xl font-semibold text-white mb-2">Explanation:</h4>
+                <p>This final verse further defines the "straight path." It is the path of the Prophets, the truthful, the martyrs, and the righteous—those who received Allah's grace and favor. We ask to be protected from two other paths: the path of those who knew the truth but rejected it, thus earning Allah's anger, and the path of those who strayed from the truth due to ignorance or negligence.</p>
+            </div>
+        </article>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="w-full py-8 mt-16" style="background-color: var(--bg-header-footer); border-top: 1px solid var(--border-very-subtle);">
+        <div class="text-center text-gray-400 text-sm">
+            <p>&copy; <span id="current-year"></span> My Deen Project. All rights reserved.</p>
+            <p class="mt-2 opacity-80">Built with dedication. <span class="text-yellow-400">Islam is peace.</span></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Intersection Observer for fade-in animation
+            const cards = document.querySelectorAll('.verse-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
