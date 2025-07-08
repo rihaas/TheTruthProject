@@ -11,253 +11,168 @@
     <!-- Inter Font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Font Awesome 6 CDN (Updated for latest icons and performance) -->
+    <!-- Font Awesome 6 CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Favicon (Replace with your actual favicon path) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://placehold.co/32x32/FACC15/121212?text=DP" />
 
     <style>
         /* CSS Variables for easier theme management and consistency */
         :root {
             /* Backgrounds */
-            --bg-body: #121212; /* Very dark background */
-            --bg-body-gradient-end: #1C1C1C; /* Subtle gradient end */
-            --bg-main-content: #1E1E1E; /* Slightly lighter for main container */
-            --bg-header-footer: #1A1A1A; /* Even darker for header/footer */
-            --bg-card: #282828; /* Darker card background */
-            --bg-card-hover: #2D2D2D; /* Slightly lighter on card hover */
-            --bg-dropdown: #282828; /* Dropdown background */
+            --bg-body: #121212;
+            --bg-body-gradient-end: #1C1C1C;
+            --bg-main-content: #1E1E1E;
+            --bg-header-footer: #1A1A1A;
+            --bg-card: #282828;
+            --bg-card-hover: #2D2D2D;
+            --bg-dropdown: #282828;
 
             /* Text Colors */
-            --text-light: #E0E0E0; /* Light gray for main text */
-            --text-muted: #B0B0B0; /* Softer text color */
-            --text-footer: #707070; /* Muted footer text */
-            --text-heading-muted: #8D8D8D; /* Muted heading color */
-            --text-white: #FFFFFF; /* Pure white */
+            --text-light: #E0E0E0;
+            --text-muted: #B0B0B0;
+            --text-footer: #707070;
+            --text-heading-muted: #8D8D8D;
+            --text-white: #FFFFFF;
 
             /* Accent Colors */
-            --accent-yellow: #FACC15; /* Golden yellow for main accents */
-            --accent-purple: #BB86FC; /* Light purple for card titles */
-            --accent-blue-hover: #8be9fd; /* Light blue for dropdown hover */
+            --accent-yellow: #FACC15;
+            --accent-purple: #BB86FC;
+            --accent-blue-hover: #8be9fd;
 
             /* Button Gradients */
-            --btn-gradient-start: #4F46E5; /* Indigo */
-            --btn-gradient-end: #6366F1; /* Violet */
+            --btn-gradient-start: #4F46E5;
+            --btn-gradient-end: #6366F1;
 
             /* Button Disabled State */
-            --btn-disabled-bg: #4B5563; /* Grayed out for disabled */
-            --btn-disabled-text: #9CA3AF; /* Muted text for disabled */
+            --btn-disabled-bg: #4B5563;
+            --btn-disabled-text: #9CA3AF;
 
             /* Borders & Shadows */
-            --border-subtle: rgba(255, 255, 255, 0.08); /* Subtle border for main content */
-            --border-very-subtle: rgba(255, 255, 255, 0.05); /* Very subtle border for cards/footer */
-            --shadow-deep: rgba(0, 0, 0, 0.7); /* Deeper main shadow */
-            --shadow-button: rgba(79, 70, 229, 0.4); /* Button shadow matching gradient */
-            --shadow-button-hover: rgba(79, 70, 229, 0.6); /* Enhanced button shadow on hover */
-            --shadow-card-initial: rgba(0, 0, 0, 0.3); /* Softer initial card shadow */
-            --shadow-card-hover: rgba(0, 0, 0, 0.5); /* Deeper card shadow on hover */
-            --shadow-header: rgba(0, 0, 0, 0.5); /* Header shadow */
-            --shadow-dropdown: rgba(0,0,0,0.8); /* Dropdown shadow */
-            --shadow-heading-text: rgba(0,0,0,0.3); /* Text shadow for headings */
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-very-subtle: rgba(255, 255, 255, 0.05);
+            --shadow-deep: rgba(0, 0, 0, 0.7);
+            --shadow-button: rgba(79, 70, 229, 0.4);
+            --shadow-button-hover: rgba(79, 70, 229, 0.6);
+            --shadow-card-initial: rgba(0, 0, 0, 0.3);
+            --shadow-card-hover: rgba(0, 0, 0, 0.5);
+            --shadow-header: rgba(0, 0, 0, 0.5);
+            --shadow-dropdown: rgba(0,0,0,0.8);
+            --shadow-heading-text: rgba(0,0,0,0.3);
 
             /* Transitions */
             --transition-ease-out: 0.3s ease-out;
             --transition-cubic-bezier: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             --transition-card: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
-            --transition-dropdown: opacity 0.3s ease-out, visibility 0.3s ease-out, transform 0.3s ease-out;
+            --transition-dropdown: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s;
         }
 
-        /* Base styles for a clean, minimal, and modern dark theme */
+        /* Base styles */
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-light);
             margin: 0;
             padding: 0;
-            /* Subtle top-to-bottom gradient for background */
             background-image: linear-gradient(to bottom, var(--bg-body), var(--bg-body-gradient-end));
-            min-height: 100vh; /* Ensure body takes full viewport height */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* Main content wrapper styling */
+        /* Main content wrapper */
         .main-content-wrapper {
-            max-width: 1100px; /* Wider content area for a more spacious feel */
+            max-width: 1100px;
             width: 100%;
-            background-color: var(--bg-main-content); /* Slightly lighter than body for depth */
+            background-color: var(--bg-main-content);
             border-radius: 1rem;
-            padding: 4rem 3rem; /* Increased vertical padding for more whitespace */
-            box-shadow: 0 15px 30px var(--shadow-deep); /* Deeper, softer shadow */
+            padding: 4rem 3rem;
+            box-shadow: 0 15px 30px var(--shadow-deep);
             margin: 3rem auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            border: 1px solid var(--border-subtle); /* Subtle border for definition */
-            flex-grow: 1; /* Allows main content to grow and push footer down */
+            border: 1px solid var(--border-subtle);
+            flex-grow: 1;
         }
-
-        /* Responsive adjustments for smaller screens */
-        @media (max-width: 1024px) {
-            .main-content-wrapper {
-                padding: 2.5rem 2rem;
-                margin-top: 2rem;
-                margin-bottom: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem; /* Add some padding on smaller screens */
-            }
-            .main-content-wrapper {
-                padding: 2rem 1.5rem;
-                border-radius: 0.75rem;
-            }
-            h1 {
-                font-size: 2.5rem; /* Adjust heading size */
-            }
-            .subtitle {
-                font-size: 1.125rem;
-            }
-            .section-heading {
-                font-size: 2rem; /* Adjust section heading size */
-            }
-            .feature-card, .blog-post-card {
-                padding: 1.25rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
-            .subtitle {
-                font-size: 1rem;
-            }
-            .section-heading {
-                font-size: 1.6rem;
-            }
-            .main-content-wrapper {
-                padding: 1.5rem 1rem;
-            }
-            .grid {
-                grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
-            }
-        }
-
-        /* Refined button styles for a premium look */
-        .interactive-button {
-            background-image: linear-gradient(to right, var(--btn-gradient-start), var(--btn-gradient-end));
-            box-shadow: 0 4px 12px var(--shadow-button);
-            transition: var(--transition-cubic-bezier);
-            border-radius: 0.6rem;
-            padding: 0.75rem 2rem;
-            font-weight: 600;
-            letter-spacing: 0.025em;
-            color: var(--text-white);
+        
+        /* Navigation Bar Styles */
+        .navbar {
             display: flex;
             justify-content: center;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        /* BUG FIX: Use a wrapper to manage hover state and bridge the gap */
+        .nav-item-wrapper {
+            position: relative;
+            padding-bottom: 10px; /* Creates an invisible area to keep hover active */
+            margin-bottom: -10px; /* Compensates for the padding to maintain layout */
+        }
+
+        .nav-button {
+            background: none;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+            display: flex;
             align-items: center;
-            text-decoration: none; /* Ensure links styled as buttons don't have underlines */
-            cursor: pointer; /* Indicate interactivity */
-            border: none; /* Remove default button border */
-            outline: none; /* Remove default outline */
+            gap: 0.5rem;
+            font-weight: 500;
+            position: relative; /* Needed for z-index */
+            z-index: 101; /* Ensure button is above the wrapper's padding */
         }
 
-        .interactive-button:hover {
-            transform: translateY(-3px); /* More noticeable lift */
-            box-shadow: 0 10px 25px var(--shadow-button-hover); /* Enhanced shadow on hover */
-            background-image: linear-gradient(to right, var(--btn-gradient-end), var(--btn-gradient-start)); /* Reverse gradient on hover */
+        .nav-item-wrapper:hover .nav-button {
+            background-color: var(--accent-yellow);
+            color: var(--bg-body);
+            transform: translateY(-2px);
         }
 
-        /* Focus state for accessibility */
-        .interactive-button:focus-visible {
-            outline: 2px solid var(--accent-yellow); /* Yellow outline for focus */
-            outline-offset: 2px;
-        }
-
-        /* Disabled button style */
-        .interactive-button.disabled {
-            background-image: none;
-            background-color: var(--btn-disabled-bg);
-            color: var(--btn-disabled-text);
-            cursor: not-allowed;
-            box-shadow: none;
-            transform: none;
-            pointer-events: none; /* Prevent click events */
-        }
-
-        /* Blog post card styling */
-        .blog-post-card {
-            background-color: var(--bg-card);
+        .dropdown-content {
+            visibility: hidden; /* Start hidden */
+            position: absolute;
+            top: 100%; /* Position relative to the wrapper */
+            left: 50%;
+            background-color: var(--bg-dropdown);
+            min-width: 260px;
+            box-shadow: 0 8px 24px var(--shadow-dropdown);
+            border-radius: 0.5rem;
+            padding: 0.5rem 0;
+            z-index: 100; /* Lower than button but above other content */
+            opacity: 0;
+            transform: translateX(-50%) translateY(-10px); /* Start slightly up */
+            transition: var(--transition-dropdown);
             border: 1px solid var(--border-very-subtle);
-            border-radius: 0.75rem;
-            transition: var(--transition-card);
-            transform: translateY(0);
-            box-shadow: 0 4px 10px var(--shadow-card-initial);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-        .blog-post-card:hover {
-            transform: translateY(4px); /* Move down slightly more subtly */
-            box-shadow: 0 10px 25px var(--shadow-card-hover);
-            background-color: var(--bg-card-hover);
+        /* BUG FIX: Show dropdown on wrapper hover */
+        .nav-item-wrapper:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
-        .blog-post-card h3 {
-            color: var(--accent-purple);
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 0.75rem;
+        .dropdown-content a {
+            color: var(--text-light);
+            padding: 0.75rem 1.25rem;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: background-color 0.2s, color 0.2s;
         }
 
-        .blog-post-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            flex-grow: 1;
-            margin-bottom: 1.25rem;
-        }
-
-        /* Feature card styling (similar to blog cards but with different hover) */
-        .feature-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-very-subtle);
-            border-radius: 0.75rem;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
-            transform: translateY(0);
-            box-shadow: 0 4px 10px var(--shadow-card-initial);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .feature-card:hover {
-            transform: scale(1.02); /* Slightly scale up on hover */
-            box-shadow: 0 8px 20px var(--shadow-card-hover);
-            background-color: var(--bg-card-hover);
-        }
-
-        .feature-card h3 {
-            color: var(--accent-yellow); /* Yellow for feature card titles */
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            flex-grow: 1;
-            margin-bottom: 1.25rem;
+        .dropdown-content a:hover {
+            background-color: #3A3A3A;
+            color: var(--accent-blue-hover);
         }
 
         /* Header styling enhancements */
@@ -265,34 +180,9 @@
             background-color: var(--bg-header-footer);
             box-shadow: 0 5px 15px var(--shadow-header);
             padding: 1.5rem 0;
-            position: relative; /* Needed for pseudo-elements */
-            overflow: visible; /* Changed from hidden to visible */
-            z-index: 9999; /* Increased z-index to ensure it's on top of everything */
-        }
-
-        /* Subtle moving gradient background for header */
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.05) 100%);
-            background-size: 200% 200%;
-            animation: headerGradientMove 15s ease-in-out infinite alternate;
-            opacity: 0.1;
-            z-index: 0; /* Keep background behind content */
-        }
-
-        @keyframes headerGradientMove {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
-        }
-
-        header .container {
-            position: relative; /* Ensure content is above pseudo-element */
-            z-index: 1;
+            position: relative;
+            overflow: visible; 
+            z-index: 100;
         }
 
         header h1 {
@@ -308,7 +198,81 @@
             letter-spacing: 0.02em;
         }
 
-        /* Section headings */
+        /* Interactive Button (for non-nav elements) */
+        .interactive-button {
+            background-image: linear-gradient(to right, var(--btn-gradient-start), var(--btn-gradient-end));
+            box-shadow: 0 4px 12px var(--shadow-button);
+            transition: var(--transition-cubic-bezier);
+            border-radius: 0.6rem;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            color: var(--text-white);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .interactive-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow-button-hover);
+            background-image: linear-gradient(to right, var(--btn-gradient-end), var(--btn-gradient-start));
+        }
+        
+        .interactive-button.disabled {
+            background-image: none;
+            background-color: var(--btn-disabled-bg);
+            color: var(--btn-disabled-text);
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+            pointer-events: none;
+        }
+
+        .blog-post-card, .feature-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-very-subtle);
+            border-radius: 0.75rem;
+            transition: var(--transition-card);
+            box-shadow: 0 4px 10px var(--shadow-card-initial);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .blog-post-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px var(--shadow-card-hover);
+            background-color: var(--bg-card-hover);
+        }
+        
+        .feature-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px var(--shadow-card-hover);
+            background-color: var(--bg-card-hover);
+        }
+
+        .blog-post-card h3, .feature-card h3 {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+        .blog-post-card h3 { color: var(--accent-purple); }
+        .feature-card h3 { color: var(--accent-yellow); }
+
+        .blog-post-card p, .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            margin-bottom: 1.25rem;
+        }
+        
         .section-heading {
             color: var(--text-heading-muted);
             font-size: 2.5rem;
@@ -317,12 +281,8 @@
             letter-spacing: -0.02em;
             text-shadow: 0 2px 4px var(--shadow-heading-text);
         }
+        .section-heading span { color: var(--accent-yellow); }
 
-        .section-heading span {
-            color: var(--accent-yellow); /* Highlight accent */
-        }
-
-        /* Footer styling */
         footer {
             background-color: var(--bg-header-footer);
             color: var(--text-footer);
@@ -330,153 +290,104 @@
             padding: 2rem 0;
             border-top: 1px solid var(--border-very-subtle);
             text-align: center;
-            margin-top: auto; /* Push footer to the bottom */
+            margin-top: auto;
         }
-        footer .text-yellow-400 {
-            color: var(--accent-yellow);
-        }
-        
-        /* Navigation button and dropdown styles */
-        .nav-dropdown-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-top: 1.5rem;
-            z-index: 9999; /* Ensures container is on top */
-        }
-        
-        .nav-dropdown-content {
-            position: absolute;
-            top: 100%; /* Position below the button */
-            background-color: var(--bg-dropdown);
-            min-width: 280px;
-            box-shadow: 0px 8px 16px 0px var(--shadow-dropdown);
-            border-radius: 0.5rem;
-            padding: 0.5rem 0;
-            z-index: 99999; /* Ensure dropdown is on top of all elements */
-            left: 50%;
-            transform: translateX(-50%) translateY(10px); /* Start slightly below and centered */
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: var(--transition-dropdown);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .nav-dropdown-content a {
-            color: var(--text-light);
-            padding: 0.75rem 1.25rem;
-            text-decoration: none;
-            display: block;
-            text-align: center; /* Changed to center for all content */
-            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-            font-size: 0.95rem;
-            white-space: nowrap;
-        }
-        
-        .nav-dropdown-content a:hover {
-            background-color: #3A3A3A;
-            color: var(--accent-blue-hover);
-        }
-        
-        /* When container is hovered, show the dropdown */
-        .nav-dropdown-container:hover .nav-dropdown-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0); /* Moves into final position */
-            pointer-events: auto;
-        }
+        footer .text-yellow-400 { color: var(--accent-yellow); }
 
-
-        /* Animation for header elements */
-        .animate-fade-in {
-            animation: fadeIn 0.9s ease forwards;
-        }
-        .header-subtitle-fade-in {
-            animation: fadeIn 1.2s ease forwards; /* Slightly delayed for effect */
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Back to top button styles */
         #back-to-top {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
             background-color: var(--accent-yellow);
             color: var(--bg-body);
-            padding: 1rem 1.2rem;
-            border-radius: 50%; /* Make it perfectly round */
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            display: none; /* Hidden by default, controlled by JS */
+            display: none;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             cursor: pointer;
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-            z-index: 1000; /* Ensure it's on top */
-            border: none; /* Remove button border */
-            outline: none; /* Remove button outline */
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 1000;
+            border: none;
         }
 
         #back-to-top:hover {
-            transform: translateY(-5px) scale(1.05); /* Lift and slightly enlarge on hover */
+            transform: translateY(-5px) scale(1.05);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
         }
 
-        #back-to-top:focus-visible {
-            outline: 2px solid var(--text-white); /* White outline on focus */
-            outline-offset: 2px;
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .nav-button { width: 90%; justify-content: center; }
+            .dropdown-content { width: 90%; }
+            .main-content-wrapper { padding: 2.5rem 1.5rem; }
+            header h1 { font-size: 2.5rem; }
+            header .subtitle { font-size: 1.125rem; }
         }
-
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 
     <!-- Header Section -->
-    <header class="w-full py-10 text-center shadow-lg">
+    <header class="w-full py-10 text-center">
         <div class="container mx-auto px-4 flex flex-col items-center justify-center text-center">
-            <h1 class="text-5xl md:text-6xl font-extrabold text-yellow-400 mb-2 animate-fade-in">
-                <i class="fas fa-mosque text-6xl"></i> My Deen Project
+            <h1 class="text-5xl md:text-6xl font-extrabold text-yellow-400 mb-2">
+                <i class="fas fa-mosque text-5xl md:text-6xl"></i> My Deen Project
             </h1>
-            <p class="text-xl md:text-2xl text-gray-300 font-light subtitle header-subtitle-fade-in">
+            <p class="text-xl md:text-2xl text-gray-300 font-light subtitle">
                 Your Digital Hub for Islamic Knowledge and Practice
             </p>
 
-            <!-- Navigation Button with Dropdown -->
-            <div class="nav-dropdown-container">
-                <button class="interactive-button py-3 px-8 text-lg gap-2">
-                    Explore <i class="fas fa-chevron-down text-sm ml-2"></i>
-                </button>
-                <div class="nav-dropdown-content">
-                    <!-- Corrected href paths for consistency and .html extension -->
-                    <a href="understanding-islam-beginners.html">Understanding Islam for Beginners</a>
-                    <a href="holy-quran-intro.html">Introduction to the Quran for Beginners</a>
-                    <a href="asmaul-husna.html">Asmaul Husna - The 99 Names of Allah</a>
-                    <a href="prophet-muhammed-sa.html">Prophet Muhammad (PBUH): Key Events & Inspirations</a>
-                    <a href="daily-prayers-jumuah-summary.html">Daily Prayers & Jumu'ah Summary</a>
-                    <a href="duniya-and-akhirah.html">Dunya & Akhirah: This Worldly Life and The Hereafter</a>
-                    <a href="islamic-legal-classifications.html">Islamic Legal Classifications</a>
-                    <a href="prophets-quran-lineage.html">Prophets in the Quran & Lineage</a>
-                    <a href="prophet-isa.html">Prophet Isa AS (Jesus Christ) in the Quran</a>
-                    <a href="prophet-ibrahim.html">Prophet Ibrahim (Abraham) in the Quran</a>
-                    <a href="prophet-davud.html">Prophet Dawud (David) in the Quran</a>
-                    <a href="prophet-musa-as.html">Prophet Musa (Moses) in the Quran</a>
-                    <a href="children-of-israel.html">Children of Israel (Bani Israel) in the Quran</a>
-                    <a href="nafl-prayers.html">Nafl (Voluntary) Prayers</a>
-                    <a href="understanding-hadith.html">Understanding Hadith: Classifications & Hadith Qudsi</a>
+            <!-- Improved Navigation Bar -->
+            <nav class="navbar">
+                <!-- BUG FIX: Wrapped each nav item in a div to manage hover state -->
+                <div class="nav-item-wrapper">
+                    <button class="nav-button">Pillars & Practices <i class="fas fa-chevron-down text-sm ml-2"></i></button>
+                    <div class="dropdown-content">
+                        <a href="understanding-islam-beginners.html">Understanding Islam for Beginners</a>
+                        <a href="daily-prayers-jumuah-summary.html">Daily Prayers & Jumu'ah Summary</a>
+                        <a href="nafl-prayers.html">Nafl (Voluntary) Prayers</a>
+                        <a href="islamic-legal-classifications.html">Islamic Legal Classifications</a>
+                    </div>
                 </div>
-            </div>
+
+                <div class="nav-item-wrapper">
+                    <button class="nav-button">Quran & Hadith <i class="fas fa-chevron-down text-sm ml-2"></i></button>
+                    <div class="dropdown-content">
+                        <a href="holy-quran-intro.html">Introduction to the Quran</a>
+                        <a href="understanding-hadith.html">Understanding Hadith</a>
+                        <a href="duniya-and-akhirah.html">Dunya & Akhirah</a>
+                    </div>
+                </div>
+
+                <div class="nav-item-wrapper">
+                    <button class="nav-button">Prophets <i class="fas fa-chevron-down text-sm ml-2"></i></button>
+                    <div class="dropdown-content">
+                        <a href="prophets-quran-lineage.html">Prophets in the Quran & Lineage</a>
+                        <a href="prophet-muhammed-sa.html">Prophet Muhammad (PBUH)</a>
+                        <a href="prophet-isa.html">Prophet Isa (Jesus)</a>
+                        <a href="prophet-ibrahim.html">Prophet Ibrahim (Abraham)</a>
+                        <a href="prophet-davud.html">Prophet Dawud (David)</a>
+                        <a href="prophet-musa-as.html">Prophet Musa (Moses)</a>
+                    </div>
+                </div>
+                
+                <div class="nav-item-wrapper">
+                    <button class="nav-button">More Topics <i class="fas fa-chevron-down text-sm ml-2"></i></button>
+                    <div class="dropdown-content">
+                        <a href="asmaul-husna.html">The 99 Names of Allah</a>
+                        <a href="children-of-israel.html">Children of Israel in the Quran</a>
+                    </div>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -484,7 +395,7 @@
     <main class="main-content-wrapper">
 
         <!-- About Section -->
-        <section class="mb-20 w-full animate-fade-in">
+        <section class="mb-20 w-full">
             <h2 class="section-heading">About Our <span>Project</span></h2>
             <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto opacity-90">
                 Welcome to My Deen Project! Our mission is to create accessible and interactive digital tools
@@ -494,182 +405,66 @@
         </section>
 
         <!-- Blog Section -->
-        <section class="w-full mb-20 animate-fade-in">
+        <section class="w-full mb-20">
             <h2 class="section-heading">Our Latest <span>Blog</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
                 <!-- Blog Post 1: Islamic Legal Classifications -->
                 <div class="blog-post-card">
-                    <h3 class="mb-3">
-                        Islamic Legal Classifications
-                    </h3>
-                    <p class="mb-4">
-                        Explore the foundational categories and principles that govern Islamic jurisprudence and daily life.
-                    </p>
-                    <a href="islamic-legal-classifications.html" class="inline-block interactive-button">
-                        Read More
-                    </a>
+                    <h3>Islamic Legal Classifications</h3>
+                    <p>Explore the foundational categories and principles that govern Islamic jurisprudence and daily life.</p>
+                    <a href="islamic-legal-classifications.html" class="interactive-button mt-auto">Read More</a>
                 </div>
 
-                <!-- Blog Post 2: Prophets in the Quran and their Lineage -->
+                <!-- Blog Post 2: Prophets in the Quran -->
                 <div class="blog-post-card">
-                    <h3 class="mb-3">
-                        Prophets in the Quran and their Lineage
-                    </h3>
-                    <p class="mb-4">
-                        A detailed look at the esteemed Prophets mentioned in the Holy Quran, tracing their stories and genealogical connections.
-                    </p>
-                    <a href="prophets-quran-lineage.html" class="inline-block interactive-button">
-                        Read More
-                    </a>
+                    <h3>Prophets in the Quran and their Lineage</h3>
+                    <p>A detailed look at the esteemed Prophets mentioned in the Holy Quran, tracing their stories and connections.</p>
+                    <a href="prophets-quran-lineage.html" class="interactive-button mt-auto">Read More</a>
                 </div>
 
                 <!-- Blog Post 3: Daily Prayer Summaries -->
                 <div class="blog-post-card">
-                    <h3 class="mb-3">
-                        Daily Prayer Summaries
-                    </h3>
-                    <p class="mb-4">
-                        A comprehensive guide to the obligatory and Sunnah Rak'ahs for all daily prayers, including the special Jumu'ah prayer.
-                    </p>
-                    <a href="daily-prayers-jumuah-summary.html" class="inline-block interactive-button">
-                        Read More
-                    </a>
+                    <h3>Daily Prayer Summaries</h3>
+                    <p>A comprehensive guide to the obligatory and Sunnah Rak'ahs for all daily prayers, including Jumu'ah.</p>
+                    <a href="daily-prayers-jumuah-summary.html" class="interactive-button mt-auto">Read More</a>
                 </div>
-
-                <!-- Blog Post Card: Nafl (Voluntary) Prayers -->
-                <div class="blog-post-card">
-                    <h3 class="mb-3">
-                        Nafl (Voluntary) Prayers
-                    </h3>
-                    <p class="mb-4">
-                        Discover the various optional prayers that bring immense spiritual rewards and closeness to Allah.
-                    </p>
-                    <a href="nafl-prayers.html" class="inline-block interactive-button">
-                        Read More
-                    </a>
-                </div>
-
-                <!-- Blog Post Card: Understanding Hadith -->
-                <div class="blog-post-card">
-                    <h3>Understanding Hadith</h3>
-                    <p>
-                        Delve into the classifications of Hadith, including Sahih, Hasan, Da'if, and the unique Hadith Qudsi, with examples.
-                    </p>
-                    <a href="understanding-hadith.html" class="inline-block interactive-button">
-                        Read More
-                    </a>
-                </div>
-
-                <!-- Blog Post Card: Prophet Muhammad (PBUH) Events -->
-                <div class="blog-post-card">
-                    <h3>Prophet Muhammad (PBUH): Events & Inspirations</h3>
-                    <p>
-                        Explore key events from the blessed life of Prophet Muhammad (PBUH) and draw timeless lessons and inspirations.
-                    </p>
-                    <a href="prophet-muhammed-sa.html" class="inline-block interactive-button">
-                        Read More
-                    </a>
-                </div>
-
-                <!-- Blog Post Card: Understanding Islam for Beginners -->
-                <div class="blog-post-card">
-                    <h3>Understanding Islam for Beginners</h3>
-                    <p>
-                        A foundational guide to the core beliefs, practices, and values of Islam, designed for easy understanding.
-                    </p>
-                    <a href="understanding-islam-beginners.html" class="inline-block interactive-button">
-                        Read More
-                    </a>
-                </div>
-
             </div>
-            <p class="text-lg text-gray-400 mt-8 opacity-80">
-                Dive deeper into Islamic knowledge with more valuable insights and articles coming soon!
-            </p>
         </section>
-
 
         <!-- Features Section -->
-        <section class="w-full mb-20 animate-fade-in">
-            <h2 class="section-heading">
-                Key <span>Features</span>
-            </h2>
+        <section class="w-full mb-20">
+            <h2 class="section-heading">Key <span>Features</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
-                <!-- Feature Card 1: Placeholder for Future Content -->
+                <!-- Feature Card 1 -->
                 <div class="feature-card">
-                    <h3 class="text-xl font-semibold text-yellow-300 mb-3">
-                        Coming Soon: Quranic Insights
-                    </h3>
-                    <p class="text-gray-300 mb-4 opacity-90">
-                        A dedicated section for exploring verses from the Holy Quran, with profound interpretations and timeless lessons.
-                    </p>
-                    <button class="inline-block interactive-button disabled">
-                        Learn More
-                    </button>
+                    <h3>Coming Soon: Quranic Insights</h3>
+                    <p>A dedicated section for exploring verses from the Holy Quran, with profound interpretations and timeless lessons.</p>
+                    <button class="interactive-button disabled mt-auto">Learn More</button>
                 </div>
 
-                <!-- Feature Card 2: Placeholder for Future Content -->
+                <!-- Feature Card 2 -->
                 <div class="feature-card">
-                    <h3 class="text-xl font-semibold text-yellow-300 mb-3">
-                        Coming Soon: Hadith Collection
-                    </h3>
-                    <p class="text-gray-300 mb-4 opacity-90">
-                        An organized collection of authentic Hadith to deepen your understanding of the Prophet's (PBUH) teachings and Sunnah.
-                    </p>
-                    <button class="inline-block interactive-button disabled">
-                        Explore
-                    </button>
-                </div>
-
-                <!-- Feature Card 3: Placeholder for Future Content -->
-                <div class="feature-card">
-                    <h3 class="text-xl font-semibold text-yellow-300 mb-3">
-                        Coming Soon: Islamic Calendar
-                    </h3>
-                    <p class="text-gray-300 mb-4 opacity-90">
-                        Stay updated with important Islamic dates, events, and holidays throughout the Hijri year.
-                    </p>
-                    <button class="inline-block interactive-button disabled">
-                        View Calendar
-                    </button>
-                </div>
-
-                <!-- Feature Card 4: Placeholder -->
-                <div class="feature-card">
-                    <h3 class="text-xl font-semibold text-yellow-300 mb-3">
-                        More Resources
-                    </h3>
-                    <p class="text-gray-300 mb-4 opacity-90">
-                        We are continuously working to add more valuable tools and features to support your spiritual journey.
-                    </p>
-                    <button class="inline-block interactive-button disabled">
-                        Discover
-                    </button>
+                    <h3>Coming Soon: Hadith Collection</h3>
+                    <p>An organized collection of authentic Hadith to deepen your understanding of the Prophet's (PBUH) teachings.</p>
+                    <button class="interactive-button disabled mt-auto">Explore</button>
                 </div>
             </div>
         </section>
 
-
         <!-- Call to Action / Contribution -->
-        <section class="w-full mb-20 animate-fade-in">
-            <h2 class="section-heading">
-                Contribute to Our <span>Mission</span>
-            </h2>
+        <section class="w-full mb-20">
+            <h2 class="section-heading">Contribute to Our <span>Mission</span></h2>
             <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8 opacity-90">
-                The My Deen Project is an open-source initiative and thrives on community contributions. If you're a passionate developer,
-                creative designer, or knowledgeable Islamic scholar, we warmly welcome your expertise to help us expand and
-                continually improve our resources. Join us in building something meaningful!
+                The My Deen Project is an open-source initiative. If you're a developer, designer, or scholar, we welcome your expertise to help us grow. Join us in building something meaningful!
             </p>
-            <a href="https://github.com/your-github-username/mydeen" target="_blank" rel="noopener noreferrer"
-               class="inline-block interactive-button py-3 px-8 text-lg">
+            <a href="https://github.com/your-github-username/mydeen" target="_blank" rel="noopener noreferrer" class="interactive-button py-3 px-8 text-lg">
                 Visit our GitHub Repository
             </a>
-            <!-- Developer Note: Remember to replace "your-github-username/mydeen" with your actual GitHub repository link. -->
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="w-full py-8 bg-gray-800 text-center text-gray-400 text-sm">
+    <footer class="w-full py-8">
         <p>&copy; <span id="current-year"></span> My Deen Project. All rights reserved.</p>
         <p class="mt-2 opacity-80">Built with dedication. <span class="text-yellow-400">Islam is peace.</span></p>
     </footer>
@@ -680,54 +475,25 @@
     </button>
 
     <script>
-        // JavaScript for dynamic footer year, smooth scrolling, and back-to-top button
-
         document.addEventListener('DOMContentLoaded', function() {
-            // Set current year in the footer
-            const currentYearSpan = document.getElementById('current-year');
-            if (currentYearSpan) {
-                currentYearSpan.textContent = new Date().getFullYear();
-            }
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
 
             // Back to Top button logic
             const backToTopButton = document.getElementById('back-to-top');
-
-            // Show/hide the button based on scroll position
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) { // Show button after scrolling 300px
-                    backToTopButton.style.display = 'flex'; // Use flex to center icon
-                    backToTopButton.style.opacity = '1';
-                    backToTopButton.style.transform = 'translateY(0)';
-                } else {
-                    backToTopButton.style.opacity = '0';
-                    backToTopButton.style.transform = 'translateY(20px)'; // Animate out
-                    // Hide after transition to prevent it from taking up space
-                    setTimeout(() => {
-                        if (window.scrollY <= 300) {
-                            backToTopButton.style.display = 'none';
-                        }
-                    }, 300);
-                }
-            });
-
-            // Scroll to top when the button is clicked
-            backToTopButton.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.style.display = 'flex';
+                    } else {
+                        backToTopButton.style.display = 'none';
+                    }
                 });
-            });
+
+                backToTopButton.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
         });
     </script>
 </body>
