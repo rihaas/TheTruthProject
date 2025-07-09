@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Deen Project - Surah Al-Kawthar</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inter Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://placehold.co/32x32/FACC15/121212?text=DP" />
+
+    <style>
+        /* CSS Variables for easier theme management and consistency */
+        :root {
+            /* Backgrounds */
+            --bg-body: #121212;
+            --bg-body-gradient-end: #1C1C1C;
+            --bg-main-content: #1E1E1E;
+            --bg-header-footer: #1A1A1A;
+            --bg-card: #282828;
+            --bg-card-hover: #2D2D2D;
+            --bg-dropdown: #282828;
+            --bg-verse-card: #2A2A2A;
+
+            /* Text Colors */
+            --text-light: #E0E0E0;
+            --text-muted: #B0B0B0;
+            --text-footer: #707070;
+            --text-heading-muted: #8D8D8D;
+            --text-white: #FFFFFF;
+            --text-arabic: #F5F5F5;
+
+            /* Accent Colors */
+            --accent-yellow: #FACC15;
+            --accent-purple: #BB86FC;
+            --accent-blue-hover: #8be9fd;
+            --accent-teal: #00BFA6;
+
+            /* Button Gradients */
+            --btn-gradient-start: #4F46E5;
+            --btn-gradient-end: #6366F1;
+
+            /* Borders & Shadows */
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-very-subtle: rgba(255, 255, 255, 0.05);
+            --shadow-deep: rgba(0, 0, 0, 0.7);
+            --shadow-header: rgba(0, 0, 0, 0.5);
+            --shadow-dropdown: rgba(0,0,0,0.8);
+            --shadow-heading-text: rgba(0,0,0,0.3);
+            --shadow-card-initial: rgba(0, 0, 0, 0.3);
+            --shadow-card-hover: rgba(0, 0, 0, 0.5);
+
+            /* Transitions */
+            --transition-ease-out: 0.3s ease-out;
+            --transition-cubic-bezier: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition-card: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            --transition-dropdown: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s;
+        }
+
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-light);
+            background-image: linear-gradient(to bottom, var(--bg-body), var(--bg-body-gradient-end));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Main content wrapper */
+        .main-content-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            background-color: var(--bg-main-content);
+            border-radius: 1rem;
+            padding: 4rem 3rem;
+            box-shadow: 0 15px 30px var(--shadow-deep);
+            margin: 3rem auto;
+            border: 1px solid var(--border-subtle);
+            flex-grow: 1;
+        }
+        
+        /* Simplified Navigation Bar Styles */
+        .navbar { 
+            display: flex; 
+            justify-content: center; 
+            margin-top: 2.5rem; 
+        }
+        .nav-button { 
+            background: none; 
+            border: 1px solid var(--border-subtle); 
+            color: var(--text-muted); 
+            padding: 0.75rem 1.5rem; 
+            border-radius: 0.5rem; 
+            cursor: pointer; 
+            transition: background-color 0.3s, color 0.3s, transform 0.2s; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .nav-button:hover { 
+            background-color: var(--accent-yellow); 
+            color: var(--bg-body); 
+            transform: translateY(-2px); 
+        }
+
+        /* Header styling enhancements */
+        header {
+            background-color: var(--bg-header-footer);
+            box-shadow: 0 5px 15px var(--shadow-header);
+            padding: 1.5rem 0;
+            position: relative;
+            z-index: 100;
+        }
+
+        header h1 {
+            color: var(--accent-yellow);
+            font-size: 3.5rem;
+            letter-spacing: 0.05em;
+        }
+        header .subtitle {
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-top: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* Section heading styles */
+        .section-heading {
+            color: var(--text-heading-muted);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px var(--shadow-heading-text);
+            text-align: center;
+        }
+        .section-heading span { color: var(--accent-yellow); }
+
+        /* Custom styles for Surah page */
+        .surah-text-card {
+            background-color: var(--bg-verse-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 20px var(--shadow-card-initial);
+        }
+        .arabic-text {
+            font-family: 'Scheherazade New', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-arabic);
+            direction: rtl;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .transliteration-text, .translation-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-align: center;
+            font-style: italic;
+        }
+        .translation-text {
+            margin-top: 0.75rem;
+            color: var(--text-light);
+            font-style: normal;
+            font-weight: 500;
+        }
+        .tafsir-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-very-subtle);
+            border-radius: 0.75rem;
+            transition: var(--transition-card);
+            box-shadow: 0 4px 10px var(--shadow-card-initial);
+            padding: 1.75rem;
+            text-align: left;
+        }
+        .tafsir-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px var(--shadow-card-hover);
+            background-color: var(--bg-card-hover);
+        }
+        .tafsir-card h3 {
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-purple);
+            display: flex;
+            align-items: center;
+        }
+        .tafsir-card h3 .verse-number {
+            background-color: var(--accent-yellow);
+            color: var(--bg-body);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            margin-right: 0.75rem;
+            font-weight: 700;
+        }
+        .tafsir-card p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .info-box {
+            background-color: rgba(250, 204, 21, 0.05); /* Subtle yellow background */
+            border-left: 4px solid var(--accent-yellow);
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+            color: var(--text-light);
+        }
+        .info-box p { line-height: 1.6; }
+        .info-box strong { color: var(--accent-yellow); }
+
+        /* Footer and Back-to-Top */
+        footer { background-color: var(--bg-header-footer); color: var(--text-footer); font-size: 0.85rem; padding: 2rem 0; border-top: 1px solid var(--border-very-subtle); text-align: center; margin-top: auto; }
+        footer .text-yellow-400 { color: var(--accent-yellow); }
+        #back-to-top { position: fixed; bottom: 2rem; right: 2rem; background-color: var(--accent-yellow); color: var(--bg-body); width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); display: none; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; transition: opacity 0.3s, transform 0.3s; z-index: 1000; border: none; }
+        #back-to-top:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6); }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content-wrapper { padding: 2.5rem 1.5rem; }
+            header h1 { font-size: 2.5rem; }
+            header .subtitle { font-size: 1.125rem; }
+            .section-heading { font-size: 2rem; }
+            .arabic-text { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Header Section -->
+    <header class="w-full py-10 text-center">
+        <div class="container mx-auto px-4 flex flex-col items-center justify-center text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-yellow-400 mb-2">
+                <i class="fas fa-book-quran text-5xl md:text-6xl"></i> Surah Al-Kawthar
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 font-light subtitle">
+                An Exploration of "The Abundance"
+            </p>
+
+            <!-- Simplified Navigation Bar -->
+            <nav class="navbar">
+                <a href="index.html" class="nav-button"><i class="fas fa-home mr-2"></i>Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content-wrapper">
+
+        <!-- Introduction Section -->
+        <section class="mb-16 w-full text-center">
+            <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto opacity-90">
+                Surah Al-Kawthar (Chapter 108) is the shortest chapter of the Holy Quran, yet it carries a message of immense hope, consolation, and divine promise. Revealed in Makkah, it was a direct response to the taunts and insults faced by Prophet Muhammad (PBUH) from his adversaries.
+            </p>
+        </section>
+
+        <!-- Surah Text Section -->
+        <section class="mb-16 w-full">
+            <h2 class="section-heading">Text of the <span>Surah</span></h2>
+            <div class="surah-text-card">
+                <p class="arabic-text">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ<br>إِنَّآ أَعْطَيْنَٰكَ ٱلْكَوْثَرَ<br>فَصَلِّ لِرَبِّكَ وَٱنْحَرْ<br>إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ</p>
+                <p class="transliteration-text">
+                    Bismillāhir-Raḥmānir-Raḥīm<br>
+                    Innā aʿṭaynākal-kawthar<br>
+                    Faṣalli li-rabbika wanḥar<br>
+                    Inna shāniʾaka huwal-abtar
+                </p>
+                <p class="translation-text">
+                    In the name of Allah, the Entirely Merciful, the Especially Merciful.<br>
+                    Indeed, We have granted you al-Kawthar.<br>
+                    So pray to your Lord and sacrifice [to Him alone].<br>
+                    Indeed, your enemy is the one cut off.
+                </p>
+            </div>
+        </section>
+
+        <!-- Occasion of Revelation & Classification -->
+        <section class="mb-16 w-full">
+            <h2 class="section-heading">Context of <span>Revelation</span></h2>
+            <div class="info-box">
+                <p><strong>Classification:</strong> Makki (Revealed in Makkah)</p>
+            </div>
+            <div class="text-left text-gray-300 leading-relaxed max-w-4xl mx-auto opacity-90 space-y-4">
+                <p>This Surah was revealed during a period of intense personal grief and public persecution for Prophet Muhammad (PBUH). His infant son, Al-Qasim, had passed away. The pagans of Makkah, particularly a man named Al-'As ibn Wa'il, seized this opportunity to mock the Prophet.</p>
+                <p>In the culture of the time, having male heirs was a source of great pride and a sign of a continuing legacy. Lacking a male heir, the Prophet's enemies taunted him by calling him "abtar," which means "the one who is cut off" — implying that his lineage and message would die with him. This was not just a personal insult but an attack on the future of Islam itself.</p>
+                <p>In this moment of profound sadness, Allah revealed Surah Al-Kawthar as a direct consolation, a powerful rebuttal to his enemies, and a divine assurance of his true, everlasting legacy.</p>
+            </div>
+        </section>
+
+        <!-- Tafsir Section -->
+        <section class="w-full mb-12">
+            <h2 class="section-heading">Verse-by-Verse <span>Explanation</span></h2>
+            <div class="grid grid-cols-1 gap-8">
+                <!-- Verse 1 -->
+                <div class="tafsir-card">
+                    <h3><span class="verse-number">1</span>Indeed, We have granted you al-Kawthar.</h3>
+                    <p>Allah directly addresses the Prophet (PBUH) with a promise of "al-Kawthar." This rich Arabic word signifies abundance and overflowing goodness. Scholars have interpreted it in several ways, all of which are true:
+                    <ul class="list-disc list-inside mt-4 space-y-2 text-gray-400">
+                        <li><strong>A River in Jannah (Paradise):</strong> The most famous interpretation is a special river granted to the Prophet in Paradise, from which the believers will drink on the Day of Judgment.</li>
+                        <li><strong>Abundant Goodness:</strong> It also refers to the immense good that Allah bestowed upon the Prophet in this life and the hereafter, including prophethood, the Quran, wisdom, a high station, and a vast following of believers.</li>
+                        <li><strong>An Abundant Posterity:</strong> While his enemies mocked his lack of male heirs, Allah promised him a spiritual posterity so vast that it would include all believers until the end of time.</li>
+                    </ul>
+                    </p>
+                </div>
+                <!-- Verse 2 -->
+                <div class="tafsir-card">
+                    <h3><span class="verse-number">2</span>So pray to your Lord and sacrifice.</h3>
+                    <p>In response to this immense gift of "al-Kawthar," Allah commands the Prophet (PBUH) to show gratitude through two fundamental acts of worship. This verse establishes a crucial principle: blessings from Allah should be met with sincere devotion directed only to Him.
+                    <ul class="list-disc list-inside mt-4 space-y-2 text-gray-400">
+                        <li><strong>Pray to your Lord (Faṣalli li-rabbika):</strong> Perform Salah (prayer) with sincerity and devotion, dedicating it exclusively to your Lord, not to any idol or false deity.</li>
+                        <li><strong>And Sacrifice (wanḥar):</strong> Perform the act of sacrifice (like that on Eid al-Adha) in the name of Allah alone. This was a direct challenge to the pagan practice of sacrificing animals to their idols.</li>
+                    </ul>
+                    </p>
+                </div>
+                <!-- Verse 3 -->
+                <div class="tafsir-card">
+                    <h3><span class="verse-number">3</span>Indeed, your enemy is the one cut off.</h3>
+                    <p>This final verse is a powerful and direct rebuttal to the taunts of the Prophet's enemies. Allah turns the very insult they used against the Prophet back on them. He declares that it is not the Prophet who is "abtar" (cut off), but the one who hates him.
+                    <br><br>
+                    History is the greatest witness to this truth. The names of those who mocked the Prophet, like Al-'As ibn Wa'il, are forgotten or remembered only for their villainy. Their lineage is gone. In contrast, the name of Prophet Muhammad (PBUH) is mentioned billions of times a day in the call to prayer, in Salah, and in the hearts of believers. His spiritual legacy is not just alive but continues to grow, a testament to the divine truth of this Surah.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Lessons Section -->
+        <section class="w-full text-center">
+             <h2 class="section-heading">Key <span>Lessons</span></h2>
+             <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto opacity-90">
+                Despite its brevity, Surah Al-Kawthar teaches us profound lessons: trust in Allah's promise during hardship, express gratitude for blessings through sincere worship, and understand that true legacy is not defined by worldly measures but by faith and righteousness.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-8">
+        <div class="text-center">
+            <p>&copy; <span id="current-year"></span> My Deen Project. All rights reserved.</p>
+            <p class="mt-2 opacity-80">Built with dedication. <span class="text-yellow-400">Islam is peace.</span></p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Back to Top button logic
+            const backToTopButton = document.getElementById('back-to-top');
+            if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.style.display = 'flex';
+                    } else {
+                        backToTopButton.style.display = 'none';
+                    }
+                });
+
+                backToTopButton.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
