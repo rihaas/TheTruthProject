@@ -75,7 +75,7 @@
             padding: 2.5rem;
             box-shadow: 0 15px 40px var(--shadow-deep);
             animation: fadeIn 1s ease-out;
-            margin-bottom: 2rem; /* Space for the news banner */
+            margin-bottom: 2rem; /* Space for the contribution banner */
         }
         
         @keyframes fadeIn {
@@ -168,8 +168,8 @@
             filter: brightness(0.1);
         }
 
-        /* --- News Banner Styling --- */
-        .news-banner {
+        /* --- Contribution Banner Styling --- */
+        .contribution-banner {
             width: 100%;
             max-width: 800px;
             background: var(--glass-background);
@@ -181,33 +181,37 @@
             text-align: center;
             animation: fadeIn 1s ease-out 0.2s;
             animation-fill-mode: backwards;
-        }
-        
-        .news-banner .banner-title {
-            font-weight: 600;
-            color: var(--primary-color);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.9rem;
+            gap: 1rem;
         }
         
-        .news-banner .headline-link {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            text-decoration: none;
-            display: inline-block;
-            transition: opacity 0.4s ease-in-out, color 0.3s ease;
-        }
-        
-        .news-banner .headline-link:hover {
-            color: var(--primary-color);
+        .contribution-text {
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 600px;
         }
 
-        .headline-link.fade-out {
-            opacity: 0;
+        .contribution-button {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-dark);
+            background-color: var(--primary-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .contribution-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(250, 204, 21, 0.3);
         }
 
     </style>
@@ -237,64 +241,18 @@
             </div>
         </div>
 
-        <footer class="news-banner">
-            <div class="banner-title">
-                <i class="fas fa-newspaper"></i>
-                <span>Current Spotlight</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="headline-link" id="headline">
-                Fetching latest headlines...
+        <footer class="contribution-banner">
+            <p class="contribution-text">
+                This is an open-source project. If you're a researcher worried about Islamophobes or a scholar with deep articles, you can contribute.
+            </p>
+            <a href="https://github.com/your-repo/al-haqq-project" target="_blank" rel="noopener noreferrer" class="contribution-button">
+                <i class="fab fa-github"></i>
+                Click to Contribute
             </a>
         </footer>
     </div>
 
     <script>
-        // --- Live News Ticker ---
-        const headlineElement = document.getElementById('headline');
-        const alJazeeraRssUrl = 'https://www.aljazeera.com/xml/rss/all.xml';
-        const rssToJsonApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(alJazeeraRssUrl)}`;
-        let articles = [];
-        let currentArticleIndex = 0;
-
-        async function fetchNews() {
-            try {
-                const response = await fetch(rssToJsonApiUrl);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                if (data.status === 'ok' && data.items.length > 0) {
-                    articles = data.items.slice(0, 5); // Get top 5 articles
-                    startNewsTicker();
-                } else {
-                    headlineElement.textContent = 'Could not fetch latest news.';
-                }
-            } catch (error) {
-                console.error("Error fetching news:", error);
-                headlineElement.textContent = 'News service is currently unavailable.';
-            }
-        }
-
-        function startNewsTicker() {
-            updateHeadline(); // Show the first headline immediately
-            setInterval(updateHeadline, 7000); // Change headline every 7 seconds
-        }
-
-        function updateHeadline() {
-            headlineElement.classList.add('fade-out');
-            
-            setTimeout(() => {
-                currentArticleIndex = (currentArticleIndex + 1) % articles.length;
-                const article = articles[currentArticleIndex];
-                headlineElement.textContent = article.title;
-                headlineElement.href = article.link;
-                headlineElement.classList.remove('fade-out');
-            }, 400); // Wait for fade-out to complete
-        }
-
-        fetchNews();
-
-
         // --- Animated Canvas Background Script ---
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
