@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Veritas Project - Clarity in a World of Noise</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://placehold.co/32x32/81E6D9/121212?text=VP" />
+
+    <style>
+        /* --- Base Setup & Color Palette --- */
+        :root {
+            --primary-color: #FACC15; /* Accent Yellow */
+            --secondary-color: #81E6D9; /* Accent Teal */
+            --background-outer: #121212;
+            --glass-background: rgba(30, 30, 30, 0.65);
+            --glass-border: rgba(250, 204, 21, 0.2);
+            --text-light: #E0E0E0;
+            --text-muted: #B0B0B0;
+            --text-dark: #121212;
+            --card-bg: #282828;
+            --card-hover-bg: #2D2D2D;
+            --shadow-deep: rgba(0, 0, 0, 0.5);
+            --shadow-card: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-outer);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* --- Animated Background Canvas --- */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        /* --- Main Layout & Content Box --- */
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            width: 100%;
+        }
+
+        .content-box {
+            background: var(--glass-background);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 1100px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px var(--shadow-deep);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Header & Navigation --- */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header-title {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-title .icon {
+            margin-right: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .header-subtitle {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-button {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-light);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+        }
+
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--glass-background);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            min-width: 260px;
+            box-shadow: 0 8px 24px var(--shadow-deep);
+            border-radius: 8px;
+            padding: 0.5rem;
+            z-index: 100;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .dropdown-content a {
+            color: var(--text-light);
+            padding: 0.75rem 1.25rem;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            border-radius: 6px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(250, 204, 21, 0.1);
+            color: var(--primary-color);
+        }
+        
+        /* --- Sections --- */
+        .section {
+            width: 100%;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+        
+        .section-heading {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+        }
+        
+        .section-heading span {
+            color: var(--primary-color);
+        }
+
+        /* --- Cards --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            box-shadow: 0 4px 15px var(--shadow-card);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-deep);
+            background-color: var(--card-hover-bg);
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--secondary-color);
+        }
+        
+        .card-title.yellow {
+             color: var(--primary-color);
+        }
+
+        .card-text {
+            color: var(--text-muted);
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* --- Interactive Button --- */
+        .interactive-button {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-dark);
+            background-color: var(--primary-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: auto; /* Pushes button to the bottom of the card */
+        }
+        
+        .interactive-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(250, 204, 21, 0.3);
+        }
+        
+        .interactive-button.disabled {
+            background-color: #4B5563;
+            color: #9CA3AF;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .footer span {
+            color: var(--primary-color);
+        }
+
+    </style>
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="page-container">
+        <div class="content-box">
+            <!-- Header Section -->
+            <header class="header">
+                <h1 class="header-title">
+                    <i class="fas fa-shield-halved icon"></i> The Veritas Project
+                </h1>
+                <p class="header-subtitle">
+                    Clarity in a World of Noise.
+                </p>
+
+                <!-- Navigation Bar -->
+                <nav class="navbar">
+                    <div class="nav-item">
+                        <button class="nav-button">Theology & Beliefs <i class="fas fa-chevron-down fa-xs"></i></button>
+                        <div class="dropdown-content">
+                            <a href="narratives/concept-of-god.html">Concept of God</a>
+                            <a href="narratives/prophethood.html">Understanding Prophethood</a>
+                            <a href="narratives/revelation.html">The Nature of Revelation</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-button">History & Civilization <i class="fas fa-chevron-down fa-xs"></i></button>
+                        <div class="dropdown-content">
+                             <a href="narratives/golden-age.html">The Golden Age Myth vs. Reality</a>
+                             <a href="narratives/spread-of-islam.html">The Spread of Islam</a>
+                             <a href="narratives/crusades.html">Islamic Perspectives on the Crusades</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-button">Sharia & Law <i class="fas fa-chevron-down fa-xs"></i></button>
+                        <div class="dropdown-content">
+                            <a href="narratives/intro-to-sharia.html">What is Sharia?</a>
+                            <a href="narratives/hudud.html">Contextualizing Hudud Punishments</a>
+                            <a href="narratives/blasphemy-apostasy.html">Blasphemy & Apostasy Laws</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-button">Women in Islam <i class="fas fa-chevron-down fa-xs"></i></button>
+                        <div class="dropdown-content">
+                            <a href="narratives/womens-rights.html">Rights & Status of Women</a>
+                            <a href="narratives/hijab.html">The Hijab: Choice & Interpretation</a>
+                            <a href="narratives/polygyny.html">Understanding Polygyny</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- Main Content -->
+            <main>
+                <!-- About Section -->
+                <section class="section">
+                    <h2 class="section-heading">Our <span>Mission</span></h2>
+                    <p class="header-subtitle">
+                        The Veritas Project is dedicated to addressing and clarifying widespread misconceptions about Islam through academic research, primary source analysis, and clear, accessible articles. We aim to replace false narratives with nuanced, evidence-based understanding.
+                    </p>
+                </section>
+
+                <!-- Blog Section -->
+                <section class="section">
+                    <h2 class="section-heading">Recently <span>Addressed</span></h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h3 class="card-title">The Myth of Forced Conversions</h3>
+                            <p class="card-text">An evidence-based look at the historical spread of Islam, examining the Quranic principle of "no compulsion in religion" versus historical events.</p>
+                            <a href="narratives/forced-conversions.html" class="interactive-button">Read Analysis</a>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title">Understanding Jihad: Beyond the Headlines</h3>
+                            <p class="card-text">A multi-faceted exploration of the term 'Jihad', from the greater spiritual struggle to the lesser, regulated principles of warfare.</p>
+                            <a href="narratives/understanding-jihad.html" class="interactive-button">Read Analysis</a>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title">Science in the Islamic Golden Age</h3>
+                            <p class="card-text">Highlighting the groundbreaking contributions of Muslim scientists and scholars that paved the way for the European Renaissance.</p>
+                            <a href="narratives/golden-age-science.html" class="interactive-button">Read Analysis</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Features Section -->
+                <section class="section">
+                    <h2 class="section-heading">Our <span>Approach</span></h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h3 class="card-title yellow">Primary Source Verification</h3>
+                            <p class="card-text">Every claim is traced back to its original sources, whether from the Quran, Hadith, historical records, or academic literature.</p>
+                            <button class="interactive-button disabled">Methodology</button>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title yellow">Contextual Analysis</h3>
+                            <p class="card-text">We provide the full historical, cultural, and linguistic context necessary to understand complex topics, avoiding soundbites and oversimplification.</p>
+                            <button class="interactive-button disabled">Our Principles</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Call to Action -->
+                <section class="section">
+                    <h2 class="section-heading">Join the <span>Effort</span></h2>
+                    <p class="header-subtitle">
+                        This is an open-source initiative for truth and clarity. If you're a developer, researcher, or writer, we welcome your expertise. Help us build a reliable resource for all.
+                    </p>
+                    <a href="https://github.com/your-repo/veritas-project" target="_blank" rel="noopener noreferrer" class="interactive-button">
+                        Visit our GitHub <i class="fab fa-github ml-2"></i>
+                    </a>
+                </section>
+            </main>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; <span id="current-year"></span> The Veritas Project. All rights reserved.</p>
+            <p>Built for clarity. <span>Truth stands clear from error.</span></p>
+        </footer>
+    </div>
+
+    <script>
+        // --- Animated Canvas Background Script ---
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particlesArray;
+
+        class Particle {
+            constructor(x, y, size, color, speedX, speedY) {
+                this.x = x; this.y = y; this.size = size; this.color = color;
+                this.speedX = speedX; this.speedY = speedY;
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+                this.x += this.speedX; this.y += this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            const numberOfParticles = (canvas.height * canvas.width) / 11000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                const size = Math.random() * 1.5 + 0.5;
+                const x = Math.random() * (innerWidth - size * 2) + size;
+                const y = Math.random() * (innerHeight - size * 2) + size;
+                const speedX = Math.random() * 0.2 - 0.1;
+                const speedY = Math.random() * 0.2 - 0.1;
+                const color = 'rgba(250, 204, 21, 0.7)';
+                particlesArray.push(new Particle(x, y, size, color, speedX, speedY));
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                canvas.width = innerWidth;
+                canvas.height = innerHeight;
+                init();
+            }, 250);
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
