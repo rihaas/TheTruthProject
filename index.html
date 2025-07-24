@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Gateway</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Al-Haqq - Defending Truth, Illuminating Faith</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://placehold.co/32x32/FACC15/121212?text=AH" />
+
     <style>
         /* --- Base Setup & Color Palette --- */
         :root {
-            --primary-color: #FFD700; /* Golden Yellow Accent */
+            --primary-color: #FACC15; /* Accent Yellow */
             --secondary-color: #E0E0E0; /* Silver Accent */
-            --background-outer: #121212; /* Darkest Background */
-            --glass-background: rgba(30, 30, 30, 0.6);
-            --glass-border: rgba(255, 215, 0, 0.2);
-            --text-color: #E0E0E0;
-            --text-secondary: #a0a0a0;
-            --tooltip-bg: #282828;
+            --background-outer: #121212;
+            --glass-background: rgba(30, 30, 30, 0.65);
+            --glass-border: rgba(250, 204, 21, 0.2);
+            --text-light: #E0E0E0;
+            --text-muted: #B0B0B0;
+            --text-dark: #121212;
+            --shadow-deep: rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -27,12 +35,12 @@
         }
 
         body {
-            background-color: var(--background-outer);
             font-family: 'Poppins', sans-serif;
-            color: var(--text-color);
-            overflow: hidden; /* Prevent scrollbars */
+            background-color: var(--background-outer);
+            color: var(--text-light);
+            overflow-x: hidden;
         }
-
+        
         /* --- Animated Background Canvas --- */
         #matrix-canvas {
             position: fixed;
@@ -41,83 +49,66 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            opacity: 0.2; /* Increased opacity for more presence */
+            opacity: 0.2;
         }
 
-        /* --- Main Content Container --- */
-        .container {
+        /* --- Main Layout & Content Box --- */
+        .page-container {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 2rem;
-            text-align: center;
+            width: 100%;
             position: relative;
-            z-index: 1;
-            animation: fadeIn 1.5s ease-in-out;
         }
-        
-        /* --- Frosted Glass Content Box --- */
+
         .content-box {
             background: var(--glass-background);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border: 1px solid var(--glass-border);
-            padding: 3rem 2.5rem;
             border-radius: 16px;
             width: 100%;
             max-width: 800px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        /* --- Header Styling --- */
-        .header-title {
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            font-weight: 700;
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px var(--shadow-deep);
+            animation: fadeIn 1s ease-out;
+            margin-bottom: 2rem; /* Space for the news banner */
         }
         
-        .header-title span {
-            color: var(--primary-color);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
+        /* --- Header & Buttons inside Content Box --- */
         .header-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            font-weight: 400;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            letter-spacing: 0.5px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: var(--text-muted);
+            margin: 0 auto 2.5rem;
+            text-align: center;
         }
 
-        /* --- Button Container --- */
         .button-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
             width: 100%;
-            margin-bottom: 2.5rem; /* Space before footer */
         }
 
         @media (min-width: 768px) {
             .button-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 2rem;
             }
         }
 
-        /* --- New Button Style with Fill Effect (Applied to <a> tags) --- */
         .btn-fill {
             font-family: 'Poppins', sans-serif;
             font-size: 1rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            color: var(--text-color);
+            color: var(--text-light);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -129,134 +120,105 @@
             cursor: pointer;
             position: relative;
             border-radius: 8px;
-            overflow: hidden; /* Crucial for the fill effect */
+            overflow: hidden;
             transition: color 0.4s ease-out, border-color 0.3s ease;
         }
 
         .btn-fill::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: -1;
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s cubic-bezier(0.78, 0.13, 0.15, 0.86);
         }
+        
+        .btn-fill:hover::before {
+            transform: scaleX(1);
+        }
 
-        /* Gold Button Style */
         .btn-fill.btn-primary:hover {
-            color: #121212; /* Dark text on hover */
+            color: var(--text-dark);
             border-color: var(--primary-color);
         }
         .btn-fill.btn-primary::before {
             background-color: var(--primary-color);
         }
-        .btn-fill.btn-primary:hover .icon {
-            filter: invert(1);
-        }
 
-        /* Silver Button Style */
         .btn-fill.btn-secondary:hover {
-            color: #121212; /* Dark text on hover */
+            color: var(--text-dark);
             border-color: var(--secondary-color);
         }
         .btn-fill.btn-secondary::before {
             background-color: var(--secondary-color);
         }
+        
+        .btn-fill .icon {
+            width: 22px; height: 22px;
+            transition: filter 0.4s ease;
+        }
+        
+        .btn-fill.btn-primary:hover .icon {
+            filter: invert(1);
+        }
+        
         .btn-fill.btn-secondary:hover .icon {
             filter: brightness(0.1);
         }
-        
-        .btn-fill:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .btn-fill .icon {
-            width: 22px; /* Slightly larger icons */
-            height: 22px;
-            transition: filter 0.4s ease;
-        }
 
-        .btn-fill:active {
-            transform: scale(0.98);
-            transition: transform 0.1s ease;
-        }
-
-        /* --- Footer Styling --- */
-        .footer-text {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--glass-border);
-            padding-top: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        /* --- Glass Tooltip Styling with Pointer --- */
-        .tooltip-text {
-            position: absolute;
-            bottom: calc(100% + 10px);
-            left: 50%;
+        /* --- News Banner Styling --- */
+        .news-banner {
+            width: 100%;
+            max-width: 800px;
             background: var(--glass-background);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border: 1px solid var(--glass-border);
-            color: var(--text-color);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            font-weight: 400;
-            white-space: nowrap;
-            z-index: 10;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transform: translate(-50%, 5px) scale(0.95);
-            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1.5);
-        }
-
-        .tooltip-text::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -6px;
-            border-width: 6px;
-            border-style: solid;
-            border-color: var(--glass-background) transparent transparent transparent;
-        }
-
-        .btn-fill:hover .tooltip-text {
-            opacity: 1;
-            visibility: visible;
-            transform: translate(-50%, -5px) scale(1);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            animation: fadeIn 1s ease-out 0.2s;
+            animation-fill-mode: backwards;
         }
         
-        /* --- Keyframe Animations --- */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .news-banner .banner-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+        
+        .news-banner .headline-link {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            text-decoration: none;
+            display: inline-block;
+            transition: opacity 0.4s ease-in-out, color 0.3s ease;
+        }
+        
+        .news-banner .headline-link:hover {
+            color: var(--primary-color);
+        }
+
+        .headline-link.fade-out {
+            opacity: 0;
         }
 
     </style>
 </head>
 <body>
-
-    <!-- Canvas for the animated background -->
     <canvas id="matrix-canvas"></canvas>
 
-    <!-- Main content -->
-    <div class="container">
-        <div class="content-box">
-            <h1 class="header-title">Project <span>Al-Haqq</span></h1>
+    <div class="page-container">
+        
+        <div class="content-box" id="main-content">
+            <h1 class="entry-title" style="text-align:center; font-size: clamp(2.5rem, 8vw, 4.5rem); color: var(--text-light);">Project <span>Al-Haqq</span></h1>
             <p class="header-subtitle">Defending Truth, Illuminating Faith.</p>
             
             <div class="button-grid">
@@ -265,44 +227,90 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     Debunking False Narratives
-                    <span class="tooltip-text" data-tooltip="Addressing common misconceptions with authentic sources."></span>
                 </a>
-                <a href="the-deen-project.html" class="btn-fill btn-secondary">
+                <a href="my-deen-project.html" class="btn-fill btn-secondary">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.562L16.25 21.75l-.648-1.188a2.25 2.25 0 01-1.423-1.423L13.5 18.75l1.188-.648a2.25 2.25 0 011.423-1.423L16.25 15l.648 1.188a2.25 2.25 0 011.423 1.423L18.75 18l-1.188.648a2.25 2.25 0 01-1.423 1.423z" />
                     </svg>
                     Enter the Divine Knowledge
-                    <span class="tooltip-text" data-tooltip="Access profound wisdom and spiritual insights."></span>
                 </a>
             </div>
-            <footer class="footer-text">
-                Islam is peace. This is an open-source project.
-            </footer>
         </div>
+
+        <footer class="news-banner">
+            <div class="banner-title">
+                <i class="fas fa-newspaper"></i>
+                <span>Current Spotlight</span>
+            </div>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="headline-link" id="headline">
+                Fetching latest headlines...
+            </a>
+        </footer>
     </div>
 
     <script>
+        // --- Live News Ticker ---
+        const headlineElement = document.getElementById('headline');
+        const alJazeeraRssUrl = 'https://www.aljazeera.com/xml/rss/all.xml';
+        const rssToJsonApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(alJazeeraRssUrl)}`;
+        let articles = [];
+        let currentArticleIndex = 0;
+
+        async function fetchNews() {
+            try {
+                const response = await fetch(rssToJsonApiUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                if (data.status === 'ok' && data.items.length > 0) {
+                    articles = data.items.slice(0, 5); // Get top 5 articles
+                    startNewsTicker();
+                } else {
+                    headlineElement.textContent = 'Could not fetch latest news.';
+                }
+            } catch (error) {
+                console.error("Error fetching news:", error);
+                headlineElement.textContent = 'News service is currently unavailable.';
+            }
+        }
+
+        function startNewsTicker() {
+            updateHeadline(); // Show the first headline immediately
+            setInterval(updateHeadline, 7000); // Change headline every 7 seconds
+        }
+
+        function updateHeadline() {
+            headlineElement.classList.add('fade-out');
+            
+            setTimeout(() => {
+                currentArticleIndex = (currentArticleIndex + 1) % articles.length;
+                const article = articles[currentArticleIndex];
+                headlineElement.textContent = article.title;
+                headlineElement.href = article.link;
+                headlineElement.classList.remove('fade-out');
+            }, 400); // Wait for fade-out to complete
+        }
+
+        fetchNews();
+
+
         // --- Animated Canvas Background Script ---
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
-
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        let particlesArray;
 
         class Particle {
             constructor(x, y, size, color, speedX, speedY) {
-                this.x = x;
-                this.y = y;
-                this.size = size;
-                this.color = color;
-                this.speedX = speedX;
-                this.speedY = speedY;
+                this.x = x; this.y = y; this.size = size; this.color = color;
+                this.speedX = speedX; this.speedY = speedY;
             }
             update() {
                 if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
                 if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
-                this.x += this.speedX;
-                this.y += this.speedY;
+                this.x += this.speedX; this.y += this.speedY;
             }
             draw() {
                 ctx.fillStyle = this.color;
@@ -312,11 +320,8 @@
             }
         }
 
-        let particlesArray;
-
         function init() {
             particlesArray = [];
-            // Increased particle density for a more "surrounding" effect
             const numberOfParticles = (canvas.height * canvas.width) / 9000;
             for (let i = 0; i < numberOfParticles; i++) {
                 const size = Math.random() * 1.5 + 0.5;
@@ -324,24 +329,31 @@
                 const y = Math.random() * (innerHeight - size * 2) + size;
                 const speedX = Math.random() * 0.2 - 0.1;
                 const speedY = Math.random() * 0.2 - 0.1;
-                const color = 'rgba(255, 215, 0, 0.8)';
+                const color = 'rgba(250, 204, 21, 0.7)';
                 particlesArray.push(new Particle(x, y, size, color, speedX, speedY));
             }
         }
 
         function connect() {
-            let opacityValue = 1;
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    const distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
-                    // Increased connection distance
-                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                        opacityValue = 1 - (distance / 20000);
-                        ctx.strokeStyle = `rgba(255, 215, 0, ${opacityValue})`;
+            for (let i = 0; i < particlesArray.length; i++) {
+                let neighbors = [];
+                for (let j = 0; j < particlesArray.length; j++) {
+                    if (i !== j) {
+                        const distance = ((particlesArray[i].x - particlesArray[j].x) ** 2) + ((particlesArray[i].y - particlesArray[j].y) ** 2);
+                        neighbors.push({ distance: distance, index: j });
+                    }
+                }
+                neighbors.sort((a, b) => a.distance - b.distance);
+
+                for (let k = 0; k < 2; k++) {
+                    if (neighbors[k].distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        const opacityValue = 1 - (neighbors[k].distance / 20000);
+                        const neighborIndex = neighbors[k].index;
+                        ctx.strokeStyle = `rgba(250, 204, 21, ${opacityValue})`;
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[neighborIndex].x, particlesArray[neighborIndex].y);
                         ctx.stroke();
                     }
                 }
@@ -358,6 +370,9 @@
             requestAnimationFrame(animate);
         }
         
+        init();
+        animate();
+
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
@@ -368,16 +383,6 @@
             }, 250);
         });
 
-        document.querySelectorAll('.btn-fill').forEach(button => {
-            const tooltipSpan = button.querySelector('.tooltip-text');
-            if (tooltipSpan) {
-                const tooltipText = tooltipSpan.getAttribute('data-tooltip');
-                tooltipSpan.textContent = tooltipText;
-            }
-        });
-
-        init();
-        animate();
     </script>
 </body>
 </html>
