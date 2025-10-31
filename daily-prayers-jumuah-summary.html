@@ -1,28 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Prayers & Jumu'ah Summary</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Base styles consistent with the My Deen Project homepage */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #121212; /* Very dark background */
-            color: #E0E0E0; /* Light gray text for contrast */
-            display: flex;
-            flex-direction: column; /* Stack elements vertically */
-            justify-content: flex-start;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
-            box-sizing: border-box;
-            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
-        }
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Daily Prayers &amp; Jumu'ah Summary</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="./assets/css/global.css" rel="stylesheet"/><style>        /* Base styles consistent with the My Deen Project homepage */
         .table-container-wrapper {
             max-width: 1000px; /* Wider content area for a more spacious feel */
             width: 100%;
@@ -35,18 +21,13 @@
             border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border for definition */
             text-align: center;
         }
-
         /* Responsive adjustments for smaller screens */
         @media (max-width: 1024px) {
             .table-container-wrapper {
                 padding: 2rem 1.5rem;
             }
         }
-
         @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
             .table-container-wrapper {
                 padding: 1.5rem 1rem;
                 border-radius: 0.75rem;
@@ -58,7 +39,6 @@
                 font-size: 0.95rem;
             }
         }
-
         @media (max-width: 480px) {
             h1 {
                 font-size: 2rem;
@@ -74,7 +54,6 @@
                 min-width: 500px; /* Allow horizontal scroll on small phones */
             }
         }
-
         /* Table specific styles */
         table {
             width: 100%;
@@ -86,14 +65,12 @@
             min-width: 768px; /* Ensure table doesn't get too squished */
             margin-top: 2rem;
         }
-
         th, td {
             padding: 1rem 1.25rem;
             text-align: left;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             color: #E0E0E0;
         }
-
         th {
             background-color: #333333; /* Header background */
             font-weight: 600;
@@ -102,28 +79,23 @@
             letter-spacing: 0.05em;
             color: #B0B0B0; /* Muted header text */
         }
-
         tbody tr:last-child td {
             border-bottom: none;
         }
-
         .check-icon {
             color: #48bb78; /* Green for checkmark */
             font-size: 1.35rem; /* Slightly larger icon */
         }
-
         .cross-icon {
             color: #e53e3e; /* Red for cross */
             font-size: 1.35rem; /* Slightly larger icon */
         }
-
         /* Tooltip styles (Arabic terms) */
         .tooltip-container {
             position: relative;
             display: inline-block;
             cursor: help;
         }
-
         .tooltip {
             visibility: hidden;
             background-color: #282828; /* Dark background for tooltip */
@@ -143,7 +115,6 @@
             font-size: 0.875rem;
             border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
         }
-
         .tooltip::after {
             content: "";
             position: absolute;
@@ -154,12 +125,10 @@
             border-style: solid;
             border-color: #282828 transparent transparent transparent; /* Arrow pointing down */
         }
-
         .tooltip-container:hover .tooltip {
             visibility: visible;
             opacity: 1;
         }
-
         /* Details/Summary styles for "More Info" */
         details {
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -171,7 +140,6 @@
             cursor: pointer;
             text-align: left; /* Align text within details to left */
         }
-
         summary {
             font-weight: 600;
             cursor: pointer;
@@ -183,34 +151,28 @@
             list-style: none; /* Remove default marker */
             font-size: 0.9rem;
         }
-
         summary::-webkit-details-marker {
             display: none;
         }
-
         summary:after {
             content: '▼';
             font-size: 0.7rem;
             margin-left: 0.5rem;
             transition: transform 0.3s ease-in-out;
         }
-
         details[open] summary:after {
             transform: rotate(180deg);
         }
-
         details p {
             margin-top: 0.75rem;
             font-size: 0.85rem;
             line-height: 1.5;
             color: #B0B0B0;
         }
-
         /* Accent colors */
         .text-accent {
             color: #FACC15; /* Golden yellow for main title accent */
         }
-
         /* Main heading style */
         .main-heading {
             color: #E0E0E0; /* Consistent text color */
@@ -222,207 +184,229 @@
         }
         .main-heading span {
             color: #FACC15;
-        }
-    </style>
-</head>
-<body class="bg-gray-900 text-white">
-
-    <div class="table-container-wrapper">
-        <h1 class="main-heading">
-            <span class="text-yellow-400">🕌</span> Daily Prayers + Jumu'ah Summary
+        }</style>
+<script defer="" src="./assets/js/page.js"></script></head>
+<body class="bg-gray-900 text-white"><div class="site-shell">
+<header class="site-header">
+<div class="site-identity">
+<span class="site-logo">Project Al-Haqq</span>
+<span class="site-tagline">Defending Truth, Illuminating Faith</span>
+</div>
+<div class="site-actions">
+<a aria-label="Back to Home" class="home-link" href="./index.html">
+<span aria-hidden="true">⟵</span>
+<span>Home</span>
+</a>
+<span class="page-title" data-page-title=""></span>
+</div>
+</header>
+<main class="site-content">
+<div class="table-container-wrapper">
+<h1 class="main-heading">
+<span class="text-yellow-400">🕌</span> Daily Prayers + Jumu'ah Summary
         </h1>
-
-        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+<p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
             This table provides a concise summary of the obligatory (Fard) and recommended (Sunnah) Rak'ahs for each of the five daily prayers, along with the special Jumu'ah (Friday) prayer. Hover over Arabic terms for quick explanations, and click "More Info" to expand detailed descriptions for each prayer.
         </p>
-
-        <div class="overflow-x-auto rounded-lg shadow-xl">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="rounded-tl-xl">Prayer</th>
-                        <th>Obligatory Rak'ahs</th>
-                        <th>Sunnah Before</th>
-                        <th>Type (Before)</th>
-                        <th>Sunnah After</th>
-                        <th>Type (After)</th>
-                        <th class="rounded-tr-xl">More Info</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Fajr</td>
-                        <td>2</td>
-                        <td><span class="check-icon">✔</span> 2</td>
-                        <td>
-                            <span class="tooltip-container">
+<div class="overflow-x-auto rounded-lg shadow-xl">
+<table>
+<thead>
+<tr>
+<th class="rounded-tl-xl">Prayer</th>
+<th>Obligatory Rak'ahs</th>
+<th>Sunnah Before</th>
+<th>Type (Before)</th>
+<th>Sunnah After</th>
+<th>Type (After)</th>
+<th class="rounded-tr-xl">More Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fajr</td>
+<td>2</td>
+<td><span class="check-icon">✔</span> 2</td>
+<td>
+<span class="tooltip-container">
                                 Mu'akkadah
                                 <span class="tooltip">
                                     "Emphasized" or "confirmed" Sunnah. Highly recommended prayers consistently performed by the Prophet Muhammad (PBUH).
                                 </span>
-                            </span>
-                        </td>
-                        <td><span class="cross-icon">✖</span> None</td>
-                        <td>—</td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Time:</strong> Dawn until just before sunrise.<br>
-                                    <strong>Significance:</strong> The first prayer of the day, symbolizing a new beginning with Allah. It's considered highly virtuous, providing protection for the day.
+</span>
+</td>
+<td><span class="cross-icon">✖</span> None</td>
+<td>—</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Time:</strong> Dawn until just before sunrise.<br/>
+<strong>Significance:</strong> The first prayer of the day, symbolizing a new beginning with Allah. It's considered highly virtuous, providing protection for the day.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Dhuhr</td>
-                        <td>4</td>
-                        <td><span class="check-icon">✔</span> 4 (2+2)</td>
-                        <td>
-                            <span class="tooltip-container">
+</details>
+</td>
+</tr>
+<tr>
+<td>Dhuhr</td>
+<td>4</td>
+<td><span class="check-icon">✔</span> 4 (2+2)</td>
+<td>
+<span class="tooltip-container">
                                 Mu'akkadah
                                 <span class="tooltip">
                                     "Emphasized" or "confirmed" Sunnah. Highly recommended prayers consistently performed by the Prophet Muhammad (PBUH).
                                 </span>
-                            </span>
-                        </td>
-                        <td><span class="check-icon">✔</span> 2</td>
-                        <td>
-                            <span class="tooltip-container">
+</span>
+</td>
+<td><span class="check-icon">✔</span> 2</td>
+<td>
+<span class="tooltip-container">
                                 Mu'akkadah
                                 <span class="tooltip">
                                     "Emphasized" or "confirmed" Sunnah. Highly recommended prayers consistently performed by the Prophet Muhammad (PBUH).
                                 </span>
-                            </span>
-                        </td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Time:</strong> After the sun passes its zenith (noon) until the start of Asr.<br>
-                                    <strong>Significance:</strong> A spiritual break during the busiest part of the day, allowing Muslims to reconnect with their faith and seek guidance.
+</span>
+</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Time:</strong> After the sun passes its zenith (noon) until the start of Asr.<br/>
+<strong>Significance:</strong> A spiritual break during the busiest part of the day, allowing Muslims to reconnect with their faith and seek guidance.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Asr</td>
-                        <td>4</td>
-                        <td><span class="check-icon">✔</span> 4</td>
-                        <td>
-                            <span class="tooltip-container">
+</details>
+</td>
+</tr>
+<tr>
+<td>Asr</td>
+<td>4</td>
+<td><span class="check-icon">✔</span> 4</td>
+<td>
+<span class="tooltip-container">
                                 Ghayr Mu'akkadah
                                 <span class="tooltip">
                                     "Non-emphasized" or "unconfirmed" Sunnah. Optional prayers sometimes performed and sometimes omitted by the Prophet Muhammad (PBUH).
                                 </span>
-                            </span>
-                        </td>
-                        <td><span class="cross-icon">✖</span> None</td>
-                        <td>—</td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Time:</strong> Late afternoon, when an object's shadow equals its length (or twice its length, depending on school of thought) until sunset.<br>
-                                    <strong>Significance:</strong> Often called the "middle prayer," it's a test of faith and commitment amidst daily activities. Performing it on time brings significant rewards and protection.
+</span>
+</td>
+<td><span class="cross-icon">✖</span> None</td>
+<td>—</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Time:</strong> Late afternoon, when an object's shadow equals its length (or twice its length, depending on school of thought) until sunset.<br/>
+<strong>Significance:</strong> Often called the "middle prayer," it's a test of faith and commitment amidst daily activities. Performing it on time brings significant rewards and protection.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Maghrib</td>
-                        <td>3</td>
-                        <td><span class="cross-icon">✖</span> None</td>
-                        <td>—</td>
-                        <td><span class="check-icon">✔</span> 2</td>
-                        <td>
-                            <span class="tooltip-container">
+</details>
+</td>
+</tr>
+<tr>
+<td>Maghrib</td>
+<td>3</td>
+<td><span class="cross-icon">✖</span> None</td>
+<td>—</td>
+<td><span class="check-icon">✔</span> 2</td>
+<td>
+<span class="tooltip-container">
                                 Mu'akkadah
                                 <span class="tooltip">
                                     "Emphasized" or "confirmed" Sunnah. Highly recommended prayers consistently performed by the Prophet Muhammad (PBUH).
                                 </span>
-                            </span>
-                        </td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Time:</strong> Immediately after sunset until the disappearance of twilight (or beginning of Isha).<br>
-                                    <strong>Significance:</strong> Marks the end of the day and a moment to express gratitude for blessings received. It is the shortest obligatory prayer.
+</span>
+</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Time:</strong> Immediately after sunset until the disappearance of twilight (or beginning of Isha).<br/>
+<strong>Significance:</strong> Marks the end of the day and a moment to express gratitude for blessings received. It is the shortest obligatory prayer.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Isha</td>
-                        <td>4</td>
-                        <td><span class="check-icon">✔</span> 2</td>
-                        <td>
-                            <span class="tooltip-container">
+</details>
+</td>
+</tr>
+<tr>
+<td>Isha</td>
+<td>4</td>
+<td><span class="check-icon">✔</span> 2</td>
+<td>
+<span class="tooltip-container">
                                 Ghayr Mu'akkadah
                                 <span class="tooltip">
                                     "Non-emphasized" or "unconfirmed" Sunnah. Optional prayers sometimes performed and sometimes omitted by the Prophet Muhammad (PBUH).
                                 </span>
-                            </span>
-                        </td>
-                        <td><span class="check-icon">✔</span> 2</td>
-                        <td>
-                            <span class="tooltip-container">
+</span>
+</td>
+<td><span class="check-icon">✔</span> 2</td>
+<td>
+<span class="tooltip-container">
                                 Mu'akkadah
                                 <span class="tooltip">
                                     "Emphasized" or "confirmed" Sunnah. Highly recommended prayers consistently performed by the Prophet Muhammad (PBUH).
                                 </span>
-                            </span>
-                        </td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Time:</strong> After twilight disappears (complete darkness) until dawn (Fajr time begins).<br>
-                                    <strong>Significance:</strong> The final prayer of the day, offering a chance to conclude the day with remembrance of Allah, seek forgiveness, and gain spiritual connection before rest.
+</span>
+</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Time:</strong> After twilight disappears (complete darkness) until dawn (Fajr time begins).<br/>
+<strong>Significance:</strong> The final prayer of the day, offering a chance to conclude the day with remembrance of Allah, seek forgiveness, and gain spiritual connection before rest.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Jumu'ah (Friday)</td>
-                        <td>2 (replaces Dhuhr)</td>
-                        <td><span class="check-icon">✔</span> 2 or 4</td>
-                        <td>
-                            <span class="tooltip-container">
+</details>
+</td>
+</tr>
+<tr>
+<td>Jumu'ah (Friday)</td>
+<td>2 (replaces Dhuhr)</td>
+<td><span class="check-icon">✔</span> 2 or 4</td>
+<td>
+<span class="tooltip-container">
                                 Ghayr Mu'akkadah
                                 <span class="tooltip">
                                     "Non-emphasized" or "unconfirmed" Sunnah. Optional prayers sometimes performed and sometimes omitted by the Prophet Muhammad (PBUH).
                                 </span>
-                            </span>
-                        </td>
-                        <td><span class="check-icon">✔</span> 4 (in masjid) or 2 (at home)</td>
-                        <td>
-                            <span class="tooltip-container">
+</span>
+</td>
+<td><span class="check-icon">✔</span> 4 (in masjid) or 2 (at home)</td>
+<td>
+<span class="tooltip-container">
                                 Mu'akkadah
                                 <span class="tooltip">
                                     "Emphasized" or "confirmed" Sunnah. Highly recommended prayers consistently performed by the Prophet Muhammad (PBUH).
                                 </span>
-                            </span>
-                        </td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Time:</strong> Replaces Dhuhr prayer on Fridays, performed after noon.<br>
-                                    <strong>Significance:</strong> A special congregational prayer for Muslim men, preceded by a sermon (Khutbah). It emphasizes community unity, spiritual rejuvenation, and Friday is considered the best day of the week, with a special hour where supplications are answered.
+</span>
+</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Time:</strong> Replaces Dhuhr prayer on Fridays, performed after noon.<br/>
+<strong>Significance:</strong> A special congregational prayer for Muslim men, preceded by a sermon (Khutbah). It emphasizes community unity, spiritual rejuvenation, and Friday is considered the best day of the week, with a special hour where supplications are answered.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <p class="text-lg text-gray-400 mt-8 opacity-90">
+</details>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-lg text-gray-400 mt-8 opacity-90">
             May this guide help you in understanding and performing your daily prayers with sincerity and devotion.
         </p>
-    </div>
-
-</body>
+</div>
+</main>
+<footer class="site-footer">
+<div class="site-footer__meta">
+<strong>Project Al-Haqq</strong>
+<span class="muted">© <span data-current-year=""></span></span>
+<span data-page-timestamp=""></span>
+</div>
+<div class="site-footer__actions">
+<a class="contribute-link" href="https://github.com/your-repo/al-haqq-project" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true">★</span>
+<span>Contribute on GitHub</span>
+</a>
+</div>
+</footer>
+</div></body>
 </html>

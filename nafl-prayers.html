@@ -1,28 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nafl Prayers Summary</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Base styles for a clean, minimal, and modern dark theme */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #121212; /* Very dark background */
-            color: #E0E0E0; /* Light gray text for contrast */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
-            box-sizing: border-box;
-            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
-        }
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nafl Prayers Summary</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="./assets/css/global.css" rel="stylesheet"/><style>        /* Base styles for a clean, minimal, and modern dark theme */
         .table-container-wrapper {
             max-width: 1000px; /* Wider content area for a more spacious feel */
             width: 100%;
@@ -35,18 +21,13 @@
             border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border for definition */
             text-align: center;
         }
-
         /* Responsive adjustments for smaller screens */
         @media (max-width: 1024px) {
             .table-container-wrapper {
                 padding: 2rem 1.5rem;
             }
         }
-
         @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
             .table-container-wrapper {
                 padding: 1.5rem 1rem;
                 border-radius: 0.75rem;
@@ -58,7 +39,6 @@
                 font-size: 0.95rem;
             }
         }
-
         @media (max-width: 480px) {
             .main-heading {
                 font-size: 2rem;
@@ -74,7 +54,6 @@
                 min-width: 500px; /* Allow horizontal scroll on small phones */
             }
         }
-
         /* Main heading style (consistent with homepage) */
         .main-heading {
             color: #E0E0E0;
@@ -87,7 +66,6 @@
         .main-heading span {
             color: #FACC15; /* Golden yellow accent */
         }
-
         /* Table specific styles */
         table {
             width: 100%;
@@ -99,14 +77,12 @@
             min-width: 768px; /* Ensure table doesn't get too squished */
             margin-top: 2rem;
         }
-
         th, td {
             padding: 1rem 1.25rem;
             text-align: left;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             color: #E0E0E0;
         }
-
         th {
             background-color: #333333; /* Header background */
             font-weight: 600;
@@ -115,11 +91,9 @@
             letter-spacing: 0.05em;
             color: #B0B0B0; /* Muted header text */
         }
-
         tbody tr:last-child td {
             border-bottom: none;
         }
-
         /* Details/Summary styles for "More Info" */
         details {
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -131,7 +105,6 @@
             cursor: pointer;
             text-align: left; /* Align text within details to left */
         }
-
         summary {
             font-weight: 600;
             cursor: pointer;
@@ -143,34 +116,28 @@
             list-style: none; /* Remove default marker */
             font-size: 0.9rem;
         }
-
         summary::-webkit-details-marker {
             display: none;
         }
-
         summary:after {
             content: '▼';
             font-size: 0.7rem;
             margin-left: 0.5rem;
             transition: transform 0.3s ease-in-out;
         }
-
         details[open] summary:after {
             transform: rotate(180deg);
         }
-
         details p {
             margin-top: 0.75rem;
             font-size: 0.85rem;
             line-height: 1.5;
             color: #B0B0B0;
         }
-
         /* Accent colors */
         .text-accent {
             color: #FACC15; /* Golden yellow for main title accent */
         }
-
         /* Specific styles for the important note */
         .important-note {
             background-color: #2D2D2D; /* Slightly lighter background for the note box */
@@ -190,156 +157,180 @@
             margin-bottom: 0.4rem;
             color: #B0B0B0; /* Muted text color for list items */
             font-size: 0.9rem;
-        }
-    </style>
-</head>
-<body class="bg-gray-900 text-white">
-
-    <div class="table-container-wrapper">
-        <h1 class="main-heading">
-            <span class="text-accent">✨</span> Nafl (Voluntary) Prayers
+        }</style>
+<script defer="" src="./assets/js/page.js"></script></head>
+<body class="bg-gray-900 text-white"><div class="site-shell">
+<header class="site-header">
+<div class="site-identity">
+<span class="site-logo">Project Al-Haqq</span>
+<span class="site-tagline">Defending Truth, Illuminating Faith</span>
+</div>
+<div class="site-actions">
+<a aria-label="Back to Home" class="home-link" href="./index.html">
+<span aria-hidden="true">⟵</span>
+<span>Home</span>
+</a>
+<span class="page-title" data-page-title=""></span>
+</div>
+</header>
+<main class="site-content">
+<div class="table-container-wrapper">
+<h1 class="main-heading">
+<span class="text-accent">✨</span> Nafl (Voluntary) Prayers
         </h1>
-        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+<p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
             This table summarizes various optional (Nafl) prayers in Islam, offering immense spiritual rewards
             beyond the obligatory daily prayers. Click "More Info" for details on each.
         </p>
-
-        <div class="overflow-x-auto rounded-lg shadow-xl">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="rounded-tl-lg">Prayer</th>
-                        <th>Recommended Rak'ahs</th>
-                        <th>Preferred Time</th>
-                        <th class="rounded-tr-lg">More Info</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Tahajjud (Night Prayer)</td>
-                        <td>2 to unlimited (usually in sets of 2)</td>
-                        <td>After Isha & before Fajr, best in last third of the night.</td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Significance:</strong> Highly virtuous prayer for seeking closeness to Allah, forgiveness of sins, and having duas answered. It's considered the best prayer after the obligatory ones.
+<div class="overflow-x-auto rounded-lg shadow-xl">
+<table>
+<thead>
+<tr>
+<th class="rounded-tl-lg">Prayer</th>
+<th>Recommended Rak'ahs</th>
+<th>Preferred Time</th>
+<th class="rounded-tr-lg">More Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tahajjud (Night Prayer)</td>
+<td>2 to unlimited (usually in sets of 2)</td>
+<td>After Isha &amp; before Fajr, best in last third of the night.</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Significance:</strong> Highly virtuous prayer for seeking closeness to Allah, forgiveness of sins, and having duas answered. It's considered the best prayer after the obligatory ones.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Duha (Forenoon Prayer)</td>
-                        <td>2 to 12 (commonly 2, 4, or 8)</td>
-                        <td>After sunrise (approx. 15-20 min later) until just before Dhuhr. Best when the sun is higher.</td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Significance:</strong> Performing Duha is equivalent to giving charity on every joint of the body. It brings immense rewards, forgiveness of sins, and opens doors to sustenance. Also known as Ishraq or Chasht.
+</details>
+</td>
+</tr>
+<tr>
+<td>Duha (Forenoon Prayer)</td>
+<td>2 to 12 (commonly 2, 4, or 8)</td>
+<td>After sunrise (approx. 15-20 min later) until just before Dhuhr. Best when the sun is higher.</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Significance:</strong> Performing Duha is equivalent to giving charity on every joint of the body. It brings immense rewards, forgiveness of sins, and opens doors to sustenance. Also known as Ishraq or Chasht.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Awwabin</td>
-                        <td>6 (usually in sets of 2)</td>
-                        <td>Between Maghrib and Isha prayers.</td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Significance:</strong> "Prayer of the Oft-Returning." It is said to bring great rewards and forgiveness for sins. There are differing scholarly opinions on whether it's distinct or synonymous with Duha.
+</details>
+</td>
+</tr>
+<tr>
+<td>Awwabin</td>
+<td>6 (usually in sets of 2)</td>
+<td>Between Maghrib and Isha prayers.</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Significance:</strong> "Prayer of the Oft-Returning." It is said to bring great rewards and forgiveness for sins. There are differing scholarly opinions on whether it's distinct or synonymous with Duha.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Salat al-Istikhara (Guidance)</td>
-                        <td>2</td>
-                        <td>Any time except prohibited times (after Fajr/Asr), followed by a specific Du'a.</td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Significance:</strong> Performed when seeking Allah's guidance and counsel for important permissible decisions in life, such as marriage, travel, or work.
+</details>
+</td>
+</tr>
+<tr>
+<td>Salat al-Istikhara (Guidance)</td>
+<td>2</td>
+<td>Any time except prohibited times (after Fajr/Asr), followed by a specific Du'a.</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Significance:</strong> Performed when seeking Allah's guidance and counsel for important permissible decisions in life, such as marriage, travel, or work.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tahiyyat al-Masjid (Greeting Mosque)</td>
-                        <td>2</td>
-                        <td>Upon entering a mosque, before sitting down.</td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Significance:</strong> A highly recommended prayer to show respect to the House of Allah. It should be the first thing performed upon entering a mosque before sitting.
+</details>
+</td>
+</tr>
+<tr>
+<td>Tahiyyat al-Masjid (Greeting Mosque)</td>
+<td>2</td>
+<td>Upon entering a mosque, before sitting down.</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Significance:</strong> A highly recommended prayer to show respect to the House of Allah. It should be the first thing performed upon entering a mosque before sitting.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Salat al-Tasbeeh</td>
-                        <td>4</td>
-                        <td>Any time except prohibited times. Can be performed daily, weekly, monthly, or at least once in a lifetime.</td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Significance:</strong> A special prayer involving the recitation of "Subhaan Allahi Wal Hamdulillahi Wa Laa ilaha illal Laahu Wallahu Akbar" 300 times throughout its Rak'ahs. It is known for immense forgiveness of sins.
+</details>
+</td>
+</tr>
+<tr>
+<td>Salat al-Tasbeeh</td>
+<td>4</td>
+<td>Any time except prohibited times. Can be performed daily, weekly, monthly, or at least once in a lifetime.</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Significance:</strong> A special prayer involving the recitation of "Subhaan Allahi Wal Hamdulillahi Wa Laa ilaha illal Laahu Wallahu Akbar" 300 times throughout its Rak'ahs. It is known for immense forgiveness of sins.
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Witr Prayer</td>
-                        <td>Odd number (e.g., 1, 3, 5)</td>
-                        <td>After Isha until Fajr. Typically, the last prayer performed before sleeping.</td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Significance:</strong> Though often considered Wajib (necessary) or highly emphasized Sunnah by different schools, it is a crucial concluding prayer of the night, strongly encouraged by the Prophet (PBUH).
+</details>
+</td>
+</tr>
+<tr>
+<td>Witr Prayer</td>
+<td>Odd number (e.g., 1, 3, 5)</td>
+<td>After Isha until Fajr. Typically, the last prayer performed before sleeping.</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Significance:</strong> Though often considered Wajib (necessary) or highly emphasized Sunnah by different schools, it is a crucial concluding prayer of the night, strongly encouraged by the Prophet (PBUH).
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Salat al-Hajat (Prayer of Need)</td>
-                        <td>2 (some narrations mention up to 12)</td>
-                        <td>Any time except prohibited times (directly at sunrise, zenith, or sunset).</td>
-                        <td>
-                            <details>
-                                <summary>More Info</summary>
-                                <p>
-                                    <strong>Significance:</strong> Performed when a Muslim has a specific need, desire, or difficulty and seeks Allah's help and guidance to fulfill that need or resolve that problem. It is concluded with a special supplication (Du'a al-Hajat).
+</details>
+</td>
+</tr>
+<tr>
+<td>Salat al-Hajat (Prayer of Need)</td>
+<td>2 (some narrations mention up to 12)</td>
+<td>Any time except prohibited times (directly at sunrise, zenith, or sunset).</td>
+<td>
+<details>
+<summary>More Info</summary>
+<p>
+<strong>Significance:</strong> Performed when a Muslim has a specific need, desire, or difficulty and seeks Allah's help and guidance to fulfill that need or resolve that problem. It is concluded with a special supplication (Du'a al-Hajat).
                                 </p>
-                            </details>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="important-note">
-            <p class="text-md font-semibold text-yellow-400">
+</details>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="important-note">
+<p class="text-md font-semibold text-yellow-400">
                 Important Note:
             </p>
-            <ul class="text-gray-300 mt-2">
-                <li>Nafl prayers are generally prohibited during specific times:</li>
-                <ul class="list-disc list-inside ml-4 mt-1">
-                    <li>From the time of Fajr prayer until sunrise.</li>
-                    <li>When the sun is at its zenith (highest point in the sky), just before Dhuhr.</li>
-                    <li>From the time of Asr prayer until sunset.</li>
-                </ul>
-                <li>However, some Nafl prayers with a specific reason (like Tahiyyat al-Masjid) may be performed during these times.</li>
-            </ul>
-        </div>
-        <p class="text-lg text-gray-400 mt-8 opacity-90">
+<ul class="text-gray-300 mt-2">
+<li>Nafl prayers are generally prohibited during specific times:</li>
+<ul class="list-disc list-inside ml-4 mt-1">
+<li>From the time of Fajr prayer until sunrise.</li>
+<li>When the sun is at its zenith (highest point in the sky), just before Dhuhr.</li>
+<li>From the time of Asr prayer until sunset.</li>
+</ul>
+<li>However, some Nafl prayers with a specific reason (like Tahiyyat al-Masjid) may be performed during these times.</li>
+</ul>
+</div>
+<p class="text-lg text-gray-400 mt-8 opacity-90">
             Voluntary prayers are a beautiful way to earn extra rewards and draw closer to Allah. May Allah accept our efforts. Ameen.
         </p>
-    </div>
-
-</body>
+</div>
+</main>
+<footer class="site-footer">
+<div class="site-footer__meta">
+<strong>Project Al-Haqq</strong>
+<span class="muted">© <span data-current-year=""></span></span>
+<span data-page-timestamp=""></span>
+</div>
+<div class="site-footer__actions">
+<a class="contribute-link" href="https://github.com/your-repo/al-haqq-project" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true">★</span>
+<span>Contribute on GitHub</span>
+</a>
+</div>
+</footer>
+</div></body>
 </html>

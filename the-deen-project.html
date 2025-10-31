@@ -1,21 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Deen Project - Home</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-
-    <!-- Font Awesome 6 CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://placehold.co/32x32/FACC15/121212?text=DP" />
-
-    <style>
-        /* --- Base Setup & Color Palette --- */
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Deen Project - Home</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Font Awesome 6 CDN -->
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="/>
+<!-- Favicon -->
+<link href="https://placehold.co/32x32/FACC15/121212?text=DP" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="./assets/css/global.css" rel="stylesheet"/><style>        /* --- Base Setup & Color Palette --- */
         :root {
             --primary-color: #FACC15; /* Accent Yellow */
             --secondary-color: #BB86FC; /* Accent Purple */
@@ -30,24 +26,14 @@
             --shadow-deep: rgba(0, 0, 0, 0.5);
             --shadow-card: rgba(0, 0, 0, 0.3);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-outer);
-            color: var(--text-light);
-            overflow-x: hidden;
-        }
-        
         html {
             scroll-behavior: smooth;
         }
-
         /* --- Animated Background Canvas --- */
         #matrix-canvas {
             position: fixed;
@@ -58,7 +44,6 @@
             z-index: -1;
             opacity: 0.15;
         }
-
         /* --- Main Layout & Content Box --- */
         .page-container {
             display: flex;
@@ -67,7 +52,6 @@
             padding: 2rem;
             width: 100%;
         }
-
         .content-box {
             background: var(--glass-background);
             backdrop-filter: blur(14px);
@@ -80,47 +64,39 @@
             box-shadow: 0 15px 40px var(--shadow-deep);
             animation: fadeIn 1.5s ease-in-out;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         /* --- Header & Navigation --- */
         .header {
             text-align: center;
             margin-bottom: 3rem;
         }
-
         .header-title {
             font-size: clamp(2.5rem, 6vw, 3.5rem);
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
-        
         .header-title .icon {
             margin-right: 1rem;
         }
-
         .header-subtitle {
             font-size: clamp(1rem, 3vw, 1.25rem);
             color: var(--text-muted);
             max-width: 600px;
             margin: 0 auto 2.5rem;
         }
-
         .navbar {
             display: flex;
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
         }
-
         .nav-item {
             position: relative;
         }
-
         .nav-button {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
@@ -135,13 +111,11 @@
             gap: 0.5rem;
             transition: all 0.3s ease;
         }
-
         .nav-button:hover {
             background-color: var(--primary-color);
             color: var(--text-dark);
             transform: translateY(-2px);
         }
-
         .dropdown-content {
             visibility: hidden;
             opacity: 0;
@@ -160,13 +134,11 @@
             border: 1px solid var(--glass-border);
             transition: all 0.3s ease;
         }
-
         .nav-item:hover .dropdown-content {
             visibility: visible;
             opacity: 1;
             transform: translateX(-50%) translateY(5px);
         }
-
         .dropdown-content a {
             color: var(--text-light);
             padding: 0.75rem 1.25rem;
@@ -178,36 +150,30 @@
             border-radius: 6px;
             transition: background-color 0.2s, color 0.2s;
         }
-
         .dropdown-content a:hover {
             background-color: rgba(250, 204, 21, 0.1);
             color: var(--primary-color);
         }
-        
         /* --- Sections --- */
         .section {
             width: 100%;
             margin-bottom: 4rem;
             text-align: center;
         }
-        
         .section-heading {
             font-size: clamp(2rem, 5vw, 2.5rem);
             font-weight: 700;
             margin-bottom: 2.5rem;
         }
-        
         .section-heading span {
             color: var(--primary-color);
         }
-
         /* --- Cards --- */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
-
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--glass-border);
@@ -219,31 +185,26 @@
             box-shadow: 0 4px 15px var(--shadow-card);
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
-
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px var(--shadow-deep);
             background-color: var(--card-hover-bg);
         }
-
         .card-title {
             font-weight: 600;
             font-size: 1.25rem;
             margin-bottom: 0.75rem;
             color: var(--secondary-color);
         }
-        
         .card-title.yellow {
              color: var(--primary-color);
         }
-
         .card-text {
             color: var(--text-muted);
             line-height: 1.6;
             flex-grow: 1;
             margin-bottom: 1.5rem;
         }
-        
         /* --- Interactive Button --- */
         .interactive-button {
             font-family: 'Poppins', sans-serif;
@@ -259,12 +220,10 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             margin-top: auto; /* Pushes button to the bottom of the card */
         }
-        
         .interactive-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(250, 204, 21, 0.3);
         }
-        
         .interactive-button.disabled {
             background-color: #4B5563;
             color: #9CA3AF;
@@ -272,7 +231,6 @@
             transform: none;
             box-shadow: none;
         }
-
         /* --- Footer --- */
         .footer {
             width: 100%;
@@ -283,141 +241,144 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
-        
         .footer span {
             color: var(--primary-color);
-        }
-
-    </style>
-</head>
-<body>
-    <canvas id="matrix-canvas"></canvas>
-
-    <div class="page-container">
-        <div class="content-box">
-            <!-- Header Section -->
-            <header class="header">
-                <h1 class="header-title">
-                    <i class="fas fa-mosque icon"></i> The Deen Project
+        }</style>
+<script defer="" src="./assets/js/page.js"></script></head>
+<body><div class="site-shell">
+<header class="site-header">
+<div class="site-identity">
+<span class="site-logo">Project Al-Haqq</span>
+<span class="site-tagline">Defending Truth, Illuminating Faith</span>
+</div>
+<div class="site-actions">
+<a aria-label="Back to Home" class="home-link" href="./index.html">
+<span aria-hidden="true">⟵</span>
+<span>Home</span>
+</a>
+<span class="page-title" data-page-title=""></span>
+</div>
+</header>
+<main class="site-content">
+<canvas id="matrix-canvas"></canvas>
+<div class="page-container">
+<div class="content-box">
+<!-- Header Section -->
+<header class="header">
+<h1 class="header-title">
+<i class="fas fa-mosque icon"></i> The Deen Project
                 </h1>
-                <p class="header-subtitle">
+<p class="header-subtitle">
                     Your Digital Hub for Islamic Knowledge and Practice
                 </p>
-
-                <!-- Navigation Bar -->
-                <nav class="navbar">
-                    <div class="nav-item">
-                        <button class="nav-button">Pillars & Practices <i class="fas fa-chevron-down fa-xs"></i></button>
-                        <div class="dropdown-content">
-                            <a href="understanding-islam-beginners.html">Understanding Islam for Beginners</a>
-                            <a href="tawhid-onness-of-god.html">The Concept of Tawhid</a>
-                            <a href="daily-prayers-jumuah-summary.html">Daily Prayers & Jumu'ah</a>
-                            <a href="nafl-prayers.html">Nafl (Voluntary) Prayers</a>
-                            <a href="islamic-legal-classifications.html">Islamic Legal Classifications</a>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <button class="nav-button">Quran & Hadith <i class="fas fa-chevron-down fa-xs"></i></button>
-                        <div class="dropdown-content">
-                             <a href="holy-quran-intro.html">Introduction to the Quran</a>
-                             <a href="surah-al-fatiha.html">Surah Al-Fatiha</a>
-                             <a href="surah-al-kawthar.html">Surah Al-Kawthar</a>
-                             <a href="stories-from-the-quran.html">Stories from the Quran</a>
-                             <a href="understanding-hadith.html">Understanding Hadith</a>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <button class="nav-button">Prophets <i class="fas fa-chevron-down fa-xs"></i></button>
-                        <div class="dropdown-content">
-                            <a href="prophets-quran-lineage.html">Prophets in the Quran & Lineage</a>
-                            <a href="prophet-muhammed-sa.html">Prophet Muhammad (PBUH)</a>
-                            <a href="prophet-isa.html">Prophet Isa (Jesus)</a>
-                            <a href="prophet-ibrahim.html">Prophet Ibrahim (Abraham)</a>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <button class="nav-button">More Topics <i class="fas fa-chevron-down fa-xs"></i></button>
-                        <div class="dropdown-content">
-                            <a href="asmaul-husna.html">The 99 Names of Allah</a>
-                            <a href="children-of-israel.html">Children of Israel in the Quran</a>
-                            <a href="war-and-peacekeeping.html">War and Peacekeeping in Islam</a>
-                        </div>
-                    </div>
-                </nav>
-            </header>
-
-            <!-- Main Content -->
-            <main>
-                <!-- About Section -->
-                <section class="section">
-                    <h2 class="section-heading">About Our <span>Project</span></h2>
-                    <p class="header-subtitle">
+<!-- Navigation Bar -->
+<nav class="navbar">
+<div class="nav-item">
+<button class="nav-button">Pillars &amp; Practices <i class="fas fa-chevron-down fa-xs"></i></button>
+<div class="dropdown-content">
+<a href="understanding-islam-beginners.html">Understanding Islam for Beginners</a>
+<a href="tawhid-onness-of-god.html">The Concept of Tawhid</a>
+<a href="daily-prayers-jumuah-summary.html">Daily Prayers &amp; Jumu'ah</a>
+<a href="nafl-prayers.html">Nafl (Voluntary) Prayers</a>
+<a href="islamic-legal-classifications.html">Islamic Legal Classifications</a>
+</div>
+</div>
+<div class="nav-item">
+<button class="nav-button">Quran &amp; Hadith <i class="fas fa-chevron-down fa-xs"></i></button>
+<div class="dropdown-content">
+<a href="holy-quran-intro.html">Introduction to the Quran</a>
+<a href="surah-al-fatiha.html">Surah Al-Fatiha</a>
+<a href="surah-al-kawthar.html">Surah Al-Kawthar</a>
+<a href="stories-from-the-quran.html">Stories from the Quran</a>
+<a href="understanding-hadith.html">Understanding Hadith</a>
+</div>
+</div>
+<div class="nav-item">
+<button class="nav-button">Prophets <i class="fas fa-chevron-down fa-xs"></i></button>
+<div class="dropdown-content">
+<a href="prophets-quran-lineage.html">Prophets in the Quran &amp; Lineage</a>
+<a href="prophet-muhammed-sa.html">Prophet Muhammad (PBUH)</a>
+<a href="prophet-isa.html">Prophet Isa (Jesus)</a>
+<a href="prophet-ibrahim.html">Prophet Ibrahim (Abraham)</a>
+</div>
+</div>
+<div class="nav-item">
+<button class="nav-button">More Topics <i class="fas fa-chevron-down fa-xs"></i></button>
+<div class="dropdown-content">
+<a href="asmaul-husna.html">The 99 Names of Allah</a>
+<a href="children-of-israel.html">Children of Israel in the Quran</a>
+<a href="war-and-peacekeeping.html">War and Peacekeeping in Islam</a>
+</div>
+</div>
+</nav>
+</header>
+<!-- Main Content -->
+<main>
+<!-- About Section -->
+<section class="section">
+<h2 class="section-heading">About Our <span>Project</span></h2>
+<p class="header-subtitle">
                         Welcome to My Deen Project! Our mission is to create accessible and interactive digital tools
                         that support Muslims in their daily practice and understanding of Islam. We aim to leverage
                         technology to provide beneficial resources, fostering spiritual growth and knowledge.
                     </p>
-                </section>
-
-                <!-- Blog Section -->
-                <section class="section">
-                    <h2 class="section-heading">Our Latest <span>Articles</span></h2>
-                    <div class="card-grid">
-                        <div class="card">
-                            <h3 class="card-title">Surah Al-Fatiha: The Opening</h3>
-                            <p class="card-text">Explore a detailed, interactive guide to the first chapter of the Quran, its names, context, and the meaning of its seven powerful verses.</p>
-                            <a href="surah-al-fatiha.html" class="interactive-button">Read More</a>
-                        </div>
-                        <div class="card">
-                            <h3 class="card-title">Islamic Legal Classifications</h3>
-                            <p class="card-text">Explore the foundational categories and principles that govern Islamic jurisprudence and daily life.</p>
-                            <a href="islamic-legal-classifications.html" class="interactive-button">Read More</a>
-                        </div>
-                        <div class="card">
-                            <h3 class="card-title">Prophets in the Quran</h3>
-                            <p class="card-text">A detailed look at the esteemed Prophets mentioned in the Holy Quran, tracing their stories and connections.</p>
-                            <a href="prophets-quran-lineage.html" class="interactive-button">Read More</a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Features Section -->
-                <section class="section">
-                    <h2 class="section-heading">Key <span>Features</span></h2>
-                    <div class="card-grid">
-                        <div class="card">
-                            <h3 class="card-title yellow">Coming Soon: Quranic Insights</h3>
-                            <p class="card-text">A dedicated section for exploring verses from the Holy Quran, with profound interpretations and timeless lessons.</p>
-                            <button class="interactive-button disabled">Learn More</button>
-                        </div>
-                        <div class="card">
-                            <h3 class="card-title yellow">Coming Soon: Hadith Collection</h3>
-                            <p class="card-text">An organized collection of authentic Hadith to deepen your understanding of the Prophet's (PBUH) teachings.</p>
-                            <button class="interactive-button disabled">Explore</button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Call to Action -->
-                <section class="section">
-                    <h2 class="section-heading">Contribute to Our <span>Mission</span></h2>
-                    <p class="header-subtitle">
+</section>
+<!-- Blog Section -->
+<section class="section">
+<h2 class="section-heading">Our Latest <span>Articles</span></h2>
+<div class="card-grid">
+<div class="card">
+<h3 class="card-title">Surah Al-Fatiha: The Opening</h3>
+<p class="card-text">Explore a detailed, interactive guide to the first chapter of the Quran, its names, context, and the meaning of its seven powerful verses.</p>
+<a class="interactive-button" href="surah-al-fatiha.html">Read More</a>
+</div>
+<div class="card">
+<h3 class="card-title">Islamic Legal Classifications</h3>
+<p class="card-text">Explore the foundational categories and principles that govern Islamic jurisprudence and daily life.</p>
+<a class="interactive-button" href="islamic-legal-classifications.html">Read More</a>
+</div>
+<div class="card">
+<h3 class="card-title">Prophets in the Quran</h3>
+<p class="card-text">A detailed look at the esteemed Prophets mentioned in the Holy Quran, tracing their stories and connections.</p>
+<a class="interactive-button" href="prophets-quran-lineage.html">Read More</a>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="section">
+<h2 class="section-heading">Key <span>Features</span></h2>
+<div class="card-grid">
+<div class="card">
+<h3 class="card-title yellow">Coming Soon: Quranic Insights</h3>
+<p class="card-text">A dedicated section for exploring verses from the Holy Quran, with profound interpretations and timeless lessons.</p>
+<button class="interactive-button disabled">Learn More</button>
+</div>
+<div class="card">
+<h3 class="card-title yellow">Coming Soon: Hadith Collection</h3>
+<p class="card-text">An organized collection of authentic Hadith to deepen your understanding of the Prophet's (PBUH) teachings.</p>
+<button class="interactive-button disabled">Explore</button>
+</div>
+</div>
+</section>
+<!-- Call to Action -->
+<section class="section">
+<h2 class="section-heading">Contribute to Our <span>Mission</span></h2>
+<p class="header-subtitle">
                         The My Deen Project is an open-source initiative. If you're a developer, designer, or scholar, we welcome your expertise. Join us in building something meaningful!
                     </p>
-                    <a href="https://github.com/rihaas/mydeen" target="_blank" rel="noopener noreferrer" class="interactive-button">
+<a class="interactive-button" href="https://github.com/rihaas/mydeen" rel="noopener noreferrer" target="_blank">
                         Visit our GitHub <i class="fab fa-github ml-2"></i>
-                    </a>
-                </section>
-            </main>
-        </div>
-        
-        <!-- Footer -->
-        <footer class="footer">
-            <p>&copy; <span id="current-year"></span> My Deen Project. All rights reserved.</p>
-            <p>Built with dedication. <span>Islam is peace.</span></p>
-        </footer>
-    </div>
-
-    <script>
+</a>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="footer">
+<p>© <span id="current-year"></span> My Deen Project. All rights reserved.</p>
+<p>Built with dedication. <span>Islam is peace.</span></p>
+</footer>
+</div>
+<script>
         // --- Animated Canvas Background Script ---
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
@@ -482,5 +443,19 @@
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
-</body>
+</main>
+<footer class="site-footer">
+<div class="site-footer__meta">
+<strong>Project Al-Haqq</strong>
+<span class="muted">© <span data-current-year=""></span></span>
+<span data-page-timestamp=""></span>
+</div>
+<div class="site-footer__actions">
+<a class="contribute-link" href="https://github.com/your-repo/al-haqq-project" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true">★</span>
+<span>Contribute on GitHub</span>
+</a>
+</div>
+</footer>
+</div></body>
 </html>
