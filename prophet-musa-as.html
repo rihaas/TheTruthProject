@@ -6,24 +6,13 @@
     <title>Prophet Musa (Moses) in the Quran</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Global Fonts & Shared Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <script defer src="./assets/js/page.js"></script>
     <style>
-        /* Base styles consistent with the My Deen Project homepage */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #121212; /* Very dark background */
-            color: #E0E0E0; /* Light gray text for contrast */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
-            box-sizing: border-box;
-            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
-        }
-
         .main-content-wrapper {
             max-width: 1000px;
             width: 100%;
@@ -46,9 +35,6 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
             .main-content-wrapper {
                 padding: 1.5rem 1rem;
                 border-radius: 0.75rem;
@@ -82,15 +68,6 @@
             }
             details p {
                 font-size: 0.8rem;
-            }
-            .back-to-home-btn { /* Adjust size for small screens */
-                top: 0.75rem;
-                left: 0.75rem;
-                padding: 0.5rem;
-            }
-            .back-to-home-btn .icon-wrapper {
-                width: 1.25rem;
-                height: 1.25rem;
             }
         }
 
@@ -205,100 +182,39 @@
             color: #C0C0C0;
         }
 
-        /* Back button styling (consistent with Asmaul Husna page) */
-        .back-to-home-btn {
-            position: absolute;
-            top: 1.5rem;
-            left: 2rem;
-            background-image: linear-gradient(to right, #34D399, #10B981);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
-            border-radius: 0.6rem;
-            cursor: pointer;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            width: 3rem; /* Square width for icon only */
-            height: 3rem; /* Square height for icon only */
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            text-decoration: none;
-            color: #FFFFFF;
-            justify-content: center;
-            font-weight: 600;
-            letter-spacing: 0.025em;
-        }
-
-        .back-to-home-btn .icon-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .back-to-home-btn .text-label {
-            position: absolute;
-            left: 0;
-            padding-left: 3rem;
-            padding-right: 1rem;
-            white-space: nowrap;
-            opacity: 0;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-            pointer-events: none;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            background-image: linear-gradient(to right, #34D399, #10B981);
-            border-radius: 0.6rem;
-        }
-
-        .back-to-home-btn:hover {
-            width: 12rem; /* Expand width on hover to reveal text */
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6);
-            background-image: linear-gradient(to right, #10B981, #34D399); /* Reverse gradient on hover */
-            transform: translateY(-2px); /* Subtle lift */
-        }
-
-        .back-to-home-btn:hover .icon-wrapper {
-            transform: translateX(calc(12rem - 3rem - 0.5rem)); /* Move icon to the right (total_width - icon_width - padding/gap) */
-        }
-
-        .back-to-home-btn:hover .text-label {
-            opacity: 1;
-            transform: translateX(0); /* Slide text into view */
-            pointer-events: auto;
-        }
     </style>
-</head>
-<body>
+ </head>
+ <body>
+    <div class="site-shell">
+        <header class="site-header">
+            <div class="site-identity">
+                <span class="site-logo">Project Al-Haqq</span>
+                <span class="site-tagline">Defending Truth, Illuminating Faith</span>
+            </div>
+            <div class="site-actions">
+                <a href="index.html" class="home-link" aria-label="Back to Home">
+                    <span aria-hidden="true">⟵</span>
+                    <span>Home</span>
+                </a>
+                <span class="page-title" data-page-title></span>
+            </div>
+        </header>
 
-    <div class="main-content-wrapper">
-        <!-- Back Button -->
-        <a href="index.html" class="back-to-home-btn" aria-label="Back to Home">
-            <span class="icon-wrapper">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                </svg>
-            </span>
-            <span class="text-label">Back to Home</span>
-        </a>
+        <main class="site-content">
+            <div class="main-content-wrapper">
+                <h1 class="main-heading">
+                    Prophet Musa (Moses) in the <span class="text-yellow-400">Quran</span>
+                </h1>
 
-        <h1 class="main-heading">
-            Prophet Musa (Moses) in the <span class="text-yellow-400">Quran</span>
-        </h1>
+                <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+                    Prophet Musa (Moses), peace be upon him, is one of the most frequently mentioned and significant prophets in the Holy Quran. His story is rich with lessons on faith, perseverance, leadership, and divine intervention, detailing his confrontation with Pharaoh and the liberation of the Children of Israel.
+                </p>
 
-        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
-            Prophet Musa (Moses), peace be upon him, is one of the most frequently mentioned and significant prophets in the Holy Quran. His story is rich with lessons on faith, perseverance, leadership, and divine intervention, detailing his confrontation with Pharaoh and the liberation of the Children of Israel.
-        </p>
-
-        <section class="w-full mb-16">
-            <h2 class="section-heading">
-                His <span class="text-yellow-400">Birth & Early Life</span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+                <section class="w-full mb-16">
+                    <h2 class="section-heading">
+                        His <span class="text-yellow-400">Birth & Early Life</span>
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
 
                 <!-- Miraculous Preservation -->
                 <div class="info-card">
@@ -507,10 +423,26 @@
             </div>
         </section>
 
-        <p class="text-lg text-gray-400 mt-8 opacity-90">
-            The life of Prophet Musa (AS) is a profound source of guidance, illustrating the power of faith, the struggle against oppression, and Allah's unwavering support for His righteous servants.
-        </p>
+                <p class="text-lg text-gray-400 mt-8 opacity-90">
+                    The life of Prophet Musa (AS) is a profound source of guidance, illustrating the power of faith, the struggle against oppression, and Allah's unwavering support for His righteous servants.
+                </p>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="site-footer__meta">
+                <strong>Project Al-Haqq</strong>
+                <span class="muted">© <span data-current-year></span></span>
+                <span data-page-timestamp></span>
+            </div>
+            <div class="site-footer__actions">
+                <a href="https://github.com/your-repo/al-haqq-project" class="contribute-link" target="_blank" rel="noopener noreferrer">
+                    <span aria-hidden="true">★</span>
+                    <span>Contribute on GitHub</span>
+                </a>
+            </div>
+        </footer>
     </div>
 
-</body>
+ </body>
 </html>

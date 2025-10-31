@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project Al-Haqq - Defending Truth, Illuminating Faith</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Global Fonts & Shared Assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <script defer src="./assets/js/page.js"></script>
 
     <!-- Font Awesome 6 CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,13 +38,6 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-outer);
-            color: var(--text-light);
-            overflow-x: hidden;
-        }
-        
         /* --- Animated Background Canvas --- */
         #matrix-canvas {
             position: fixed;
@@ -219,7 +216,23 @@
 <body>
     <canvas id="matrix-canvas"></canvas>
 
-    <div class="page-container">
+    <div class="site-shell">
+        <header class="site-header">
+            <div class="site-identity">
+                <span class="site-logo">Project Al-Haqq</span>
+                <span class="site-tagline">Defending Truth, Illuminating Faith</span>
+            </div>
+            <div class="site-actions">
+                <a href="index.html" class="home-link" aria-label="Home">
+                    <span aria-hidden="true">?</span>
+                    <span>Home</span>
+                </a>
+                <span class="page-title" data-page-title></span>
+            </div>
+        </header>
+
+        <main class="site-content">
+            <div class="page-container">
         
         <div class="content-box" id="main-content">
             <h1 class="entry-title" style="text-align:center; font-size: clamp(2.5rem, 8vw, 4.5rem); color: var(--text-light);">Project <span>Al-Haqq</span></h1>
@@ -249,6 +262,22 @@
                 <i class="fab fa-github"></i>
                 Click to Contribute
             </a>
+        </footer>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="site-footer__meta">
+                <strong>Project Al-Haqq</strong>
+                <span class="muted">? <span data-current-year></span></span>
+                <span data-page-timestamp></span>
+            </div>
+            <div class="site-footer__actions">
+                <a href="https://github.com/your-repo/al-haqq-project" class="contribute-link" target="_blank" rel="noopener noreferrer">
+                    <span aria-hidden="true">?</span>
+                    <span>Contribute on GitHub</span>
+                </a>
+            </div>
         </footer>
     </div>
 

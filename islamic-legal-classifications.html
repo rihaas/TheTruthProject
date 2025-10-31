@@ -1,28 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islamic Legal Classifications</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Base styles consistent with the My Deen Project homepage */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #121212; /* Very dark background */
-            color: #E0E0E0; /* Light gray text for contrast */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
-            box-sizing: border-box;
-            background-image: linear-gradient(to bottom, #121212, #1C1C1C); /* Subtle top-to-bottom gradient */
-        }
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Islamic Legal Classifications</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="./assets/css/global.css" rel="stylesheet"/><style>        /* Base styles consistent with the My Deen Project homepage */
         .table-container-wrapper { /* Reused class name for main content wrapper consistency */
             max-width: 1000px;
             width: 100%;
@@ -35,18 +21,13 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             text-align: center;
         }
-
         /* Responsive adjustments for smaller screens */
         @media (max-width: 1024px) {
             .table-container-wrapper {
                 padding: 2rem 1.5rem;
             }
         }
-
         @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
             .table-container-wrapper {
                 padding: 1.5rem 1rem;
                 border-radius: 0.75rem;
@@ -61,7 +42,6 @@
                 font-size: 0.95rem;
             }
         }
-
         @media (max-width: 480px) {
             .main-heading {
                 font-size: 1.75rem;
@@ -85,7 +65,6 @@
                 font-size: 0.85rem;
             }
         }
-
         /* Main heading style (consistent with homepage) */
         .main-heading {
             color: #E0E0E0;
@@ -98,7 +77,6 @@
         .main-heading span {
             color: #FACC15; /* Golden yellow accent */
         }
-
         /* Sub-headings for Start/End */
         .sub-heading {
             color: #B0B0B0; /* Muted text color */
@@ -109,7 +87,6 @@
             text-align: left;
             width: 100%;
         }
-
         /* Flowchart step styling */
         .step {
             margin-left: 20px;
@@ -118,20 +95,17 @@
             margin-bottom: 1.5rem; /* Increased spacing between steps */
             text-align: left; /* Align text within steps to left */
         }
-
         .step-text {
             font-weight: 500;
             color: #E0E0E0; /* Light text for questions */
             margin-bottom: 0.75rem; /* Space below question */
             font-size: 1.05rem; /* Slightly larger for clarity */
         }
-
         .step-arrow {
             color: #8be9fd; /* Light blue accent for arrows */
             font-weight: 700;
             margin-right: 0.5rem;
         }
-
         /* Category boxes for classifications */
         .category {
             background-color: #282828; /* Darker background for categories */
@@ -141,26 +115,22 @@
             margin-top: 1.25rem; /* Space between question and category */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Softer shadow */
         }
-
         .category h3 {
             color: #BB86FC; /* Light purple for category titles */
             font-size: 1.3rem; /* Larger font for category titles */
             font-weight: 600;
             margin-bottom: 1rem; /* Space below category title */
         }
-
         .category h3 strong {
             font-weight: 700;
             color: #FACC15; /* Golden yellow for Arabic terms in heading */
         }
-
         .category ul {
             list-style-type: none; /* Remove default bullet */
             margin-left: 0;
             padding-left: 0;
             text-align: left;
         }
-
         .category ul li {
             position: relative; /* For custom bullet point */
             padding-left: 1.5rem; /* Space for custom bullet */
@@ -169,11 +139,9 @@
             font-size: 0.9rem;
             line-height: 1.4;
         }
-
         .category ul li:last-child {
             margin-bottom: 0;
         }
-
         .category ul li::before {
             content: '•'; /* Custom bullet point */
             color: #8be9fd; /* Accent color for bullet */
@@ -183,116 +151,139 @@
             font-size: 1.2em;
             line-height: 1;
         }
-
         .category strong {
             color: #E0E0E0; /* Light gray for emphasized text */
             font-weight: 600;
         }
-
         .indent {
             margin-left: 20px; /* Standard indent for flow */
-        }
-    </style>
-</head>
-<body class="bg-gray-900 text-white">
-    <div class="table-container-wrapper">
-        <h1 class="main-heading">
+        }</style>
+<script defer="" src="./assets/js/page.js"></script></head>
+<body class="bg-gray-900 text-white"><div class="site-shell">
+<header class="site-header">
+<div class="site-identity">
+<span class="site-logo">Project Al-Haqq</span>
+<span class="site-tagline">Defending Truth, Illuminating Faith</span>
+</div>
+<div class="site-actions">
+<a aria-label="Back to Home" class="home-link" href="./index.html">
+<span aria-hidden="true">⟵</span>
+<span>Home</span>
+</a>
+<span class="page-title" data-page-title=""></span>
+</div>
+</header>
+<main class="site-content">
+<div class="table-container-wrapper">
+<h1 class="main-heading">
             Islamic Legal <span class="text-yellow-400">Classifications</span> (Ahkam al-Khamsa)
         </h1>
-
-        <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
+<p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto opacity-90">
             Islamic jurisprudence classifies human actions into five main categories, known as Ahkam al-Khamsa (The Five Rulings). This flowchart helps understand these classifications and their implications.
         </p>
-
-        <h2 class="sub-heading">Start</h2>
-        <div class="step">
-            <p class="step-text"><strong>Is the action Commanded by Allah?</strong></p>
-            <div class="step">
-                <p class="step-text"><span class="step-arrow">→</span> Yes</p>
-                <div class="step indent">
-                    <p class="step-text"><strong>Is it absolutely required?</strong></p>
-                    <div class="step indent">
-                        <p class="step-text"><span class="step-arrow">→</span> Yes</p>
-                        <div class="category">
-                            <h3><strong>Fard / Wajib</strong> (فرض / واجب) - Obligatory / Compulsory</h3>
-                            <ul>
-                                <li><strong>Meaning:</strong> An action that is absolutely required and commanded by Allah.</li>
-                                <li><strong>Consequence of Doing:</strong> Rewarded.</li>
-                                <li><strong>Consequence of Omitting:</strong> Punishable (sinful).</li>
-                                <li><strong>Examples:</strong> The five daily prayers, fasting in Ramadan, paying Zakat (charity), performing Hajj (pilgrimage) if able.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="step indent">
-                        <p class="step-text"><span class="step-arrow">→</span> No</p>
-                        <div class="category">
-                            <h3><strong>Mustahabb / Mandub / Sunnah</strong> (مستحب / مندوب / سنة) - Recommended / Desirable</h3>
-                            <ul>
-                                <li><strong>Meaning:</strong> An action that is highly encouraged and rewarded if done, but there is no sin if it's omitted. It brings you closer to Allah.</li>
-                                <li><strong>Consequence of Doing:</strong> Rewarded.</li>
-                                <li><strong>Consequence of Omitting:</strong> No sin, but a missed opportunity for reward.</li>
-                                <li><strong>Examples:</strong> Praying Sunnah prayers (voluntary prayers), giving Sadaqa (voluntary charity), visiting the sick, greeting others with Salam.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="step">
-                <p class="step-text"><span class="step-arrow">→</span> No</p>
-                <div class="step indent">
-                    <p class="step-text"><strong>Is the action Forbidden by Allah?</strong></p>
-                    <div class="step indent">
-                        <p class="step-text"><span class="step-arrow">→</span> Yes</p>
-                        <div class="category">
-                            <h3><strong>Haram</strong> (حرام) - Forbidden / Unlawful</h3>
-                            <ul>
-                                <li><strong>Meaning:</strong> An action that is strictly prohibited by Allah.</li>
-                                <li><strong>Consequence of Doing:</strong> Punishable (sinful).</li>
-                                <li><strong>Consequence of Omitting:</strong> Rewarded (for abstaining out of obedience).</li>
-                                <li><strong>Examples:</strong> Drinking alcohol, consuming pork, committing adultery, stealing, lying (about religious matters), backbiting, murder.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="step indent">
-                        <p class="step-text"><span class="step-arrow">→</span> No</p>
-                        <div class="step indent">
-                            <p class="step-text"><strong>Is the action Disliked / Disapproved?</strong></p>
-                            <div class="step indent">
-                                <p class="step-text"><span class="step-arrow">→</span> Yes</p>
-                                <div class="category">
-                                    <h3><strong>Makruh</strong> (مكروه) - Disliked / Disapproved</h3>
-                                    <ul>
-                                        <li><strong>Meaning:</strong> An action that is disliked or disapproved of. It's better to avoid it, but it is not strictly forbidden.</li>
-                                        <li><strong>Consequence of Doing:</strong> Not sinful, but blameworthy; disliked by Allah.</li>
-                                        <li><strong>Consequence of Omitting:</strong> Rewarded (for abstaining out of obedience).</li>
-                                        <li><strong>Types:</strong>
-                                            <ul>
-                                                <li><strong>Makruh Tahrimi</strong> (مكروه تحریمی): Closer to Haram, strongly disliked, sometimes based on speculative evidence of prohibition. Committing it is more blameworthy. (Primarily a Hanafi school classification)</li>
-                                                <li><strong>Makruh Tanzihi</strong> (مكروه تنزیهی): Closer to Mubah, mildly disliked, avoiding it is better but no real blame for doing it. (Common across all schools)</li>
-                                            </ul>
-                                        </li>
-                                        <li><strong>Examples:</strong> Wasting water during ablution, talking unnecessarily during Adhan, sleeping on one's stomach (often cited as Makruh Tanzihi), men wearing silk or gold (Makruh Tahrimi in Hanafi, Haram in other schools).</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="step indent">
-                                <p class="step-text"><span class="step-arrow">→</span> No</p>
-                                <div class="category">
-                                    <h3><strong>Mubah</strong> (مباح) - Permissible / Neutral</h3>
-                                    <ul>
-                                        <li><strong>Meaning:</strong> An action that is neither commanded nor forbidden. There is no reward for doing it, nor punishment for omitting it. It's simply allowed.</li>
-                                        <li><strong>Consequence of Doing:</strong> No reward.</li>
-                                        <li><strong>Consequence of Omitting:</strong> No sin.</li>
-                                        <li><strong>Examples:</strong> Eating, drinking, sleeping, walking (general everyday activities that have no specific religious command or prohibition attached).</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <h2 class="sub-heading">End</h2>
-    </div>
-</body>
+<h2 class="sub-heading">Start</h2>
+<div class="step">
+<p class="step-text"><strong>Is the action Commanded by Allah?</strong></p>
+<div class="step">
+<p class="step-text"><span class="step-arrow">→</span> Yes</p>
+<div class="step indent">
+<p class="step-text"><strong>Is it absolutely required?</strong></p>
+<div class="step indent">
+<p class="step-text"><span class="step-arrow">→</span> Yes</p>
+<div class="category">
+<h3><strong>Fard / Wajib</strong> (فرض / واجب) - Obligatory / Compulsory</h3>
+<ul>
+<li><strong>Meaning:</strong> An action that is absolutely required and commanded by Allah.</li>
+<li><strong>Consequence of Doing:</strong> Rewarded.</li>
+<li><strong>Consequence of Omitting:</strong> Punishable (sinful).</li>
+<li><strong>Examples:</strong> The five daily prayers, fasting in Ramadan, paying Zakat (charity), performing Hajj (pilgrimage) if able.</li>
+</ul>
+</div>
+</div>
+<div class="step indent">
+<p class="step-text"><span class="step-arrow">→</span> No</p>
+<div class="category">
+<h3><strong>Mustahabb / Mandub / Sunnah</strong> (مستحب / مندوب / سنة) - Recommended / Desirable</h3>
+<ul>
+<li><strong>Meaning:</strong> An action that is highly encouraged and rewarded if done, but there is no sin if it's omitted. It brings you closer to Allah.</li>
+<li><strong>Consequence of Doing:</strong> Rewarded.</li>
+<li><strong>Consequence of Omitting:</strong> No sin, but a missed opportunity for reward.</li>
+<li><strong>Examples:</strong> Praying Sunnah prayers (voluntary prayers), giving Sadaqa (voluntary charity), visiting the sick, greeting others with Salam.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="step">
+<p class="step-text"><span class="step-arrow">→</span> No</p>
+<div class="step indent">
+<p class="step-text"><strong>Is the action Forbidden by Allah?</strong></p>
+<div class="step indent">
+<p class="step-text"><span class="step-arrow">→</span> Yes</p>
+<div class="category">
+<h3><strong>Haram</strong> (حرام) - Forbidden / Unlawful</h3>
+<ul>
+<li><strong>Meaning:</strong> An action that is strictly prohibited by Allah.</li>
+<li><strong>Consequence of Doing:</strong> Punishable (sinful).</li>
+<li><strong>Consequence of Omitting:</strong> Rewarded (for abstaining out of obedience).</li>
+<li><strong>Examples:</strong> Drinking alcohol, consuming pork, committing adultery, stealing, lying (about religious matters), backbiting, murder.</li>
+</ul>
+</div>
+</div>
+<div class="step indent">
+<p class="step-text"><span class="step-arrow">→</span> No</p>
+<div class="step indent">
+<p class="step-text"><strong>Is the action Disliked / Disapproved?</strong></p>
+<div class="step indent">
+<p class="step-text"><span class="step-arrow">→</span> Yes</p>
+<div class="category">
+<h3><strong>Makruh</strong> (مكروه) - Disliked / Disapproved</h3>
+<ul>
+<li><strong>Meaning:</strong> An action that is disliked or disapproved of. It's better to avoid it, but it is not strictly forbidden.</li>
+<li><strong>Consequence of Doing:</strong> Not sinful, but blameworthy; disliked by Allah.</li>
+<li><strong>Consequence of Omitting:</strong> Rewarded (for abstaining out of obedience).</li>
+<li><strong>Types:</strong>
+<ul>
+<li><strong>Makruh Tahrimi</strong> (مكروه تحریمی): Closer to Haram, strongly disliked, sometimes based on speculative evidence of prohibition. Committing it is more blameworthy. (Primarily a Hanafi school classification)</li>
+<li><strong>Makruh Tanzihi</strong> (مكروه تنزیهی): Closer to Mubah, mildly disliked, avoiding it is better but no real blame for doing it. (Common across all schools)</li>
+</ul>
+</li>
+<li><strong>Examples:</strong> Wasting water during ablution, talking unnecessarily during Adhan, sleeping on one's stomach (often cited as Makruh Tanzihi), men wearing silk or gold (Makruh Tahrimi in Hanafi, Haram in other schools).</li>
+</ul>
+</div>
+</div>
+<div class="step indent">
+<p class="step-text"><span class="step-arrow">→</span> No</p>
+<div class="category">
+<h3><strong>Mubah</strong> (مباح) - Permissible / Neutral</h3>
+<ul>
+<li><strong>Meaning:</strong> An action that is neither commanded nor forbidden. There is no reward for doing it, nor punishment for omitting it. It's simply allowed.</li>
+<li><strong>Consequence of Doing:</strong> No reward.</li>
+<li><strong>Consequence of Omitting:</strong> No sin.</li>
+<li><strong>Examples:</strong> Eating, drinking, sleeping, walking (general everyday activities that have no specific religious command or prohibition attached).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h2 class="sub-heading">End</h2>
+</div>
+</main>
+<footer class="site-footer">
+<div class="site-footer__meta">
+<strong>Project Al-Haqq</strong>
+<span class="muted">© <span data-current-year=""></span></span>
+<span data-page-timestamp=""></span>
+</div>
+<div class="site-footer__actions">
+<a class="contribute-link" href="https://github.com/your-repo/al-haqq-project" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true">★</span>
+<span>Contribute on GitHub</span>
+</a>
+</div>
+</footer>
+</div></body>
 </html>
